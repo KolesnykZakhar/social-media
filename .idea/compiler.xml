@@ -22,11 +22,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="social-media" />
+        <module name="social-media-domain" />
+        <module name="social-media-service" />
+        <module name="social-media-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="social-media" target="1.5" />
+      <module name="social-media" target="1.8" />
+      <module name="social-media-domain" target="1.8" />
+      <module name="social-media-service" target="1.8" />
+      <module name="social-media-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
