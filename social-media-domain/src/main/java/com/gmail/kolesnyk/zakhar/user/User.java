@@ -1,14 +1,11 @@
 package com.gmail.kolesnyk.zakhar.user;
 
-import com.gmail.kolesnyk.zakhar.post.Post;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -44,26 +41,7 @@ public class User implements Serializable {
 
     @NotEmpty
     @Column(name = "phone")
-    private String pjone;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Post> postList;
-
-
-    //    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable(name = "friends",
-//            joinColumns = {@JoinColumn(name = "id_user")},
-//            inverseJoinColumns = {@JoinColumn(name = "id_friend")})
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "friends",
-            joinColumns = @JoinColumn(name = "id_user"))
-    @MapKeyJoinColumn(name = "id_friend")
-    @Column(name = "date_friendship")
-    private Map<User, Timestamp> friends = new HashMap<>();
-
-//    @ManyToMany(mappedBy = "friendsList")
-//    private Map<User, Timestamp> backFriendsList = new HashMap<>();
+    private String phone;
 
     public User() {
     }
@@ -76,44 +54,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPjone() {
-        return pjone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPjone(String pjone) {
-        this.pjone = pjone;
-    }
-
-    public Map<User, Timestamp> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Map<User, Timestamp> friendsList) {
-        this.friends = friendsList;
-    }
-
-    //    public Set<User> getFriendsList() {
-//        return friendsList;
-//    }
-//
-//    public void setFriendsList(Set<User> colleagues) {
-//        this.friendsList = colleagues;
-//    }
-//
-//    public Set<User> getBackFriendsList() {
-//        return backFriendsList;
-//    }
-//
-//    public void setBackFriendsList(Set<User> teammates) {
-//        this.backFriendsList = teammates;
-//    }
-
-    public List<Post> getPostList() {
-        return postList;
-    }
-
-    public void setPostList(List<Post> postList) {
-        this.postList = postList;
+    public void setPhone(String pjone) {
+        this.phone = pjone;
     }
 
     public Integer getIdUser() {

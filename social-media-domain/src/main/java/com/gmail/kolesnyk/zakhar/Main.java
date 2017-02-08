@@ -1,23 +1,19 @@
 package com.gmail.kolesnyk.zakhar;
 
+import com.gmail.kolesnyk.zakhar.post.PostDaoImpl;
 import com.gmail.kolesnyk.zakhar.user.User;
-import org.hibernate.Session;
+import com.gmail.kolesnyk.zakhar.user.UserDao;
+import com.gmail.kolesnyk.zakhar.user.UserDaoImpl;
 
 public class Main {
     public static void main(String[] args) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        UserDao userDao= new UserDaoImpl();
+        User user=userDao.selectById(1);
+//        user.setLastName("Trump");
+//        userDao.update(user);
 
-//        session.getTransaction().begin();
-//        try {
-//            session.createCriteria(User.class).list().forEach(a -> ((User) a).getPostList().forEach(p -> System.out.println(p.getComment())));
-        session.createCriteria(User.class).list().forEach(a -> ((User) a).getFriends().keySet()
-                .forEach(p -> System.out.println(((User) a).getFirstName() + " get friend: " + p.getFirstName() + " in " + ((User) a).getFriends().get(p))));
-//            session.getTransaction().commit();
-//        } catch (Exception e) {
-//            session.getTransaction().rollback();
-//            throw e;
-//        } finally {
-//            session.close();
-//        }
+//        new UserDaoImpl().friendList(1).forEach(a-> System.out.println(a.getFirstName()));
+//        new PostDaoImpl().listSearchString("st").forEach(a-> System.out.println(a.getComment()));
+        new PostDaoImpl().listByUser(user).forEach(a-> System.out.println(a.getComment()));
     }
 }
