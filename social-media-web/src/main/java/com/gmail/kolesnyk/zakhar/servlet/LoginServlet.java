@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         try {
             user = userService.getUserByLoginOrEmailAndPassword(req.getParameter("loginname"), req.getParameter("password"));
         } catch (IllegalAccessException e) {
-            resp.sendRedirect("/login.jsp");
+            resp.sendRedirect("/l.jsp");
         }
         System.out.println("SUCCESS");
 
