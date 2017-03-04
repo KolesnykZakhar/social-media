@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.jmail;
+package com.gmail.kolesnyk.zakhar.jmail.email;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-class Mailer {
+public class SendMail {
     public static void send(String from, String password, String to, String sub, String msg) {
         //Get properties object
         Properties props = new Properties();
@@ -46,7 +46,7 @@ class Mailer {
     public static void main(String[] args) throws IOException {
         String msg = new String(Files.readAllBytes(Paths.get("social-media-service/src/main/resources/reestablish_password.html")), StandardCharsets.UTF_8)
                 .replace("?link?", "https://www.google.com.ua/").replace("?name?", "John");
-        Mailer.send("socialmediantk@gmail.com", "socialNetwork", "vend.88@mail.ru", "test", msg);
+        SendMail.send("socialmediantk@gmail.com", "socialNetwork", "vend.88@mail.ru", "test", msg);
     }
 }  
   

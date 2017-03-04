@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar;
+package com.gmail.kolesnyk.zakhar.configurations;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar;
 
+import com.gmail.kolesnyk.zakhar.configurations.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
