@@ -13,10 +13,10 @@ public class Debug {
     public static void main(String[] args) {
 
 
-        Configuration configuration=new Configuration();
+//        Configuration configuration=new Configuration();
 //        System.out.println(configuration.getResourceBundle().getString("first"));
-        configuration.getProperties().keySet().forEach(a ->
-                System.out.println(a+" = "+configuration.getProperties().get(a)));
+//        configuration.getProperties().keySet().forEach(a ->
+//                System.out.println(a+" = "+configuration.getProperties().get(a)));
 
 //        configuration.getProperties().setProperty("html", "<html><p>safdkjasbfvhCFHASF </p></html>");
 

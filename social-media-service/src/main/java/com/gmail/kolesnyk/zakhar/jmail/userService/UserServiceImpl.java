@@ -20,9 +20,12 @@ public class UserServiceImpl implements UserService {
         User user;
         if (loginOrEmail.contains("@")) {
             user = userDao.selectByEmail(loginOrEmail);
+            System.out.println(user.getFirstName());
         } else {
             user = userDao.selectByLogin(loginOrEmail);
+            System.out.println(user.getFirstName());
         }
+
         if (!user.getPass().equals(encryptor.encryptPassword(password))) {
             throw new IllegalAccessException("wrong login or password");
         }
