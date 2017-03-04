@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.jmail.userService;
+package com.gmail.kolesnyk.zakhar.userService;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 

@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.jmail.email;
+package com.gmail.kolesnyk.zakhar.email;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

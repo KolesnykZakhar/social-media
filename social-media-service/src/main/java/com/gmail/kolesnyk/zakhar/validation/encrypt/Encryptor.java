@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.jmail.validation.encrypt;
+package com.gmail.kolesnyk.zakhar.validation.encrypt;
 
 public interface Encryptor {
     String encryptPassword(String password);

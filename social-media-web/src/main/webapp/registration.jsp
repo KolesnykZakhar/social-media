@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="#">
+            <form class="form-horizontal" method="post" <%--action="/login"--%>>
 
                 <div class="form-group">
                     <label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button onclick="postAuthorization('/login')" type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                 </div>
                 <div class="login-register">
                     <a href="index.php">Login</a>
@@ -103,6 +103,20 @@
     </div>
 </div>
 
-<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<%--<script type="text/javascript" src="assets/js/bootstrap.js"></script>--%>
+<%--<script src="webjars/jquery/3.1.1/jquery.js"></script>--%>
+<%--<script>--%>
+    <%--function postAuthorization(url) {--%>
+        <%--window.location.href = '#result';--%>
+        <%--$.post(url, {--%>
+                    <%--loginOrEmail: $('#username').val(),--%>
+                    <%--password: $('#password').val()--%>
+                <%--},--%>
+                <%--function (responseText) {--%>
+                    <%--$('#result').html(responseText);--%>
+                <%--}--%>
+        <%--);--%>
+    <%--}--%>
+<%--</script>--%>
 </body>
 </html>

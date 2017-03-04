@@ -1,7 +1,7 @@
 package com.gmail.kolesnyk.zakhar.servlet;
 
-import com.gmail.kolesnyk.zakhar.jmail.userService.UserService;
-import com.gmail.kolesnyk.zakhar.jmail.userService.UserServiceImpl;
+import com.gmail.kolesnyk.zakhar.userService.UserService;
+import com.gmail.kolesnyk.zakhar.userService.UserServiceImpl;
 import com.gmail.kolesnyk.zakhar.user.User;
 
 import javax.servlet.ServletException;
@@ -20,17 +20,16 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Enter Servlet");
+
         UserService userService = new UserServiceImpl();
         resp.setContentType("text/html");
-        User user;
+        User user = null;
         try {
-            user = userService.getUserByLoginOrEmailAndPassword(req.getParameter("loginname"), req.getParameter("password"));
+            user = userService.getUserByLoginOrEmailAndPassword(req.getParameter("loginOrEmail"), req.getParameter("password"));
         } catch (IllegalAccessException e) {
             resp.sendRedirect("/login.jsp");
+            resp.sendRedirect("/registration.jsp");
         }
-        resp.sendRedirect("/registration.jsp");
-        System.out.println("SUCCESS");
-
+        req.getRequestDispatcher("/registration.jsp").forward(req,resp);
     }
 }
