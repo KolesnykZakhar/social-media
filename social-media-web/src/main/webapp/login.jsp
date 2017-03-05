@@ -1,20 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 04.03.2017
-  Time: 17:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='http://aleksite.6te.net/css/bootstrap.css'>
     <%--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">--%>
 
     <!-- Website CSS style -->
     <%--<link rel="stylesheet" type="text/css" href="assets/css/main.css">--%>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
 
     <!-- Website Font style -->
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">--%>
@@ -23,76 +16,52 @@
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-    <title>Login Page</title>
+    <title>Login</title>
 </head>
 <body>
-<div class="container" style="margin-top:40px">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong> Sign in to continue</strong>
-                </div>
-                <div class="panel-body">
-                    <form role="form" <%--action="login"--%> method="POST">
-                        <%--<fieldset>--%>
-                            <div class="row">
-                                <div class="center-block">
-                                    <img class="profile-img"
-                                         src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                                         alt="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
-                                    <div class="form-group">
-                                        <div class="input-group">
-												<span class="input-group-addon">
-                                                    <%--<i class="glyphicon glyphicon-user"></i>--%>
-                                                </span>
-                                            <input class="form-control" placeholder="Login or Email" id="loginname"
-                                                   name="loginname" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-												<span class="input-group-addon">
-                                                    <%--<i class="glyphicon glyphicon-lock"></i>--%>
-                                                </span>
-                                            <input class="form-control" placeholder="Password" id="password" name="password"
-                                                   type="password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input onclick="postAuthorization('/login')" type="button" class="btn btn-lg btn-primary btn-block" value="Sign in">
-                                    </div>
-                                </div>
-                            </div>
-                        <%--</fieldset>--%>
-                    </form>
-                </div>
-                <div class="panel-footer ">
-                    Don't have an account! <a href="registration.jsp" onClick=""> Sign Up Here </a>
-                </div>
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Social Media Network</h1>
+                <hr/>
             </div>
+        </div>
+        <div class="main-login main-center">
+            <form class="form-horizontal" method="post" action="/login">
+
+                <div class="form-group">
+                    <label for="loginOrEmail" class="cols-sm-2 control-label">Login or email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="loginOrEmail" id="loginOrEmail"
+                                   placeholder="Enter your login or email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Enter your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                </div>
+                <div class="login-register">
+                    <a href="registration.jsp">Registration</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<div id="result"></div>
-<%--<script type="text/javascript" src="assets/js/bootstrap.js"></script>--%>
-<script src="webjars/jquery/3.1.1/jquery.js"></script>
-<script>
-    function postAuthorization(url) {
-        window.location.href = '#result';
-        $.post(url, {
-                    loginOrEmail: $('#loginname').val(),
-                    password: $('#password').val()
-                },
-                function (responseText) {
-                    $('#result').html(responseText);
-                }
-        );
-    }
-</script>
+
 </body>
 </html>

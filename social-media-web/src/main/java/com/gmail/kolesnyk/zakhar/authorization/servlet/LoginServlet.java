@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.servlet;
+package com.gmail.kolesnyk.zakhar.authorization.servlet;
 
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import com.gmail.kolesnyk.zakhar.userService.UserServiceImpl;
@@ -6,30 +6,23 @@ import com.gmail.kolesnyk.zakhar.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("ENTER DO GET");
-    }
-
+    private UserService userService = new UserServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        UserService userService = new UserServiceImpl();
-        resp.setContentType("text/html");
         User user = null;
         try {
             user = userService.getUserByLoginOrEmailAndPassword(req.getParameter("loginOrEmail"), req.getParameter("password"));
+            resp.addCookie(new Cookie("auth", req.getSession().getId()));
         } catch (IllegalAccessException e) {
             resp.sendRedirect("/login.jsp");
-            resp.sendRedirect("/registration.jsp");
         }
-        req.getRequestDispatcher("/registration.jsp").forward(req,resp);
+        req.setAttribute("user", user);
+        resp.setContentType("text/html");
+        req.getRequestDispatcher("/index").forward(req,resp);
     }
 }

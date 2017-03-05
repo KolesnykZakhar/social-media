@@ -23,27 +23,38 @@
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-    <title>Admin</title>
+    <title>Registration</title>
 </head>
 <body>
 <div class="container">
     <div class="row main">
         <div class="panel-heading">
             <div class="panel-title text-center">
-                <h1 class="title">Company Name</h1>
+                <h1 class="title">Social Media Network</h1>
                 <hr/>
             </div>
         </div>
         <div class="main-login main-center">
-            <form class="form-horizontal" method="post" <%--action="/login"--%>>
+            <form class="form-horizontal" method="post" action="/registration">
 
                 <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <label for="firstName" class="cols-sm-2 control-label">Your First Name</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="name" id="name"
-                                   placeholder="Enter your Name"/>
+                            <input type="text" class="form-control" name="firstName" id="firstName"
+                                   placeholder="Enter your First Name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Your Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="lastName" id="lastName"
+                                   placeholder="Enter your Last Name"/>
                         </div>
                     </div>
                 </div>
@@ -60,12 +71,33 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <label for="phone" class="cols-sm-2 control-label">Your Phone</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                   placeholder="Enter your Phone"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate" class="cols-sm-2 control-label">Your Birthday</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="date" class="form-control" name="birthDate" id="birthDate"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login" class="cols-sm-2 control-label">Login</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your Username"/>
+                            <input type="text" class="form-control" name="login" id="login"
+                                   placeholder="Enter your Login"/>
                         </div>
                     </div>
                 </div>
@@ -93,30 +125,15 @@
                 </div>
 
                 <div class="form-group ">
-                    <button onclick="postAuthorization('/login')" type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                 </div>
                 <div class="login-register">
-                    <a href="index.php">Login</a>
+                    <a href="login.jsp">Login</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<%--<script type="text/javascript" src="assets/js/bootstrap.js"></script>--%>
-<%--<script src="webjars/jquery/3.1.1/jquery.js"></script>--%>
-<%--<script>--%>
-    <%--function postAuthorization(url) {--%>
-        <%--window.location.href = '#result';--%>
-        <%--$.post(url, {--%>
-                    <%--loginOrEmail: $('#username').val(),--%>
-                    <%--password: $('#password').val()--%>
-                <%--},--%>
-                <%--function (responseText) {--%>
-                    <%--$('#result').html(responseText);--%>
-                <%--}--%>
-        <%--);--%>
-    <%--}--%>
-<%--</script>--%>
 </body>
 </html>

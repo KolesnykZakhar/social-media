@@ -2,7 +2,7 @@
 <head>
     <title>SocialNet</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/cufon-yui.js"></script>
@@ -14,7 +14,7 @@
     <div class="main_resize">
         <div class="header">
             <div class="logo">
-                <h1><a href="#"><span>Social</span>Net<small>Simple web template</small></a></h1>
+                <h1><a href="#"><span>Social</span>Net</a></h1>
             </div>
             <div class="search">
                 <form method="get" id="search" action="#">
@@ -30,10 +30,11 @@
             <div class="menu_nav">
                 <ul>
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="support.html">Support</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
+                    <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}/WEB-INF/blog.html">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/WEB-INF/contact.html">Contact Us</a></li>
+                    <li><a href="logout">Log Out</a></li>
                 </ul>
                 <div class="clr"></div>
             </div>
