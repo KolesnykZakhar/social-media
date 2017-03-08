@@ -1,11 +1,14 @@
 package com.gmail.kolesnyk.zakhar.userService;
 
+import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
 import com.gmail.kolesnyk.zakhar.user.UserDaoImpl;
 import com.gmail.kolesnyk.zakhar.validation.encrypt.Encryptor;
 import com.gmail.kolesnyk.zakhar.validation.encrypt.EncryptorMD5;
+import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 
 public class UserServiceImpl implements UserService {
@@ -45,6 +48,14 @@ public class UserServiceImpl implements UserService {
         user.setEmail(email);
         user.setPhone(phone);
         userDao.save(user);
+
+        try {
+            String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
+                    .replace("?link?", "http://localhost:8080/login.jsp").replace("?name?", user.getFirstName() + " " + user.getLastName());
+            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Congratulations", msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return user;
     }
 }

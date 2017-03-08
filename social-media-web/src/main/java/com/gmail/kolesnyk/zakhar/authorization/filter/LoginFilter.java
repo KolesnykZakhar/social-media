@@ -22,7 +22,7 @@ public class LoginFilter implements Filter {
         Cookie[] cookies = req.getCookies();
         for (Cookie c : cookies) {
             HttpSession session = req.getSession();
-            if (c != null && c.getName().equals("auth") && c.equals(session)) {
+            if (c != null && c.getName().equals("auth") && c.getValue().equals(session.getId())) {
                 filterChain.doFilter(servletRequest, servletResponse);
             }
         }

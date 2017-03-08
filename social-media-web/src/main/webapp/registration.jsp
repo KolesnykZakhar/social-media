@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='http://aleksite.6te.net/css/bootstrap.css'>
+    <link rel='stylesheet prefetch' href='css/bootstrap.css'>
     <%--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">--%>
 
     <!-- Website CSS style -->

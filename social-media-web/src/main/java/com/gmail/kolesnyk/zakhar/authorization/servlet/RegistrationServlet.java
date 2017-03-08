@@ -12,24 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @WebServlet(urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
     private UserService userService = new UserServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = null;
+
         try {
-            user = userService.registrationUser(req.getParameter("firstName"), req.getParameter("lastName"), Timestamp.valueOf(req.getParameter("birthDate")+" 00:00:00"),
+            User user = userService.registrationUser(req.getParameter("firstName"), req.getParameter("lastName"), Timestamp.valueOf(req.getParameter("birthDate") + " 00:00:00"),
                     req.getParameter("login"), req.getParameter("password"), req.getParameter("confirm"), req.getParameter("email"), req.getParameter("phone"));
             resp.addCookie(new Cookie("auth", req.getSession().getId()));
+            req.getSession().setAttribute("user", user);
+            resp.setContentType("text/html");
+            req.getRequestDispatcher("/index").forward(req, resp);
         } catch (IllegalAccessException e) {
             resp.sendRedirect("/login.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.sendRedirect("/errorPages/500.jsp");
         }
-        req.setAttribute("user", user);
-        resp.setContentType("text/html");
-        req.getRequestDispatcher("/index").forward(req,resp);
     }
 }
