@@ -1,17 +1,15 @@
 package com.gmail.kolesnyk.zakhar;
 
-import com.gmail.kolesnyk.zakhar.configurations.Configuration;
-import com.gmail.kolesnyk.zakhar.post.PostDaoImpl;
-import com.gmail.kolesnyk.zakhar.user.User;
-import com.gmail.kolesnyk.zakhar.user.UserDao;
 import com.gmail.kolesnyk.zakhar.user.UserDaoImpl;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Debug {
     public static void main(String[] args) {
-
+        System.out.println(Timestamp.valueOf(LocalDateTime.now()).toLocalDateTime().toLocalDate());
+//UserDaoImpl userDao=new UserDaoImpl();
+//        userDao.friendListByRange(1, 2,2).forEach(a-> System.out.println(a.getIdUser()));
 
 //        Configuration configuration=new Configuration();
 //        System.out.println(configuration.getResourceBundle().getString("first"));

@@ -11,6 +11,16 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        goToIndex(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        goToIndex(req, resp);
+
+    }
+
+    static private void goToIndex(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
     }

@@ -1,17 +1,29 @@
-function get(url) {
-    window.location.href = "#result";
-    $.get(url, {}, function (responseText) {
-        $('#result').html(responseText);
+function getUser(url, idFriend) {
+    $.get(url, {
+        idFriend: idFriend
+    }, function (responseText) {
+        $('#mainDiv').html(responseText);
     });
+    $('html, body').animate({
+        scrollTop: $("#mainDiv").offset().top
+    }, 1000);
 }
-function postAuthorization(url, loginOrEmail, password) {
-    window.location.href = "#result'";
+function postMainDiv(url, currentARef, pageNumber) {
     $.post(url, {
-            loginOrEmail: loginOrEmail,
-            password: password
+            pageNumber: pageNumber
         },
         function (responseText) {
-            $('#result').html(responseText);
+            $('#mainDiv').html(responseText);
         }
     );
+    $('html, body').animate({
+        scrollTop: $("#mainDiv").offset().top
+    }, 1000);
+
+    $('#sb_menu').children().each(function () {
+        if (this.classList.contains("active")) {
+            $(this).toggleClass("active");
+        }
+    });
+    $(currentARef).parent().toggleClass("active");
 }

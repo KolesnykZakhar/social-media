@@ -10,8 +10,10 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private static final int amountFriendsOnOnePage = 2;
     private UserDao userDao;
     private Encryptor encryptor;
 
@@ -57,5 +59,31 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public int getAmountFriends(Integer idUser) {
+        return userDao.amountFriends(idUser);
+    }
+
+    @Override
+    public List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage) {
+        int amountFriends = getAmountFriends(idUser);
+        int amountPages = amountFriends / amountFriendsOnOnePage;
+        maxPage[0]=amountPages;
+        int remainder = amountFriends % amountFriendsOnOnePage;
+        if (remainder != 0) {
+            amountPages++;
+        }
+        if (pageNumber > amountPages || pageNumber < 0) {
+            throw new IllegalArgumentException("wrong number of friends page");
+        }
+
+        return userDao.friendListByRange(idUser, pageNumber * amountFriendsOnOnePage - amountFriendsOnOnePage, amountFriendsOnOnePage);
+    }
+
+    @Override
+    public User getUserById(int idUser) {
+        return userDao.selectById(idUser);
     }
 }

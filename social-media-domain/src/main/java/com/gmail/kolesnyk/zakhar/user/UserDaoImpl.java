@@ -1,9 +1,9 @@
 package com.gmail.kolesnyk.zakhar.user;
 
 import com.gmail.kolesnyk.zakhar.AbstractDao;
-import com.gmail.kolesnyk.zakhar.post.Post;
 import org.hibernate.criterion.Restrictions;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -32,5 +32,20 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     public List<User> friendList(Integer idUser) {
         return session.createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser)")
                 .addEntity(User.class).setParameter("idUser", idUser).list();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public int amountFriends(Integer idUser) {
+        return ((BigInteger) session.createSQLQuery("SELECT COUNT(*) FROM friends WHERE id_user = :idUser")
+                .setParameter("idUser", idUser).uniqueResult()).intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> friendListByRange(Integer idUser, int offset, int amount) {
+        return session.createSQLQuery
+                ("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser) ORDER BY id_user ASC LIMIT :offset, :amount ")
+                .addEntity(User.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();
     }
 }

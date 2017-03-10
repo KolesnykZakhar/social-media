@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>SocialNet</title>
@@ -8,6 +9,7 @@
     <script type="text/javascript" src="../js/cufon-yui.js"></script>
     <script type="text/javascript" src="../js/arial.js"></script>
     <script type="text/javascript" src="../js/cuf_run.js"></script>
+    <script type="text/javascript" src="../js/ajax_post_get.js"></script>
 </head>
 <body>
 <div class="main">
@@ -29,7 +31,7 @@
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="active"><a href="/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/blog.html">Blog</a></li>
@@ -42,7 +44,7 @@
         </div>
         <div class="content">
             <div class="content_bg">
-                <div class="mainbar">
+                <div class="mainbar" id="mainDiv">
                     <div class="article">
                         <h2><span>Template License</span></h2>
                         <div class="clr"></div>
@@ -68,13 +70,13 @@
                     <div class="gadget">
                         <h2 class="star"><span>Sidebar</span> Menu</h2>
                         <div class="clr"></div>
-                        <ul class="sb_menu">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">TemplateInfo</a></li>
-                            <li><a href="#">Style Demo</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Archives</a></li>
-                            <li><a href="#">Web Templates</a></li>
+                        <ul id='sb_menu' class="sb_menu">
+                            <li id='homeSb' class="active"><a href="/index">Home</a></li>
+                            <li><a id='friendsSb' href="#" onclick="postMainDiv('/index/friends', this, 1)">Friends</a></li>
+                            <li><a id='StyleDemoSb' href="#" onclick="postMainDiv('/index/friends', this, 1)">Style Demo</a></li>
+                            <li><a id='blogSb' href="#">Blog</a></li>
+                            <li><a id='archivesSb' href="#">Archives</a></li>
+                            <li><a id='webTemplatesSb' href="#">Web Templates</a></li>
                         </ul>
                     </div>
                     <div class="gadget">
