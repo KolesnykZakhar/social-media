@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private static final int amountFriendsOnOnePage = 2;
+    private static final int amountFriendsOnOnePage = 3;
     private UserDao userDao;
     private Encryptor encryptor;
 
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
     public List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage) {
         int amountFriends = getAmountFriends(idUser);
         int amountPages = amountFriends / amountFriendsOnOnePage;
-        maxPage[0]=amountPages;
+        maxPage[0] = amountPages;
         int remainder = amountFriends % amountFriendsOnOnePage;
         if (remainder != 0) {
             amountPages++;

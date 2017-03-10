@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 09.03.2017
-  Time: 15:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -42,19 +35,6 @@
                         <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
                                                                             src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
                                                                             class="img-circle img-responsive"></div>
-
-                        <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                          <dl>
-                            <dt>DEPARTMENT:</dt>
-                            <dd>Administrator</dd>
-                            <dt>HIRE DATE</dt>
-                            <dd>11/12/2013</dd>
-                            <dt>DATE OF BIRTH</dt>
-                               <dd>11/12/2013</dd>
-                            <dt>GENDER</dt>
-                            <dd>Male</dd>
-                          </dl>
-                        </div>-->
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>

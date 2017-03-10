@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 09.03.2017
-  Time: 15:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -25,7 +18,6 @@
     <table class="table" style="width: 623px">
         <thead>
         <tr>
-            <%--<th>#</th>--%>
             <th>Login</th>
             <th>Name</th>
             <th>Email</th>
@@ -36,7 +28,6 @@
         <c:forEach items="${requestScope.friends}" var="friend" varStatus="index">
             <tbody>
             <tr>
-                <%--<td><c:out value="${index.index+1}"/></td>--%>
                 <td><c:out value="${friend.login}"/></td>
                 <td>${friend.firstName}<br>${friend.lastName}</td>
                 <td><c:out value="${friend.email}"/></td>
@@ -49,7 +40,9 @@
     </table>
     <ul style="list-style: none; display: inline;">
         <c:forEach var="i" begin="1" end="${requestScope.maxPage}">
-            <li style="display: inline;"><a href="#" onclick="postMainDiv('/index/friends', this, ${i})">${i}&nbsp;</a></li>
+            <li style="display: inline;"><a href="#"
+                                            onclick="postMainDiv('/index/friends', this, ${i})">${i}&nbsp;</a>
+            </li>
         </c:forEach>
     </ul>
 </div>

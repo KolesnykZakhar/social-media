@@ -53,6 +53,7 @@ public class FriendsServlet extends HttpServlet {
             }
         }
         try {
+            /* maxPage[0] value set inside method userService.friendsSublist()*/
             int[] maxPage = new int[1];
             req.setAttribute("friends", userService.friendsSublist(idUser, pageNumber, maxPage));
             req.setAttribute("maxPage", maxPage[0]);
