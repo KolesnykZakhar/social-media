@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.authorization.servlet;
+package com.gmail.kolesnyk.zakhar.controller.authorization.servlet;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             resp.setContentType("text/html");
             req.getRequestDispatcher("/index").forward(req, resp);
         } catch (IllegalAccessException e) {
-            resp.sendRedirect("/login.jsp");
+            resp.sendRedirect("/static/login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
             resp.sendRedirect("/errorPages/500.jsp");

@@ -8,9 +8,9 @@ function getUser(url, idFriend) {
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
 }
-function postMainDiv(url, currentARef, pageNumber) {
+function postMainDiv(url, currentARef/*, pageNumber*/) {
     $.post(url, {
-            pageNumber: pageNumber
+            // pageNumber: pageNumber
         },
         function (responseText) {
             $('#mainDiv').html(responseText);
