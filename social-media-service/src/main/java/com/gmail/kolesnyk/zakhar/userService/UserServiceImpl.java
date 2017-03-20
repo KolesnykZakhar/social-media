@@ -3,9 +3,7 @@ package com.gmail.kolesnyk.zakhar.userService;
 import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
-import com.gmail.kolesnyk.zakhar.user.UserDaoImpl;
 import com.gmail.kolesnyk.zakhar.validation.encrypt.Encryptor;
-import com.gmail.kolesnyk.zakhar.validation.encrypt.EncryptorMD5;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,11 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private Encryptor encryptor;
-
-    public UserServiceImpl() {
-//        userDao = new UserDaoImpl();
-//        encryptor = new EncryptorMD5();
-    }
 
     @Override
     @Transactional(readOnly = true)
@@ -83,6 +76,9 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage) {
         int amountFriends = getAmountFriends(idUser);
+        if (amountFriends == 0) {
+            throw new ArrayStoreException("friends list empty");
+        }
         int amountPages = amountFriends / amountFriendsOnOnePage;
         maxPage[0] = amountPages;
         int remainder = amountFriends % amountFriendsOnOnePage;
@@ -92,7 +88,6 @@ public class UserServiceImpl implements UserService {
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-
         return userDao.friendListByRange(idUser, pageNumber * amountFriendsOnOnePage - amountFriendsOnOnePage, amountFriendsOnOnePage);
     }
 

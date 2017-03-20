@@ -2,10 +2,8 @@ package com.gmail.kolesnyk.zakhar.controller.access.servlet;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
-import com.gmail.kolesnyk.zakhar.userService.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,17 +16,12 @@ public class FriendsController {
     @Autowired
     private UserService userService;
 
-    @Transactional(readOnly = true)
-    @RequestMapping(value = "/index/friend", method = RequestMethod.GET)
-    private ModelAndView goToFriend(@RequestParam(value = "idFriend") Integer idFriend) throws IOException, ServletException {
+    @RequestMapping(value = "/index/friend/{idFriend}", method = RequestMethod.POST)
+    private ModelAndView goToFriend(@PathVariable(value = "idFriend") Integer idFriend) throws IOException, ServletException {
         ModelAndView modelAndView;
         try {
             modelAndView = new ModelAndView("friend_info_ajax");
             User friend = userService.getUserById(idFriend);
-            System.out.println("\n\n\n\"");
-            System.out.println(idFriend);
-            System.out.println(friend.getFirstName());
-            System.out.println("\n\n\n\"");
             modelAndView.addObject("friend", friend);
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,7 +30,6 @@ public class FriendsController {
         return modelAndView;
     }
 
-//    @Transactional(readOnly = true)
     @RequestMapping(value = {"/index/friends/{pageNumber}"}, method = RequestMethod.POST)
     private ModelAndView goToFriendsPage(@PathVariable("pageNumber") Integer pageNumber, @SessionAttribute("user") User user) throws ServletException, IOException {
         ModelAndView modelAndView;
@@ -51,6 +43,8 @@ public class FriendsController {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             modelAndView = new ModelAndView("../errorPages/400");
+        } catch (ArrayStoreException e){
+            modelAndView = new ModelAndView("../errorPages/friends_list_empty");
         }
         return modelAndView;
     }

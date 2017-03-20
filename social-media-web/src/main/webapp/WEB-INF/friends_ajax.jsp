@@ -32,7 +32,7 @@
                 <td>${friend.firstName}<br>${friend.lastName}</td>
                 <td><c:out value="${friend.email}"/></td>
                 <td><c:out value="${friend.phone}"/></td>
-                <td><a href="#" class="btn btn-primary" onclick="getUser('/index/friend', '${friend.idUser}')">View</a>
+                <td><a href="#" class="btn btn-primary" onclick="postMainDiv('/index/friend/${friend.idUser}', this)">View</a>
                 </td>
             </tr>
             </tbody>

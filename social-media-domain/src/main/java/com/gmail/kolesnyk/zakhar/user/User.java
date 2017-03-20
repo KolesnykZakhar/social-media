@@ -109,12 +109,4 @@ public class User implements Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
-//    public List<Post> getPostList() {
-//        return postList;
-//    }
-//
-//    public void setPostList(List<Post> postList) {
-//        this.postList = postList;
-//    }
 }

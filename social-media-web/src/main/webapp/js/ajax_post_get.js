@@ -1,18 +1,13 @@
-function getUser(url, idFriend) {
-    $.get(url, {
-        idFriend: idFriend
-    }, function (responseText) {
+function getUser(url) {
+    $.get(url, function (responseText) {
         $('#mainDiv').html(responseText);
     });
     $('html, body').animate({
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
 }
-function postMainDiv(url, currentARef/*, pageNumber*/) {
-    $.post(url, {
-            // pageNumber: pageNumber
-        },
-        function (responseText) {
+function postMainDiv(url, currentARef) {
+    $.post(url, function (responseText) {
             $('#mainDiv').html(responseText);
         }
     );
