@@ -61,6 +61,7 @@ public class DataSourceConfig {
         return new Properties() {
             {
                 setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+                setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
             }
         };
     }

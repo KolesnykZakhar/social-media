@@ -70,7 +70,6 @@ public abstract class AbstractDao<T, I extends Serializable> implements BaseDao<
     @Override
     @SuppressWarnings("unchecked")
     public T selectById(I id) {
-//        return (T) session.load(entityClass, id);
         return (T) sessionFactory.getCurrentSession().load(entityClass, id);
     }
 

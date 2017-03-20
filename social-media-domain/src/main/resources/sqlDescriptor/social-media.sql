@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Мар 11 2017 г., 00:21
+-- Время создания: Мар 20 2017 г., 15:26
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -113,7 +113,8 @@ INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`
 (8, '2017-03-06 11:09:59', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', 'B59C67BF196A4758191E42F76670CEBA', '+375671'),
 (9, '2017-03-06 11:15:16', 'sfasf8@msfdfds', 'Cam', 'Sed', 'cam', 'B59C67BF196A4758191E42F76670CEBA', '+82506'),
 (11, '2017-03-06 11:21:07', 'fgsfdg@maasf', 'Fsed', 'Fedov', 'focin', 'B59C67BF196A4758191E42F76670CEBA', '+dskfjh'),
-(12, '2017-03-06 11:24:39', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', 'B59C67BF196A4758191E42F76670CEBA', '+842364');
+(12, '2017-03-06 11:24:39', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', 'B59C67BF196A4758191E42F76670CEBA', '+842364'),
+(13, '2017-10-28 21:00:00', 'Ki@m.a', 'Fill', 'Kimber', 'Kim', 'B59C67BF196A4758191E42F76670CEBA', '+563782413');
 
 --
 -- Индексы сохранённых таблиц
@@ -155,7 +156,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
