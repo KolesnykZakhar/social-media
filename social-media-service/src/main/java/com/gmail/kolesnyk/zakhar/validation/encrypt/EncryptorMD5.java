@@ -1,10 +1,13 @@
 package com.gmail.kolesnyk.zakhar.validation.encrypt;
 
 
+import org.springframework.stereotype.Component;
+
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@Component
 public class EncryptorMD5 implements Encryptor {
     private MessageDigest md5;
 

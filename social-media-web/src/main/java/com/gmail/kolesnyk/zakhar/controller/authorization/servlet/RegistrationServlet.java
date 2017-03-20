@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.controller.authorization.servlet;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import com.gmail.kolesnyk.zakhar.userService.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,8 @@ import java.sql.Timestamp;
 
 @WebServlet(urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
-    private UserService userService = new UserServiceImpl();
+    @Autowired
+    private UserService userService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -7,22 +7,33 @@ import com.gmail.kolesnyk.zakhar.user.UserDaoImpl;
 import com.gmail.kolesnyk.zakhar.validation.encrypt.Encryptor;
 import com.gmail.kolesnyk.zakhar.validation.encrypt.EncryptorMD5;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
+@Component
+@Service
 public class UserServiceImpl implements UserService {
     private static final int amountFriendsOnOnePage = 3;
+
+    @Autowired
     private UserDao userDao;
+
+    @Autowired
     private Encryptor encryptor;
 
     public UserServiceImpl() {
-        userDao = new UserDaoImpl();
-        encryptor = new EncryptorMD5();
+//        userDao = new UserDaoImpl();
+//        encryptor = new EncryptorMD5();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserByLoginOrEmailAndPassword(String loginOrEmail, String password) throws IllegalAccessException {
         User user;
         if (loginOrEmail.contains("@")) {
@@ -37,6 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User registrationUser(String firstName, String lastName, Timestamp birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException {
         if (!pass.trim().equals(confirmPass.trim())) {
             throw new IllegalArgumentException("passwords not match");
@@ -62,11 +74,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public int getAmountFriends(Integer idUser) {
         return userDao.amountFriends(idUser);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage) {
         int amountFriends = getAmountFriends(idUser);
         int amountPages = amountFriends / amountFriendsOnOnePage;
@@ -83,6 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(int idUser) {
         return userDao.selectById(idUser);
     }
