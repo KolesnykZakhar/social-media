@@ -29,10 +29,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/index/**").access("hasRole('USER')")
+                .antMatchers("/user/**").access("hasRole('USER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/index", false)
+                .defaultSuccessUrl("/user/index", false)
                 .and().logout().logoutUrl("/logout");
         http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
     }

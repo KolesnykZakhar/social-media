@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
-                    .replace("?link?", "http://localhost:8080/login.jsp").replace("?name?", user.getFirstName() + " " + user.getLastName());
+                    .replace("?link?", "http://localhost:8080/login").replace("?name?", user.getFirstName() + " " + user.getLastName());
             SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Congratulations", msg);
         } catch (IOException e) {
             e.printStackTrace();

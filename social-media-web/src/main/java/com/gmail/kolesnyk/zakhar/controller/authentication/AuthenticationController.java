@@ -4,9 +4,10 @@ import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.Timestamp;
 
@@ -16,7 +17,7 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/login"})
+    @RequestMapping(value = "/login")
     public String toLoginPage() {
         return "../static/login";
     }
@@ -26,15 +27,22 @@ public class AuthenticationController {
         return "redirect: /static/login.jsp";
     }
 
-    @RequestMapping(value = {"/registration"})
-    protected String registration(HttpServletRequest req) throws ServletException, IOException {
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String toRegistrationPage() {
+        return "../static/registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    protected String registration(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("birthDate") String birthDate,
+                                  @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
+                                  @RequestParam("email") String email, @RequestParam("phone") String phone) throws ServletException, IOException {
         try {
-            userService.registrationUser(req.getParameter("firstName"), req.getParameter("lastName"), Timestamp.valueOf(req.getParameter("birthDate") + " 00:00:00"),
-                    req.getParameter("login"), req.getParameter("password"), req.getParameter("confirm"), req.getParameter("email"), req.getParameter("phone"));
+            userService.registrationUser(firstName, lastName, Timestamp.valueOf(birthDate + " 00:00:00"),
+                    login, password, confirm, email, phone);
             return "redirect: /static/login.jsp";
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect: /errorPages/500.jsp";
+            return "redirect: /static/errorPages/500.jsp";
         }
     }
 }

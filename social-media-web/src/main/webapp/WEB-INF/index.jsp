@@ -3,13 +3,13 @@
 <head>
     <title>SocialNet</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="../js/script.js"></script>
-    <script type="text/javascript" src="../js/cufon-yui.js"></script>
-    <script type="text/javascript" src="../js/arial.js"></script>
-    <script type="text/javascript" src="../js/cuf_run.js"></script>
-    <script type="text/javascript" src="../js/ajax_post_get.js"></script>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../static/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript" src="../static/js/cufon-yui.js"></script>
+    <script type="text/javascript" src="../static/js/arial.js"></script>
+    <script type="text/javascript" src="../static/js/cuf_run.js"></script>
+    <script type="text/javascript" src="../static/js/ajax_post_get.js"></script>
 </head>
 <body>
 <div class="main">
@@ -22,7 +22,7 @@
                 <form method="get" id="search" action="#">
           <span>
           <input type="text" value="Search..." name="s" id="s"/>
-          <input name="searchsubmit" type="image" src="../images/search.gif" value="Go" id="searchsubmit" class="btn"/>
+          <input name="searchsubmit" type="image" src="../static/images/search.gif" value="Go" id="searchsubmit" class="btn"/>
           </span>
                 </form>
                 <!--/searchform -->
@@ -36,11 +36,11 @@
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/blog.html">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/contact.html">Contact Us</a></li>
-                    <li><a href="logout">Log Out</a></li>
+                    <li><a href="/logout">Log Out</a></li>
                 </ul>
                 <div class="clr"></div>
             </div>
-            <div class="hbg"><img src="../images/header_images.jpg" width="923" height="291" alt=""/></div>
+            <div class="hbg"><img src="../static/images/header_images.jpg" width="923" height="291" alt=""/></div>
         </div>
         <div class="content">
             <div class="content_bg">
@@ -51,7 +51,7 @@
                         <p class="post-data"><span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by <a
                                 href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>
                         </p>
-                        <img src="../images/images_1.jpg" width="613" height="193" alt=""/>
+                        <img src="../static/images/images_1.jpg" width="613" height="193" alt=""/>
                         <p>This is a free CSS website template by RocketWebsiteTemplates.com. This work is distributed
                             under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
                                 3.0 License</a>, which means that you are free to use it for any personal or commercial
@@ -66,7 +66,7 @@
                         <p class="post-data"><span class="date">March 15, 2010</span> &nbsp;|&nbsp; Posted by <a
                                 href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>
                         </p>
-                        <img src="../images/images_2.jpg" width="613" height="193" alt=""/>
+                        <img src="../static/images/images_2.jpg" width="613" height="193" alt=""/>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
                             Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius
                                 lorem, eu posuere nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum,
@@ -95,9 +95,9 @@
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
                             <li id='homeSb' class="active"><a href="/index">Home</a></li>
-                            <li><a id='friendsSb' href="#" onclick="postMainDiv('/index/friends/1', this/*, 1*/)">Friends</a>
+                            <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Friends</a>
                             </li>
-                            <li><a id='StyleDemoSb' href="#" onclick="postMainDiv('/index/friends/1', this/*, 1*/)">Style
+                            <li><a id='StyleDemoSb' href="#" onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Style
                                 Demo</a></li>
                             <li><a id='blogSb' href="#">Blog</a></li>
                             <li><a id='archivesSb' href="#">Archives</a></li>
@@ -132,9 +132,9 @@
                         <h2 class="star"><span>Wise Words</span></h2>
                         <div class="clr"></div>
                         <div class="testi">
-                            <p><span class="q"><img src="../images/qoute_1.gif" width="20" height="15" alt=""/></span>
+                            <p><span class="q"><img src="../static/images/qoute_1.gif" width="20" height="15" alt=""/></span>
                                 We can let circumstances rule us, or we can take charge and rule our lives from within.
-                                <span class="q"><img src="../images/qoute_2.gif" width="20" height="15" alt=""/></span>
+                                <span class="q"><img src="../static/images/qoute_2.gif" width="20" height="15" alt=""/></span>
                             </p>
                             <p class="title"><strong>Earl Nightingale</strong></p>
                         </div>
@@ -148,12 +148,12 @@
         <div class="fbg_resize">
             <div class="col c1">
                 <h2><span>Image Gallery</span></h2>
-                <a href="#"><img src="../images/pic_1.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
-                    src="../images/pic_2.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
-                    src="../images/pic_3.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
-                    src="../images/pic_4.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
-                    src="../images/pic_5.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
-                    src="../images/pic_6.jpg" width="58" height="58" alt=""/></a></div>
+                <a href="#"><img src="../static/images/pic_1.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
+                    src="../static/images/pic_2.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
+                    src="../static/images/pic_3.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
+                    src="../static/images/pic_4.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
+                    src="../static/images/pic_5.jpg" width="58" height="58" alt=""/></a> <a href="#"><img
+                    src="../static/images/pic_6.jpg" width="58" height="58" alt=""/></a></div>
             <div class="col c2">
                 <h2><span>Lorem Ipsum</span></h2>
                 <p>Lorem ipsum dolor<br/>

@@ -19,7 +19,7 @@ public class FriendsController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/index/friend/{idFriend}", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/friend/{idFriend}", method = RequestMethod.POST)
     private ModelAndView goToFriend(@PathVariable(value = "idFriend") Integer idFriend) throws IOException, ServletException {
         ModelAndView modelAndView;
         try {
@@ -28,12 +28,12 @@ public class FriendsController {
             modelAndView.addObject("friend", friend);
         } catch (Exception e) {
             e.printStackTrace();
-            modelAndView = new ModelAndView("../errorPages/400");
+            modelAndView = new ModelAndView("../static/errorPages/400");
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/index/friends/{pageNumber}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/user/friends/{pageNumber}"}, method = RequestMethod.POST)
     private ModelAndView goToFriendsPage(@PathVariable("pageNumber") Integer pageNumber) throws ServletException, IOException {
         ModelAndView modelAndView;
         int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
@@ -45,9 +45,9 @@ public class FriendsController {
             modelAndView.addObject("maxPage", maxPage[0]);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            modelAndView = new ModelAndView("../errorPages/400");
+            modelAndView = new ModelAndView("../static/errorPages/400");
         } catch (ArrayStoreException e) {
-            modelAndView = new ModelAndView("../errorPages/friends_list_empty");
+            modelAndView = new ModelAndView("../static/errorPages/friends_list_empty");
         }
         return modelAndView;
     }

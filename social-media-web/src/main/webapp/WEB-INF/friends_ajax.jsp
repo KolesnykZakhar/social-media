@@ -6,7 +6,7 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='../static/css/bootstrap.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -32,7 +32,7 @@
                 <td>${friend.firstName}<br>${friend.lastName}</td>
                 <td><c:out value="${friend.email}"/></td>
                 <td><c:out value="${friend.phone}"/></td>
-                <td><a href="#" class="btn btn-primary" onclick="postMainDiv('/index/friend/${friend.idUser}', this)">View</a>
+                <td><a href="#" class="btn btn-primary" onclick="postMainDiv('/user/friend/${friend.idUser}', this)">View</a>
                 </td>
             </tr>
             </tbody>
@@ -41,7 +41,7 @@
     <ul style="list-style: none; display: inline;">
         <c:forEach var="i" begin="1" end="${requestScope.maxPage}">
             <li style="display: inline;"><a href="#"
-                                            onclick="postMainDiv('/index/friends/${i}', this)">${i}&nbsp;</a>
+                                            onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>
             </li>
         </c:forEach>
     </ul>
