@@ -3,9 +3,11 @@ package com.gmail.kolesnyk.zakhar.userService;
 import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
-import com.gmail.kolesnyk.zakhar.validation.encrypt.Encryptor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,27 +24,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private Encryptor encryptor;
-
     @Override
     @Transactional(readOnly = true)
-    public User getUserByLoginOrEmailAndPassword(String loginOrEmail, String password) throws IllegalAccessException {
-        User user;
+    public User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException {
         if (loginOrEmail.contains("@")) {
-            user = userDao.selectByEmail(loginOrEmail);
+            return userDao.selectByEmail(loginOrEmail);
         } else {
-            user = userDao.selectByLogin(loginOrEmail);
+            return userDao.selectByLogin(loginOrEmail);
         }
-        if (!user.getPass().equals(encryptor.encryptPassword(password))) {
-            throw new IllegalAccessException("wrong login or password");
-        }
-        return user;
     }
 
     @Override
     @Transactional
-    public User registrationUser(String firstName, String lastName, Timestamp birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException {
+    public void registrationUser(String firstName, String lastName, Timestamp birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException {
         if (!pass.trim().equals(confirmPass.trim())) {
             throw new IllegalArgumentException("passwords not match");
         }
@@ -51,9 +45,11 @@ public class UserServiceImpl implements UserService {
         user.setLastName(lastName);
         user.setBirthDate(birthDate);
         user.setLogin(login);
-        user.setPass(encryptor.encryptPassword(pass));
+        user.setPass(passwordEncoder().encode(pass.trim()));
         user.setEmail(email);
         user.setPhone(phone);
+        user.setAuthority("ROLE_USER");
+        System.out.println(user.getPass());
         userDao.save(user);
 
         try {
@@ -63,7 +59,6 @@ public class UserServiceImpl implements UserService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return user;
     }
 
     @Override
@@ -95,5 +90,23 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User getUserById(int idUser) {
         return userDao.selectById(idUser);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new PasswordEncoder() {
+            private final Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+
+            @Override
+            public String encode(CharSequence rawPassword) {
+                return md5.encodePassword(rawPassword.toString(), 1);
+            }
+
+            @Override
+            @SuppressWarnings("PMD")
+            public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                return (md5.encodePassword(rawPassword.toString(), 1)).equals(encodedPassword);
+            }
+        };
     }
 }

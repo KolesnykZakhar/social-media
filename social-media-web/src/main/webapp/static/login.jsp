@@ -18,14 +18,15 @@
             </div>
         </div>
         <div class="main-login main-center">
+            <%--<c:url value="/login" var="loginProcessingUrl"/>--%>
             <form class="form-horizontal" method="post" action="/login">
 
                 <div class="form-group">
-                    <label for="loginOrEmail" class="cols-sm-2 control-label">Login or email</label>
+                    <label for="username" class="cols-sm-2 control-label">Login or email</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="loginOrEmail" id="loginOrEmail"
+                            <input type="text" class="form-control" name="username" id="username"
                                    placeholder="Enter your login or email"/>
                         </div>
                     </div>
@@ -46,7 +47,7 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
                 </div>
                 <div class="login-register">
-                    <a href="registration.jsp">Registration</a>
+                    <a href="static/registration.jsp">Registration</a>
                 </div>
             </form>
         </div>

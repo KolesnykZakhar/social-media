@@ -1,10 +1,13 @@
-package com.gmail.kolesnyk.zakhar.controller.access.servlet;
+package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -31,9 +34,9 @@ public class FriendsController {
     }
 
     @RequestMapping(value = {"/index/friends/{pageNumber}"}, method = RequestMethod.POST)
-    private ModelAndView goToFriendsPage(@PathVariable("pageNumber") Integer pageNumber, @SessionAttribute("user") User user) throws ServletException, IOException {
+    private ModelAndView goToFriendsPage(@PathVariable("pageNumber") Integer pageNumber) throws ServletException, IOException {
         ModelAndView modelAndView;
-        int idUser = user.getIdUser();
+        int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
         try {
             modelAndView = new ModelAndView("friends_ajax");
             /* maxPage[0] value set inside method userService.friendsSublist()*/
@@ -43,7 +46,7 @@ public class FriendsController {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             modelAndView = new ModelAndView("../errorPages/400");
-        } catch (ArrayStoreException e){
+        } catch (ArrayStoreException e) {
             modelAndView = new ModelAndView("../errorPages/friends_list_empty");
         }
         return modelAndView;
