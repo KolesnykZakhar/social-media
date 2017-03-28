@@ -9,11 +9,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable, UserDetails, GrantedAuthority {
+public class User implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,8 +48,10 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
     @Column(name = "phone")
     private String phone;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "authority", joinColumns = @JoinColumn(name = "id_user"))
     @Column(name = "authority")
-    private String authority;
+    private Set<String> authority;
 
     @Column(name = "banned")
     private boolean banned;
@@ -62,12 +65,12 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
         this.username = username;
     }
 
-    public String getAuthority() {
+    public Set<String> getAuthority() {
         return authority;
     }
 
-    public void setAuthority(String role) {
-        this.authority = role;
+    public void setAuthority(Set<String> authority) {
+        this.authority = authority;
     }
 
     public boolean isBanned() {
@@ -144,9 +147,7 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return Collections.singletonList(this);
-                return Collections.singletonList((GrantedAuthority) () -> authority);
-
+        return authority.stream().map(a -> (GrantedAuthority) () -> a).collect(Collectors.toList());
     }
 
     @Override

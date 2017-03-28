@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>SocialNet</title>
@@ -22,7 +23,8 @@
                 <form method="get" id="search" action="#">
           <span>
           <input type="text" value="Search..." name="s" id="s"/>
-          <input name="searchsubmit" type="image" src="../static/images/search.gif" value="Go" id="searchsubmit" class="btn"/>
+          <input name="searchsubmit" type="image" src="../static/images/search.gif" value="Go" id="searchsubmit"
+                 class="btn"/>
           </span>
                 </form>
                 <!--/searchform -->
@@ -31,6 +33,14 @@
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
+                    <%--<security:authorize access="isAuthenticated()">--%>
+                    <%--<security:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">--%>
+                        <%--<security:authorize ifAllGranted="ROLE_ADMIN">--%>
+                        <%--<security:authentication property="principal.authority.contains()"/>--%>
+                        <c:if test="${requestScope.isAdmin}">
+                        <li class="active"><a href="/admin/index" onclick="">Admin</a></li>
+                        </c:if>
+                    <%--</security:authorize>--%>
                     <li class="active"><a href="/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
@@ -95,7 +105,8 @@
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
                             <li id='homeSb' class="active"><a href="/index">Home</a></li>
-                            <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Friends</a>
+                            <li><a id='friendsSb' href="#"
+                                   onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Friends</a>
                             </li>
                             <li><a id='StyleDemoSb' href="#" onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Style
                                 Demo</a></li>
@@ -132,7 +143,8 @@
                         <h2 class="star"><span>Wise Words</span></h2>
                         <div class="clr"></div>
                         <div class="testi">
-                            <p><span class="q"><img src="../static/images/qoute_1.gif" width="20" height="15" alt=""/></span>
+                            <p><span class="q"><img src="../static/images/qoute_1.gif" width="20" height="15"
+                                                    alt=""/></span>
                                 We can let circumstances rule us, or we can take charge and rule our lives from within.
                                 <span class="q"><img src="../static/images/qoute_2.gif" width="20" height="15" alt=""/></span>
                             </p>

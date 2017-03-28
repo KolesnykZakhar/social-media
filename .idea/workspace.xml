@@ -1,77 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/glyphicons-halflings-regulard41d.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/blank.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/ui.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/jquery-1.10.2.js" />
+    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="Реализовано сокрытие кнопки для админа">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/configurations/main.cfg.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/configurations/uiInterface.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/configurations/uiInterface_eu_US.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/configurations/uiInterface_ru_RU.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/configurations/uiInterface_ua_UA.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/Configuration.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/social-media-domain.iml" afterPath="$PROJECT_DIR$/social-media-domain/social-media-domain.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/Debug.java" afterPath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/Debug.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java" afterPath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/src/main/resources/sqlDescriptor/social-media.sql" afterPath="$PROJECT_DIR$/social-media-domain/src/main/resources/sqlDescriptor/social-media.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" afterPath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebAppInitializer.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebAppInitializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/pom.xml" afterPath="$PROJECT_DIR$/social-media-web/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/registration.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/registration.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/css/bootstrap.css" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/css/registration.css" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/registration.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/css/style.css" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/style.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/css/user.info.css" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/user.info.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/errorPages/400.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/400.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/errorPages/404.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/404.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/errorPages/500.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/500.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/errorPages/friends_list_empty.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/friends_list_empty.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/bg.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/fbg_bg.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/fbg_bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/fbg_line.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/fbg_line.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/header_images.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/header_images.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/images_1.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/images_1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/images_2.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/images_2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/main_bg.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/main_bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/menu_line.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/menu_line.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_1.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_2.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_3.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_4.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_5.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_5.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/pic_6.jpg" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/pic_6.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/qoute_1.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/qoute_1.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/qoute_2.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/qoute_2.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/search.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/search.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/spacer.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/spacer.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/submit.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/submit.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/images/userpic.gif" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/images/userpic.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/ajax_post_get.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/arial.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/arial.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/cuf_run.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/cuf_run.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/cufon-yui.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/cufon-yui.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/jquery-1.3.2.min.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/jquery-1.3.2.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/js/script.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/script.js" />
     </list>
     <ignored path="social-media.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,48 +62,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="64" />
+            <state relative-caret-position="305">
+              <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-50">
-              <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+            <state relative-caret-position="300">
+              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthenticationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#691#692#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -197,9 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/authorization/servlet/RegistrationServlet.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebConfig.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/servlet/IndexServlet.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/servlet/FriendsServlet.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/servlet/LogoutServlet.java" />
@@ -220,7 +158,6 @@
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/servlet/LoginController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/servlet/LogoutController.java" />
         <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java" />
-        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/servlet/RegistrationController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/servlet/FriendsController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/LoginController.java" />
@@ -230,24 +167,28 @@
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/static/pages/registration.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/static/pages/login.jsp" />
-        <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebAppInitializer.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/SpringSecurityInitializer.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/ui.html" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.html" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/blank.html" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.jsp" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/static/registration.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java" />
+        <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/Configuration.java" />
+        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/Debug.java" />
+        <option value="$PROJECT_DIR$/social-media-web/pom.xml" />
+        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
       </list>
     </option>
   </component>
@@ -295,6 +236,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -643,6 +587,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -666,6 +628,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -919,6 +885,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sqlDescriptor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media-domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1031,18 +1027,15 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../[comercial]/[upWork]/upWorkJunit" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="D:\Program Files (x86)\nodejs\node.exe" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.34353742" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
@@ -1059,26 +1052,26 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.gmail.kolesnyk.zakhar" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\js" />
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\images" />
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static" />
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\css" />
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\WEB-INF\admin" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.gmail.kolesnyk.zakhar.access.servlet" />
-      <recent name="com.gmail.kolesnyk.zakhar.authorization.servlet" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\pages" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\css" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.gmail.kolesnyk.zakhar" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gmail.kolesnyk.zakhar.access.servlet" />
+      <recent name="com.gmail.kolesnyk.zakhar.authorization.servlet" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-domain\src\main\resources\sqlDescriptor" />
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\js" />
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\images" />
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static" />
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static\css" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.login.jsp">
@@ -1665,7 +1658,11 @@
       <workItem from="1490268831651" duration="6287000" />
       <workItem from="1490300507508" duration="593000" />
       <workItem from="1490336541104" duration="15036000" />
-      <workItem from="1490356381862" duration="2754000" />
+      <workItem from="1490356381862" duration="3013000" />
+      <workItem from="1490595631562" duration="451000" />
+      <workItem from="1490596425979" duration="134000" />
+      <workItem from="1490691634088" duration="1067000" />
+      <workItem from="1490703832318" duration="7836000" />
     </task>
     <task id="LOCAL-00001" summary="Friendship, post, users, hiberante">
       <created>1486459145813</created>
@@ -1814,7 +1811,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490345495317</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Before admin access impl">
+      <created>1490359210042</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1490359210042</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1850,7 +1854,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205099000" />
+    <option name="totallyTimeSpent" value="214846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1874,38 +1878,38 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.120300755" sideWeight="0.4744898" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.120300755" sideWeight="0.4744898" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12244898" sideWeight="0.5255102" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42808607" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33861834" sideWeight="0.49785176" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3510759" sideWeight="0.49785176" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19656284" sideWeight="0.52380955" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21911922" sideWeight="0.47586206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23200859" sideWeight="0.53157896" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23200859" sideWeight="0.46842104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21911922" sideWeight="0.5241379" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35447338" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="98" y="76" width="1738" height="848" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35447338" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1979,11 +1983,12 @@
     <MESSAGE value="Debug AbstractDao" />
     <MESSAGE value="Finish integrating spring framework to controllers and daos" />
     <MESSAGE value="Implementation WebSecurity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation WebSecurity" />
+    <MESSAGE value="Before admin access impl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Before admin access impl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1996,312 +2001,28 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/resources/sqlDescriptor/social-media.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/HibernateUtil.java" />
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/post/PostDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="14" column="56" lean-forward="false" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/Debug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/friends_list_empty.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/errorPages/400.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.3.RELEASE/spring-security-config-4.1.3.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="725" column="40" lean-forward="false" selection-start-line="725" selection-start-column="40" selection-end-line="725" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.1.3.RELEASE/spring-security-core-4.1.3.RELEASE-sources.jar!/org/springframework/security/core/userdetails/UserDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-568">
-          <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/DataSourceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="55" column="15" lean-forward="true" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.2.RELEASE/spring-web-4.3.2.RELEASE-sources.jar!/org/springframework/web/bind/annotation/SessionAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Enumeration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="77" column="6" lean-forward="false" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.2.RELEASE/spring-context-4.3.2.RELEASE-sources.jar!/org/springframework/context/annotation/Bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="189" column="18" lean-forward="false" selection-start-line="189" selection-start-column="18" selection-end-line="189" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.3.RELEASE/spring-security-config-4.1.3.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
-          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/BaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/AbstractDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="147" column="79" lean-forward="true" selection-start-line="147" selection-start-column="79" selection-end-line="147" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/filter/LoginFilter.java" />
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/LogoutController.java" />
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authorization/RegistrationController.java" />
-    <entry file="file://$PROJECT_DIR$/social-media-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/email/SendMail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="56" column="67" lean-forward="false" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebAppInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-          </folding>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.friends">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/blank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1475">
-          <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2487">
-          <caret line="470" column="0" lean-forward="false" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/admin/ui.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3519">
-          <caret line="372" column="57" lean-forward="true" selection-start-line="372" selection-start-column="57" selection-end-line="372" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
-          <folding>
-            <marker date="1490358259557" expanded="true" signature="963:1449" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="94" column="10" lean-forward="true" selection-start-line="94" selection-start-column="10" selection-end-line="94" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/registration.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-625">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="58" lean-forward="false" selection-start-line="24" selection-start-column="46" selection-end-line="25" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/SpringSecurityInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2319,56 +2040,549 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java">
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.1.3.RELEASE/spring-security-core-4.1.3.RELEASE-sources.jar!/org/springframework/security/core/GrantedAuthority.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-109">
-          <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="51" column="19" lean-forward="false" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-634">
+          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <marker date="1490018184825" expanded="true" signature="1206:1298" ph="SELECT * FRO... users" />
+            <marker date="1490018184825" expanded="true" signature="1244:1297" ph="SELECT id_fr... friends" />
+            <marker date="1490018184825" expanded="true" signature="1562:1614" ph="SELECT COUNT... friends" />
+            <marker date="1490018184825" expanded="true" signature="1914:2050" ph="SELECT * FRO... users" />
+            <marker date="1490018184825" expanded="true" signature="1952:2005" ph="SELECT id_fr... friends" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/post/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="26" column="66" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/resources/sqlDescriptor/social-media.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.3.RELEASE/spring-security-config-4.1.3.RELEASE.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="35" column="249" lean-forward="false" selection-start-line="35" selection-start-column="249" selection-end-line="35" selection-end-column="249" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/configurations/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/Debug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="50" column="29" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.authority">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="18" column="25" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="18" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/admin/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="38" column="58" lean-forward="true" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+        <state relative-caret-position="150">
+          <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/static/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/AuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#691#692#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="64" />
+        <state relative-caret-position="300">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="39" />
           <folding />
         </state>
       </provider>

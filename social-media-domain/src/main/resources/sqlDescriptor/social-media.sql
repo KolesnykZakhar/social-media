@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Мар 20 2017 г., 15:26
+-- Время создания: Мар 28 2017 г., 15:30
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -19,6 +19,42 @@ SET time_zone = "+00:00";
 --
 -- База данных: `social-media`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `authority`
+--
+
+CREATE TABLE `authority` (
+  `id_authority` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `authority` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `authority`
+--
+
+INSERT INTO `authority` (`id_authority`, `id_user`, `authority`) VALUES
+(1, 1, 'ROLE_USER'),
+(2, 2, 'ROLE_USER'),
+(3, 2, 'ROLE_ADMIN'),
+(4, 4, 'ROLE_USER'),
+(5, 6, 'ROLE_USER'),
+(6, 7, 'ROLE_USER'),
+(7, 8, 'ROLE_USER'),
+(8, 9, 'ROLE_USER'),
+(9, 11, 'ROLE_USER'),
+(10, 12, 'ROLE_USER'),
+(11, 13, 'ROLE_USER'),
+(12, 14, 'ROLE_USER'),
+(13, 15, 'ROLE_USER'),
+(14, 16, 'ROLE_USER'),
+(15, 18, 'ROLE_USER'),
+(16, 19, 'ROLE_USER'),
+(17, 20, 'ROLE_USER'),
+(18, 21, 'ROLE_USER');
 
 -- --------------------------------------------------------
 
@@ -96,29 +132,44 @@ CREATE TABLE `users` (
   `last_name` varchar(32) DEFAULT NULL,
   `login` varchar(32) NOT NULL,
   `pass` varchar(128) NOT NULL,
-  `phone` varchar(16) NOT NULL
+  `phone` varchar(16) NOT NULL,
+  `banned` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`) VALUES
-(1, '2017-03-04 20:31:07', 'wdas@', 'John', 'Trump', 'john', 'B59C67BF196A4758191E42F76670CEBA', '123123'),
-(2, '2017-03-10 21:35:28', 'sadas@', 'Tom', 'Fill', 'tom', 'B59C67BF196A4758191E42F76670CEBA', '351535'),
-(3, '2017-03-10 21:35:32', 'dasd@', 'Jim', 'Mann', 'jim', 'B59C67BF196A4758191E42F76670CEBA', '231231'),
-(4, '2017-03-10 21:35:42', 'asrw@', 'Frank', 'Odesk', 'frank', 'B59C67BF196A4758191E42F76670CEBA', 'q23123'),
-(6, '2017-03-06 11:01:08', 'ad.asd@dadasmail.', 'Petro', 'Fedov', 'petFed', 'B59C67BF196A4758191E42F76670CEBA', '+123124124'),
-(7, '2017-03-06 11:07:37', 'adgaef@maiwersef', 'Vid', 'Tor', 'vidTor', 'B59C67BF196A4758191E42F76670CEBA', '+6578519'),
-(8, '2017-03-06 11:09:59', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', 'B59C67BF196A4758191E42F76670CEBA', '+375671'),
-(9, '2017-03-06 11:15:16', 'sfasf8@msfdfds', 'Cam', 'Sed', 'cam', 'B59C67BF196A4758191E42F76670CEBA', '+82506'),
-(11, '2017-03-06 11:21:07', 'fgsfdg@maasf', 'Fsed', 'Fedov', 'focin', 'B59C67BF196A4758191E42F76670CEBA', '+dskfjh'),
-(12, '2017-03-06 11:24:39', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', 'B59C67BF196A4758191E42F76670CEBA', '+842364'),
-(13, '2017-10-28 21:00:00', 'Ki@m.a', 'Fill', 'Kimber', 'Kim', 'B59C67BF196A4758191E42F76670CEBA', '+563782413');
+INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, `banned`) VALUES
+(1, '2017-03-24 07:58:04', 'wdas@', 'John', 'Trump', 'john', '2bce8464403a72966161c2e3cab92694', '123123', 0),
+(2, '2017-03-24 12:28:53', 'sadas@', 'Tom', 'Fill', 'tom', '2bce8464403a72966161c2e3cab92694', '351535', 0),
+(3, '2017-03-24 12:28:53', 'dasd@', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1),
+(4, '2017-03-24 07:58:04', 'asrw@', 'Frank', 'Odesk', 'frank', '2bce8464403a72966161c2e3cab92694', 'q23123', 0),
+(6, '2017-03-24 07:58:04', 'ad.asd@dadasmail.', 'Petro', 'Fedov', 'petFed', '2bce8464403a72966161c2e3cab92694', '+123124124', 0),
+(7, '2017-03-24 07:58:04', 'adgaef@maiwersef', 'Vid', 'Tor', 'vidTor', '2bce8464403a72966161c2e3cab92694', '+6578519', 0),
+(8, '2017-03-24 07:58:04', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', '2bce8464403a72966161c2e3cab92694', '+375671', 0),
+(9, '2017-03-24 07:58:04', 'sfasf8@msfdfds', 'Cam', 'Sed', 'cam', '2bce8464403a72966161c2e3cab92694', '+82506', 0),
+(11, '2017-03-24 07:58:04', 'fgsfdg@maasf', 'Fsed', 'Fedov', 'focin', '2bce8464403a72966161c2e3cab92694', '+dskfjh', 0),
+(12, '2017-03-24 07:58:04', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', '2bce8464403a72966161c2e3cab92694', '+842364', 0),
+(13, '2017-03-24 07:58:04', 'Ki@m.a', 'Fill', 'Kimber', 'Kim', '2bce8464403a72966161c2e3cab92694', '+563782413', 0),
+(14, '2017-03-24 07:58:04', 'fill@pot.com', 'Fillan', 'Potin', 'potifil', '2bce8464403a72966161c2e3cab92694', '78563147821', 0),
+(15, '2017-03-24 07:58:04', 'chen@gmail.com', 'Chen', 'Billow', 'chen', '2bce8464403a72966161c2e3cab92694', '+52718342', 0),
+(16, '2006-09-28 21:00:00', 'comja@gmail.com', 'Johnathan', 'Com', 'joc', '2bce8464403a72966161c2e3cab92694', '+5169783613', 0),
+(18, '2017-03-24 08:50:48', 'aSDasd88@mail.ru', 'Zak', 'Ken', 'zak', '2bce8464403a72966161c2e3cab92694', '+6511203812', 0),
+(19, '2004-08-27 21:00:00', 'cha@dsjkfa.com', 'kim', 'cha', 'chaki', '2bce8464403a72966161c2e3cab92694', '187593512542', 0),
+(20, '2002-10-27 22:00:00', 'pitak@gamil.com', 'Pit', 'Pack', 'pitac', '2bce8464403a72966161c2e3cab92694', '+1630575234', 0),
+(21, '2017-03-28 13:21:02', 'qweqweq8@mail.ru', 'Kima', 'Miko', 'kimiko', '2bce8464403a72966161c2e3cab92694', '+32198', 0);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `authority`
+--
+ALTER TABLE `authority`
+  ADD PRIMARY KEY (`id_authority`),
+  ADD KEY `authority_users_id_user_fk` (`id_user`);
 
 --
 -- Индексы таблицы `friends`
@@ -148,6 +199,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `authority`
+--
+ALTER TABLE `authority`
+  MODIFY `id_authority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -156,10 +212,16 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `authority`
+--
+ALTER TABLE `authority`
+  ADD CONSTRAINT `authority_users_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
 -- Ограничения внешнего ключа таблицы `friends`

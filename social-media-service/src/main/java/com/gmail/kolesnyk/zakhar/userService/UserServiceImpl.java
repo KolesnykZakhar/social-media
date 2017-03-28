@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -48,8 +49,9 @@ public class UserServiceImpl implements UserService {
         user.setPass(passwordEncoder().encode(pass.trim()));
         user.setEmail(email);
         user.setPhone(phone);
-        user.setAuthority("ROLE_USER");
-        System.out.println(user.getPass());
+        user.setAuthority(new HashSet<String>() {{
+            add("ROLE_USER");
+        }});
         userDao.save(user);
 
         try {
