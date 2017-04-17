@@ -12,17 +12,7 @@ public class StaticResourcesConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/static/css/**")
-//                .addResourceLocations("/static/css/");
-//        registry.addResourceHandler("/static/errorPages/**")
-//                .addResourceLocations("/static/errorPages/");
-//        registry.addResourceHandler("/static/images/**")
-//                .addResourceLocations("/static/images/");
-//        registry.addResourceHandler("/static/js/**")
-//                .addResourceLocations("/static/js/");
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("/static/");
-//        registry.addResourceHandler("/static/pages/**")
-//                .addResourceLocations("/static/pages/");
     }
 }

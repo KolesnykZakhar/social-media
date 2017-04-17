@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.controller.admin;
+package com.gmail.kolesnyk.zakhar.controller.access.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

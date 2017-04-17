@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").access("hasRole('USER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/user/index", false)
+                .defaultSuccessUrl("/index_role", false)
                 .and().logout().logoutUrl("/logout");
         http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
     }

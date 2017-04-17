@@ -42,9 +42,8 @@
             </div>
 
             <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>
-
-                </span>
+                  <a href="/logout" style="color:#fff;">LOGOUT</a>
+            </span>
         </div>
     </div>
     <!-- /. NAV TOP  -->
@@ -81,7 +80,7 @@
                     <a href="#"><i class="fa fa-table "></i>My Link Four</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
+                    <a href="/index"><i class="fa fa-edit "></i>To User Account</a>
                 </li>
 
             </ul>
