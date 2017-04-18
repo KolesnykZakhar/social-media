@@ -4,7 +4,6 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -13,14 +12,12 @@ import java.io.IOException;
 public class IndexController {
 
     @RequestMapping(value = {"/index_role"})
-    public ModelAndView goToIndex() throws ServletException, IOException {
-        ModelAndView modelAndView;
+    public String goToIndex() throws ServletException, IOException {
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails.getAuthority().contains("ROLE_ADMIN")) {
-            modelAndView = new ModelAndView("admin/index");
+            return "admin/index";
         } else {
-            modelAndView = new ModelAndView("index");
+            return "index";
         }
-        return modelAndView;
     }
 }

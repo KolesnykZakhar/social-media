@@ -1,11 +1,14 @@
 package com.gmail.kolesnyk.zakhar.controller.authentication;
 
 import com.gmail.kolesnyk.zakhar.userService.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -24,7 +27,7 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/logout")
     public String logout() {
-        return "redirect: /static/login.jsp";
+        return "redirect: /static/login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
