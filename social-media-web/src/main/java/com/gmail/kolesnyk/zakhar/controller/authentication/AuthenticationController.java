@@ -40,7 +40,7 @@ public class AuthenticationController {
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
                                   @RequestParam("email") String email, @RequestParam("phone") String phone) throws ServletException, IOException {
         try {
-            userService.registrationUser(firstName, lastName, Timestamp.valueOf(birthDate + " 00:00:00"),
+            userService.registrationUser(firstName, lastName, birthDate/*Timestamp.valueOf(birthDate + " 00:00:00")*/,
                     login, password, confirm, email, phone);
             return "redirect: /static/login.jsp";
         } catch (Exception e) {

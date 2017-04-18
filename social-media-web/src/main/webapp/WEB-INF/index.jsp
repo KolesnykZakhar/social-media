@@ -105,11 +105,10 @@
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
                             <li id='homeSb' class="active"><a href="/index">Home</a></li>
-                            <li><a id='friendsSb' href="#"
-                                   onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Friends</a>
+                            <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
-                            <li><a id='StyleDemoSb' href="#" onclick="postMainDiv('/user/friends/1', this/*, 1*/)">Style
-                                Demo</a></li>
+                            <li><a id='settingsProfile' href="#" onclick="postMainDiv('/settings_profile', this)">Settings
+                                Profile</a></li>
                             <li><a id='blogSb' href="#">Blog</a></li>
                             <li><a id='archivesSb' href="#">Archives</a></li>
                             <li><a id='webTemplatesSb' href="#">Web Templates</a></li>

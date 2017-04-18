@@ -40,8 +40,7 @@
     </table>
     <ul style="list-style: none; display: inline;">
         <c:forEach var="i" begin="1" end="${requestScope.maxPage}">
-            <li style="display: inline;"><a href="#"
-                                            onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>
+            <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>
             </li>
         </c:forEach>
     </ul>

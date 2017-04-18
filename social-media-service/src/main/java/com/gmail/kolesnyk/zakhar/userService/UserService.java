@@ -6,13 +6,15 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface UserService {
-    User getUserByLoginOrEmailAndPassword(String loginOrEmail/*, String password*/) throws IllegalAccessException;
+    User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
 
-    void registrationUser(String firstName, String lastName, Timestamp birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException;
+    void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException;
 
     int getAmountFriends(Integer idUser);
 
     List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage);
 
     User getUserById(int idUser);
+
+    void update(User user);
 }

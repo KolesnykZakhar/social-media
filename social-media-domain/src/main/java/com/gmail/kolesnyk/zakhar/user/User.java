@@ -29,7 +29,7 @@ public class User implements Serializable, UserDetails {
     private String lastName;
 
     @Column(name = "birth_date")
-    private Timestamp birthDate;
+    private String birthDate;
 
     @NotEmpty
     @Column(name = "login")
@@ -121,11 +121,11 @@ public class User implements Serializable, UserDetails {
         this.lastName = lastName;
     }
 
-    public Timestamp getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Timestamp birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

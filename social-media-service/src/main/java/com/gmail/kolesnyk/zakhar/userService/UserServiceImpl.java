@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void registrationUser(String firstName, String lastName, Timestamp birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException {
+    public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone) throws IllegalAccessException {
         if (!pass.trim().equals(confirmPass.trim())) {
             throw new IllegalArgumentException("passwords not match");
         }
@@ -92,6 +92,12 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User getUserById(int idUser) {
         return userDao.selectById(idUser);
+    }
+
+    @Override
+    @Transactional
+    public void update(User user) {
+        userDao.update(user);
     }
 
     @Bean

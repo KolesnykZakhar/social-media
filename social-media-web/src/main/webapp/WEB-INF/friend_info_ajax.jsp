@@ -13,16 +13,10 @@
 <body>
 
 <div class="container">
+    <h1><c:out value="${requestScope.friend.login}"/></h1>
     <div class="row">
-        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <A href="edit.html">Edit Profile</A>
-
-            <A href="edit.html">Logout</A>
-            <br>
-            <p class=" text-info">May 05,2014,03:00 pm </p>
-        </div>
         <div style="width: 623px"
-             class="col-xs-12 col-sm-12 col-md-6 col-lg-6 <%--col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3--%> toppad">
+             class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad">
 
 
             <div class="panel panel-info">
@@ -48,8 +42,7 @@
                                 </tr>
                                 <tr>
                                     <td>Date of Birth</td>
-                                    <td><c:out
-                                            value="${requestScope.friend.birthDate.toLocalDateTime().toLocalDate()}"/></td>
+                                    <td><c:out value="${requestScope.friend.birthDate}"/></td>
                                 </tr>
 
                                 <tr>
