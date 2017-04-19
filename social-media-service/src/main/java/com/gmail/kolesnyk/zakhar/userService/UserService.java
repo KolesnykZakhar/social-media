@@ -18,4 +18,8 @@ public interface UserService {
     User getUserById(int idUser);
 
     void update(User user);
+
+    void confirmEmail(String hasLink);
+
+    void discardRegistration(String hasLink);
 }

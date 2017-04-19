@@ -2,19 +2,15 @@ package com.gmail.kolesnyk.zakhar.controller.authentication;
 
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.sql.Timestamp;
 
 @Controller
 public class AuthenticationController {
@@ -51,8 +47,26 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/confirm_email/{hash}", method = RequestMethod.GET)
-    protected String confirmEmail(@PathVariable("hash") String hash ){
-        System.out.println(hash);
-        return null;
+    protected String confirmEmail(@PathVariable("hash") String hashedEmail) {
+        try {
+            userService.confirmEmail(hashedEmail);
+            System.out.println("CONFIRM -> " + hashedEmail);
+            return "../static/ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
+    }
+
+    @RequestMapping(value = "/discard_email/{hash}", method = RequestMethod.GET)
+    protected String discardEmail(@PathVariable("hash") String hashedEmail) {
+        try {
+            userService.discardRegistration(hashedEmail);
+            System.out.println("DISCARD -> " + hashedEmail);
+            return "../static/ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
     }
 }

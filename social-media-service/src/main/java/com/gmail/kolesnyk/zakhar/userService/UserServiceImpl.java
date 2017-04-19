@@ -2,7 +2,6 @@ package com.gmail.kolesnyk.zakhar.userService;
 
 import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
-import com.gmail.kolesnyk.zakhar.user.STATE;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
 import org.apache.commons.io.IOUtils;
@@ -15,10 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.gmail.kolesnyk.zakhar.user.STATE.AVAILABLE;
 import static com.gmail.kolesnyk.zakhar.user.STATE.WAITING_CONFIRM;
 
 @Component
@@ -42,7 +41,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, GENDER gender) throws IllegalAccessException {
-        System.out.println(gender.name());
         if (!pass.trim().equals(confirmPass.trim())) {
             throw new IllegalArgumentException("passwords not match");
         }
@@ -59,12 +57,16 @@ public class UserServiceImpl implements UserService {
         user.setAuthority(new HashSet<String>() {{
             add("ROLE_USER");
         }});
+        String hashedEmail = passwordEncoder().encode(user.getEmail());
         userDao.save(user);
+        System.out.println("idUser" + user.getIdUser());
+        userDao.saveHashedEmail(hashedEmail, user.getIdUser());
+//        userDao.saveHashedEmail(hashedEmail, 1);
 
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
-                    .replace("?link?", "http://localhost:8080/login").replace("?name?", user.getFirstName() + " " + user.getLastName());
-            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Congratulations", msg);
+                    .replace("?hash?", hashedEmail).replace("?name?", user.getFirstName() + " " + user.getLastName());
+            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Confirming email", msg);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,5 +125,22 @@ public class UserServiceImpl implements UserService {
                 return (md5.encodePassword(rawPassword.toString(), 1)).equals(encodedPassword);
             }
         };
+    }
+
+    @Override
+    @Transactional
+    public void confirmEmail(String hashLink) {
+        User user = userDao.byHashedEmail(hashLink);
+        user.setState(AVAILABLE);
+        userDao.save(user);
+        userDao.removeHashedEmail(hashLink);
+    }
+
+    @Override
+    @Transactional
+    public void discardRegistration(String hashLink) {
+//        User user = userDao.byHashedEmail(hashLink);
+//        userDao.remove(user);
+        userDao.removeUserByHashedEmail(hashLink);
     }
 }
