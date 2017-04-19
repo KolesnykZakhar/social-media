@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar.controller.authentication;
 
+import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,9 @@ public class AuthenticationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     protected String registration(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("birthDate") String birthDate,
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
-                                  @RequestParam("email") String email, @RequestParam("phone") String phone) throws ServletException, IOException {
+                                  @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
         try {
-            userService.registrationUser(firstName, lastName, birthDate/*Timestamp.valueOf(birthDate + " 00:00:00")*/,
-                    login, password, confirm, email, phone);
+            userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, GENDER.values()[gender]);
             return "redirect: /static/login.jsp";
         } catch (Exception e) {
             e.printStackTrace();

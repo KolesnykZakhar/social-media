@@ -6,6 +6,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -47,6 +49,11 @@ public class User implements Serializable, UserDetails {
     @NotEmpty
     @Column(name = "phone")
     private String phone;
+
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "gender")
+    private GENDER gender;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "authority", joinColumns = @JoinColumn(name = "id_user"))
@@ -145,9 +152,18 @@ public class User implements Serializable, UserDetails {
         this.pass = pass;
     }
 
+    public GENDER getGender() {
+        return gender;
+    }
+
+    public void setGender(GENDER gender) {
+        this.gender = gender;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authority.stream().map(a -> (GrantedAuthority) () -> a).collect(Collectors.toList());
+        /* creation of List<GrantedAuthority> by String data from field: Set<String> authority */
+        return authority.parallelStream().map(a -> (GrantedAuthority) () -> a).collect(Collectors.toList());
     }
 
     @Override

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='/static/css/bootstrap.css'>
-    <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
+    <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href="../static/css/registration.css">
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <title>Login</title>
@@ -26,7 +26,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"
+                            <input required type="text" class="form-control" name="username" id="username"
                                    placeholder="Enter your login or email"/>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="password" id="password"
+                            <input required type="password" class="form-control" name="password" id="password"
                                    placeholder="Enter your Password"/>
                         </div>
                     </div>

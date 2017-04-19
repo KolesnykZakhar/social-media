@@ -32,7 +32,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="firstName" id="firstName"
+                            <input required type="text" class="form-control" name="firstName" id="firstName"
                                    placeholder="Enter your First Name"/>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="lastName" id="lastName"
+                            <input required type="text" class="form-control" name="lastName" id="lastName"
                                    placeholder="Enter your Last Name"/>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email"
+                            <input required type="text" class="form-control" name="email" id="email"
                                    placeholder="Enter your Email"/>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="phone" id="phone"
+                            <input required type="text" class="form-control" name="phone" id="phone"
                                    placeholder="Enter your Phone"/>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="date" class="form-control" name="birthDate" id="birthDate"/>
+                            <input required type="date" class="form-control" name="birthDate" id="birthDate"/>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="login" id="login"
+                            <input required type="text" class="form-control" name="login" id="login"
                                    placeholder="Enter your Login"/>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="password" id="password"
+                            <input required type="password" class="form-control" name="password" id="password"
                                    placeholder="Enter your Password"/>
                         </div>
                     </div>
@@ -108,8 +108,17 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"
+                            <input required type="password" class="form-control" name="confirm" id="confirm"
                                    placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div align="center">
+                            <label class="radio-inline"><input required type="radio" name="gender" value="0">Male</label>
+                            <label class="radio-inline"><input required type="radio" name="gender" value="1">Female</label>
                         </div>
                     </div>
                 </div>
