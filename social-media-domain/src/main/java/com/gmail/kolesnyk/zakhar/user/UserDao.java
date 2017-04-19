@@ -35,10 +35,11 @@ public interface UserDao extends BaseDao<User, Integer> {
     int amountFriends(Integer idUser);
 
     /**
-     * return range-list of friends by ID user
+     * used to get range-list of friends by ID user
      *
-     * @param offset   - offset by list (exclude)
+     * @param offset - offset by list (exclude)
      * @param amount - amount of result list
+     * @return List of Users
      */
     List<User> friendListByRange(Integer idUser, int offset, int amount);
 }

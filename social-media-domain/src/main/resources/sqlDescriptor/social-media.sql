@@ -140,7 +140,7 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, `banned`) VALUES
+INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, state) VALUES
 (1, '2017-03-24 07:58:04', 'wdas@', 'John', 'Trump', 'john', '2bce8464403a72966161c2e3cab92694', '123123', 0),
 (2, '2017-03-24 12:28:53', 'sadas@', 'Tom', 'Fill', 'tom', '2bce8464403a72966161c2e3cab92694', '351535', 0),
 (3, '2017-03-24 12:28:53', 'dasd@', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1),

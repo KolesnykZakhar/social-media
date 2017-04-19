@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private ViewUtil viewUtil;
 
-    @RequestMapping(value = {"/index"})
+    @RequestMapping(value = {"/user/index"})
     public ModelAndView goToIndex() throws ServletException, IOException {
         ModelAndView modelAndView;
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -31,7 +31,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/update_user_info"})
+    @RequestMapping(value = {"/user/update_user_info"})
     public String updateUserInfo(@RequestParam("birthDate") String birthDate) throws ServletException, IOException {
 //        ModelAndView modelAndView;
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -47,7 +47,7 @@ public class UserController {
         return "../static/ok";
     }
 
-    @RequestMapping(value = {"/settings_profile"})
+    @RequestMapping(value = {"/user/settings_profile"})
     public ModelAndView goToSettingsProfile() throws ServletException, IOException {
         ModelAndView modelAndView;
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

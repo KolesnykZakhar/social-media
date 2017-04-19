@@ -74,9 +74,9 @@
                                 </table>
 
                                 <%--<a href="#" onclick="document.getElementById('userInfoForm').submit(); return false;" class="btn btn-primary">Save changes</a>--%>
-                                <a href="#" onclick="updateUser('/update_user_info/', this)"
+                                <a href="#" onclick="updateUser('/user/update_user_info/', this)"
                                    class="btn btn-primary">Save changes</a>
-                                <a href="/index" class="btn btn-primary">Cancel</a>
+                                <a href="/user/index" class="btn btn-primary">Cancel</a>
                             </form>
                         </div>
                     </div>

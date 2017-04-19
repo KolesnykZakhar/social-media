@@ -41,7 +41,7 @@
                         <li class="active"><a href="/admin/index" onclick="">Admin</a></li>
                         </c:if>
                     <%--</security:authorize>--%>
-                    <li class="active"><a href="/index" onclick="">Home</a></li>
+                    <li class="active"><a href="/user/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/blog.html">Blog</a></li>
@@ -104,10 +104,10 @@
                         <h2 class="star"><span>Sidebar</span> Menu</h2>
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
-                            <li id='homeSb' class="active"><a href="/index">Home</a></li>
+                            <li id='homeSb' class="active"><a href="/user/index">Home</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
-                            <li><a id='settingsProfile' href="#" onclick="postMainDiv('/settings_profile', this)">Settings
+                            <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
                                 Profile</a></li>
                             <li><a id='blogSb' href="#">Blog</a></li>
                             <li><a id='archivesSb' href="#">Archives</a></li>

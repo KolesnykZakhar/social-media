@@ -80,7 +80,7 @@
                     <a href="#"><i class="fa fa-table "></i>My Link Four</a>
                 </li>
                 <li>
-                    <a href="/index"><i class="fa fa-edit "></i>To User Account</a>
+                    <a href="/user/index"><i class="fa fa-edit "></i>To User Account</a>
                 </li>
 
             </ul>

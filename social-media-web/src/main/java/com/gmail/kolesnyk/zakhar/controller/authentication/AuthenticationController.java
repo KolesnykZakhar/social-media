@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +48,11 @@ public class AuthenticationController {
             e.printStackTrace();
             return "redirect: /static/errorPages/500.jsp";
         }
+    }
+
+    @RequestMapping(value = "/confirm_email/{hash}", method = RequestMethod.GET)
+    protected String confirmEmail(@PathVariable("hash") String hash ){
+        System.out.println(hash);
+        return null;
     }
 }

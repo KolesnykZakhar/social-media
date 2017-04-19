@@ -2,6 +2,7 @@ package com.gmail.kolesnyk.zakhar.userService;
 
 import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
+import com.gmail.kolesnyk.zakhar.user.STATE;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
 import org.apache.commons.io.IOUtils;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
+
+import static com.gmail.kolesnyk.zakhar.user.STATE.WAITING_CONFIRM;
 
 @Component
 @Service
@@ -52,6 +55,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setGender(gender);
+        user.setState(WAITING_CONFIRM);
         user.setAuthority(new HashSet<String>() {{
             add("ROLE_USER");
         }});

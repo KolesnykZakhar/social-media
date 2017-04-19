@@ -6,13 +6,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.gmail.kolesnyk.zakhar.user.STATE.AVAILABLE;
 
 @Entity
 @Table(name = "users")
@@ -60,8 +60,10 @@ public class User implements Serializable, UserDetails {
     @Column(name = "authority")
     private Set<String> authority;
 
-    @Column(name = "banned")
-    private boolean banned;
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "state")
+    private STATE state;
 
     private transient String username;
 
@@ -80,12 +82,12 @@ public class User implements Serializable, UserDetails {
         this.authority = authority;
     }
 
-    public boolean isBanned() {
-        return banned;
+    public STATE getState() {
+        return state;
     }
 
-    public void setBanned(boolean banned) {
-        this.banned = banned;
+    public void setState(STATE state) {
+        this.state = state;
     }
 
     public String getEmail() {
@@ -193,6 +195,6 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return !banned;
+        return AVAILABLE == state;
     }
 }
