@@ -47,8 +47,8 @@ public interface UserDao extends BaseDao<User, Integer> {
 
     void saveHashedEmail(String hashedEmail, Integer idUser);
 
-    void removeUserByHashedEmail(String hashedEmail);
+    Boolean removeUserByHashedEmail(String hashedEmail);
 
 
-    void removeHashedEmail(String hashedEmail);
+    Boolean removeHashedEmail(String hashedEmail);
 }

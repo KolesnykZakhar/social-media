@@ -50,7 +50,6 @@ public class AuthenticationController {
     protected String confirmEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.confirmEmail(hashedEmail);
-            System.out.println("CONFIRM -> " + hashedEmail);
             return "../static/ok";
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +61,6 @@ public class AuthenticationController {
     protected String discardEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.discardRegistration(hashedEmail);
-            System.out.println("DISCARD -> " + hashedEmail);
             return "../static/ok";
         } catch (Exception e) {
             e.printStackTrace();

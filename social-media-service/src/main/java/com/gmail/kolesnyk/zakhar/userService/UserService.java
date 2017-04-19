@@ -3,7 +3,6 @@ package com.gmail.kolesnyk.zakhar.userService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public interface UserService {

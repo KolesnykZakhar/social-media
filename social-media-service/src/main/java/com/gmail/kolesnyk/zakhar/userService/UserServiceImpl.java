@@ -59,10 +59,7 @@ public class UserServiceImpl implements UserService {
         }});
         String hashedEmail = passwordEncoder().encode(user.getEmail());
         userDao.save(user);
-        System.out.println("idUser" + user.getIdUser());
         userDao.saveHashedEmail(hashedEmail, user.getIdUser());
-//        userDao.saveHashedEmail(hashedEmail, 1);
-
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
                     .replace("?hash?", hashedEmail).replace("?name?", user.getFirstName() + " " + user.getLastName());
@@ -133,14 +130,16 @@ public class UserServiceImpl implements UserService {
         User user = userDao.byHashedEmail(hashLink);
         user.setState(AVAILABLE);
         userDao.save(user);
-        userDao.removeHashedEmail(hashLink);
+        if (!userDao.removeHashedEmail(hashLink)) {
+            throw new UnsupportedOperationException("query not updated database");
+        }
     }
 
     @Override
     @Transactional
     public void discardRegistration(String hashLink) {
-//        User user = userDao.byHashedEmail(hashLink);
-//        userDao.remove(user);
-        userDao.removeUserByHashedEmail(hashLink);
+        if (!userDao.removeUserByHashedEmail(hashLink)) {
+            throw new UnsupportedOperationException("query not updated database");
+        }
     }
 }
