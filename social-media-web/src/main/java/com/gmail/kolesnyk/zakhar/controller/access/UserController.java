@@ -44,7 +44,7 @@ public class UserController {
         viewUtil.updateUserDomainVersion(user);
 
 //        System.out.println(timestamp);
-        return "../static/ok";
+        return "ok_ajax";
     }
 
     @RequestMapping(value = {"/user/settings_profile"})
@@ -56,6 +56,4 @@ public class UserController {
         modelAndView.addObject("user", viewUtil.getUserViewVersion());
         return modelAndView;
     }
-
-
 }

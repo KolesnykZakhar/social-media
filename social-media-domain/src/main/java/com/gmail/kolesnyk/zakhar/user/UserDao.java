@@ -19,7 +19,7 @@ public interface UserDao extends BaseDao<User, Integer> {
      */
     User selectByEmail(String email);
 
-    User byHashedEmail(String hashedEmail);
+    User byHashForEmail(String hashForEmail);
 
     /**
      * return user by login
@@ -45,10 +45,14 @@ public interface UserDao extends BaseDao<User, Integer> {
      */
     List<User> friendListByRange(Integer idUser, int offset, int amount);
 
-    void saveHashedEmail(String hashedEmail, Integer idUser);
+    void saveHashForEmail(String hashForEmail, Integer idUser);
 
-    Boolean removeUserByHashedEmail(String hashedEmail);
+    Boolean removeUserByHashForEmail(String hashForEmail);
 
 
-    Boolean removeHashedEmail(String hashedEmail);
+    Boolean removeHashForEmail(String hashForEmail);
+
+    Boolean saveHashForPassword(String hashForPassword, Integer idUser);
+
+    Boolean removeRestorePassword(String hash);
 }

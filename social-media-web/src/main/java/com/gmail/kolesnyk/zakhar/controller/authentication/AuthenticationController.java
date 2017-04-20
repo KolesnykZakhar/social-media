@@ -39,10 +39,10 @@ public class AuthenticationController {
                                   @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
         try {
             userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, GENDER.values()[gender]);
-            return "redirect: /static/login.jsp";
+            return "go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect: /static/errorPages/500.jsp";
+            return "../static/errorPages/500.jsp";
         }
     }
 
@@ -50,7 +50,7 @@ public class AuthenticationController {
     protected String confirmEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.confirmEmail(hashedEmail);
-            return "../static/ok";
+            return "../static/login";
         } catch (Exception e) {
             e.printStackTrace();
             return "../static/errorPages/404";
@@ -61,7 +61,57 @@ public class AuthenticationController {
     protected String discardEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.discardRegistration(hashedEmail);
-            return "../static/ok";
+            return "ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
+    }
+
+    @RequestMapping(value = "/restore_password", method = RequestMethod.POST)
+    protected String createRestorePassword(@RequestParam("email") String email) {
+        try {
+            userService.createRestorePassword(email);
+            return "go_to_email_message";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
+    }
+
+    @RequestMapping(value = "/restore_password", method = RequestMethod.GET)
+    protected String toRestorePasswordPage() {
+        return "restore_password";
+    }
+
+    @RequestMapping(value = "/restore_password/{hash}", method = RequestMethod.GET)
+    protected String restorePassword(@PathVariable("hash") String hash) {
+        try {
+            userService.removeRestorePassword(hash);
+            return "new_password";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
+    }
+
+    @RequestMapping(value = "/discard_restoring_password/{hash}", method = RequestMethod.GET)
+    protected String discardRestoringPassword(@PathVariable("hash") String hash) {
+        try {
+            userService.removeRestorePassword(hash);
+            return "ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "../static/errorPages/404";
+        }
+
+    }
+
+    @RequestMapping(value = "/new_password", method = RequestMethod.POST)
+    protected String newPassword(@RequestParam("loginOrEmail") String loginOrEmail, @RequestParam("password") String password, @RequestParam("confirm") String confirm) {
+        try {
+            userService.createNewPassword(loginOrEmail, password, confirm);
+            return "../static/login";
         } catch (Exception e) {
             e.printStackTrace();
             return "../static/errorPages/404";

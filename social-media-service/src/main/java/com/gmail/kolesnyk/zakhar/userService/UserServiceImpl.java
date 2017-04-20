@@ -57,12 +57,12 @@ public class UserServiceImpl implements UserService {
         user.setAuthority(new HashSet<String>() {{
             add("ROLE_USER");
         }});
-        String hashedEmail = passwordEncoder().encode(user.getEmail());
+        String hashForEmail = passwordEncoder().encode(user.getEmail());
         userDao.save(user);
-        userDao.saveHashedEmail(hashedEmail, user.getIdUser());
+        userDao.saveHashForEmail(hashForEmail, user.getIdUser());
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
-                    .replace("?hash?", hashedEmail).replace("?name?", user.getFirstName() + " " + user.getLastName());
+                    .replace("?hash?", hashForEmail).replace("?name?", user.getFirstName() + " " + user.getLastName());
             SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Confirming email", msg);
         } catch (IOException e) {
             e.printStackTrace();
@@ -127,10 +127,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void confirmEmail(String hashLink) {
-        User user = userDao.byHashedEmail(hashLink);
+        User user = userDao.byHashForEmail(hashLink);
         user.setState(AVAILABLE);
         userDao.save(user);
-        if (!userDao.removeHashedEmail(hashLink)) {
+        if (!userDao.removeHashForEmail(hashLink)) {
             throw new UnsupportedOperationException("query not updated database");
         }
     }
@@ -138,8 +138,49 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void discardRegistration(String hashLink) {
-        if (!userDao.removeUserByHashedEmail(hashLink)) {
+        if (!userDao.removeUserByHashForEmail(hashLink)) {
             throw new UnsupportedOperationException("query not updated database");
         }
+    }
+
+    @Override
+    @Transactional
+    public void createRestorePassword(String email) {
+        User user = userDao.selectByEmail(email);
+        String hashForPassword = passwordEncoder().encode(user.getLogin() + user.getPass());
+        if (!userDao.saveHashForPassword(hashForPassword, user.getIdUser())) {
+            throw new UnsupportedOperationException("query not updated database");
+        }
+        try {
+            String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("restore_password.html"))
+                    .replace("?hash?", hashForPassword).replace("?name?", user.getFirstName() + " " + user.getLastName());
+            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Restore password", msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void removeRestorePassword(String hash) {
+        if (!userDao.removeRestorePassword(hash)) {
+            throw new UnsupportedOperationException("restore password not removed");
+        }
+    }
+
+    @Override
+    @Transactional
+    public void createNewPassword(String loginOrEmail, String password, String confirmPassword) {
+        if (!password.trim().equals(confirmPassword.trim())) {
+            throw new IllegalArgumentException("passwords not match");
+        }
+        User user;
+        if (loginOrEmail.contains("@")) {
+            user = userDao.selectByEmail(loginOrEmail);
+        } else {
+            user = userDao.selectByLogin(loginOrEmail);
+        }
+        user.setPass(passwordEncoder().encode(password.trim()));
+        userDao.update(user);
     }
 }

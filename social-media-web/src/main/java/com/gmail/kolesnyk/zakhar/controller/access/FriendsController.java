@@ -47,7 +47,7 @@ public class FriendsController {
             e.printStackTrace();
             modelAndView = new ModelAndView("../static/errorPages/400");
         } catch (ArrayStoreException e) {
-            modelAndView = new ModelAndView("../static/errorPages/friends_list_empty");
+            modelAndView = new ModelAndView("friends_list_empty");
         }
         return modelAndView;
     }

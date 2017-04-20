@@ -18,46 +18,35 @@
             </div>
         </div>
         <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="/login">
+            <form class="form-horizontal" method="post" action="/restore_password">
 
                 <div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Login or email</label>
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input required type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your login or email"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">Password</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input required type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your Password"/>
+                            <input required type="text" class="form-control" name="email" id="email"
+                                   placeholder="Enter your email"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Restore Password
+                    </button>
+                </div>
+
+                <div class="login-register">
+                    <a href="/login">Login</a>
                 </div>
 
                 <div class="login-register">
                     <a href="/registration">Registration</a>
                 </div>
 
-                <div class="login-register">
-                    <a href="/restore_password">Restore Password</a>
-                </div>
-
             </form>
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -3,10 +3,6 @@ package com.gmail.kolesnyk.zakhar.email;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class SendMail {
@@ -44,7 +40,7 @@ public class SendMail {
     }
 
 //    public static void main(String[] args) throws IOException {
-//        String msg = new String(Files.readAllBytes(Paths.get("social-media-service/src/main/resources/reestablish_password.html")), StandardCharsets.UTF_8)
+//        String msg = new String(Files.readAllBytes(Paths.get("social-media-service/src/main/resources/restore_password.html")), StandardCharsets.UTF_8)
 //                .replace("?link?", "https://www.google.com.ua/").replace("?name?", "John");
 //        SendMail.send("socialmediantk@gmail.com", "socialNetwork", "vend.88@mail.ru", "test", msg);
 //    }

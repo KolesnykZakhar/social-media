@@ -21,4 +21,10 @@ public interface UserService {
     void confirmEmail(String hasLink);
 
     void discardRegistration(String hasLink);
+
+    void createRestorePassword(String email);
+
+    void removeRestorePassword(String hash);
+
+    void createNewPassword(String loginOrEmail, String password, String confirmPassword);
 }

@@ -52,30 +52,44 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     }
 
     @Override
-    public void saveHashedEmail(String hashedEmail, Integer idUser) {
+    public void saveHashForEmail(String hashForEmail, Integer idUser) {
         sessionFactory.getCurrentSession().createSQLQuery
-                ("INSERT INTO hashed_emails (id_user, hashed_email) VALUES (:idUser , :hashedEmail );")
-                .setParameter("idUser", idUser).setParameter("hashedEmail", hashedEmail).executeUpdate();
+                ("INSERT INTO confirm_emails (id_user, hashed_email) VALUES (:idUser , :hashedEmail );")
+                .setParameter("idUser", idUser).setParameter("hashedEmail", hashForEmail).executeUpdate();
     }
 
     @Override
-    public Boolean removeUserByHashedEmail(String hashedEmail) {
+    public Boolean removeUserByHashForEmail(String hashForEmail) {
         return sessionFactory.getCurrentSession().createSQLQuery
-                ("DELETE FROM users WHERE id_user IN (SELECT hashed_emails.id_user FROM hashed_emails WHERE hashed_email = :hashedEmail);")
-                .setParameter("hashedEmail", hashedEmail).executeUpdate() != 0;
+                ("DELETE FROM users WHERE id_user IN (SELECT confirm_emails.id_user FROM confirm_emails WHERE hashed_email = :hashedEmail);")
+                .setParameter("hashedEmail", hashForEmail).executeUpdate() != 0;
     }
 
     @Override
-    public User byHashedEmail(String hashedEmail) {
+    public User byHashForEmail(String hashForEmail) {
         return (User) sessionFactory.getCurrentSession().createSQLQuery
-                ("SELECT * FROM users WHERE id_user IN (SELECT hashed_emails.id_user FROM hashed_emails WHERE hashed_email = :hashedEmail)")
-                .addEntity(User.class).setParameter("hashedEmail", hashedEmail).uniqueResult();
+                ("SELECT * FROM users WHERE id_user IN (SELECT confirm_emails.id_user FROM confirm_emails WHERE hashed_email = :hashedEmail)")
+                .addEntity(User.class).setParameter("hashedEmail", hashForEmail).uniqueResult();
     }
 
     @Override
-    public Boolean removeHashedEmail(String hashedEmail) {
+    public Boolean removeHashForEmail(String hashForEmail) {
         return sessionFactory.getCurrentSession().createSQLQuery
-                ("DELETE FROM hashed_emails WHERE hashed_email = :hashedEmail ;")
-                .setParameter("hashedEmail", hashedEmail).executeUpdate() != 0;
+                ("DELETE FROM confirm_emails WHERE hashed_email = :hashedEmail ;")
+                .setParameter("hashedEmail", hashForEmail).executeUpdate() != 0;
+    }
+
+    @Override
+    public Boolean saveHashForPassword(String hashForPassword, Integer idUser) {
+        return sessionFactory.getCurrentSession().createSQLQuery
+                ("INSERT INTO restore_password (id_user, hashed_password) VALUES (:idUser , :hashForPassword );")
+                .setParameter("idUser", idUser).setParameter("hashForPassword", hashForPassword).executeUpdate() != 0;
+    }
+
+    @Override
+    public Boolean removeRestorePassword(String hashForPassword) {
+        return sessionFactory.getCurrentSession().createSQLQuery
+                ("DELETE FROM restore_password WHERE restore_password.hashed_password = :hashForPassword ;")
+                .setParameter("hashForPassword", hashForPassword).executeUpdate() != 0;
     }
 }

@@ -27,20 +27,14 @@
                  class="btn"/>
           </span>
                 </form>
-                <!--/searchform -->
                 <div class="clr"></div>
             </div>
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                    <%--<security:authorize access="isAuthenticated()">--%>
-                    <%--<security:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">--%>
-                        <%--<security:authorize ifAllGranted="ROLE_ADMIN">--%>
-                        <%--<security:authentication property="principal.authority.contains()"/>--%>
                         <c:if test="${requestScope.isAdmin}">
                         <li class="active"><a href="/admin/index" onclick="">Admin</a></li>
                         </c:if>
-                    <%--</security:authorize>--%>
                     <li class="active"><a href="/user/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
