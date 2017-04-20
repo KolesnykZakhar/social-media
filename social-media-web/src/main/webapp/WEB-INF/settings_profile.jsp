@@ -26,9 +26,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
-                                                                            src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
-                                                                            class="img-circle img-responsive"></div>
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <img alt="User Pic" src='<c:out value="/avatar/${requestScope.user.idUser}"/>'
+                                 class="img-circle img-responsive">
+                        </div>
                         <div class=" col-md-9 col-lg-9 ">
                             <form <%--action="/update_user_info" id="userInfoForm"--%>>
                                 <table class="table table-user-information">

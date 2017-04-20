@@ -23,7 +23,6 @@ import static com.gmail.kolesnyk.zakhar.user.STATE.WAITING_CONFIRM;
 @Component
 @Service
 public class UserServiceImpl implements UserService {
-    private static final int amountFriendsOnOnePage = 3;
 
     @Autowired
     private UserDao userDao;
@@ -82,16 +81,16 @@ public class UserServiceImpl implements UserService {
         if (amountFriends == 0) {
             throw new ArrayStoreException("friends list empty");
         }
-        int amountPages = amountFriends / amountFriendsOnOnePage;
+        int amountPages = amountFriends / AMOUNT_FRIENDS_ON_ONE_PAGE;
         maxPage[0] = amountPages;
-        int remainder = amountFriends % amountFriendsOnOnePage;
+        int remainder = amountFriends % AMOUNT_FRIENDS_ON_ONE_PAGE;
         if (remainder != 0) {
             amountPages++;
         }
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-        return userDao.friendListByRange(idUser, pageNumber * amountFriendsOnOnePage - amountFriendsOnOnePage, amountFriendsOnOnePage);
+        return userDao.friendListByRange(idUser, pageNumber * AMOUNT_FRIENDS_ON_ONE_PAGE - AMOUNT_FRIENDS_ON_ONE_PAGE, AMOUNT_FRIENDS_ON_ONE_PAGE);
     }
 
     @Override
@@ -182,5 +181,20 @@ public class UserServiceImpl implements UserService {
         }
         user.setPass(passwordEncoder().encode(password.trim()));
         userDao.update(user);
+    }
+
+    @Override
+    @Transactional
+    public String getImageUrlByUser(Integer idUser) {
+        try {
+            String imageUrl = userDao.getImageUrlByUser(idUser);
+            if (imageUrl == null) {
+                return DEFAULT_IMAGE_URL;
+            }
+            return imageUrl;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return DEFAULT_IMAGE_URL;
+        }
     }
 }

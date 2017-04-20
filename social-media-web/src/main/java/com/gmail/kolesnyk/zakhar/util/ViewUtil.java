@@ -15,6 +15,7 @@ public class ViewUtil {
     public User getUserViewVersion() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userView = new User();
+        userView.setIdUser(user.getIdUser());
         userView.setUsername(user.getUsername());
         userView.setFirstName(user.getFirstName());
         userView.setLastName(user.getLastName());

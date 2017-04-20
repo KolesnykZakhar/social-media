@@ -92,4 +92,11 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
                 ("DELETE FROM restore_password WHERE restore_password.hashed_password = :hashForPassword ;")
                 .setParameter("hashForPassword", hashForPassword).executeUpdate() != 0;
     }
+
+    @Override
+    public String getImageUrlByUser(Integer idUser) {
+        return (String) sessionFactory.getCurrentSession().createSQLQuery
+                ("SELECT avatars.image_url FROM avatars WHERE id_user = :idUser ;")
+                .setParameter("idUser", idUser).uniqueResult();
+    }
 }
