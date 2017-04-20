@@ -28,7 +28,7 @@ public class FriendsController {
             modelAndView.addObject("friend", friend);
         } catch (Exception e) {
             e.printStackTrace();
-            modelAndView = new ModelAndView("../static/errorPages/400");
+            modelAndView = new ModelAndView("errorPages/400");
         }
         return modelAndView;
     }
@@ -45,7 +45,7 @@ public class FriendsController {
             modelAndView.addObject("maxPage", maxPage[0]);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            modelAndView = new ModelAndView("../static/errorPages/400");
+            modelAndView = new ModelAndView("errorPages/400");
         } catch (ArrayStoreException e) {
             modelAndView = new ModelAndView("friends_list_empty");
         }

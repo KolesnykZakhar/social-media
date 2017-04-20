@@ -9,8 +9,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='/static/css/bootstrap.css'>
-    <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
+    <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href="../static/css/registration.css">
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <title>Registration</title>

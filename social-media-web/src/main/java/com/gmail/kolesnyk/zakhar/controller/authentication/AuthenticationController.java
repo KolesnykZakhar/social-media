@@ -1,8 +1,10 @@
 package com.gmail.kolesnyk.zakhar.controller.authentication;
 
 import com.gmail.kolesnyk.zakhar.user.GENDER;
+import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,17 +22,27 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/login")
     public String toLoginPage() {
-        return "../static/login";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal != null && principal instanceof User) {
+            return "redirect: /index_role";
+        } else {
+            return "login";
+        }
     }
 
     @RequestMapping(value = "/logout")
     public String logout() {
-        return "redirect: /static/login";
+        return "redirect: /login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String toRegistrationPage() {
-        return "../static/registration";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal != null && principal instanceof User) {
+            return "redirect: /index_role";
+        } else {
+            return "registration";
+        }
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -42,7 +54,7 @@ public class AuthenticationController {
             return "go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/500.jsp";
+            return "errorPages/500";
         }
     }
 
@@ -50,10 +62,10 @@ public class AuthenticationController {
     protected String confirmEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.confirmEmail(hashedEmail);
-            return "../static/login";
+            return "/login";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
     }
 
@@ -64,7 +76,7 @@ public class AuthenticationController {
             return "ok";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
     }
 
@@ -75,7 +87,7 @@ public class AuthenticationController {
             return "go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
     }
 
@@ -91,7 +103,7 @@ public class AuthenticationController {
             return "new_password";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
     }
 
@@ -102,7 +114,7 @@ public class AuthenticationController {
             return "ok";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
 
     }
@@ -111,10 +123,10 @@ public class AuthenticationController {
     protected String newPassword(@RequestParam("loginOrEmail") String loginOrEmail, @RequestParam("password") String password, @RequestParam("confirm") String confirm) {
         try {
             userService.createNewPassword(loginOrEmail, password, confirm);
-            return "../static/login";
+            return "login";
         } catch (Exception e) {
             e.printStackTrace();
-            return "../static/errorPages/404";
+            return "errorPages/404";
         }
     }
 }

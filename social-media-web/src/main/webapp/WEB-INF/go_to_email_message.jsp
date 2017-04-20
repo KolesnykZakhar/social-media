@@ -37,8 +37,9 @@
             <h1>Operation successful</h1>
             <h2>Into your email was sent message with further instructions</h2>
             <br>
-            <div class="login-register">
-                <a href="/login"><h2>To login page</h2></a>
+            <div class="error-actions">
+                <a href="/login" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    Take Me Home </a>
             </div>
         </div>
     </div>
