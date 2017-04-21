@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>SocialNet</title>
@@ -32,9 +31,9 @@
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                        <c:if test="${requestScope.isAdmin}">
+                    <c:if test="${requestScope.isAdmin}">
                         <li class="active"><a href="/admin/index" onclick="">Admin</a></li>
-                        </c:if>
+                    </c:if>
                     <li class="active"><a href="/user/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/about.html">About Us</a></li>
@@ -49,49 +48,91 @@
         <div class="content">
             <div class="content_bg">
                 <div class="mainbar" id="mainDiv">
-                    <div class="article">
-                        <h2><span>Template License</span></h2>
-                        <div class="clr"></div>
-                        <p class="post-data"><span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by <a
-                                href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>
-                        </p>
-                        <img src="../static/images/images_1.jpg" width="613" height="193" alt=""/>
-                        <p>This is a free CSS website template by RocketWebsiteTemplates.com. This work is distributed
-                            under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
-                                3.0 License</a>, which means that you are free to use it for any personal or commercial
-                            purpose provided you credit me in the form of a link back to RocketWebsiteTemplates.com.</p>
-                        <p class="spec"><a href="#" class="com fr">Comments (3)</a> <a href="#" class="rm fl">Read
-                            more</a></p>
-                        <div class="clr"></div>
-                    </div>
-                    <div class="article">
-                        <h2><span>Lorem Ipsum</span> Dolor Sit</h2>
-                        <div class="clr"></div>
-                        <p class="post-data"><span class="date">March 15, 2010</span> &nbsp;|&nbsp; Posted by <a
-                                href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>
-                        </p>
-                        <img src="../static/images/images_2.jpg" width="613" height="193" alt=""/>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
-                            Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius
-                                lorem, eu posuere nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum,
-                            dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus
-                            suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit
-                            magna id neque. Curabitur vel urna. In tristique orci porttitor ipsum. Lorem ipsum dolor sit
-                            amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi
-                            tincidunt, orci ac convallis aliquam.</p>
-                        <p>Aenean commodo elit ac ante dignissim iaculis sit amet non velit. Donec magna sapien,
-                            molestie sit amet faucibus sit amet, fringilla in urna. Aliquam erat volutpat. Fusce a dui
-                            est. Sed in volutpat elit. Nam odio tortor, pulvinar non scelerisque in, eleifend nec nunc.
-                            Sed pretium, massa sed dictum dapibus, nibh purus posuere magna, ac porta felis lectus ut
-                            neque. Nullam sagittis ante vitae velit facilisis lacinia. Cras vehicula lacinia ornare.
-                            Duis et cursus risus. Curabitur consectetur justo sit amet odio viverra vel iaculis odio
-                            gravida. Ut imperdiet metus nec erat.</p>
-                        <p class="spec"><a href="#" class="com fr">Comments (7)</a> <a href="#" class="rm fl">Read
-                            more</a></p>
-                        <div class="clr"></div>
-                    </div>
-                    <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a
-                            href="#">2</a><a href="#">&raquo;</a></div>
+                    <jsp:include page="slider_content.jsp"/>
+                    <%--<div class="royalSlider rsDefault">--%>
+                        <%--<!-- simple image slide -->--%>
+                        <%--<img class="rsImg" src="/avatar/1" alt="image desc" />--%>
+
+                        <%--<!-- lazy loaded image slide -->--%>
+                        <%--<a class="rsImg" href="/avatar/2">image desc</a>--%>
+
+                        <%--<!-- HTML content slide -->--%>
+                        <%--<p>Content goes here</p>--%>
+
+                        <%--<!-- image and content -->--%>
+                        <%--<div>--%>
+                            <%--<img class="rsImg" src="/avatar/24" data-rsVideo="https://vimeo.com/44878206" />--%>
+                            <%--<p>Some content after...</p>--%>
+                        <%--</div>--%>
+
+                        <%--<!-- HTML content -->--%>
+                        <%--<div>--%>
+                            <%--Put any HTML content here--%>
+                        <%--</div>--%>
+
+                        <%--<!-- HTML content (100% with and height) -->--%>
+                        <%--<div class="rsContent">--%>
+                            <%--Put any HTML content here--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<ul class="bxslider" style="width: 300px; height: 300px;">--%>
+                        <%--<li><img--%>
+                                <%--src='<c:out value="/avatar/1"/>'--%>
+                                <%--title="Funky roots"/></li>--%>
+                        <%--<li><img--%>
+                                <%--src='<c:out value="/avatar/2"/>'--%>
+                                <%--title="The long and winding road"/></li>--%>
+                        <%--<li><img--%>
+                                <%--src='<c:out value="/avatar/24"/>'--%>
+                                <%--title="Happy trees"/></li>--%>
+                        <%--<li><img--%>
+                                <%--src='<c:out value="/avatar/58"/>'--%>
+                                <%--title="Happy trees"/></li>--%>
+                    <%--</ul>--%>
+
+                    <%--<div class="article">--%>
+                    <%--<h2><span>Template License</span></h2>--%>
+                    <%--<div class="clr"></div>--%>
+                    <%--<p class="post-data"><span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by <a--%>
+                    <%--href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>--%>
+                    <%--</p>--%>
+                    <%--<img src="../static/images/images_1.jpg" width="613" height="193" alt=""/>--%>
+                    <%--<p>This is a free CSS website template by RocketWebsiteTemplates.com. This work is distributed--%>
+                    <%--under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution--%>
+                    <%--3.0 License</a>, which means that you are free to use it for any personal or commercial--%>
+                    <%--purpose provided you credit me in the form of a link back to RocketWebsiteTemplates.com.</p>--%>
+                    <%--<p class="spec"><a href="#" class="com fr">Comments (3)</a> <a href="#" class="rm fl">Read--%>
+                    <%--more</a></p>--%>
+                    <%--<div class="clr"></div>--%>
+                    <%--</div>--%>
+                    <%--<div class="article">--%>
+                    <%--<h2><span>Lorem Ipsum</span> Dolor Sit</h2>--%>
+                    <%--<div class="clr"></div>--%>
+                    <%--<p class="post-data"><span class="date">March 15, 2010</span> &nbsp;|&nbsp; Posted by <a--%>
+                    <%--href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a>--%>
+                    <%--</p>--%>
+                    <%--<img src="../static/images/images_2.jpg" width="613" height="193" alt=""/>--%>
+                    <%--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.--%>
+                    <%--Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius--%>
+                    <%--lorem, eu posuere nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum,--%>
+                    <%--dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus--%>
+                    <%--suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit--%>
+                    <%--magna id neque. Curabitur vel urna. In tristique orci porttitor ipsum. Lorem ipsum dolor sit--%>
+                    <%--amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi--%>
+                    <%--tincidunt, orci ac convallis aliquam.</p>--%>
+                    <%--<p>Aenean commodo elit ac ante dignissim iaculis sit amet non velit. Donec magna sapien,--%>
+                    <%--molestie sit amet faucibus sit amet, fringilla in urna. Aliquam erat volutpat. Fusce a dui--%>
+                    <%--est. Sed in volutpat elit. Nam odio tortor, pulvinar non scelerisque in, eleifend nec nunc.--%>
+                    <%--Sed pretium, massa sed dictum dapibus, nibh purus posuere magna, ac porta felis lectus ut--%>
+                    <%--neque. Nullam sagittis ante vitae velit facilisis lacinia. Cras vehicula lacinia ornare.--%>
+                    <%--Duis et cursus risus. Curabitur consectetur justo sit amet odio viverra vel iaculis odio--%>
+                    <%--gravida. Ut imperdiet metus nec erat.</p>--%>
+                    <%--<p class="spec"><a href="#" class="com fr">Comments (7)</a> <a href="#" class="rm fl">Read--%>
+                    <%--more</a></p>--%>
+                    <%--<div class="clr"></div>--%>
+                    <%--</div>--%>
+                    <%--<div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a--%>
+                    <%--href="#">2</a><a href="#">&raquo;</a></div>--%>
                 </div>
                 <div class="sidebar">
                     <div class="gadget">
@@ -188,4 +229,13 @@
 <div align=center>This template downloaded form <a href='http://all-free-download.com/free-website-templates/'>free
     website templates</a></div>
 </body>
+<%--<script>--%>
+    <%--jQuery(document).ready(function($) {--%>
+        <%--$(".royalSlider").royalSlider({--%>
+            <%--// options go here--%>
+            <%--// as an example, enable keyboard arrows nav--%>
+            <%--keyboardNavEnabled: true--%>
+        <%--});--%>
+    <%--});--%>
+<%--</script>--%>
 </html>
