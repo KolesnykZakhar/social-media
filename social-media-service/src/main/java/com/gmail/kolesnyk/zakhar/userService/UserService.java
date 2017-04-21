@@ -9,10 +9,6 @@ import java.util.List;
 
 public interface UserService {
 
-    int AMOUNT_FRIENDS_ON_ONE_PAGE = 3;
-
-    String DEFAULT_IMAGE_URL = "D:/social-media/media/avatars/default_avatar.png";
-
     User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
 
     void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, GENDER gender) throws IllegalAccessException;

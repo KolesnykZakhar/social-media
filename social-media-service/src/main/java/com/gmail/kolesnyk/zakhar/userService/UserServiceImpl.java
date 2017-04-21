@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar.userService;
 
+import com.gmail.kolesnyk.zakhar.AbstractService;
 import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
@@ -7,9 +8,9 @@ import com.gmail.kolesnyk.zakhar.user.UserDao;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +21,15 @@ import java.util.List;
 import static com.gmail.kolesnyk.zakhar.user.STATE.AVAILABLE;
 import static com.gmail.kolesnyk.zakhar.user.STATE.WAITING_CONFIRM;
 
-@Component
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends AbstractService implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    public UserServiceImpl(@Autowired Environment environment) {
+        super(environment);
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -62,7 +66,7 @@ public class UserServiceImpl implements UserService {
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("congratulations_with_registration.html"))
                     .replace("?hash?", hashForEmail).replace("?name?", user.getFirstName() + " " + user.getLastName());
-            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Confirming email", msg);
+            SendMail.send(SERVICE_EMAIL, PASSWORD_EMAIL, user.getEmail(), "Confirming email", msg);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -153,7 +157,7 @@ public class UserServiceImpl implements UserService {
         try {
             String msg = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("restore_password.html"))
                     .replace("?hash?", hashForPassword).replace("?name?", user.getFirstName() + " " + user.getLastName());
-            SendMail.send("socialmediantk@gmail.com", "socialNetwork", user.getEmail(), "Restore password", msg);
+            SendMail.send(SERVICE_EMAIL, PASSWORD_EMAIL, user.getEmail(), "Restore password", msg);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -186,11 +190,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public InputStream getAvatarUrlByUser(Integer idUser) throws FileNotFoundException {
-            File serverFile = new File("D:/social-media/media/avatars/"+ idUser + ".png");
-            if (serverFile.exists()){
-                return new FileInputStream(serverFile);
-            }else {
-                return new FileInputStream(DEFAULT_IMAGE_URL);
-            }
+        File serverFile = new File(ROOT_AVATAR_URL + idUser + AVATAR_EXTENDS);
+        if (serverFile.exists()) {
+            return new FileInputStream(serverFile);
+        } else {
+            return new FileInputStream(DEFAULT_AVATAR_URL);
+        }
     }
 }
