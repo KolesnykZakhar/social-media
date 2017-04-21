@@ -23,6 +23,7 @@ public class ViewUtil {
         userView.setEmail(user.getEmail());
         userView.setPhone(user.getPhone());
         userView.setBirthDate(user.getBirthDate());
+        userView.setGender(user.getGender());
         return userView;
     }
 
@@ -35,6 +36,7 @@ public class ViewUtil {
         userDomain.setEmail(user.getEmail());
         userDomain.setPhone(user.getPhone());
         userDomain.setBirthDate(user.getBirthDate());
+        userDomain.setGender(user.getGender());
         userService.update(userDomain);
         return userDomain;
     }

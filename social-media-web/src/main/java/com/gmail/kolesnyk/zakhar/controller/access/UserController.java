@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar.controller.access;
 
+import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import com.gmail.kolesnyk.zakhar.util.ViewUtil;
@@ -32,18 +33,15 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/user/update_user_info"})
-    public String updateUserInfo(@RequestParam("birthDate") String birthDate) throws ServletException, IOException {
-//        ModelAndView modelAndView;
+    public String updateUserInfo(@RequestParam("birthDate") String birthDate, @RequestParam("gender") Integer gender,
+                                 @RequestParam("firstName") String firstName, @RequestParam("lastName")  String lastName, @RequestParam("phone") String phone) throws ServletException, IOException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        modelAndView = new ModelAndView("settings_profile");
-//        modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
-//        modelAndView.addObject("user", getUserViewVersion());
-        System.out.println(birthDate);
-//        Timestamp timestamp=Timestamp.valueOf(birthDate + " 00:00:00");
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         user.setBirthDate(birthDate);
+        user.setGender(GENDER.values()[gender]);
+        user.setPhone(phone);
         viewUtil.updateUserDomainVersion(user);
-
-//        System.out.println(timestamp);
         return "ok_ajax";
     }
 

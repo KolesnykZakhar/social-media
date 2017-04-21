@@ -46,7 +46,8 @@
                                     <%--<p>Some text in the modal.</p>--%>
                                     <%--</div>--%>
                                     <div class="modal-footer">
-                                        <form action="/upload_avatar_by_file" method="post" enctype="multipart/form-data">
+                                        <form action="/upload_avatar_by_file" method="post"
+                                              enctype="multipart/form-data">
                                             <label class="btn btn-primary">
                                                 <input name="uploadedAvatar" required type="file" hidden>
                                             </label>
@@ -62,21 +63,24 @@
                         </div>
 
                         <div class=" col-md-9 col-lg-9 ">
-                            <form <%--action="/update_user_info" id="userInfoForm"--%>>
+                            <form>
                                 <table class="table table-user-information">
 
                                     <tbody>
                                     <tr>
-                                        <td>Department:</td>
-                                        <td>Programming</td>
+                                        <td><label for="firstName">First Name</label></td>
+                                        <td><input id='firstName' value='${requestScope.user.firstName}'></td>
                                     </tr>
                                     <tr>
-                                        <td>Hire date:</td>
-                                        <td>06/23/2013</td>
+                                        <td><label for="lastName">Last Name</label></td>
+                                        <td><input id='lastName' value='${requestScope.user.lastName}'></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="phone">Phone Nomber</label></td>
+                                        <td><input id='phone' value='${requestScope.user.phone}'></td>
                                     </tr>
                                     <tr>
                                         <td><label for="birthDate">Date of Birth</label></td>
-                                        <%--<td><c:out value="${requestScope.user.birthDate.toLocalDateTime().toLocalDate()}"/></td>--%>
                                         <td><input id="birthDate" required type="date" name="birthDate"
                                                    value="${requestScope.user.birthDate}"/>
                                         </td>
@@ -84,20 +88,29 @@
 
                                     <tr>
                                     <tr>
-                                        <td>Gender</td>
-                                        <td>Female</td>
+                                        <td><label>Gender</label></td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="cols-sm-10">
+                                                    <label class="radio-inline"><input ${requestScope.user.gender=='MALE'?'checked':''}
+                                                            required type="radio"
+                                                            name="gender"
+                                                            value="0">Male</label>
+                                                    <label class="radio-inline"><input ${requestScope.user.gender=='FEMALE'?'checked':''}
+                                                            required type="radio"
+                                                            name="gender"
+                                                            value="1">Female</label>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Home Address</td>
-                                        <td>Kathmandu,Nepal</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email</td>
+                                        <td><label>Email</label></td>
                                         <td><a href="mailto:<c:out value='${requestScope.user.email}'/>"><c:out
                                                 value="${requestScope.user.email}"/></a></td>
                                     </tr>
-                                    <td>Phone Number</td>
-                                    <td><c:out value='${requestScope.user.phone}'/></td>
+                                    <td><label>Login</label></td>
+                                    <td><c:out value='${requestScope.user.login}'/></td>
 
                                     </tr>
 
@@ -105,7 +118,6 @@
 
                                 </table>
 
-                                <%--<a href="#" onclick="document.getElementById('userInfoForm').submit(); return false;" class="btn btn-primary">Save changes</a>--%>
                                 <a href="#" onclick="updateUser('/user/update_user_info/', this)"
                                    class="btn btn-primary">Save changes</a>
                                 <a href="/user/index" class="btn btn-primary">Cancel</a>

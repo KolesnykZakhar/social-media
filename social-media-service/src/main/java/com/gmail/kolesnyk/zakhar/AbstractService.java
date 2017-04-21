@@ -1,9 +1,6 @@
 package com.gmail.kolesnyk.zakhar;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +23,5 @@ public abstract class AbstractService {
         AVATAR_EXTENDS = environment.getProperty("avatarExtends");
         SERVICE_EMAIL = environment.getProperty("serviceEmail");
         PASSWORD_EMAIL = environment.getProperty("passwordEmail");
-    }
-
-    @Bean
-    public Logger logger() {
-        return LoggerFactory.getLogger(AbstractService.class);
     }
 }

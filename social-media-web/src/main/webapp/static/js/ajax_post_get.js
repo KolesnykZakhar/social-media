@@ -25,7 +25,11 @@ function postMainDiv(url, currentARef) {
 
 function updateUser(url, currentARef) {
     $.post(url, {
-        birthDate: $('#birthDate').val()
+        birthDate: $('#birthDate').val(),
+        gender: $('input[name=gender]:checked').val(),
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        phone: $('#phone').val()
         }, function (responseText) {
             $('#mainDiv').html(responseText);
         }

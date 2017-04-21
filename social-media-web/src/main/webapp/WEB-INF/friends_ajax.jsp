@@ -31,7 +31,7 @@
                 </td>
                 <td><c:out value="${friend.login}"/></td>
                 <td>${friend.firstName}<br>${friend.lastName}</td>
-                <td><c:out value="${friend.email}"/></td>
+                <td><a href="mailto:<c:out value='${friend.email}'/>"><c:out value="${friend.email}"/></a></td>
             </tr>
         </c:forEach>
     </table>
