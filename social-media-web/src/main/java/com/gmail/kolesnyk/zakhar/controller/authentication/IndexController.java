@@ -13,7 +13,6 @@ public class IndexController {
 
     @RequestMapping(value = {"/index_role"})
     public String goToIndex() throws ServletException, IOException {
-        System.out.println("index_role");
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails.getAuthority().contains("ROLE_ADMIN")) {
             return "admin/index";

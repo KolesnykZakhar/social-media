@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.List;
 
@@ -185,16 +185,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public String getImageUrlByUser(Integer idUser) {
-        try {
-            String imageUrl = userDao.getImageUrlByUser(idUser);
-            if (imageUrl == null) {
-                return DEFAULT_IMAGE_URL;
+    public InputStream getAvatarUrlByUser(Integer idUser) throws FileNotFoundException {
+            File serverFile = new File("D:/social-media/media/avatars/"+ idUser + ".png");
+            if (serverFile.exists()){
+                return new FileInputStream(serverFile);
+            }else {
+                return new FileInputStream(DEFAULT_IMAGE_URL);
             }
-            return imageUrl;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return DEFAULT_IMAGE_URL;
-        }
     }
 }

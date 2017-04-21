@@ -55,6 +55,4 @@ public interface UserDao extends BaseDao<User, Integer> {
     Boolean saveHashForPassword(String hashForPassword, Integer idUser);
 
     Boolean removeRestorePassword(String hash);
-
-    String getImageUrlByUser(Integer idUser);
 }

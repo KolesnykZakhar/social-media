@@ -3,13 +3,15 @@ package com.gmail.kolesnyk.zakhar.userService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 public interface UserService {
 
     int AMOUNT_FRIENDS_ON_ONE_PAGE = 3;
 
-    String DEFAULT_IMAGE_URL = "media/avatars/default_avatar.png";
+    String DEFAULT_IMAGE_URL = "D:/social-media/media/avatars/default_avatar.png";
 
     User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
 
@@ -33,5 +35,5 @@ public interface UserService {
 
     void createNewPassword(String loginOrEmail, String password, String confirmPassword);
 
-    String getImageUrlByUser(Integer idUser);
+    InputStream getAvatarUrlByUser(Integer idUser) throws FileNotFoundException;
 }
