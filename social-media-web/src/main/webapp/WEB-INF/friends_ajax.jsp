@@ -26,7 +26,7 @@
             <tr>
                 <td class="col-md-2 col-lg-2">
                     <a title="View" onclick="postMainDiv('/user/friend/${friend.idUser}', this)">
-                        <img role="button" alt="User Pic" src='<c:out value="/avatar/${friend.idUser}"/>'
+                        <img role="button" alt="User Pic" src='<c:out value="/user/avatar/${friend.idUser}"/>'
                              class="img-circle img-responsive"></a>
                 </td>
                 <td><c:out value="${friend.login}"/></td>

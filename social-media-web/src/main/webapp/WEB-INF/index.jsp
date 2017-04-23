@@ -48,7 +48,7 @@
         <div class="content">
             <div class="content_bg">
                 <div class="mainbar" id="mainDiv">
-                    <jsp:include page="slider_content.jsp"/>
+                    <jsp:include page="photo_slider.jsp"/>
                     <%--<div class="royalSlider rsDefault">--%>
                         <%--<!-- simple image slide -->--%>
                         <%--<img class="rsImg" src="/avatar/1" alt="image desc" />--%>
@@ -139,14 +139,14 @@
                         <h2 class="star"><span>Sidebar</span> Menu</h2>
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
-                            <li id='homeSb' class="active"><a href="/user/index">Home</a></li>
+                            <li id='home' class="active"><a href="#" onclick="postMainDiv('/user/photo_slider', this)">Home</a></li>
+                            <li><a id='news' href="#">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
+                            <li><a id='blog' href="#">Blog</a></li>
+                            <li><a id='bookmarks' href="#">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
                                 Profile</a></li>
-                            <li><a id='blogSb' href="#">Blog</a></li>
-                            <li><a id='archivesSb' href="#">Archives</a></li>
-                            <li><a id='webTemplatesSb' href="#">Web Templates</a></li>
                         </ul>
                     </div>
                     <div class="gadget">

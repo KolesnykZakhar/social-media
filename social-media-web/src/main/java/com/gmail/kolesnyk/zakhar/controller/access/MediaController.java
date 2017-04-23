@@ -1,8 +1,8 @@
 package com.gmail.kolesnyk.zakhar.controller.access;
 
+import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import java.io.*;
+import java.io.IOException;
 
 @Controller
 public class MediaController {
@@ -19,45 +19,33 @@ public class MediaController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/avatar/{idUser}")
+    @Autowired
+    private MediaService mediaService;
+
+    @RequestMapping(value = "/user/photo_slider")
+    public String getPhotoSlider() {
+        return "photo_slider";
+    }
+
     @ResponseBody
+    @RequestMapping(value = "/user/avatar/{idUser}")
     public byte[] getAvatar(@PathVariable Integer idUser) {
         try {
-            InputStream is = userService.getAvatarUrlByUser(idUser);
-            byte[] arr = IOUtils.toByteArray(userService.getAvatarUrlByUser(idUser));
-            is.close();
-            return arr;
-
+            return mediaService.getAvatarUrlByUser(idUser);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @RequestMapping(value = "/upload_avatar_by_file", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/upload_avatar_by_file", method = RequestMethod.POST)
     public String uploadAvatar(@RequestParam("uploadedAvatar") MultipartFile file) {
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                // Creating the directory to store file
-                String rootPath = "D:/social-media/media/avatars/";
-                User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                File dir = new File(rootPath);
-                if (!dir.exists()) {
-                    return "dir not exist -> " + rootPath;
-                }
-
-                // Create the file on server
-                File serverFile = new File(dir.getAbsolutePath() + File.separator + user.getIdUser() + ".png");
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-                return "ok";
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "errorPages/500";
-            }
-        } else {
+        try {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            mediaService.storeAvatar(file, user.getIdUser());
+            return "ok";
+        } catch (Exception e) {
+            e.printStackTrace();
             return "errorPages/500";
         }
     }

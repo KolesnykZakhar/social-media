@@ -121,16 +121,16 @@
     </div>
     <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
         <div>
-            <img data-u="image" src="/avatar/1" />
+            <img data-u="image" src="/user/avatar/1" />
         </div>
         <div>
-            <img data-u="image" src="/avatar/2" />
+            <img data-u="image" src="/user/avatar/2" />
         </div>
         <div>
-            <img data-u="image" src="/avatar/24" />
+            <img data-u="image" src="/user/avatar/24" />
         </div>
         <div>
-            <img data-u="image" src="/avatar/58" />
+            <img data-u="image" src="/user/avatar/58" />
         </div>
     </div>
     <!-- Bullet Navigator -->

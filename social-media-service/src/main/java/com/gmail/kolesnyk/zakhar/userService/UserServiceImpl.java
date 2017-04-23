@@ -14,7 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 
@@ -185,16 +188,5 @@ public class UserServiceImpl extends AbstractService implements UserService {
         }
         user.setPass(passwordEncoder().encode(password.trim()));
         userDao.update(user);
-    }
-
-    @Override
-    @Transactional
-    public InputStream getAvatarUrlByUser(Integer idUser) throws FileNotFoundException {
-        File serverFile = new File(ROOT_AVATAR_URL + idUser + AVATAR_EXTENDS);
-        if (serverFile.exists()) {
-            return new FileInputStream(serverFile);
-        } else {
-            return new FileInputStream(DEFAULT_AVATAR_URL);
-        }
     }
 }

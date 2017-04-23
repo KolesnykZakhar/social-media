@@ -4,6 +4,7 @@ import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -30,6 +31,4 @@ public interface UserService {
     void removeRestorePassword(String hash);
 
     void createNewPassword(String loginOrEmail, String password, String confirmPassword);
-
-    InputStream getAvatarUrlByUser(Integer idUser) throws FileNotFoundException;
 }

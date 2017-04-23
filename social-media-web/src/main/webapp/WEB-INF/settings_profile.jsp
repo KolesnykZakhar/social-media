@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             <a role="button" data-toggle="modal" data-target="#editAvatar">
-                                <img alt="User Pic" src='<c:out value="/avatar/${requestScope.user.idUser}"/>'
+                                <img alt="User Pic" src='<c:out value="/user/avatar/${requestScope.user.idUser}"/>'
                                      class="img-circle img-responsive">
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                                     <%--<p>Some text in the modal.</p>--%>
                                     <%--</div>--%>
                                     <div class="modal-footer">
-                                        <form action="/upload_avatar_by_file" method="post"
+                                        <form action="/user/upload_avatar_by_file" method="post"
                                               enctype="multipart/form-data">
                                             <label class="btn btn-primary">
                                                 <input name="uploadedAvatar" required type="file" hidden>
