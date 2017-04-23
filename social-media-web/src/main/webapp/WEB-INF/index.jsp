@@ -32,7 +32,7 @@
             <div class="menu_nav">
                 <ul>
                     <c:if test="${requestScope.isAdmin}">
-                        <li class="active"><a href="/admin/index" onclick="">Admin</a></li>
+                        <li><a href="/admin/index" onclick="">Admin</a></li>
                     </c:if>
                     <li class="active"><a href="/user/index" onclick="">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/WEB-INF/support.html">Support</a></li>

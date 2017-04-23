@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 @Controller
 public class MediaController {
@@ -30,7 +30,7 @@ public class MediaController {
     public ModelAndView getPhotoSlider() {
         ModelAndView modelAndView;
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<String> photos = mediaService.getListPhotoPath(user.getIdUser());
+        Set<String> photos = mediaService.getListPhotoPath(user.getIdUser());
         modelAndView = new ModelAndView("photo_slider");
         modelAndView.addObject("photos", photos);
         return modelAndView;

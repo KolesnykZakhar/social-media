@@ -3,7 +3,6 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
-import com.gmail.kolesnyk.zakhar.userService.UserService;
 import com.gmail.kolesnyk.zakhar.util.ViewUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -29,7 +28,7 @@ public class UserController {
     public ModelAndView goToIndex() throws ServletException, IOException {
         ModelAndView modelAndView;
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<String> photos = mediaService.getListPhotoPath(user.getIdUser());
+        Set<String> photos = mediaService.getListPhotoPath(user.getIdUser());
         modelAndView = new ModelAndView("index");
         modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
         modelAndView.addObject("photos", photos);
@@ -38,7 +37,7 @@ public class UserController {
 
     @RequestMapping(value = {"/user/update_user_info"})
     public String updateUserInfo(@RequestParam("birthDate") String birthDate, @RequestParam("gender") Integer gender,
-                                 @RequestParam("firstName") String firstName, @RequestParam("lastName")  String lastName, @RequestParam("phone") String phone) throws ServletException, IOException {
+                                 @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phone") String phone) throws ServletException, IOException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setFirstName(firstName);
         user.setLastName(lastName);

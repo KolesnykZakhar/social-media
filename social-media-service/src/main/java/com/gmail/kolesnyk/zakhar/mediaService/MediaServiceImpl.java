@@ -2,18 +2,23 @@ package com.gmail.kolesnyk.zakhar.mediaService;
 
 import com.gmail.kolesnyk.zakhar.AbstractService;
 import org.apache.commons.io.IOUtils;
+import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class MediaServiceImpl extends AbstractService implements MediaService {
+
+    private final static int VIEW_MAX_SIZE_AVATAR = 150;
 
     public MediaServiceImpl(@Autowired Environment environment) {
         super(environment);
@@ -21,14 +26,22 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
 
     @Override
     public void storeAvatar(MultipartFile file, int idUser) throws IOException {
-        byte[] bytes = file.getBytes();
+        InputStream is = file.getInputStream();
+        BufferedImage after = Scalr.resize(ImageIO.read(is), Scalr.Method.BALANCED, VIEW_MAX_SIZE_AVATAR, VIEW_MAX_SIZE_AVATAR);
+        is.close();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(after, "png", baos);
+        baos.flush();
+        byte[] imageInByte = baos.toByteArray();
+        baos.close();
+
         File dir = new File(ROOT_AVATAR_URL);
         if (!dir.exists()) {
             throw new IllegalArgumentException("dir not exist -> " + ROOT_AVATAR_URL);
         }
         File serverFile = new File(dir.getAbsolutePath() + File.separator + idUser + AVATAR_EXTENDS);
         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-        stream.write(bytes);
+        stream.write(imageInByte);
         stream.close();
     }
 
@@ -47,8 +60,8 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    public List<String> getListPhotoPath(int idUser) {
-        List<String> list = new ArrayList<>();
+    public Set<String> getListPhotoPath(int idUser) {
+        Set<String> list = new HashSet<>();
         for (int i = 0; i < AMOUNT_PHOTOS_ON_ONE_USER; i++) {
             File serverFile = new File(ROOT_PHOTO_URL + File.separator + idUser + File.separator + i + PHOTO_EXTENDS);
             if (serverFile.exists()) {
@@ -79,9 +92,13 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
         if (!dir.exists()) {
             throw new IllegalArgumentException("dir not exist -> " + ROOT_PHOTO_URL);
         }
+        File userPath = new File(dir.getAbsolutePath() + File.separator + idUser + File.separator);
+        if (!userPath.exists()) {
+            userPath.mkdirs();
+        }
         File serverFile;
         for (int i = 0; i < AMOUNT_PHOTOS_ON_ONE_USER; i++) {
-            serverFile = new File(dir.getAbsolutePath() + File.separator + idUser + File.separator + i + PHOTO_EXTENDS);
+            serverFile = new File(userPath.getAbsolutePath() + i + PHOTO_EXTENDS);
             if (!serverFile.exists()) {
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
                 stream.write(bytes);
