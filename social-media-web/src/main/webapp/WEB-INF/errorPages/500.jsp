@@ -27,7 +27,7 @@
                 <h2>
                     500 Not Found</h2>
                 <div class="error-details">
-                    Sorry, an error has occured, Requested page not found!
+                    Sorry, an error has occurred, Requested page not found!
                 </div>
                 <div class="error-actions">
                     <a href="/login" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>

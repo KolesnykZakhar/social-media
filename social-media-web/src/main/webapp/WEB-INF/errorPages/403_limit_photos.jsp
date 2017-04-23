@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>400</title>
+    <title>404</title>
     <link rel='stylesheet prefetch' href='../../static/css/bootstrap.css'>
     <style>
         body {
@@ -38,9 +38,9 @@
                 <h1>
                     Oops!</h1>
                 <h2>
-                    400 Not Found</h2>
+                    403 Not Found</h2>
                 <div class="error-details">
-                    Sorry, an error has occurred, Requested page not found!
+                    Sorry, an error has occurred, Exceeded limit of Photo!
                 </div>
                 <div class="error-actions">
                     <a href="/login" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>

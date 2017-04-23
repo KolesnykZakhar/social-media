@@ -10,8 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class MediaController {
@@ -23,15 +27,31 @@ public class MediaController {
     private MediaService mediaService;
 
     @RequestMapping(value = "/user/photo_slider")
-    public String getPhotoSlider() {
-        return "photo_slider";
+    public ModelAndView getPhotoSlider() {
+        ModelAndView modelAndView;
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<String> photos = mediaService.getListPhotoPath(user.getIdUser());
+        modelAndView = new ModelAndView("photo_slider");
+        modelAndView.addObject("photos", photos);
+        return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/photos/{idUser}/{idPhoto}")
+    public byte[] getPhoto(@PathVariable Integer idUser, @PathVariable Integer idPhoto) {
+        try {
+            return mediaService.getPhotoByIdUserAndIdPhoto(idUser, idPhoto);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/avatar/{idUser}")
     public byte[] getAvatar(@PathVariable Integer idUser) {
         try {
-            return mediaService.getAvatarUrlByUser(idUser);
+            return mediaService.getAvatarByUser(idUser);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,6 +64,22 @@ public class MediaController {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             mediaService.storeAvatar(file, user.getIdUser());
             return "ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "errorPages/500";
+        }
+    }
+
+    @RequestMapping(value = "/user/upload_photo_by_file", method = RequestMethod.POST)
+    public String uploadPhoto(@RequestParam("uploadedPhoto") MultipartFile file) {
+        try {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            System.out.println(Arrays.toString(file.getBytes()));
+            mediaService.storePhoto(file, user.getIdUser());
+            return "ok";
+        } catch (FileAlreadyExistsException e) {
+            e.printStackTrace();
+            return "errorPages/403_limit_photos";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/500";

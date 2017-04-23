@@ -17,7 +17,7 @@ public class IndexController {
         if (userDetails.getAuthority().contains("ROLE_ADMIN")) {
             return "admin/index";
         } else {
-            return "index";
+            return "redirect: /user/index";
         }
     }
 }

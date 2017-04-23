@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar.controller.access;
 
+import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
@@ -13,12 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private MediaService mediaService;
 
     @Autowired
     private ViewUtil viewUtil;
@@ -26,9 +28,11 @@ public class UserController {
     @RequestMapping(value = {"/user/index"})
     public ModelAndView goToIndex() throws ServletException, IOException {
         ModelAndView modelAndView;
-        User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<String> photos = mediaService.getListPhotoPath(user.getIdUser());
         modelAndView = new ModelAndView("index");
-        modelAndView.addObject("isAdmin", userDetails.getAuthority().contains("ROLE_ADMIN"));
+        modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
+        modelAndView.addObject("photos", photos);
         return modelAndView;
     }
 
