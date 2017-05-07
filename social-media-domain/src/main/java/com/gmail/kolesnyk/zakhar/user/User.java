@@ -67,6 +67,8 @@ public class User implements Serializable, UserDetails {
 
     private transient String username;
 
+    private transient boolean online;
+
     public User() {
     }
 
@@ -162,6 +164,32 @@ public class User implements Serializable, UserDetails {
         this.gender = gender;
     }
 
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!login.equals(user.login)) return false;
+        return email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login.hashCode();
+        result = 31 * result + email.hashCode();
+        return result;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         /* creation of List<GrantedAuthority> by String data from field: Set<String> authority */
@@ -197,4 +225,5 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return AVAILABLE == state;
     }
+
 }

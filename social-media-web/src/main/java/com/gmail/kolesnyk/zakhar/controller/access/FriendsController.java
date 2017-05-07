@@ -2,6 +2,8 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ import java.io.IOException;
 public class FriendsController {
 
     @Autowired
+    private UserActivityMap userActivityMap;
+
+    @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/user/friend/{idFriend}", method = RequestMethod.POST)
@@ -25,6 +30,9 @@ public class FriendsController {
         try {
             modelAndView = new ModelAndView("friend_info_ajax");
             User friend = userService.getUserById(idFriend);
+            if (userActivityMap.isOnline(friend.getIdUser())) {
+                friend.setOnline(true);
+            }
             modelAndView.addObject("friend", friend);
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,10 +47,9 @@ public class FriendsController {
         int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
         try {
             modelAndView = new ModelAndView("friends_ajax");
-            /* maxPage[0] value set inside method userService.friendsSublist()*/
-            int[] maxPage = new int[1];
-            modelAndView.addObject("friends", userService.friendsSublist(idUser, pageNumber, maxPage));
-            modelAndView.addObject("maxPage", maxPage[0]);
+            FriendsPage friendsPage = userService.friendsSublist(idUser, pageNumber);
+            modelAndView.addObject("friends", friendsPage.getPage());
+            modelAndView.addObject("maxPage", friendsPage.getAmountPages());
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             modelAndView = new ModelAndView("errorPages/400");

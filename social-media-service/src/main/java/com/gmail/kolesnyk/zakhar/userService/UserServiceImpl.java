@@ -5,6 +5,8 @@ import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +28,9 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private UserActivityMap userActivityMap;
 
     public UserServiceImpl(@Autowired Environment environment) {
         super(environment);
@@ -80,13 +85,12 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage) {
+    public FriendsPage friendsSublist(int idUser, int pageNumber) {
         int amountFriends = getAmountFriends(idUser);
         if (amountFriends == 0) {
             throw new ArrayStoreException("friends list empty");
         }
         int amountPages = amountFriends / AMOUNT_FRIENDS_ON_ONE_PAGE;
-        maxPage[0] = amountPages;
         int remainder = amountFriends % AMOUNT_FRIENDS_ON_ONE_PAGE;
         if (remainder != 0) {
             amountPages++;
@@ -94,7 +98,13 @@ public class UserServiceImpl extends AbstractService implements UserService {
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-        return userDao.friendListByRange(idUser, pageNumber * AMOUNT_FRIENDS_ON_ONE_PAGE - AMOUNT_FRIENDS_ON_ONE_PAGE, AMOUNT_FRIENDS_ON_ONE_PAGE);
+        List<User> resultList = userDao.friendListByRange(idUser, pageNumber * AMOUNT_FRIENDS_ON_ONE_PAGE - AMOUNT_FRIENDS_ON_ONE_PAGE, AMOUNT_FRIENDS_ON_ONE_PAGE);
+        resultList.forEach(user -> {
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+        });
+        return new FriendsPage(resultList, amountPages);
     }
 
     @Override

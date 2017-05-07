@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.configuration;
+package com.gmail.kolesnyk.zakhar.controller.handlers;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandlerController {
 
-    //    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     public String processError(Exception e) {
         System.out.println("\n\n\n\nERROR HAPPENS\n\n\n\n");

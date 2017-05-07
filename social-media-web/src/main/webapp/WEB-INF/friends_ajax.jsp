@@ -21,6 +21,7 @@
             <th>Login</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Status</th>
         </tr>
         <c:forEach items="${requestScope.friends}" var="friend" varStatus="index">
             <tr>
@@ -32,6 +33,14 @@
                 <td><c:out value="${friend.login}"/></td>
                 <td>${friend.firstName}<br>${friend.lastName}</td>
                 <td><a href="mailto:<c:out value='${friend.email}'/>"><c:out value="${friend.email}"/></a></td>
+                <td><c:choose>
+                    <c:when test="${friend.online}">
+                        online
+                    </c:when>
+                    <c:otherwise>
+                        offline
+                    </c:otherwise>
+                </c:choose></td>
             </tr>
         </c:forEach>
     </table>

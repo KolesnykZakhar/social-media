@@ -2,11 +2,13 @@ package com.gmail.kolesnyk.zakhar.userService;
 
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -16,7 +18,7 @@ public interface UserService {
 
     int getAmountFriends(Integer idUser);
 
-    List<User> friendsSublist(int idUser, int pageNumber, int[] maxPage);
+    FriendsPage friendsSublist(int idUser, int pageNumber);
 
     User getUserById(int idUser);
 

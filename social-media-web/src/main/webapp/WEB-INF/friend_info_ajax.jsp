@@ -23,6 +23,14 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><c:out
                             value="${requestScope.friend.firstName} ${requestScope.friend.lastName}"/></h3>
+                    <c:choose>
+                        <c:when test="${requestScope.friend.online}">
+                            online
+                        </c:when>
+                        <c:otherwise>
+                            offline
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="panel-body">
                     <div class="row">
