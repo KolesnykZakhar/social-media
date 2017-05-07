@@ -45,3 +45,8 @@ function updateUser(url, currentARef) {
     });
     $(currentARef).parent().toggleClass("active");
 }
+
+function removePhoto(url) {
+    // var imgFullURL = document.querySelector('img.something').src;
+    alert(url);
+}

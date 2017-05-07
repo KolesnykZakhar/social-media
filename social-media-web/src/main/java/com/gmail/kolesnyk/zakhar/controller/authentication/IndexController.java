@@ -11,11 +11,11 @@ import java.io.IOException;
 @Controller
 public class IndexController {
 
-    @RequestMapping(value = {"/index_role"})
+    @RequestMapping(value = {"/index"})
     public String goToIndex() throws ServletException, IOException {
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails.getAuthority().contains("ROLE_ADMIN")) {
-            return "admin/index";
+            return "redirect: /admin/index";
         } else {
             return "redirect: /user/index";
         }

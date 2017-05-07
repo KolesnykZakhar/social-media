@@ -98,7 +98,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
         }
         File serverFile;
         for (int i = 0; i < AMOUNT_PHOTOS_ON_ONE_USER; i++) {
-            serverFile = new File(userPath.getAbsolutePath() + i + PHOTO_EXTENDS);
+            serverFile = new File(userPath.getAbsolutePath() + File.separator + i + PHOTO_EXTENDS);
             if (!serverFile.exists()) {
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
                 stream.write(bytes);

@@ -6,6 +6,7 @@ import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,7 @@ public class AuthenticationController {
     public String toLoginPage() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal != null && principal instanceof User) {
-            return "redirect: /index_role";
+            return "redirect: /index";
         } else {
             return "login";
         }
@@ -39,7 +40,7 @@ public class AuthenticationController {
     public String toRegistrationPage() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal != null && principal instanceof User) {
-            return "redirect: /index_role";
+            return "redirect: /index";
         } else {
             return "registration";
         }

@@ -213,4 +213,11 @@
 </div>
 <!-- #endregion Jssor Slider End -->
 </body>
+<%--<script>--%>
+    <%--$('#img').hover(function() {--%>
+        <%--$(this).find('.delete').show();--%>
+    <%--}, function() {--%>
+        <%--$(this).find('.delete').hide();--%>
+    <%--});--%>
+<%--</script>--%>
 </html>

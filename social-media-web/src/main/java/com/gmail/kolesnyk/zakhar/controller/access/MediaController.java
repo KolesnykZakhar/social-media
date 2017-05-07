@@ -74,7 +74,6 @@ public class MediaController {
     public String uploadPhoto(@RequestParam("uploadedPhoto") MultipartFile file) {
         try {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            System.out.println(Arrays.toString(file.getBytes()));
             mediaService.storePhoto(file, user.getIdUser());
             return "ok";
         } catch (FileAlreadyExistsException e) {
