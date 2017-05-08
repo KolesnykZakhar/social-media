@@ -80,7 +80,7 @@ public class FriendsController {
             modelAndView = new ModelAndView("user_info_ajax");
             int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
             User user = userService.getUserById(idUser);
-            boolean isFriends=userService.isFriends(idCurrentUser, user.getIdUser());
+            boolean isFriends = userService.isFriends(idCurrentUser, user.getIdUser());
             modelAndView.addObject("isFriend", isFriends);
             if (!isFriends) {
                 modelAndView.addObject("isInvited", userService.isInvitedForFriendship(idCurrentUser, user.getIdUser()));
@@ -113,5 +113,61 @@ public class FriendsController {
             return "errorPages/400";
         }
         return "ok_ajax";
+    }
+
+    @RequestMapping(value = {"/user/invitations_for_friendship"})
+    public ModelAndView invitationsForFriendship() throws ServletException, IOException {
+        ModelAndView modelAndView;
+        int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+        List<User> listInvitations = userService.listInvitationsForFriendship(idUser);
+        if (listInvitations != null && listInvitations.size() > 0) {
+            modelAndView = new ModelAndView("invitations_for_friendship_ajax");
+            modelAndView.addObject("listInvitations", listInvitations);
+        } else {
+            modelAndView = new ModelAndView("list_invitations_for_friendship_empty");
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/user/accept_invitation/{idUser}"})
+    public String acceptInvitationForFriendship(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
+        try {
+            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+            userService.addFriendship(idCurrentUser, idUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "errorPages/400";
+        }
+        return "ok_ajax";
+    }
+
+    @RequestMapping(value = {"/user/decline_invitation/{idUser}"})
+    public String declineInvitationForFriendship(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
+        try {
+            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+            userService.declineInvitationForFriendship(idCurrentUser, idUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "errorPages/400";
+        }
+        return "ok_ajax";
+    }
+
+    @RequestMapping(value = "/user/view_invitation/{idUser}", method = RequestMethod.POST)
+    private ModelAndView goToInvitation(@PathVariable(value = "idUser") Integer idUser) throws IOException, ServletException {
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("invitations_info_ajax");
+            User user = userService.getUserById(idUser);
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+            modelAndView.addObject("user", user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("errorPages/400");
+        }
+        return modelAndView;
     }
 }

@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>You Have No Friends Yet</h1>
+            <h1>You Have No Invitations</h1>
         </div>
     </div>
 </div>

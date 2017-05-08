@@ -40,9 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationSuccessHandler successHandler() {
-        return (request, response, authentication) -> {
-            request.getRequestDispatcher("/index").forward(request, response);
-        };
+        return (request, response, authentication) -> request.getRequestDispatcher("/index").forward(request, response);
     }
 
     @Autowired

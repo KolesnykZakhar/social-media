@@ -86,7 +86,7 @@
                             <c:choose>
                                 <c:when test="${requestScope.isFriend}">
                                     <a href="#"
-                                       onclick="addOrRemoveFriend('/user/remove_from_friends/${requestScope.user.idUser}')"
+                                       onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.user.idUser}')"
                                        class="btn btn-primary">Remove From Friends</a>
                                 </c:when>
                                 <c:otherwise>
@@ -96,7 +96,7 @@
                                         </c:when>
                                         <c:otherwise>
                                             <a href="#"
-                                               onclick="addOrRemoveFriend('/user/add_to_friends/${requestScope.user.idUser}')"
+                                               onclick="addRemoveAcceptFriendship('/user/add_to_friends/${requestScope.user.idUser}')"
                                                class="btn btn-primary">Add To Friends</a>
                                         </c:otherwise>
                                     </c:choose>
@@ -112,7 +112,8 @@
                     <span class="pull-right">
                             <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user" data-toggle="tooltip" type="button"
+                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user"
+                               data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>

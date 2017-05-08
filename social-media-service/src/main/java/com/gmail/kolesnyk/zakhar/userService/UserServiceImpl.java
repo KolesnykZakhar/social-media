@@ -218,13 +218,13 @@ public class UserServiceImpl extends AbstractService implements UserService {
     @Override
     @Transactional
     public void inviteForFriendship(int idCurrentUser, int idUser) {
-        userDao.addToFriends(idCurrentUser, idUser);
+        userDao.inviteForFriendship(idCurrentUser, idUser);
     }
 
     @Override
     @Transactional
     public void applyFriendship(int idCurrentUser, int idUser) {
-        userDao.addToFriends(idCurrentUser, idUser);
+        userDao.addFriend(idCurrentUser, idUser);
     }
 
     @Override
@@ -237,5 +237,35 @@ public class UserServiceImpl extends AbstractService implements UserService {
     @Transactional(readOnly = true)
     public boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
         return userDao.isInvitedForFriendship(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Integer amountOfInvitations(int idUser) {
+        return userDao.amountOfInvitations(idUser);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> listInvitationsForFriendship(int idUser) {
+        List<User> resultList = userDao.listInvitationsForFriendship(idUser);
+        resultList.forEach(user -> {
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+        });
+        return resultList;
+    }
+
+    @Override
+    @Transactional
+    public void addFriendship(int idCurrentUser, int idUser) {
+        userDao.addFriend(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional
+    public void declineInvitationForFriendship(int idCurrentUser, int idUser) {
+        userDao.removeInvitationForFriendship(idCurrentUser, idUser);
     }
 }

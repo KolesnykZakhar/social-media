@@ -43,4 +43,12 @@ public interface UserService {
     void removeFromFriends(int idCurrentUser, int idUser);
 
     boolean isInvitedForFriendship(int idCurrentUser, int idUser);
+
+    Integer amountOfInvitations(int idUser);
+
+    List<User> listInvitationsForFriendship(int idUser);
+
+    void addFriendship(int idCurrentUser, int idUser);
+
+    void declineInvitationForFriendship(int idCurrentUser, int idUser);
 }

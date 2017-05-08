@@ -55,7 +55,7 @@ function searchUser(url) {
     });
 }
 
-function addOrRemoveFriend(url) {
+function addRemoveAcceptFriendship(url) {
     $.post(url, function (responseText) {
             $('#mainDiv').html(responseText);
         }

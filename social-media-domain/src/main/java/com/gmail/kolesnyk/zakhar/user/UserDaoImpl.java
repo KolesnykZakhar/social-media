@@ -114,9 +114,12 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     }
 
     @Override
-    public void addToFriends(int idCurrentUser, int idUser) {
+    public void addFriend(int idCurrentUser, int idUser) {
         sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO friends (id_user, id_friend) VALUES (:idCurrentUser, :idUser)")
                 .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+        sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO friends (id_user, id_friend) VALUES (:idUser, :idCurrentUser)")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+        removeInvitationForFriendship(idCurrentUser, idUser);
     }
 
     @Override
@@ -128,7 +131,34 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     @Override
     public boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession()
-                .createSQLQuery("SELECT count(*) FROM friends WHERE (id_user = :idUser AND id_friend = :idFriend) OR (id_user = :idFriend AND id_friend = :idUser)")
-                .setParameter("idUser", idCurrentUser).setParameter("idFriend", idUser).uniqueResult()).intValue() == 1;
+                .createSQLQuery("SELECT count(*) FROM inviting_for_friendship WHERE id_user = :idCurrentUser AND id_friend = :idUser")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).uniqueResult()).intValue() == 1;
+    }
+
+    @Override
+    public void inviteForFriendship(int idCurrentUser, int idUser) {
+        sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO inviting_for_friendship (id_user, id_friend) VALUES (:idCurrentUser, :idUser)")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+    }
+
+    @Override
+    public Integer amountOfInvitations(int idUser) {
+        return ((BigInteger) sessionFactory.getCurrentSession()
+                .createSQLQuery("SELECT count(*) FROM inviting_for_friendship WHERE id_friend = :idUser")
+                .setParameter("idUser", idUser).uniqueResult()).intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listInvitationsForFriendship(int idUser) {
+        return sessionFactory.getCurrentSession()
+                .createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT inviting_for_friendship.id_user FROM inviting_for_friendship WHERE id_friend = :idUser)")
+                .addEntity(User.class).setParameter("idUser", idUser).list();
+    }
+
+    @Override
+    public void removeInvitationForFriendship(int idCurrentUser, int idUser) {
+        sessionFactory.getCurrentSession().createSQLQuery("DELETE FROM inviting_for_friendship WHERE (id_user = :idCurrentUser AND id_friend = :idUser) OR (id_user = :idUser AND id_friend = :idCurrentUser)")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
     }
 }

@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.userService.UserService;
 import com.gmail.kolesnyk.zakhar.util.ViewUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +25,9 @@ public class UserController {
     @Autowired
     private ViewUtil viewUtil;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = {"/user/index"})
     public ModelAndView goToIndex() throws ServletException, IOException {
         ModelAndView modelAndView;
@@ -32,6 +36,10 @@ public class UserController {
         modelAndView = new ModelAndView("index");
         modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
         modelAndView.addObject("photos", photos);
+        Integer amountOfInvitations = userService.amountOfInvitations(user.getIdUser());
+        if (amountOfInvitations != null && amountOfInvitations > 0) {
+            modelAndView.addObject("amountOfInvitations", amountOfInvitations);
+        }
         return modelAndView;
     }
 

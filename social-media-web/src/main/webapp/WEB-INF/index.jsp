@@ -20,10 +20,10 @@
             </div>
             <div class="search">
                 <%--<form id="search">--%>
-                    <span>
+                <span>
                         <input type="text" value="" name="s" id="s"/>
                         <input <%--name="searchsubmit"--%> type="image" src="../static/images/search.gif"
-                                                           <%--value="Go"--%> <%--id="searchsubmit"--%>
+                        <%--value="Go"--%> <%--id="searchsubmit"--%>
                                                            class="btn"
                                                            onclick="searchUser('/user/search_user/'+$('#s').val())"/>
                     </span>
@@ -62,7 +62,12 @@
                             <li><a id='blog' href="#">Blog</a></li>
                             <li><a id='bookmarks' href="#">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
-                                Profile</a></li>
+                                Profile</a>
+                            </li>
+                            <li><a id='invitationsForFriendship' href="#"
+                                   onclick="postMainDiv('/user/invitations_for_friendship', this)">
+                                Invitations For Friendship <span style="color: red"><c:out
+                                    value="${requestScope.amountOfInvitations}"/></span></a></li>
                         </ul>
                     </div>
                 </div>

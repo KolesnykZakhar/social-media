@@ -60,9 +60,17 @@ public interface UserDao extends BaseDao<User, Integer> {
 
     boolean isFriends(int idCurrentUser, int idUser);
 
-    void addToFriends(int idCurrentUser, int idUser);
+    void addFriend(int idCurrentUser, int idUser);
 
     void removeFriendship(int idCurrentUser, int idUser);
 
     boolean isInvitedForFriendship(int idCurrentUser, int idUser);
+
+    void inviteForFriendship(int idCurrentUser, int idUser);
+
+    Integer amountOfInvitations(int idUser);
+
+    List<User> listInvitationsForFriendship(int idUser);
+
+    void removeInvitationForFriendship(int idCurrentUser, int idUser);
 }
