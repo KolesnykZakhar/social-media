@@ -20,19 +20,17 @@
             <th class="col-md-2 col-lg-2">Avatar</th>
             <th>Login</th>
             <th>Name</th>
-            <th>Email</th>
             <th>Status</th>
         </tr>
-        <c:forEach items="${requestScope.friends}" var="user" varStatus="index">
+        <c:forEach items="${requestScope.foundUsers}" var="user" varStatus="index">
             <tr>
                 <td class="col-md-2 col-lg-2">
-                    <a title="View" onclick="postMainDiv('/user/friend/${user.idUser}', this)">
+                    <a title="View" onclick="postMainDiv('/user/user/${user.idUser}', this)">
                         <img role="button" alt="User Pic" src='<c:out value="/user/avatar/${user.idUser}"/>'
                              class="img-circle img-responsive"></a>
                 </td>
                 <td><c:out value="${user.login}"/></td>
                 <td>${user.firstName}<br>${user.lastName}</td>
-                <td><a href="mailto:<c:out value='${user.email}'/>"><c:out value="${user.email}"/></a></td>
                 <td><c:choose>
                     <c:when test="${user.online}">
                         online
@@ -40,16 +38,17 @@
                     <c:otherwise>
                         offline
                     </c:otherwise>
-                </c:choose></td>
+                </c:choose>
+                </td>
             </tr>
         </c:forEach>
     </table>
-    <ul style="list-style: none; display: inline;">
-        <c:forEach var="i" begin="1" end="${requestScope.maxPage}">
-            <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>
-            </li>
-        </c:forEach>
-    </ul>
+    <%--<ul style="list-style: none; display: inline;">--%>
+    <%--<c:forEach var="i" begin="1" end="${requestScope.maxPage}">--%>
+    <%--<li style="display: inline;"><a href="#" onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>--%>
+    <%--</li>--%>
+    <%--</c:forEach>--%>
+    <%--</ul>--%>
 </div>
 </body>
 </html>

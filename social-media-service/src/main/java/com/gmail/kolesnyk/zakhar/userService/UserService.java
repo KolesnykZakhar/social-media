@@ -4,11 +4,7 @@ import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
 public interface UserService {
 
@@ -33,4 +29,8 @@ public interface UserService {
     void removeRestorePassword(String hash);
 
     void createNewPassword(String loginOrEmail, String password, String confirmPassword);
+
+    List<User> searchByName(String search);
+
+    boolean isFriends(int idUser, int idCurrentUser);
 }

@@ -1,11 +1,3 @@
-function getUser(url) {
-    $.get(url, function (responseText) {
-        $('#mainDiv').html(responseText);
-    });
-    $('html, body').animate({
-        scrollTop: $("#mainDiv").offset().top
-    }, 1000);
-}
 function postMainDiv(url, currentARef) {
     $.post(url, function (responseText) {
             $('#mainDiv').html(responseText);
@@ -23,7 +15,7 @@ function postMainDiv(url, currentARef) {
     $(currentARef).parent().toggleClass("active");
 }
 
-function updateUser(url, currentARef) {
+function updateUser(url) {
     $.post(url, {
         birthDate: $('#birthDate').val(),
         gender: $('input[name=gender]:checked').val(),
@@ -34,6 +26,7 @@ function updateUser(url, currentARef) {
             $('#mainDiv').html(responseText);
         }
     );
+
     $('html, body').animate({
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
@@ -43,10 +36,38 @@ function updateUser(url, currentARef) {
             $(this).toggleClass("active");
         }
     });
-    $(currentARef).parent().toggleClass("active");
 }
 
-function removePhoto(url) {
-    // var imgFullURL = document.querySelector('img.something').src;
-    alert(url);
+function searchUser(url) {
+    $.post(url, function (responseText) {
+            $('#mainDiv').html(responseText);
+        }
+    );
+
+    $('html, body').animate({
+        scrollTop: $("#mainDiv").offset().top
+    }, 1000);
+
+    $('#sb_menu').children().each(function () {
+        if (this.classList.contains("active")) {
+            $(this).toggleClass("active");
+        }
+    });
+}
+
+function addOrRemoveFriend(url) {
+    $.post(url, function (responseText) {
+            $('#mainDiv').html(responseText);
+        }
+    );
+
+    $('html, body').animate({
+        scrollTop: $("#mainDiv").offset().top
+    }, 1000);
+
+    $('#sb_menu').children().each(function () {
+        if (this.classList.contains("active")) {
+            $(this).toggleClass("active");
+        }
+    });
 }

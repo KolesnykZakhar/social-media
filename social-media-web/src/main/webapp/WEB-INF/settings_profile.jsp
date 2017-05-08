@@ -118,7 +118,7 @@
 
                                 </table>
 
-                                <a href="#" onclick="updateUser('/user/update_user_info/', this)"
+                                <a href="#" onclick="updateUser('/user/update_user_info/')"
                                    class="btn btn-primary">Save changes</a>
                                 <a href="/user/index" class="btn btn-primary">Cancel</a>
                             </form>

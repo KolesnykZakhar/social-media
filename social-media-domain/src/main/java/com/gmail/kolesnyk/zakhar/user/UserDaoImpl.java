@@ -92,4 +92,24 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
                 ("DELETE FROM restore_password WHERE restore_password.hashed_password = :hashForPassword ;")
                 .setParameter("hashForPassword", hashForPassword).executeUpdate() != 0;
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> searchByName(String search) {
+        String[] split = search.split(" ");
+        String firstName = split[0].trim().toLowerCase();
+        String lastName = "";
+        if (split.length > 1) {
+            lastName = split[1].trim().toLowerCase();
+        }
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName));")
+                .addEntity(User.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%").list();
+    }
+
+    @Override
+    public boolean isFriends(int idUser, int idCurrentUser) {
+        return ((BigInteger) sessionFactory.getCurrentSession()
+                .createSQLQuery("SELECT count(*) FROM friends WHERE (id_user = :idUser AND id_friend = :idFriend) OR (id_user = :idFriend AND id_friend = :idUser)")
+                .setParameter("idUser", idUser).setParameter("idFriend", idCurrentUser).uniqueResult()).intValue() == 2;
+    }
 }

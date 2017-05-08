@@ -55,4 +55,8 @@ public interface UserDao extends BaseDao<User, Integer> {
     Boolean saveHashForPassword(String hashForPassword, Integer idUser);
 
     Boolean removeRestorePassword(String hash);
+
+    List<User> searchByName(String search);
+
+    boolean isFriends(int idUser, int idCurrentUser);
 }

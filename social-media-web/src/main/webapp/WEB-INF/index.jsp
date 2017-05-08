@@ -18,6 +18,19 @@
             <div class="logo">
                 <h1><span>Social-Media</span>Network</h1>
             </div>
+            <div class="search">
+                <%--<form id="search">--%>
+                    <span>
+                        <input type="text" value="" name="s" id="s"/>
+                        <input <%--name="searchsubmit"--%> type="image" src="../static/images/search.gif"
+                                                           <%--value="Go"--%> <%--id="searchsubmit"--%>
+                                                           class="btn"
+                                                           onclick="searchUser('/user/search_user/'+$('#s').val())"/>
+                    </span>
+                <%--</form>--%>
+                <!--/searchform -->
+                <div class="clr"></div>
+            </div>
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>

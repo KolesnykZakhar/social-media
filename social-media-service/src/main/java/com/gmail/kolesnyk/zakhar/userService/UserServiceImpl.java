@@ -196,4 +196,22 @@ public class UserServiceImpl extends AbstractService implements UserService {
         user.setPass(passwordEncoder().encode(password.trim()));
         userDao.update(user);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> searchByName(String search) {
+        List<User> resultList = userDao.searchByName(search);
+        resultList.forEach(user -> {
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+        });
+        return resultList;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean isFriends(int idUser, int idCurrentUser) {
+        return userDao.isFriends(idUser, idCurrentUser);
+    }
 }

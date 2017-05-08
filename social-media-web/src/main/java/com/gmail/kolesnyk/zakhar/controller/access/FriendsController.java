@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class FriendsController {
@@ -57,5 +58,49 @@ public class FriendsController {
             modelAndView = new ModelAndView("friends_list_empty");
         }
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/search_user/{searchUser}", method = RequestMethod.POST)
+    private ModelAndView searchUsers(@PathVariable(value = "searchUser") String search) {
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("found_users");
+            List<User> foundUsers = userService.searchByName(search);
+            modelAndView.addObject("foundUsers", foundUsers);
+        } catch (Exception e) {
+            modelAndView = new ModelAndView("not_found_users");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/user/{idUser}", method = RequestMethod.POST)
+    private ModelAndView goToUser(@PathVariable(value = "idUser") Integer idUser) throws IOException, ServletException {
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("user_info_ajax");
+            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+            User user = userService.getUserById(idUser);
+            modelAndView.addObject("isFriend", userService.isFriends(user.getIdUser(), idCurrentUser));
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+            modelAndView.addObject("user", user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("errorPages/400");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/user/add_to_friends/{idUser}"})
+    public String addToFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
+        System.out.println("\n\n\n\nADD_TO_FRIENDS" + idUser);
+        return "ok_ajax";
+    }
+
+    @RequestMapping(value = {"/user/remove_from_friends/{idUser}"})
+    public String removeFromFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
+        System.out.println("\n\n\n\nREMOVE_FROM_FRIENDS" + idUser);
+        return "ok_ajax";
     }
 }

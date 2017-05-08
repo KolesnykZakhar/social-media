@@ -22,9 +22,9 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><c:out
-                            value="${requestScope.friend.firstName} ${requestScope.friend.lastName}"/></h3>
+                            value="${requestScope.user.firstName} ${requestScope.user.lastName}"/></h3>
                     <c:choose>
-                        <c:when test="${requestScope.friend.online}">
+                        <c:when test="${requestScope.user.online}">
                             online
                         </c:when>
                         <c:otherwise>
@@ -35,7 +35,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
-                            <img alt="User Pic" src='<c:out value="/user/avatar/${requestScope.friend.idUser}"/>'
+                            <img alt="User Pic" src='<c:out value="/user/avatar/${requestScope.user.idUser}"/>'
                                  class="img-circle img-responsive">
                         </div>
                         <div class=" col-md-9 col-lg-9 ">
@@ -44,19 +44,19 @@
                                 <tbody>
                                 <tr>
                                     <td><label>First Name</label></td>
-                                    <td><c:out value="${requestScope.friend.firstName}"/></td>
+                                    <td><c:out value="${requestScope.user.firstName}"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Last Name</label></td>
-                                    <td><c:out value="${requestScope.friend.lastName}"/></td>
+                                    <td><c:out value="${requestScope.user.lastName}"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Phone Number</label></td>
-                                    <td><c:out value="${requestScope.friend.phone}"/></td>
+                                    <td><c:out value="${requestScope.user.phone}"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Date of Birth</label></td>
-                                    <td><c:out value="${requestScope.friend.birthDate}"/></td>
+                                    <td><c:out value="${requestScope.user.birthDate}"/></td>
                                 </tr>
 
                                 <tr>
@@ -65,25 +65,33 @@
                                     <td>
                                         <div class="form-group">
                                             <div class="cols-sm-10">
-                                                <c:out value="${requestScope.friend.gender}"/>
+                                                <c:out value="${requestScope.user.gender}"/>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label>Email</label></td>
-                                    <td><a href="mailto:<c:out value='${requestScope.friend.email}'/>">
-                                        <c:out value="${requestScope.friend.email}"/></a></td>
+                                    <td><a href="mailto:<c:out value='${requestScope.user.email}'/>">
+                                        <c:out value="${requestScope.user.email}"/></a></td>
                                 </tr>
                                 <tr>
                                     <td><label>Login</label></td>
-                                    <td><c:out value='${requestScope.friend.login}'/></td>
+                                    <td><c:out value='${requestScope.user.login}'/></td>
                                 </tr>
 
                                 </tbody>
 
                             </table>
-                            <a href="#" onclick="addOrRemoveFriend('/user/remove_from_friends/${requestScope.friend.idUser}')" class="btn btn-primary">Remove From Friends</a>
+                            <c:choose>
+                                <c:when test="${requestScope.isFriend}">
+                                    <a href="#" onclick="addOrRemoveFriend('/user/remove_from_friends/${requestScope.user.idUser}')" class="btn btn-primary">Remove From Friends</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="#" onclick="addOrRemoveFriend('/user/add_to_friends/${requestScope.user.idUser}')" class="btn btn-primary">Add To Friends</a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </div>
                 </div>
