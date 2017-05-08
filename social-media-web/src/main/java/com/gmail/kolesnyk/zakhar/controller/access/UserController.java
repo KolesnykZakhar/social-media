@@ -8,6 +8,7 @@ import com.gmail.kolesnyk.zakhar.util.ViewUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,6 +64,13 @@ public class UserController {
         modelAndView = new ModelAndView("settings_profile");
         modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
         modelAndView.addObject("user", viewUtil.getUserViewVersion());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/chat/{idUser}")
+    public ModelAndView openChat(@PathVariable("idUser") Integer idUser){
+        System.out.println("\n\n\n\nCHAT "+idUser);
+        ModelAndView modelAndView=new ModelAndView("chat");
         return modelAndView;
     }
 }
