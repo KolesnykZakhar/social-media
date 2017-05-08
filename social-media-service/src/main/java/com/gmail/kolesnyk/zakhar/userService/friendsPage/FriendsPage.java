@@ -17,15 +17,7 @@ public class FriendsPage {
         return page;
     }
 
-    public void setPage(List<User> page) {
-        this.page = page;
-    }
-
     public int getAmountPages() {
         return amountPages;
-    }
-
-    public void setAmountPages(int amountPages) {
-        this.amountPages = amountPages;
     }
 }

@@ -154,7 +154,7 @@
 <div class="menu_nav">
     <ul>
         <li><a role="button" data-toggle="modal" data-target="#addPhoto">Add Photo</a></li>
-        <li><a href="#">Remove Photo</a></li>
+        <%--<li><a href="#">Remove Photo</a></li>--%>
     </ul>
     <div class="clr"></div>
 </div>
