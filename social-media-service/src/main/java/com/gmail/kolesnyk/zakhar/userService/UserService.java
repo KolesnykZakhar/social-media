@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.userService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,4 +34,13 @@ public interface UserService {
     List<User> searchByName(String search);
 
     boolean isFriends(int idUser, int idCurrentUser);
+
+    void inviteForFriendship(int idCurrentUser, int idUser);
+
+    @Transactional
+    void applyFriendship(int idCurrentUser, int idUser);
+
+    void removeFromFriends(int idCurrentUser, int idUser);
+
+    boolean isInvitedForFriendship(int idCurrentUser, int idUser);
 }

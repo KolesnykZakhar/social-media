@@ -39,7 +39,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public int amountFriends(Integer idUser) {
-        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT COUNT(*) FROM friends WHERE id_user = :idUser")
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM friends WHERE id_user = :idUser")
                 .setParameter("idUser", idUser).uniqueResult()).intValue();
     }
 
@@ -107,9 +107,28 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     }
 
     @Override
-    public boolean isFriends(int idUser, int idCurrentUser) {
+    public boolean isFriends(int idCurrentUser, int idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession()
                 .createSQLQuery("SELECT count(*) FROM friends WHERE (id_user = :idUser AND id_friend = :idFriend) OR (id_user = :idFriend AND id_friend = :idUser)")
-                .setParameter("idUser", idUser).setParameter("idFriend", idCurrentUser).uniqueResult()).intValue() == 2;
+                .setParameter("idUser", idCurrentUser).setParameter("idFriend", idUser).uniqueResult()).intValue() == 2;
+    }
+
+    @Override
+    public void addToFriends(int idCurrentUser, int idUser) {
+        sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO friends (id_user, id_friend) VALUES (:idCurrentUser, :idUser)")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+    }
+
+    @Override
+    public void removeFriendship(int idCurrentUser, int idUser) {
+        sessionFactory.getCurrentSession().createSQLQuery("DELETE FROM friends WHERE (id_user = :idCurrentUser AND id_friend = :idUser) OR (id_user = :idUser AND id_friend = :idCurrentUser)")
+                .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+    }
+
+    @Override
+    public boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
+        return ((BigInteger) sessionFactory.getCurrentSession()
+                .createSQLQuery("SELECT count(*) FROM friends WHERE (id_user = :idUser AND id_friend = :idFriend) OR (id_user = :idFriend AND id_friend = :idUser)")
+                .setParameter("idUser", idCurrentUser).setParameter("idFriend", idUser).uniqueResult()).intValue() == 1;
     }
 }

@@ -93,7 +93,7 @@
                     <span class="pull-right">
                             <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button"
+                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user" data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>

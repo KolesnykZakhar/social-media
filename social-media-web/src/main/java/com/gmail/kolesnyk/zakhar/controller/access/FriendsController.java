@@ -80,7 +80,11 @@ public class FriendsController {
             modelAndView = new ModelAndView("user_info_ajax");
             int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
             User user = userService.getUserById(idUser);
-            modelAndView.addObject("isFriend", userService.isFriends(user.getIdUser(), idCurrentUser));
+            boolean isFriends=userService.isFriends(idCurrentUser, user.getIdUser());
+            modelAndView.addObject("isFriend", isFriends);
+            if (!isFriends) {
+                modelAndView.addObject("isInvited", userService.isInvitedForFriendship(idCurrentUser, user.getIdUser()));
+            }
             if (userActivityMap.isOnline(user.getIdUser())) {
                 user.setOnline(true);
             }
@@ -94,13 +98,20 @@ public class FriendsController {
 
     @RequestMapping(value = {"/user/add_to_friends/{idUser}"})
     public String addToFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
-        System.out.println("\n\n\n\nADD_TO_FRIENDS" + idUser);
+        int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+        userService.inviteForFriendship(idCurrentUser, idUser);
         return "ok_ajax";
     }
 
     @RequestMapping(value = {"/user/remove_from_friends/{idUser}"})
     public String removeFromFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
-        System.out.println("\n\n\n\nREMOVE_FROM_FRIENDS" + idUser);
+        try {
+            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+            userService.removeFromFriends(idCurrentUser, idUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "errorPages/400";
+        }
         return "ok_ajax";
     }
 }

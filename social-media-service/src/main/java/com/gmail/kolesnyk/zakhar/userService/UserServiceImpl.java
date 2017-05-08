@@ -211,7 +211,31 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean isFriends(int idUser, int idCurrentUser) {
-        return userDao.isFriends(idUser, idCurrentUser);
+    public boolean isFriends(int idCurrentUser, int idUser) {
+        return userDao.isFriends(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional
+    public void inviteForFriendship(int idCurrentUser, int idUser) {
+        userDao.addToFriends(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional
+    public void applyFriendship(int idCurrentUser, int idUser) {
+        userDao.addToFriends(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional
+    public void removeFromFriends(int idCurrentUser, int idUser) {
+        userDao.removeFriendship(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
+        return userDao.isInvitedForFriendship(idCurrentUser, idUser);
     }
 }

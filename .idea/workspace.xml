@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/found_users.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/not_found_users.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp" />
+    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="Implemented remove from friends nd invite to friends.&#10;found bug with friendList, to list fall invited friends too,&#10;need to implement applying for friendship">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friendship_already_invited.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java" afterPath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java" afterPath="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java" afterPath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" afterPath="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp" />
     </list>
     <ignored path="social-media.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,12 +56,106 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="FriendsController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FriendsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="97" column="25" lean-forward="true" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+            <state relative-caret-position="50">
+              <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="55" column="40" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_info_ajax.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="94" column="101" lean-forward="false" selection-start-line="94" selection-start-column="101" selection-end-line="94" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings_profile.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="133" column="74" lean-forward="false" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="friend_info_ajax.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="95" column="74" lean-forward="false" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="237" column="32" lean-forward="false" selection-start-line="237" selection-start-column="32" selection-end-line="237" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2276">
+              <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <folding>
+                <marker date="1494244139055" expanded="true" signature="1206:1298" ph="SELECT * FRO... users" />
+                <marker date="1494244139055" expanded="true" signature="1244:1297" ph="SELECT id_fr... friends" />
+                <marker date="1494244139055" expanded="true" signature="1562:1614" ph="SELECT COUNT... friends" />
+                <marker date="1494244139055" expanded="true" signature="1914:2050" ph="SELECT * FRO... users" />
+                <marker date="1494244139055" expanded="true" signature="1952:2005" ph="SELECT id_fr... friends" />
+                <marker date="1494244139055" expanded="true" signature="2364:2447" ph="INSERT INTO confirm_emails... " />
+                <marker date="1494244139055" expanded="true" signature="2729:2849" ph="DELETE FROM " />
+                <marker date="1494244139055" expanded="true" signature="2765:2848" ph="SELECT confi... confirm_emails" />
+                <marker date="1494244139055" expanded="true" signature="3099:3221" ph="SELECT * FRO... users" />
+                <marker date="1494244139055" expanded="true" signature="3137:3220" ph="SELECT confi... confirm_emails" />
+                <marker date="1494244139055" expanded="true" signature="3486:3546" ph="DELETE FROM " />
+                <marker date="1494244139055" expanded="true" signature="3817:3909" ph="INSERT INTO restore_password... " />
+                <marker date="1494244139055" expanded="true" signature="4203:4289" ph="DELETE FROM " />
+                <marker date="1494244139055" expanded="true" signature="4784:4956" ph="SELECT * FRO... users" />
+                <marker date="1494244139055" expanded="true" signature="5283:5412" ph="SELECT count... friends" />
+                <marker date="1494244139055" expanded="true" signature="5283:5414" ph="SELECT id_us... friends" />
+                <marker date="1494244139055" expanded="true" signature="5678:5751" ph="INSERT INTO friends... " />
+                <marker date="1494244139055" expanded="true" signature="6010:6140" ph="DELETE FROM " />
+                <marker date="1494244139055" expanded="true" signature="6446:6575" ph="SELECT count... friends" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExceptionHandlerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="26" column="7" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="26" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#495#496#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,10 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>script</find>
-      <find>encr</find>
-      <find>ASASASASAS</find>
-      <find>Style</find>
       <find>friend</find>
       <find>setParameter</find>
       <find>setParameter(</find>
@@ -115,6 +202,10 @@
       <find>href</find>
       <find>count</find>
       <find>remove_from_friends</find>
+      <find>INSERT</find>
+      <find>2</find>
+      <find>dupl</find>
+      <find>Home</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/slider_content.jsp" />
         <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/AbstractService.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/errorPages/404.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/errorPages/500.jsp" />
@@ -160,7 +250,6 @@
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/RequestFilter.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/authentication/IndexController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/RequestHandler.java" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebAppInitializer.java" />
@@ -169,16 +258,18 @@
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/not_found_users.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/found_users.jsp" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" />
         <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/User.java" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" />
-        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java" />
-        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp" />
-        <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/errorPages/friendship_already_invited.jsp" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java" />
         <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java" />
+        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java" />
+        <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp" />
       </list>
     </option>
   </component>
@@ -679,6 +770,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="social-media-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="errorPages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1382,7 +1507,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../[comercial]/[upWork]/upWorkJunit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/errorPages" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="D:\Program Files (x86)\nodejs\node.exe" />
@@ -1407,8 +1532,8 @@
       <recent name="com.gmail.kolesnyk.zakhar" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\WEB-INF" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\WEB-INF\errorPages" />
+      <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\WEB-INF" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\webapp\static" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\src\main\resources\media\avatars" />
       <recent name="D:\install\Java BUILD\Project\[petProjects]\social-media\social-media-web\target" />
@@ -2090,7 +2215,7 @@
       <workItem from="1493129892474" duration="1597000" />
       <workItem from="1493205272936" duration="102000" />
       <workItem from="1494140866509" duration="32055000" />
-      <workItem from="1494224767512" duration="12746000" />
+      <workItem from="1494224767512" duration="18934000" />
     </task>
     <task id="LOCAL-00001" summary="Friendship, post, users, hiberante">
       <created>1486459145813</created>
@@ -2393,7 +2518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494226395652</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Implemented searching users, when user profile open showed friend it or not.&#10;add buttons, js and controllers for add or remove friends.">
+      <created>1494239112787</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1494239112787</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2429,7 +2561,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395538000" />
+    <option name="totallyTimeSpent" value="401726000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2453,7 +2585,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11868958" sideWeight="0.4744898" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.079484425" sideWeight="0.4744898" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12244898" sideWeight="0.5255102" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -2465,12 +2597,13 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.4935553" order="2" side_tool="false" content_ui="tabs" x="0" y="29" width="1920" height="1001" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="98" y="76" width="1738" height="848" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2797282" sideWeight="0.4935553" order="2" side_tool="false" content_ui="tabs" x="0" y="29" width="1920" height="1001" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18796992" sideWeight="0.5516014" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19065522" sideWeight="0.4483986" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21804512" sideWeight="0.4483986" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21911922" sideWeight="0.5241379" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3567384" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2482,7 +2615,6 @@
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="98" y="76" width="1738" height="848" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2563,7 +2695,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring FriendsController, LogoutController" />
     <MESSAGE value="Debug AbstractDao" />
     <MESSAGE value="Finish integrating spring framework to controllers and daos" />
     <MESSAGE value="Implementation WebSecurity" />
@@ -2588,7 +2719,8 @@
     <MESSAGE value="ExceptionHandler for all exceptions.&#10;Fixed bug with absent File.SEPARATOR in uploading photo&#10;" />
     <MESSAGE value="Implemented HandlerInterceptor for user activity. (online friends is marked)" />
     <MESSAGE value="index page refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="index page refactoring" />
+    <MESSAGE value="Implemented searching users, when user profile open showed friend it or not.&#10;add buttons, js and controllers for add or remove friends." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented searching users, when user profile open showed friend it or not.&#10;add buttons, js and controllers for add or remove friends." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2605,21 +2737,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/admin/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/mediaService/MediaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/errorPages/unexpected.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
@@ -2663,6 +2780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2782,16 +2900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -2866,14 +2974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friends_ajax.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -2893,19 +2993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/friendsPage/FriendsPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -2913,14 +3000,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="120" column="89" lean-forward="false" selection-start-line="120" selection-start-column="89" selection-end-line="120" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2948,6 +3027,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friendship_already_invited.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="dbDummy://dbtable:/2a6d3169/eb50a962-bd1a-4e2a-88e2-58c0840382e6/social-media.friends">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -2961,78 +3061,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="82" column="40" lean-forward="true" selection-start-line="82" selection-start-column="40" selection-end-line="82" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="85" column="115" lean-forward="false" selection-start-line="85" selection-start-column="115" selection-end-line="85" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+        <state relative-caret-position="38">
+          <caret line="645" column="17" lean-forward="false" selection-start-line="645" selection-start-column="17" selection-end-line="645" selection-end-column="17" />
           <folding>
-            <marker date="1494238795600" expanded="true" signature="1206:1298" ph="SELECT * FRO... users" />
-            <marker date="1494238795600" expanded="true" signature="1244:1297" ph="SELECT id_fr... friends" />
-            <marker date="1494238795600" expanded="true" signature="1562:1614" ph="SELECT COUNT... friends" />
-            <marker date="1494238795600" expanded="true" signature="1914:2050" ph="SELECT * FRO... users" />
-            <marker date="1494238795600" expanded="true" signature="1952:2005" ph="SELECT id_fr... friends" />
-            <marker date="1494238795600" expanded="true" signature="2364:2447" ph="INSERT INTO confirm_emails... " />
-            <marker date="1494238795600" expanded="true" signature="2729:2849" ph="DELETE FROM " />
-            <marker date="1494238795600" expanded="true" signature="2765:2848" ph="SELECT confi... confirm_emails" />
-            <marker date="1494238795600" expanded="true" signature="3099:3221" ph="SELECT * FRO... users" />
-            <marker date="1494238795600" expanded="true" signature="3137:3220" ph="SELECT confi... confirm_emails" />
-            <marker date="1494238795600" expanded="true" signature="3486:3546" ph="DELETE FROM " />
-            <marker date="1494238795600" expanded="true" signature="3817:3909" ph="INSERT INTO restore_password... " />
-            <marker date="1494238795600" expanded="true" signature="4203:4289" ph="DELETE FROM " />
-            <marker date="1494238795600" expanded="true" signature="4784:4956" ph="SELECT * FRO... users" />
-            <marker date="1494238795600" expanded="true" signature="5283:5412" ph="SELECT count... friends" />
-            <marker date="1494238795600" expanded="true" signature="5283:5414" ph="SELECT id_us... friends" />
+            <element signature="e#26222#26223#0" expanded="false" />
+            <element signature="e#26265#26266#0" expanded="false" />
+            <element signature="e#26470#26471#0" expanded="false" />
+            <element signature="e#26528#26529#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/ExceptionHandlerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="214" column="55" lean-forward="false" selection-start-line="214" selection-start-column="55" selection-end-line="214" selection-end-column="55" />
+        <state relative-caret-position="416">
+          <caret line="26" column="7" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="26" selection-end-column="7" />
           <folding>
-            <element signature="e#7962#7963#0" expanded="true" />
-            <element signature="e#8025#8026#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        <state relative-caret-position="348">
+          <caret line="44" column="12" lean-forward="false" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
+        <state relative-caret-position="366">
+          <caret line="66" column="38" lean-forward="false" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2276">
+          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding>
+            <marker date="1494244139055" expanded="true" signature="1206:1298" ph="SELECT * FRO... users" />
+            <marker date="1494244139055" expanded="true" signature="1244:1297" ph="SELECT id_fr... friends" />
+            <marker date="1494244139055" expanded="true" signature="1562:1614" ph="SELECT COUNT... friends" />
+            <marker date="1494244139055" expanded="true" signature="1914:2050" ph="SELECT * FRO... users" />
+            <marker date="1494244139055" expanded="true" signature="1952:2005" ph="SELECT id_fr... friends" />
+            <marker date="1494244139055" expanded="true" signature="2364:2447" ph="INSERT INTO confirm_emails... " />
+            <marker date="1494244139055" expanded="true" signature="2729:2849" ph="DELETE FROM " />
+            <marker date="1494244139055" expanded="true" signature="2765:2848" ph="SELECT confi... confirm_emails" />
+            <marker date="1494244139055" expanded="true" signature="3099:3221" ph="SELECT * FRO... users" />
+            <marker date="1494244139055" expanded="true" signature="3137:3220" ph="SELECT confi... confirm_emails" />
+            <marker date="1494244139055" expanded="true" signature="3486:3546" ph="DELETE FROM " />
+            <marker date="1494244139055" expanded="true" signature="3817:3909" ph="INSERT INTO restore_password... " />
+            <marker date="1494244139055" expanded="true" signature="4203:4289" ph="DELETE FROM " />
+            <marker date="1494244139055" expanded="true" signature="4784:4956" ph="SELECT * FRO... users" />
+            <marker date="1494244139055" expanded="true" signature="5283:5412" ph="SELECT count... friends" />
+            <marker date="1494244139055" expanded="true" signature="5283:5414" ph="SELECT id_us... friends" />
+            <marker date="1494244139055" expanded="true" signature="5678:5751" ph="INSERT INTO friends... " />
+            <marker date="1494244139055" expanded="true" signature="6010:6140" ph="DELETE FROM " />
+            <marker date="1494244139055" expanded="true" signature="6446:6575" ph="SELECT count... friends" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="55" column="40" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/settings_profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="133" column="74" lean-forward="false" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/friend_info_ajax.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="95" column="74" lean-forward="false" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/userService/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="237" column="32" lean-forward="false" selection-start-line="237" selection-start-column="32" selection-end-line="237" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/access/FriendsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="97" column="25" lean-forward="true" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+        <state relative-caret-position="50">
+          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/user_info_ajax.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="94" column="101" lean-forward="false" selection-start-line="94" selection-start-column="101" selection-end-line="94" selection-end-column="101" />
           <folding />
         </state>
       </provider>
