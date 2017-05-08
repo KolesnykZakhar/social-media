@@ -14,8 +14,9 @@
 <div class="chat">
     <div class="chat-header clearfix row">
         <div class="col-md-2 col-lg-2 " align="center">
-            <img alt="User Pic" src='<c:out value="/user/avatar/${requestScope.chat.interlocutor.idUser}"/>'
-                 class="img-circle img-responsive">
+            <a title="View" onclick="postMainDiv('/user/user/${requestScope.chat.interlocutor.idUser}', this)">
+            <img role="button" alt="User Pic" src='<c:out value="/user/avatar/${requestScope.chat.interlocutor.idUser}"/>'
+                 class="img-circle img-responsive"></a>
         </div>
         <div class="col-md-8 col-lg-8 " align="center">
             <div class="chat-about">
@@ -32,7 +33,7 @@
         <ul>
             <c:forEach items="${requestScope.chat.messages}" var="message" varStatus="index">
                 <c:choose>
-                    <c:when test="${message.idUser == requestScope.chat.idUser}">
+                    <c:when test="${message.idUser eq requestScope.chat.idUser}">
                         <li class="clearfix">
                             <div class="message other-message float-right">
                                 <c:out value="${message.textMessage}"/>

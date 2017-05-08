@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 08 2017 г., 15:49
+-- Время создания: Май 08 2017 г., 20:02
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -131,6 +131,44 @@ INSERT INTO `inviting_for_friendship` (`id_user`, `id_friend`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id_message` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_friend` int(11) NOT NULL,
+  `text_message` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id_message`, `id_user`, `id_friend`, `text_message`) VALUES
+(1, 1, 2, 'hello1'),
+(2, 1, 2, 'hello2'),
+(3, 1, 4, 'hello4'),
+(4, 2, 1, 'hello3'),
+(5, 1, 6, 'hello6'),
+(6, 1, 2, 'fgdfgdfgdf'),
+(7, 1, 2, 'sdfsdfsd'),
+(8, 1, 2, 'sdfsdfsdfsd'),
+(9, 1, 2, 'sdfsdfsdfsd'),
+(10, 1, 2, 'sdfsdfsdfs'),
+(11, 1, 2, 'dasdasdas'),
+(12, 1, 2, 'asdasdasda'),
+(13, 1, 2, 'asdasdasdas'),
+(14, 1, 2, 'asdasdasd'),
+(15, 1, 2, 'sssssssssssssssssssssssss'),
+(16, 2, 1, 'asdasdasdasda'),
+(17, 1, 2, 'fdfgdf'),
+(18, 1, 2, 'vcbcvbcvbc'),
+(19, 1, 2, 'zzzzzzzzzzzzzzzzzz');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `posts`
 --
 
@@ -240,6 +278,12 @@ ALTER TABLE `friends`
   ADD KEY `FK_9pwml5q21cfq50vrhnqitl3qw` (`id_friend`);
 
 --
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id_message`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -271,6 +315,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `authority`
   MODIFY `id_authority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
