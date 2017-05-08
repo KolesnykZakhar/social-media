@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a onclick="postMainDiv('/user/message/${requestScope.user.idUser}', this)" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
+                    <a onclick="postMainDiv('/user/chat/${requestScope.user.idUser}')" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
                        class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
                             <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button"

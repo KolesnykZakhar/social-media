@@ -66,11 +66,4 @@ public class UserController {
         modelAndView.addObject("user", viewUtil.getUserViewVersion());
         return modelAndView;
     }
-
-    @RequestMapping(value = "/user/chat/{idUser}")
-    public ModelAndView openChat(@PathVariable("idUser") Integer idUser){
-        System.out.println("\n\n\n\nCHAT "+idUser);
-        ModelAndView modelAndView=new ModelAndView("chat");
-        return modelAndView;
-    }
 }

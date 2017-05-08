@@ -18,6 +18,9 @@ public class Message {
     @Column(name = "id_friend")
     private Integer idFriend;
 
+    @Column(name = "text_message")
+    private String textMessage;
+
     public Integer getIdUser() {
         return idUser;
     }
@@ -32,5 +35,21 @@ public class Message {
 
     public void setIdFriend(Integer idFriend) {
         this.idFriend = idFriend;
+    }
+
+    public Integer getIdMessage() {
+        return idMessage;
+    }
+
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
+    }
+
+    public String getTextMessage() {
+        return textMessage;
+    }
+
+    public void setTextMessage(String textMessage) {
+        this.textMessage = textMessage;
     }
 }

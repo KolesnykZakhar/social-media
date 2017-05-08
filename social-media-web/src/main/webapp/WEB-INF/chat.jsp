@@ -1,103 +1,78 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html >
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Chat Widget</title>
     <link rel="stylesheet" href="../static/chat/css/reset.css">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="../static/chat/css/style.css">
+    <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
 </head>
 <body>
 <%--<div class="container clearfix">--%>
-    <div class="chat">
-        <div class="chat-header clearfix">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
-
+<div class="chat">
+    <div class="chat-header clearfix row">
+        <div class="col-md-2 col-lg-2 " align="center">
+            <img alt="User Pic" src='<c:out value="/user/avatar/${requestScope.chat.interlocutor.idUser}"/>'
+                 class="img-circle img-responsive">
+        </div>
+        <div class="col-md-8 col-lg-8 " align="center">
             <div class="chat-about">
-                <div class="chat-with">Chat with Vincent Porter</div>
-                <div class="chat-num-messages">already 1 902 messages</div>
+                <div class="chat-with">Chat with <c:out value="${requestScope.chat.interlocutor.firstName}"/> <c:out
+                        value="${requestScope.chat.interlocutor.lastName}"/></div>
+                <div class="chat-num-messages">already <c:out value="${requestScope.chat.messages.size()}"/> messages
+                </div>
             </div>
-            <i class="fa fa-star"></i>
-        </div> <!-- end message-header -->
+        </div>
+        <i class="fa fa-star"></i>
+    </div> <!-- end message-header -->
 
-        <div class="chat-history">
-            <ul>
-                <li class="clearfix">
-                    <div class="message-data align-right">
-                        <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
-                        <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+    <div class="chat-history">
+        <ul>
+            <c:forEach items="${requestScope.chat.messages}" var="message" varStatus="index">
+                <c:choose>
+                    <c:when test="${message.idUser == requestScope.chat.idUser}">
+                        <li class="clearfix">
+                            <div class="message other-message float-right">
+                                <c:out value="${message.textMessage}"/>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <div class="message my-message">
+                                <c:out value="${message.textMessage}"/>
+                            </div>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </ul>
 
-                    </div>
-                    <div class="message other-message float-right">
-                        Hi Vincent, how are you? How is the project coming along?
-                    </div>
-                </li>
+    </div> <!-- end message-history -->
 
-                <li>
-                    <div class="message-data">
-                        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-                        <span class="message-data-time">10:12 AM, Today</span>
-                    </div>
-                    <div class="message my-message">
-                        Are we meeting today? Project has been already finished and I have results to show you.
-                    </div>
-                </li>
+    <div class="chat-message clearfix">
+        <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
 
-                <li class="clearfix">
-                    <div class="message-data align-right">
-                        <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
-                        <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+        <i class="fa fa-file-image-o"></i>
 
-                    </div>
-                    <div class="message other-message float-right">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                </li>
+        <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
+        <input id="idUser" hidden value="${requestScope.chat.idUser}"/>
+        <button onclick="sendMessage('/user/send_message')">Send</button>
 
-                <li>
-                    <div class="message-data">
-                        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-                        <span class="message-data-time">10:20 AM, Today</span>
-                    </div>
-                    <div class="message my-message">
-                        Actually everything was fine. I'm very excited to show this to our team.
-                    </div>
-                </li>
+    </div> <!-- end message-message -->
 
-                <li>
-                    <div class="message-data">
-                        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-                        <span class="message-data-time">10:31 AM, Today</span>
-                    </div>
-                    <i class="fa fa-circle online"></i>
-                    <i class="fa fa-circle online" style="color: #AED2A6"></i>
-                    <i class="fa fa-circle online" style="color:#DAE9DA"></i>
-                </li>
-
-            </ul>
-
-        </div> <!-- end message-history -->
-
-        <div class="chat-message clearfix">
-            <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-
-            <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-            <i class="fa fa-file-image-o"></i>
-
-            <button>Send</button>
-
-        </div> <!-- end message-message -->
-
-    </div> <!-- end message -->
+</div> <!-- end message -->
 
 <%--</div> <!-- end container -->--%>
 
 <script id="message-template" type="text/x-handlebars-template">
     <li class="clearfix">
         <div class="message-data align-right">
-            <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
-            <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+            <span class="message-data-time">{{time}}, Today</span> &nbsp; &nbsp;
+            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
         </div>
         <div class="message other-message float-right">
             {{messageOutput}}
@@ -120,9 +95,7 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
 
-<script src="js/index.js"></script>
-
-
+<script src="../static/chat/js/index.js"></script>
 
 
 </body>
