@@ -58,7 +58,7 @@
                             <li><a id='news' href="#">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
-                            <li><a id='messages' href="#">Messages</a></li>
+                            <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)" >Messages</a></li>
                             <li><a id='blog' href="#">Blog</a></li>
                             <li><a id='bookmarks' href="#">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings

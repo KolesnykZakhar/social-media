@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.chatService.ChatService;
 import com.gmail.kolesnyk.zakhar.chatService.chat.Chat;
+import com.gmail.kolesnyk.zakhar.chatService.chat.ChatsMenu;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -54,10 +55,12 @@ public class ChatController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/chats_list/{idUser}")
-    public ModelAndView sendMessage(@PathVariable("idUser") Integer idUser) {
-        System.out.println("\n\n\n\n" + idUser);
-        ModelAndView modelAndView = new ModelAndView("chats_list");
+    @RequestMapping(value = "/user/chats_menu")
+    public ModelAndView sendMessage() {
+        Integer idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+        ChatsMenu chatsMenu = chatService.getChatsMenu(idUser);
+        ModelAndView modelAndView = new ModelAndView("chats_menu");
+        modelAndView.addObject("chatsMenu", chatsMenu);
         return modelAndView;
     }
 }

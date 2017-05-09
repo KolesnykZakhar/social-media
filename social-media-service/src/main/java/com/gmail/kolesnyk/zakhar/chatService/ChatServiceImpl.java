@@ -2,16 +2,21 @@ package com.gmail.kolesnyk.zakhar.chatService;
 
 import com.gmail.kolesnyk.zakhar.AbstractService;
 import com.gmail.kolesnyk.zakhar.chatService.chat.Chat;
+import com.gmail.kolesnyk.zakhar.chatService.chat.ChatHeader;
+import com.gmail.kolesnyk.zakhar.chatService.chat.ChatsMenu;
 import com.gmail.kolesnyk.zakhar.message.Message;
 import com.gmail.kolesnyk.zakhar.message.MessageDao;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
+import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ChatServiceImpl extends AbstractService implements ChatService {
@@ -21,6 +26,9 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private UserActivityMap userActivityMap;
 
     public ChatServiceImpl(@Autowired Environment environment) {
         super(environment);
@@ -52,5 +60,28 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
         message.setIdFriend(idInterlocutor);
         message.setUnread(true);
         messageDao.save(message);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ChatsMenu getChatsMenu(final int idUser) {
+        final int[] mainAmountUnread = {0};
+        Set<User> interlocutors = messageDao.getInterlocutors(idUser);
+        Set<ChatHeader> chatHeaderSet = interlocutors.stream().map(user -> {
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+            Message lastMessage = messageDao.getLastMessage(idUser, user.getIdUser());
+            int amountUnread = messageDao.amountUnreadMessagesByUsers(idUser, user.getIdUser());
+            mainAmountUnread[0] += amountUnread;
+            return new ChatHeader(lastMessage, amountUnread, user);
+        }).collect(Collectors.toSet());
+        return new ChatsMenu(idUser, chatHeaderSet, mainAmountUnread[0]);
+    }
+
+    @Override
+    @Transactional
+    public void markAsRead(int idMessage) {
+
     }
 }

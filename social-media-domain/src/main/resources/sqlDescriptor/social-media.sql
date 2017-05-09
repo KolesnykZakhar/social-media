@@ -145,7 +145,7 @@ CREATE TABLE `messages` (
 -- Дамп данных таблицы `messages`
 --
 
-INSERT INTO `messages` (`id_message`, `id_user`, `id_friend`, `text_message`) VALUES
+INSERT INTO `messages` (`id_message`, id_sender, id_receiver, `text_message`) VALUES
 (1, 1, 2, 'hello1'),
 (2, 1, 2, 'hello2'),
 (3, 1, 4, 'hello4'),

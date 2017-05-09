@@ -41,6 +41,10 @@ public class UserController {
         if (amountOfInvitations != null && amountOfInvitations > 0) {
             modelAndView.addObject("amountOfInvitations", amountOfInvitations);
         }
+        Integer amountUnreadMessages=userService.amountUnreadMessages();
+        if (amountUnreadMessages!=null && amountUnreadMessages>0){
+            modelAndView.addObject("amountUnreadMessages",amountUnreadMessages);
+        }
         return modelAndView;
     }
 

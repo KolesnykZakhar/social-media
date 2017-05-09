@@ -12,10 +12,10 @@ public class Message {
     @Column(name = "id_message")
     private Integer idMessage;
 
-    @Column(name = "id_user")
+    @Column(name = "id_sender")
     private Integer idUser;
 
-    @Column(name = "id_friend")
+    @Column(name = "id_receiver")
     private Integer idFriend;
 
     @Column(name = "text_message")
