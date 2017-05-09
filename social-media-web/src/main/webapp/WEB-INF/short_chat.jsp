@@ -10,25 +10,25 @@
     <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
 </head>
 <body>
-<%--<div class="container clearfix">--%>
 <div class="chat">
     <div class="chat-header clearfix row">
         <div class="col-md-2 col-lg-2 " align="center">
             <a title="View" onclick="postMainDiv('/user/user/${requestScope.chat.interlocutor.idUser}', this)">
-            <img role="button" alt="User Pic" src='<c:out value="/user/avatar/${requestScope.chat.interlocutor.idUser}"/>'
-                 class="img-circle img-responsive"></a>
+                <img role="button" alt="User Pic"
+                     src='<c:out value="/user/avatar/${requestScope.chat.interlocutor.idUser}"/>'
+                     class="img-circle img-responsive"></a>
         </div>
         <div class="col-md-8 col-lg-8 " align="center">
             <div class="chat-about">
                 <div class="chat-with">Chat with <c:out value="${requestScope.chat.interlocutor.firstName}"/> <c:out
                         value="${requestScope.chat.interlocutor.lastName}"/></div>
-                <div class="chat-num-messages">already <c:out value="${requestScope.chat.messages.size()}"/> messages
+                <div class="chat-num-messages">already <c:out value="${requestScope.chat.amountMessages}"/> messages
                 </div>
             </div>
         </div>
-        <i class="fa fa-star"></i>
-    </div> <!-- end message-header -->
-
+        <i role="button" title="Switch To Full Chat"
+           onclick="postMainDiv('/user/full_chat/${requestScope.chat.interlocutor.idUser}')"
+           class="glyphicon glyphicon-th"></i></div> <!-- end message-header -->
     <div class="chat-history">
         <ul>
             <c:forEach items="${requestScope.chat.messages}" var="message" varStatus="index">
@@ -50,25 +50,16 @@
                 </c:choose>
             </c:forEach>
         </ul>
-
-    </div> <!-- end message-history -->
-
+    </div>
+    <!-- end message-history -->
     <div class="chat-message clearfix">
         <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
-
-        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-        <i class="fa fa-file-image-o"></i>
-
         <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
         <input id="idUser" hidden value="${requestScope.chat.idUser}"/>
-        <button onclick="sendMessage('/user/send_message')">Send</button>
-
+        <button onclick="sendMessage('/user/short_chat/send_message')">Send</button>
     </div> <!-- end message-message -->
-
 </div> <!-- end message -->
-
-<%--</div> <!-- end container -->--%>
-
+<!-- end container -->--%>
 <script id="message-template" type="text/x-handlebars-template">
     <li class="clearfix">
         <div class="message-data align-right">

@@ -30,7 +30,7 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Post> listSearchString(String search) {
-        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE comment LIKE :search")
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE text_comment LIKE :search")
                 .addEntity(Post.class).setParameter("search", "%" + search + "%").list();
     }
 }

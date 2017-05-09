@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Friend Info</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='../static/css/bootstrap.min.css'>
@@ -17,8 +17,6 @@
     <div class="row">
         <div style="width: 623px"
              class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad">
-
-
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><c:out
@@ -40,7 +38,6 @@
                         </div>
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
-
                                 <tbody>
                                 <tr>
                                     <td><label>First Name</label></td>
@@ -58,8 +55,6 @@
                                     <td><label>Date of Birth</label></td>
                                     <td><c:out value="${requestScope.friend.birthDate}"/></td>
                                 </tr>
-
-                                <tr>
                                 <tr>
                                     <td><label>Gender</label></td>
                                     <td>
@@ -79,9 +74,7 @@
                                     <td><label>Login</label></td>
                                     <td><c:out value='${requestScope.friend.login}'/></td>
                                 </tr>
-
                                 </tbody>
-
                             </table>
                             <a href="#"
                                onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.friend.idUser}')"
@@ -90,7 +83,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a onclick="postMainDiv('/user/chat/${requestScope.friend.idUser}')" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
+                    <a onclick="postMainDiv('/user/short_chat/${requestScope.friend.idUser}')" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
                        class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
                             <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button"

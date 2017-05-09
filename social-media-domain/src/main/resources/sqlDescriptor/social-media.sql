@@ -183,7 +183,7 @@ CREATE TABLE `posts` (
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id_post`, `comment`, `date_post`, `id_user`) VALUES
+INSERT INTO `posts` (`id_post`, text_comment, `date_post`, `id_user`) VALUES
 (1, 'asssss', '2017-02-08 16:43:00', 1),
 (2, '2222222222', '2017-02-08 16:43:07', 2),
 (3, 'asssss', '2017-02-08 16:43:30', 1),

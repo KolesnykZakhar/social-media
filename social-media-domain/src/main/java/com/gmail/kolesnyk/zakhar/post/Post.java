@@ -2,7 +2,6 @@ package com.gmail.kolesnyk.zakhar.post;
 
 
 import com.gmail.kolesnyk.zakhar.user.User;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,8 +19,8 @@ public class Post implements Serializable{
     private Integer idPost;
 
     @NotEmpty
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "text_comment")
+    private String textComment;
 
     @NotEmpty
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
@@ -59,11 +58,11 @@ public class Post implements Serializable{
         this.idPost = idPost;
     }
 
-    public String getComment() {
-        return comment;
+    public String getTextComment() {
+        return textComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setTextComment(String comment) {
+        this.textComment = comment;
     }
 }

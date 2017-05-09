@@ -28,10 +28,19 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
 
     @Override
     @Transactional(readOnly = true)
-    public Chat getChatByUsers(int idUser, int idFriend) {
-        List<Message> messages = messageDao.getChat(idUser, idFriend);
+    public Chat getFullChatByUsers(int idUser, int idFriend) {
+        List<Message> messages = messageDao.getFullChat(idUser, idFriend);
         User interlocutor = userDao.selectById(idFriend);
         return new Chat(messages, idUser, interlocutor);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Chat getShortChatByUsers(int idUser, int idFriend) {
+        List<Message> messages = messageDao.getShortChat(idUser, idFriend, SIZE_OF_SHORT_CHAT);
+        User interlocutor = userDao.selectById(idFriend);
+        int amountMessages = messageDao.amountMessagesByUsers(idUser, idFriend);
+        return new Chat(messages, idUser, interlocutor, amountMessages);
     }
 
     @Override
@@ -41,6 +50,7 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
         message.setTextMessage(textMessage);
         message.setIdUser(idUser);
         message.setIdFriend(idInterlocutor);
+        message.setUnread(true);
         messageDao.save(message);
     }
 }

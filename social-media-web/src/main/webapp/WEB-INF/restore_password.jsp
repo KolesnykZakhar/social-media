@@ -19,7 +19,6 @@
         </div>
         <div class="main-login main-center">
             <form class="form-horizontal" method="post" action="/restore_password">
-
                 <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Email</label>
                     <div class="cols-sm-10">
@@ -30,20 +29,16 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group ">
                     <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Restore Password
                     </button>
                 </div>
-
                 <div class="login-register">
                     <a href="/login">Login</a>
                 </div>
-
                 <div class="login-register">
                     <a href="/registration">Registration</a>
                 </div>
-
             </form>
         </div>
     </div>

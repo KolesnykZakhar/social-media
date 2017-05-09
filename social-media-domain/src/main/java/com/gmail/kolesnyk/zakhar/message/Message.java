@@ -21,6 +21,17 @@ public class Message {
     @Column(name = "text_message")
     private String textMessage;
 
+    @Column(name = "unread")
+    private Boolean unread;
+
+    public Boolean getUnread() {
+        return unread;
+    }
+
+    public void setUnread(Boolean readed) {
+        this.unread = readed;
+    }
+
     public Integer getIdUser() {
         return idUser;
     }

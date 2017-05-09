@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Chats List</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Users</h2>
+    <h2>Friends</h2>
     <p></p>
     <table class="table" style="width: 623px">
         <tr>

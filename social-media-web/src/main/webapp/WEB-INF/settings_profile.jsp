@@ -17,8 +17,6 @@
     <div class="row">
         <div style="width: 623px"
              class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad">
-
-
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><c:out
@@ -35,7 +33,6 @@
                         <!-- Modal -->
                         <div class="modal fade" id="editAvatar" role="dialog">
                             <div class="modal-dialog">
-
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -43,8 +40,6 @@
                                         <h4 class="modal-title">Upload New Avatar</h4>
                                     </div>
                                     <%--<div class="modal-body">--%>
-                                    <%--<p>Some text in the modal.</p>--%>
-                                    <%--</div>--%>
                                     <div class="modal-footer">
                                         <form action="/user/upload_avatar_by_file" method="post"
                                               enctype="multipart/form-data">
@@ -58,14 +53,11 @@
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                         <div class=" col-md-9 col-lg-9 ">
                             <form>
                                 <table class="table table-user-information">
-
                                     <tbody>
                                     <tr>
                                         <td><label for="firstName">First Name</label></td>
@@ -85,8 +77,6 @@
                                                    value="${requestScope.user.birthDate}"/>
                                         </td>
                                     </tr>
-
-                                    <tr>
                                     <tr>
                                         <td><label>Gender</label></td>
                                         <td>
@@ -109,15 +99,12 @@
                                         <td><a href="mailto:<c:out value='${requestScope.user.email}'/>"><c:out
                                                 value="${requestScope.user.email}"/></a></td>
                                     </tr>
-                                    <td><label>Login</label></td>
-                                    <td><c:out value='${requestScope.user.login}'/></td>
-
+                                    <tr>
+                                        <td><label>Login</label></td>
+                                        <td><c:out value='${requestScope.user.login}'/></td>
                                     </tr>
-
                                     </tbody>
-
                                 </table>
-
                                 <a href="#" onclick="updateUser('/user/update_user_info/')"
                                    class="btn btn-primary">Save changes</a>
                                 <a href="/user/index" class="btn btn-primary">Cancel</a>
@@ -126,21 +113,16 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
-                       class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button"
-                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user" data-toggle="tooltip" type="button"
+                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user"
+                               data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
 
