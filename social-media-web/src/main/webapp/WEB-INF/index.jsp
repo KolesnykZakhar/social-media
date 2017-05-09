@@ -58,7 +58,9 @@
                             <li><a id='news' href="#">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
-                            <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)" >Messages</a></li>
+                            <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)" >Messages
+                                <span id="amountUnreadMessages" style="color: red"><c:out
+                                        value="${requestScope.amountUnreadMessages}"/></span></a></li>
                             <li><a id='blog' href="#">Blog</a></li>
                             <li><a id='bookmarks' href="#">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
@@ -66,7 +68,7 @@
                             </li>
                             <li><a id='invitationsForFriendship' href="#"
                                    onclick="postMainDiv('/user/invitations_for_friendship', this)">
-                                Invitations For Friendship <span style="color: red"><c:out
+                                Invitations For Friendship <span id="amountOfInvitations" style="color: red"><c:out
                                     value="${requestScope.amountOfInvitations}"/></span></a></li>
                         </ul>
                     </div>

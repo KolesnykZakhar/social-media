@@ -2,7 +2,6 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.User;
-import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,23 +13,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
-import java.util.Arrays;
 import java.util.Set;
 
 @Controller
 public class MediaController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private MediaService mediaService;
+
+    private static User currentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
 
     @RequestMapping(value = "/user/photo_slider")
     public ModelAndView getPhotoSlider() {
         ModelAndView modelAndView;
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Set<String> photos = mediaService.getListPhotoPath(user.getIdUser());
+        Set<String> photos = mediaService.getListPhotoPath(currentUser().getIdUser());
         modelAndView = new ModelAndView("photo_slider");
         modelAndView.addObject("photos", photos);
         return modelAndView;
@@ -61,8 +59,7 @@ public class MediaController {
     @RequestMapping(value = "/user/upload_avatar_by_file", method = RequestMethod.POST)
     public String uploadAvatar(@RequestParam("uploadedAvatar") MultipartFile file) {
         try {
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            mediaService.storeAvatar(file, user.getIdUser());
+            mediaService.storeAvatar(file, currentUser().getIdUser());
             return "ok";
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,8 +70,7 @@ public class MediaController {
     @RequestMapping(value = "/user/upload_photo_by_file", method = RequestMethod.POST)
     public String uploadPhoto(@RequestParam("uploadedPhoto") MultipartFile file) {
         try {
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            mediaService.storePhoto(file, user.getIdUser());
+            mediaService.storePhoto(file, currentUser().getIdUser());
             return "ok";
         } catch (FileAlreadyExistsException e) {
             e.printStackTrace();

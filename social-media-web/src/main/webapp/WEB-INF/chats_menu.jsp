@@ -32,8 +32,15 @@
                 </td>
                 <td><span style="color: red;"><c:out value="${chatHeader.interlocutor.login}"/></span><br>
                         ${chatHeader.interlocutor.firstName}<br>${chatHeader.interlocutor.lastName}</td>
-                <td role="button"><a title="View" onclick="postMainDiv('/user/short_chat/${chatHeader.interlocutor.idUser}', this)">
+                <td role="button"><a title="View"
+                                     onclick="postMainDiv('/user/short_chat/${chatHeader.interlocutor.idUser}/${chatHeader.hasUnread()}', this)">
                     <c:out value="${chatHeader.lastMessage.textMessage}"/>
+                    <c:choose>
+                        <c:when test="${chatHeader.hasUnread()}">
+                            <br><span id="amountUnreadChatHeader" style="color: red"><c:out
+                                value="${chatHeader.amountUnread}"/></span>
+                        </c:when>
+                    </c:choose>
                 </a>
                 </td>
                 <td><c:choose>

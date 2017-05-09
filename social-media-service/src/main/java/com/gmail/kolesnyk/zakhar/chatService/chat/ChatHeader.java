@@ -41,6 +41,7 @@ public class ChatHeader {
     public void setInterlocutor(User interlocutor) {
         this.interlocutor = interlocutor;
     }
+
     public boolean hasUnread() {
         return amountUnread > 0;
     }

@@ -13,6 +13,8 @@ function postMainDiv(url, currentARef) {
         }
     });
     $(currentARef).parent().toggleClass("active");
+    updateMessageMark()
+    updateInvitationMark();
 }
 
 function updateUser(url) {
@@ -70,6 +72,7 @@ function addRemoveAcceptFriendship(url) {
             $(this).toggleClass("active");
         }
     });
+    updateInvitationMark();
 }
 
 function sendMessage(url) {
@@ -91,4 +94,20 @@ function sendMessage(url) {
             $(this).toggleClass("active");
         }
     });
+}
+
+/* private */
+function updateMessageMark() {
+    $.post('/user/update_message_mark', function (responseText) {
+            $('#amountUnreadMessages').html(responseText);
+        }
+    );
+}
+
+/* private */
+function updateInvitationMark() {
+    $.post('/user/update_invitation_mark', function (responseText) {
+            $('#amountOfInvitations').html(responseText);
+        }
+    );
 }

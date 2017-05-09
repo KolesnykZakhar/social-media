@@ -47,8 +47,20 @@ public class MessageDaoImpl extends AbstractDao<Message, Integer> implements Mes
     }
 
     @Override
-    public int amountUnreadMessagesByUsers(int idUser, int idInterlocutor) {
-        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM messages WHERE ((id_sender = :idUser AND id_receiver = :idInterlocutor) OR (id_sender = :idInterlocutor AND id_receiver = :idUser)) AND messages.unread = 1;")
+    public Integer amountUnreadMessagesByUsers(int idUser, int idInterlocutor) {
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM messages WHERE id_sender = :idInterlocutor AND id_receiver = :idUser AND messages.unread = 1;")
                 .setParameter("idUser", idUser).setParameter("idInterlocutor", idInterlocutor).uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer amountUnreadMessages(int idUser) {
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM messages WHERE id_receiver = :idUser AND unread = 1;")
+                .setParameter("idUser", idUser).uniqueResult()).intValue();
+    }
+
+    @Override
+    public void markMessagesAsReadByUsers(int idUser, int idInterlocutor) {
+        sessionFactory.getCurrentSession().createSQLQuery("UPDATE messages SET unread = 0 WHERE (id_sender = :idInterlocutor AND id_receiver = :idUser)")
+                .setParameter("idUser", idUser).setParameter("idInterlocutor", idInterlocutor).executeUpdate();
     }
 }

@@ -17,5 +17,9 @@ public interface MessageDao extends BaseDao<Message, Integer> {
 
     Message getLastMessage(int idUser, int idInterlocutor);
 
-    int amountUnreadMessagesByUsers(int idUser, int idInterlocutor);
+    Integer amountUnreadMessagesByUsers(int idUser, int idInterlocutor);
+
+    Integer amountUnreadMessages(int idUser);
+
+    void markMessagesAsReadByUsers(int idUser, int idInterlocutor);
 }

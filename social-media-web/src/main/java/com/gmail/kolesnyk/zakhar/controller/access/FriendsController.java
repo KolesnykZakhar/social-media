@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,10 @@ public class FriendsController {
 
     @Autowired
     private UserService userService;
+
+    private static User currentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
 
     @RequestMapping(value = "/user/friend/{idFriend}", method = RequestMethod.POST)
     private ModelAndView goToFriend(@PathVariable(value = "idFriend") Integer idFriend) throws IOException, ServletException {
@@ -45,7 +50,7 @@ public class FriendsController {
     @RequestMapping(value = {"/user/friends/{pageNumber}"}, method = RequestMethod.POST)
     private ModelAndView goToFriendsPage(@PathVariable("pageNumber") Integer pageNumber) throws ServletException, IOException {
         ModelAndView modelAndView;
-        int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+        int idUser = currentUser().getIdUser();
         try {
             modelAndView = new ModelAndView("friends_ajax");
             FriendsPage friendsPage = userService.friendsSublist(idUser, pageNumber);
@@ -78,7 +83,7 @@ public class FriendsController {
         ModelAndView modelAndView;
         try {
             modelAndView = new ModelAndView("user_info_ajax");
-            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+            int idCurrentUser = currentUser().getIdUser();
             User user = userService.getUserById(idUser);
             boolean isFriends = userService.isFriends(idCurrentUser, user.getIdUser());
             modelAndView.addObject("isFriend", isFriends);
@@ -98,16 +103,14 @@ public class FriendsController {
 
     @RequestMapping(value = {"/user/add_to_friends/{idUser}"})
     public String addToFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
-        int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
-        userService.inviteForFriendship(idCurrentUser, idUser);
+        userService.inviteForFriendship(currentUser().getIdUser(), idUser);
         return "ok_ajax";
     }
 
     @RequestMapping(value = {"/user/remove_from_friends/{idUser}"})
     public String removeFromFriends(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
         try {
-            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
-            userService.removeFromFriends(idCurrentUser, idUser);
+            userService.removeFromFriends(currentUser().getIdUser(), idUser);
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/400";
@@ -118,8 +121,7 @@ public class FriendsController {
     @RequestMapping(value = {"/user/invitations_for_friendship"})
     public ModelAndView invitationsForFriendship() throws ServletException, IOException {
         ModelAndView modelAndView;
-        int idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
-        List<User> listInvitations = userService.listInvitationsForFriendship(idUser);
+        List<User> listInvitations = userService.listInvitationsForFriendship(currentUser().getIdUser());
         if (listInvitations != null && listInvitations.size() > 0) {
             modelAndView = new ModelAndView("invitations_for_friendship_ajax");
             modelAndView.addObject("listInvitations", listInvitations);
@@ -133,8 +135,7 @@ public class FriendsController {
     @RequestMapping(value = {"/user/accept_invitation/{idUser}"})
     public String acceptInvitationForFriendship(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
         try {
-            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
-            userService.addFriendship(idCurrentUser, idUser);
+            userService.addFriendship(currentUser().getIdUser(), idUser);
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/400";
@@ -145,8 +146,7 @@ public class FriendsController {
     @RequestMapping(value = {"/user/decline_invitation/{idUser}"})
     public String declineInvitationForFriendship(@PathVariable("idUser") Integer idUser) throws ServletException, IOException {
         try {
-            int idCurrentUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
-            userService.declineInvitationForFriendship(idCurrentUser, idUser);
+            userService.declineInvitationForFriendship(currentUser().getIdUser(), idUser);
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/400";
@@ -169,5 +169,17 @@ public class FriendsController {
             modelAndView = new ModelAndView("errorPages/400");
         }
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/update_invitation_mark")
+    public String updateInvitationMark() {
+        Integer amount = userService.amountOfInvitations(currentUser().getIdUser());
+        System.out.println("\n\n\n\n\nMARK " + amount);
+        if (amount != null && amount > 0) {
+            return amount.toString();
+        } else {
+            return "";
+        }
     }
 }

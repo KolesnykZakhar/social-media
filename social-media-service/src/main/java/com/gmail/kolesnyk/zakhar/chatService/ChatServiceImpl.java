@@ -81,7 +81,13 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
 
     @Override
     @Transactional
-    public void markAsRead(int idMessage) {
+    public void markMessagesAsReadByUsers(int idUser, int idInterlocutor) {
+        messageDao.markMessagesAsReadByUsers(idUser, idInterlocutor);
+    }
 
+    @Override
+    @Transactional
+    public Integer amountUnreadMessages(int idUser) {
+        return messageDao.amountUnreadMessages(idUser);
     }
 }

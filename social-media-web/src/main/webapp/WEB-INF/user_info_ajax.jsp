@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a onclick="postMainDiv('/user/short_chat/${requestScope.user.idUser}')"
+                    <a onclick="postMainDiv('/user/short_chat/${requestScope.user.idUser}/${true}')"
                        data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
                        class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
