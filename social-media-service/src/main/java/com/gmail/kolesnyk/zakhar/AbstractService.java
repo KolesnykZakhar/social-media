@@ -18,6 +18,7 @@ public abstract class AbstractService {
     final protected String PASSWORD_EMAIL;
     final protected int AMOUNT_PHOTOS_ON_ONE_USER;
     final protected int SIZE_OF_SHORT_CHAT;
+    final protected int SIZE_OF_SHORT_BLOG_MENU;
 
     public AbstractService(@Autowired Environment environment) {
         this.environment = environment;
@@ -31,5 +32,6 @@ public abstract class AbstractService {
         PASSWORD_EMAIL = environment.getProperty("passwordEmail");
         PHOTO_EXTENDS = environment.getProperty("photoExtends");
         SIZE_OF_SHORT_CHAT = Integer.parseInt(environment.getProperty("sizeOfShortChat"));
+        SIZE_OF_SHORT_BLOG_MENU = Integer.parseInt(environment.getProperty("sizeOfShortBlogMenu"));
     }
 }

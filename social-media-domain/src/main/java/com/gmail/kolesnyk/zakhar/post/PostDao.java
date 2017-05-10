@@ -13,7 +13,10 @@ public interface PostDao extends BaseDao<Post, Integer> {
     /**
      * return list of posts by ID user
      */
-    List<Post> listByIdUser(Integer idUser);
+    List<Post> fullListByIdUser(Integer idUser);
+
+    @SuppressWarnings("unchecked")
+    List<Post> shortListByIdUser(Integer idUser, int size);
 
     /**
      * return list of posts by user

@@ -16,9 +16,16 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Post> listByIdUser(Integer idUser) {
+    public List<Post> fullListByIdUser(Integer idUser) {
         return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE id_user = :idUser ORDER BY date_post DESC")
                 .addEntity(Post.class).setParameter("idUser", idUser).list();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Post> shortListByIdUser(Integer idUser, int size) {
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE id_user = :idUser ORDER BY date_post DESC LIMIT 0, :amount ")
+                .addEntity(Post.class).setParameter("idUser", idUser).setParameter("amount", size).list();
     }
 
     @Override
@@ -30,7 +37,7 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Post> listSearchString(String search) {
-        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE text_comment LIKE :search")
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE text_post LIKE :search")
                 .addEntity(Post.class).setParameter("search", "%" + search + "%").list();
     }
 }

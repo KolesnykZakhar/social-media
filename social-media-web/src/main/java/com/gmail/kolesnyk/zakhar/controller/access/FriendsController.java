@@ -175,7 +175,6 @@ public class FriendsController {
     @RequestMapping(value = "/user/update_invitation_mark")
     public String updateInvitationMark() {
         Integer amount = userService.amountOfInvitations(currentUser().getIdUser());
-        System.out.println("\n\n\n\n\nMARK " + amount);
         if (amount != null && amount > 0) {
             return amount.toString();
         } else {

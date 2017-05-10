@@ -57,7 +57,6 @@
         <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
         <%--<button >Switch To Normal Chat</button>--%>
         <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
-        <input id="idUser" hidden value="${requestScope.chat.idUser}"/>
         <button onclick="sendMessage('/user/full_chat/send_message')">Send</button>
 
     </div> <!-- end message-message -->

@@ -3,6 +3,9 @@ function postMainDiv(url, currentARef) {
             $('#mainDiv').html(responseText);
         }
     );
+
+    updateMarks();
+
     $('html, body').animate({
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
@@ -13,8 +16,6 @@ function postMainDiv(url, currentARef) {
         }
     });
     $(currentARef).parent().toggleClass("active");
-    updateMessageMark()
-    updateInvitationMark();
 }
 
 function updateUser(url) {
@@ -63,6 +64,8 @@ function addRemoveAcceptFriendship(url) {
         }
     );
 
+    updateMarks();
+
     $('html, body').animate({
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
@@ -72,14 +75,27 @@ function addRemoveAcceptFriendship(url) {
             $(this).toggleClass("active");
         }
     });
-    updateInvitationMark();
 }
 
 function sendMessage(url) {
     $.post(url, {
             textMessage: $('#message-to-send').val(),
-            idUser: $('#idUser').val(),
             idInterlocutor: $('#idInterlocutor').val()
+        }, function (responseText) {
+            $('#mainDiv').html(responseText);
+        }
+    );
+
+    updateMarks();
+
+    $('html, body').animate({
+        scrollTop: $("#mainDiv").offset().top
+    }, 1000);
+}
+
+function addNewPost(url) {
+    $.post(url,{
+        newPostText: $('#newPostText').val()
         }, function (responseText) {
             $('#mainDiv').html(responseText);
         }
@@ -88,12 +104,12 @@ function sendMessage(url) {
     $('html, body').animate({
         scrollTop: $("#mainDiv").offset().top
     }, 1000);
+}
 
-    $('#sb_menu').children().each(function () {
-        if (this.classList.contains("active")) {
-            $(this).toggleClass("active");
-        }
-    });
+/* private */
+function updateMarks() {
+    updateInvitationMark();
+    updateMessageMark();
 }
 
 /* private */

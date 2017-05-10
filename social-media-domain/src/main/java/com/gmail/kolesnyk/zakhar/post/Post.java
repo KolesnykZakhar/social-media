@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "posts")
-public class Post implements Serializable{
+public class Post implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,9 @@ public class Post implements Serializable{
     private Integer idPost;
 
     @NotEmpty
-    @Column(name = "text_comment")
-    private String textComment;
+    @Column(name = "text_post")
+    private String textPost;
 
-    @NotEmpty
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private User user;
@@ -58,11 +57,11 @@ public class Post implements Serializable{
         this.idPost = idPost;
     }
 
-    public String getTextComment() {
-        return textComment;
+    public String getTextPost() {
+        return textPost;
     }
 
-    public void setTextComment(String comment) {
-        this.textComment = comment;
+    public void setTextPost(String comment) {
+        this.textPost = comment;
     }
 }

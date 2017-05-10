@@ -14,31 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.gmail.kolesnyk.zakhar.controller.access.ChatController.TYPE_CHAT.FULL;
+import static com.gmail.kolesnyk.zakhar.controller.access.ChatController.TYPE_CHAT.SHORT;
+
 @Controller
 public class ChatController {
 
     @Autowired
     private ChatService chatService;
 
-    private static User currentUser() {
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
-
     @RequestMapping(value = "/user/full_chat/{idUser}")
     public ModelAndView openFullChat(@PathVariable("idUser") Integer idUser) {
-        ModelAndView modelAndView = new ModelAndView("full_chat");
-        Chat chat = chatService.getFullChatByUsers(currentUser().getIdUser(), idUser);
-        modelAndView.addObject("chat", chat);
-        return modelAndView;
+        return getChatModel(FULL, idUser);
     }
 
     @RequestMapping(value = "/user/full_chat/send_message")
-    public ModelAndView sendMessageFullChat(@RequestParam("textMessage") String textMessage, @RequestParam("idUser") Integer idUser, @RequestParam("idInterlocutor") Integer idInterlocutor) {
-        chatService.saveMessage(textMessage, idUser, idInterlocutor);
-        ModelAndView modelAndView = new ModelAndView("full_chat");
-        Chat chat = chatService.getFullChatByUsers(idUser, idInterlocutor);
-        modelAndView.addObject("chat", chat);
-        return modelAndView;
+    public ModelAndView sendMessageFullChat(@RequestParam("textMessage") String textMessage, @RequestParam("idInterlocutor") Integer idInterlocutor) {
+        chatService.saveMessage(textMessage, currentUser().getIdUser(), idInterlocutor);
+        return getChatModel(FULL, idInterlocutor);
     }
 
     @RequestMapping(value = "/user/short_chat/{idUser}/{hasUnread}")
@@ -46,19 +39,13 @@ public class ChatController {
         if (hasUnread) {
             chatService.markMessagesAsReadByUsers(currentUser().getIdUser(), idUser);
         }
-        ModelAndView modelAndView = new ModelAndView("short_chat");
-        Chat chat = chatService.getShortChatByUsers(currentUser().getIdUser(), idUser);
-        modelAndView.addObject("chat", chat);
-        return modelAndView;
+        return getChatModel(SHORT, idUser);
     }
 
     @RequestMapping(value = "/user/short_chat/send_message")
-    public ModelAndView sendMessageShortChat(@RequestParam("textMessage") String textMessage, @RequestParam("idUser") Integer idUser, @RequestParam("idInterlocutor") Integer idInterlocutor) {
-        chatService.saveMessage(textMessage, idUser, idInterlocutor);
-        ModelAndView modelAndView = new ModelAndView("short_chat");
-        Chat chat = chatService.getShortChatByUsers(idUser, idInterlocutor);
-        modelAndView.addObject("chat", chat);
-        return modelAndView;
+    public ModelAndView sendMessageShortChat(@RequestParam("textMessage") String textMessage, @RequestParam("idInterlocutor") Integer idInterlocutor) {
+        chatService.saveMessage(textMessage, currentUser().getIdUser(), idInterlocutor);
+        return getChatModel(SHORT, idInterlocutor);
     }
 
     @RequestMapping(value = "/user/chats_menu")
@@ -78,5 +65,35 @@ public class ChatController {
         } else {
             return "";
         }
+    }
+
+    private static User currentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    private ModelAndView getChatModel(TYPE_CHAT typeChat, int idInterlocutor) {
+        ModelAndView modelAndView;
+        Chat chat;
+        switch (typeChat) {
+            case FULL: {
+                modelAndView = new ModelAndView("full_chat");
+                chat = chatService.getFullChatByUsers(currentUser().getIdUser(), idInterlocutor);
+                break;
+            }
+            case SHORT: {
+                modelAndView = new ModelAndView("short_chat");
+                chat = chatService.getShortChatByUsers(currentUser().getIdUser(), idInterlocutor);
+                break;
+            }
+            default: {
+                throw new IllegalArgumentException("Unknown type chat");
+            }
+        }
+        modelAndView.addObject("chat", chat);
+        return modelAndView;
+    }
+
+    enum TYPE_CHAT {
+        SHORT, FULL
     }
 }

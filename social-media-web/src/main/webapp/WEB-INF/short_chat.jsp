@@ -55,7 +55,6 @@
     <div class="chat-message clearfix">
         <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
         <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
-        <input id="idUser" hidden value="${requestScope.chat.idUser}"/>
         <button onclick="sendMessage('/user/short_chat/send_message')">Send</button>
     </div> <!-- end message-message -->
 </div> <!-- end message -->
