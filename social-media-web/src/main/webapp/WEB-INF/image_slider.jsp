@@ -67,6 +67,19 @@
     });
 </script>
 <style>
+    #modal-dialog-photo {
+        width: 100%;
+        /*height: 100%;*/
+        margin: 0;
+        padding: 0;
+    }
+
+    #modal-content-photo {
+        height: auto;
+        /*min-height: 100%;*/
+        border-radius: 0;
+    }
+
     /* jssor slider bullet navigator skin 05 css */
     /*
     .jssorb05 div           (normal)
@@ -154,15 +167,23 @@
 <div class="menu_nav">
     <ul>
         <li><a role="button" data-toggle="modal" data-target="#addPhoto">Add Photo</a></li>
-        <%--<li><a href="#">Remove Photo</a></li>--%>
     </ul>
     <div class="clr"></div>
 </div>
 
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="modal-dialog-photo" class="modal-dialog">
+        <div id="modal-content-photo" class="modal-content">
+            <div class="modal-body">
+                <img id="modalPhoto" src="#" class="img-responsive">
+            </div>
+            <a href="#" id="deleteImage" onclick="" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="addPhoto" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -170,7 +191,7 @@
                 <h4 class="modal-title">Upload New Photo</h4>
             </div>
             <div class="modal-footer">
-                <form action="/user/upload_photo_by_file" method="post"
+                <form action="/user/upload_image_by_file" method="post"
                       enctype="multipart/form-data">
                     <label class="btn btn-primary">
                         <input name="uploadedPhoto" required type="file" hidden>
@@ -182,7 +203,6 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
 <div id="jssor_1"
@@ -194,9 +214,9 @@
     </div>
     <div data-u="slides"
          style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
-        <c:forEach items="${requestScope.photos}" var="urlPhoto">
-            <div>
-                <img data-u="image" src="${urlPhoto}"/>
+        <c:forEach items="${requestScope.images}" var="image">
+            <div onclick="openModal('${image.nameImage}')" role="button" data-toggle="modal" data-target="#myModal">
+                <img data-u="image" src="/user/image/<c:out value='${image.nameImage}'/>/"/>
             </div>
         </c:forEach>
     </div>
@@ -213,11 +233,10 @@
 </div>
 <!-- #endregion Jssor Slider End -->
 </body>
-<%--<script>--%>
-    <%--$('#img').hover(function() {--%>
-        <%--$(this).find('.delete').show();--%>
-    <%--}, function() {--%>
-        <%--$(this).find('.delete').hide();--%>
-    <%--});--%>
-<%--</script>--%>
+<script>
+    function openModal(nameImage) {
+        $('#deleteImage').attr('onclick', "$.post('/user/delete_image/" + nameImage + "/');");
+        $('#modalPhoto').attr('src', "/user/image/" + nameImage + "/");
+    }
+</script>
 </html>

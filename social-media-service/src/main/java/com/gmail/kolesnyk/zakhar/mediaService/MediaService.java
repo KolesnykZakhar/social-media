@@ -1,18 +1,20 @@
 package com.gmail.kolesnyk.zakhar.mediaService;
 
+import com.gmail.kolesnyk.zakhar.image.Image;
+import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public interface MediaService {
     void storeAvatar(MultipartFile file, int idUser) throws IOException;
 
     byte[] getAvatarByUser(Integer idUser) throws IOException;
 
-    Set<String> getListPhotoPath(int idUser);
+    List<Image> imagesByIdUser(int idUser);
 
-    byte[] getPhotoByIdUserAndIdPhoto(Integer idUser, Integer idPhoto) throws IOException;
+    byte[] getImageByName(String nameImage) throws IOException;
 
-    void storePhoto(MultipartFile file, Integer idUser) throws IOException;
+    void storeImage(MultipartFile file, User user) throws IOException;
 }

@@ -9,6 +9,7 @@ public abstract class AbstractService {
 
     private Environment environment;
     final protected int AMOUNT_FRIENDS_ON_ONE_PAGE;
+    final protected String PATH_STORING_IMAGES;
     final protected String DEFAULT_AVATAR_URL;
     final protected String ROOT_AVATAR_URL;
     final protected String ROOT_PHOTO_URL;
@@ -24,6 +25,7 @@ public abstract class AbstractService {
         this.environment = environment;
         AMOUNT_FRIENDS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountFriendsOnOnePage"));
         AMOUNT_PHOTOS_ON_ONE_USER = Integer.parseInt(environment.getProperty("amountPhotosOnOneUser"));
+        PATH_STORING_IMAGES = environment.getProperty("pathStoringImages");
         DEFAULT_AVATAR_URL = environment.getProperty("defaultAvatarUrl");
         ROOT_AVATAR_URL = environment.getProperty("rootAvatarUrl");
         ROOT_PHOTO_URL = environment.getProperty("rootPhotoUrl");

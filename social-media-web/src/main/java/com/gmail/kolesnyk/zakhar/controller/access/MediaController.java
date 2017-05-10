@@ -1,5 +1,6 @@
 package com.gmail.kolesnyk.zakhar.controller.access;
 
+import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
-import java.util.Set;
+import java.util.List;
 
 @Controller
 public class MediaController {
@@ -25,20 +26,20 @@ public class MediaController {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @RequestMapping(value = "/user/photo_slider")
+    @RequestMapping(value = "/user/image_slider")
     public ModelAndView getPhotoSlider() {
         ModelAndView modelAndView;
-        Set<String> photos = mediaService.getListPhotoPath(currentUser().getIdUser());
-        modelAndView = new ModelAndView("photo_slider");
-        modelAndView.addObject("photos", photos);
+        List<Image> images = mediaService.imagesByIdUser(currentUser().getIdUser());
+        modelAndView = new ModelAndView("image_slider");
+        modelAndView.addObject("images", images);
         return modelAndView;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user/photos/{idUser}/{idPhoto}")
-    public byte[] getPhoto(@PathVariable Integer idUser, @PathVariable Integer idPhoto) {
+    @RequestMapping(value = "/user/image/{nameImage}")
+    public byte[] getPhoto(@PathVariable("nameImage") String nameImage) {
         try {
-            return mediaService.getPhotoByIdUserAndIdPhoto(idUser, idPhoto);
+            return mediaService.getImageByName(nameImage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,10 +68,10 @@ public class MediaController {
         }
     }
 
-    @RequestMapping(value = "/user/upload_photo_by_file", method = RequestMethod.POST)
-    public String uploadPhoto(@RequestParam("uploadedPhoto") MultipartFile file) {
+    @RequestMapping(value = "/user/upload_image_by_file", method = RequestMethod.POST)
+    public String uploadImage(@RequestParam("uploadedPhoto") MultipartFile file) {
         try {
-            mediaService.storePhoto(file, currentUser().getIdUser());
+            mediaService.storeImage(file, currentUser());
             return "ok";
         } catch (FileAlreadyExistsException e) {
             e.printStackTrace();
@@ -79,6 +80,11 @@ public class MediaController {
             e.printStackTrace();
             return "errorPages/500";
         }
+    }
+
+    @RequestMapping(value = "/user/delete_image/{nameImage}")
+    public void deleteImage(@PathVariable("nameImage") String nameImage) {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n" + nameImage);
     }
 
     @Bean

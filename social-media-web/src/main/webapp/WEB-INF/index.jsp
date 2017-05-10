@@ -46,14 +46,14 @@
         <div class="content">
             <div class="content_bg">
                 <div class="mainbar" id="mainDiv">
-                    <jsp:include page="photo_slider.jsp"/>
+                    <jsp:include page="image_slider.jsp"/>
                 </div>
                 <div class="sidebar">
                     <div class="gadget">
                         <h2 class="star">Menu</h2>
                         <div class="clr"></div>
                         <ul id='sb_menu' class="sb_menu">
-                            <li id='home' class="active"><a href="#" onclick="postMainDiv('/user/photo_slider', this)">Home</a>
+                            <li id='home' class="active"><a href="#" onclick="postMainDiv('/user/image_slider', this)">Home</a>
                             </li>
                             <li><a id='news' href="#">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>

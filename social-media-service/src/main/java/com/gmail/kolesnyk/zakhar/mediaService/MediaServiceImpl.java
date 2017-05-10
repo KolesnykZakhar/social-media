@@ -1,19 +1,23 @@
 package com.gmail.kolesnyk.zakhar.mediaService;
 
 import com.gmail.kolesnyk.zakhar.AbstractService;
+import com.gmail.kolesnyk.zakhar.image.Image;
+import com.gmail.kolesnyk.zakhar.image.ImageDao;
+import com.gmail.kolesnyk.zakhar.user.User;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class MediaServiceImpl extends AbstractService implements MediaService {
@@ -23,6 +27,9 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     public MediaServiceImpl(@Autowired Environment environment) {
         super(environment);
     }
+
+    @Autowired
+    private ImageDao imageDao;
 
     @Override
     public void storeAvatar(MultipartFile file, int idUser) throws IOException {
@@ -60,25 +67,19 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    public Set<String> getListPhotoPath(int idUser) {
-        Set<String> list = new HashSet<>();
-        for (int i = 0; i < AMOUNT_PHOTOS_ON_ONE_USER; i++) {
-            File serverFile = new File(ROOT_PHOTO_URL + File.separator + idUser + File.separator + i + PHOTO_EXTENDS);
-            if (serverFile.exists()) {
-                list.add("/user/photos/" + idUser + "/" + i);
-            }
-        }
-        return list;
+    @Transactional(readOnly = true)
+    public List<Image> imagesByIdUser(int idUser) {
+        return imageDao.listByIdUser(idUser);
     }
 
     @Override
-    public byte[] getPhotoByIdUserAndIdPhoto(Integer idUser, Integer idPhoto) throws IOException {
-        File serverFile = new File(ROOT_PHOTO_URL + File.separator + idUser + File.separator + idPhoto + PHOTO_EXTENDS);
+    public byte[] getImageByName(String nameImage) throws IOException {
+        File serverFile = new File(PATH_STORING_IMAGES + nameImage);
         InputStream is;
         if (serverFile.exists()) {
             is = new FileInputStream(serverFile);
         } else {
-            throw new IllegalArgumentException("photo by ID user: " + idUser + " and ID photo: " + idPhoto + "not found");
+            throw new IllegalArgumentException("Image not found: " +serverFile.getAbsolutePath());
         }
         byte[] arr = IOUtils.toByteArray(is);
         is.close();
@@ -86,26 +87,17 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    public void storePhoto(MultipartFile file, Integer idUser) throws IOException {
+    @Transactional
+    public void storeImage(MultipartFile file, User user) throws IOException {
         byte[] bytes = file.getBytes();
-        File dir = new File(ROOT_PHOTO_URL);
-        if (!dir.exists()) {
-            throw new IllegalArgumentException("dir not exist -> " + ROOT_PHOTO_URL);
-        }
-        File userPath = new File(dir.getAbsolutePath() + File.separator + idUser + File.separator);
-        if (!userPath.exists()) {
-            userPath.mkdirs();
-        }
-        File serverFile;
-        for (int i = 0; i < AMOUNT_PHOTOS_ON_ONE_USER; i++) {
-            serverFile = new File(userPath.getAbsolutePath() + File.separator + i + PHOTO_EXTENDS);
-            if (!serverFile.exists()) {
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-                return;
-            }
-        }
-        throw new FileAlreadyExistsException("Exceeded limit of Users Photo");
+        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+        String fileName = System.currentTimeMillis() + "." + ext;
+        String fileFullName = PATH_STORING_IMAGES + fileName;
+        File serverFile = new File(fileFullName);
+        FileUtils.writeByteArrayToFile(serverFile, bytes);
+        Image image = new Image();
+        image.setUser(user);
+        image.setNameImage(fileName);
+        imageDao.save(image);
     }
 }

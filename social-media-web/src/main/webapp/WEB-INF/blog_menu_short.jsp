@@ -68,19 +68,6 @@
                 <span class="lead"><c:out value="${post.textPost}"/></span>
 
             </c:forEach>
-            <hr>
-            <!-- /.row -->
-            <hr>
-            <!-- Footer -->
-            <footer>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <p>Copyright &copy; Your Website 2014</p>
-                    </div>
-                </div>
-                <!-- /.row -->
-            </footer>
-
         </div>
         <!-- /.container -->
 

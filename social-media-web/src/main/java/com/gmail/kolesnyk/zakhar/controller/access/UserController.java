@@ -1,6 +1,7 @@
 package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.chatService.ChatService;
+import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -39,10 +40,10 @@ public class UserController {
     @RequestMapping(value = {"/user/index"})
     public ModelAndView goToIndex() throws ServletException, IOException {
         ModelAndView modelAndView;
-        Set<String> photos = mediaService.getListPhotoPath(currentUser().getIdUser());
+        List<Image> images = mediaService.imagesByIdUser(currentUser().getIdUser());
         modelAndView = new ModelAndView("index");
         modelAndView.addObject("isAdmin", currentUser().getAuthority().contains("ROLE_ADMIN"));
-        modelAndView.addObject("photos", photos);
+        modelAndView.addObject("images", images);
         Integer amountOfInvitations = userService.amountOfInvitations(currentUser().getIdUser());
         if (amountOfInvitations != null && amountOfInvitations > 0) {
             modelAndView.addObject("amountOfInvitations", amountOfInvitations);

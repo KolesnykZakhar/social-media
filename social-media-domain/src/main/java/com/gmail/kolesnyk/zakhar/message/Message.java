@@ -1,11 +1,12 @@
 package com.gmail.kolesnyk.zakhar.message;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "messages")
-public class Message {
+public class Message implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
