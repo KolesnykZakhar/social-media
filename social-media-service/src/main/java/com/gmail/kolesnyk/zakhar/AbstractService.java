@@ -7,33 +7,25 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class AbstractService {
 
-    private Environment environment;
     final protected int AMOUNT_USERS_ON_ONE_PAGE;
     final protected String PATH_STORING_IMAGES;
     final protected String DEFAULT_AVATAR_URL;
     final protected String ROOT_AVATAR_URL;
-    final protected String ROOT_PHOTO_URL;
     final protected String AVATAR_EXTENDS;
-    final protected String PHOTO_EXTENDS;
     final protected String SERVICE_EMAIL;
     final protected String PASSWORD_EMAIL;
     final protected int AMOUNT_POSTS_ON_ONE_PAGE;
     final protected int SIZE_OF_SHORT_CHAT;
-    final protected int SIZE_OF_SHORT_BLOG_MENU;
 
     public AbstractService(@Autowired Environment environment) {
-        this.environment = environment;
         AMOUNT_USERS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountUsersOnOnePage"));
         AMOUNT_POSTS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountPostsOnOnePage"));
         PATH_STORING_IMAGES = environment.getProperty("pathStoringImages");
         DEFAULT_AVATAR_URL = environment.getProperty("defaultAvatarUrl");
         ROOT_AVATAR_URL = environment.getProperty("rootAvatarUrl");
-        ROOT_PHOTO_URL = environment.getProperty("rootPhotoUrl");
         AVATAR_EXTENDS = environment.getProperty("avatarExtends");
         SERVICE_EMAIL = environment.getProperty("serviceEmail");
         PASSWORD_EMAIL = environment.getProperty("passwordEmail");
-        PHOTO_EXTENDS = environment.getProperty("photoExtends");
         SIZE_OF_SHORT_CHAT = Integer.parseInt(environment.getProperty("sizeOfShortChat"));
-        SIZE_OF_SHORT_BLOG_MENU = Integer.parseInt(environment.getProperty("sizeOfShortBlogMenu"));
     }
 }
