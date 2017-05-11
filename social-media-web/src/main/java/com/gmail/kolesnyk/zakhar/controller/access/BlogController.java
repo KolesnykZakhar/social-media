@@ -30,17 +30,6 @@ public class BlogController {
         return getBlogMenuModel(1);
     }
 
-//    @RequestMapping(value = "/user/blog_menu_full")
-//    public ModelAndView openFullBlogMenu() {
-//        return getBlogMenuModel(FULL);
-//    }
-//
-//    @RequestMapping(value = "/user/add_new_post_full")
-//    public ModelAndView addNewPostFullBlogMenu(@RequestParam("newPostText") String newPostText) {
-//        createAndSavePost(newPostText);
-//        return getBlogMenuModel(FULL);
-//    }
-
     private void createAndSavePost(String textPost) {
         Post post = new Post();
         post.setUser(currentUser());
@@ -51,7 +40,6 @@ public class BlogController {
     private ModelAndView getBlogMenuModel(int pageNumber) {
         ModelAndView modelAndView = new ModelAndView("blog_menu");
         BlogPage blogPage = postService.sublistPostsByUser(currentUser(), pageNumber);
-//        modelAndView.addObject("user", currentUser());
         modelAndView.addObject("blogPage", blogPage);
         return modelAndView;
     }

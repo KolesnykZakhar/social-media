@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 08 2017 г., 20:02
+-- Время создания: Май 11 2017 г., 17:28
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -94,21 +94,47 @@ INSERT INTO `friends` (`id_user`, `id_friend`, `date_friendship`) VALUES
 (1, 7, '2017-03-10 11:15:39'),
 (1, 8, '2017-03-10 11:15:52'),
 (1, 9, '2017-03-10 11:16:01'),
-(1, 11, '2017-03-10 11:16:11'),
-(1, 12, '2017-03-10 11:16:19'),
+(1, 11, '2017-05-09 18:34:00'),
+(1, 12, '2017-05-09 18:33:56'),
 (2, 1, '2017-02-07 09:14:32'),
 (2, 3, '2017-05-08 13:33:28'),
+(2, 4, '2017-05-09 18:39:45'),
 (2, 6, '2017-05-08 13:33:42'),
 (2, 7, '2017-05-08 13:38:16'),
+(2, 8, '2017-05-09 18:37:42'),
 (3, 2, '2017-05-08 13:33:28'),
+(4, 2, '2017-05-09 18:39:45'),
 (6, 1, '2017-03-10 11:16:43'),
 (6, 2, '2017-05-08 13:33:42'),
 (7, 1, '2017-03-10 11:16:52'),
 (7, 2, '2017-05-08 13:38:16'),
 (8, 1, '2017-03-10 11:16:59'),
+(8, 2, '2017-05-09 18:37:42'),
 (9, 1, '2017-03-10 11:17:07'),
-(11, 1, '2017-03-10 11:17:12'),
-(12, 1, '2017-03-10 11:17:17');
+(11, 1, '2017-05-09 18:34:00'),
+(12, 1, '2017-05-09 18:33:56');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `images`
+--
+
+CREATE TABLE `images` (
+  `id_image` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `name_image` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `images`
+--
+
+INSERT INTO `images` (`id_image`, `id_user`, `name_image`) VALUES
+(7, 1, '1494511209128.jpg'),
+(9, 1, '1494511224712.jpg'),
+(10, 1, '1494511238199.jpg'),
+(11, 1, '1494511244514.jpg');
 
 -- --------------------------------------------------------
 
@@ -121,13 +147,6 @@ CREATE TABLE `inviting_for_friendship` (
   `id_friend` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Дамп данных таблицы `inviting_for_friendship`
---
-
-INSERT INTO `inviting_for_friendship` (`id_user`, `id_friend`) VALUES
-(2, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -136,35 +155,74 @@ INSERT INTO `inviting_for_friendship` (`id_user`, `id_friend`) VALUES
 
 CREATE TABLE `messages` (
   `id_message` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_friend` int(11) NOT NULL,
-  `text_message` varchar(256) NOT NULL
+  `id_sender` int(11) NOT NULL,
+  `id_receiver` int(11) NOT NULL,
+  `text_message` varchar(256) NOT NULL,
+  `unread` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `messages`
 --
 
-INSERT INTO `messages` (`id_message`, id_sender, id_receiver, `text_message`) VALUES
-(1, 1, 2, 'hello1'),
-(2, 1, 2, 'hello2'),
-(3, 1, 4, 'hello4'),
-(4, 2, 1, 'hello3'),
-(5, 1, 6, 'hello6'),
-(6, 1, 2, 'fgdfgdfgdf'),
-(7, 1, 2, 'sdfsdfsd'),
-(8, 1, 2, 'sdfsdfsdfsd'),
-(9, 1, 2, 'sdfsdfsdfsd'),
-(10, 1, 2, 'sdfsdfsdfs'),
-(11, 1, 2, 'dasdasdas'),
-(12, 1, 2, 'asdasdasda'),
-(13, 1, 2, 'asdasdasdas'),
-(14, 1, 2, 'asdasdasd'),
-(15, 1, 2, 'sssssssssssssssssssssssss'),
-(16, 2, 1, 'asdasdasdasda'),
-(17, 1, 2, 'fdfgdf'),
-(18, 1, 2, 'vcbcvbcvbc'),
-(19, 1, 2, 'zzzzzzzzzzzzzzzzzz');
+INSERT INTO `messages` (`id_message`, `id_sender`, `id_receiver`, `text_message`, `unread`) VALUES
+(1, 1, 2, 'hello1', 0),
+(2, 1, 2, 'hello2', 0),
+(3, 1, 4, 'hello4', 0),
+(4, 2, 1, 'hello3', 0),
+(5, 1, 6, 'hello6', 0),
+(6, 1, 2, 'fgdfgdfgdf', 0),
+(7, 1, 2, 'sdfsdfsd', 0),
+(8, 1, 2, 'sdfsdfsdfsd', 0),
+(9, 1, 2, 'sdfsdfsdfsd', 0),
+(10, 1, 2, 'sdfsdfsdfs', 0),
+(11, 1, 2, 'dasdasdas', 0),
+(12, 1, 2, 'asdasdasda', 0),
+(13, 1, 2, 'asdasdasdas', 0),
+(14, 1, 2, 'asdasdasd', 0),
+(15, 1, 2, 'sssssssssssssssssssssssss', 0),
+(16, 2, 1, 'asdasdasdasda', 0),
+(17, 1, 2, 'fdfgdf', 0),
+(18, 1, 2, 'vcbcvbcvbc', 0),
+(19, 1, 2, 'zzzzzzzzzzzzzzzzzz', 0),
+(20, 1, 2, 'fdgdfgfdgdf', 0),
+(21, 1, 2, 'bvnvbnvbn', 0),
+(22, 1, 6, 'fdgdfgfdgdfgdf', 0),
+(23, 1, 6, 'ghnfghfghfg', 0),
+(24, 7, 1, 'svfdas  safa gar\nga\nrg a\nreg\n a\nrg\n aerg\n a', 0),
+(25, 7, 1, 'vbnvbnvb', 0),
+(26, 6, 1, 'Bdhhjdjd\n', 0),
+(27, 4, 1, 'nvhjgjhgjhg\n', 0),
+(28, 4, 1, 'sfdfasdfsf', 0),
+(29, 2, 1, 'dasdasdas', 0),
+(30, 2, 1, '111111111111', 0),
+(31, 2, 1, 'sdfsdfsdf', 0),
+(32, 2, 1, 'sdfsdfsd', 0),
+(33, 1, 2, 'ggggggggggggg', 0),
+(34, 1, 2, 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 0),
+(35, 1, 2, 'fsdfdsfsdfsd', 0),
+(36, 1, 2, 'sdfsdfsdf', 0),
+(37, 1, 2, 'gggggggggggg', 0),
+(38, 1, 2, '11111111111111111111', 0),
+(39, 2, 1, 'dsfsdfsdfsdfsfas hbfhjlsdhfad flkjhdsfsdfsdfsdfsfas hbfhjlsdhfad flkjhdsfsdfsdfsdfsfas hbfhjlsdhfad flkjhdsfsdfsdfsdfsfas hbfhjlsdhfad flkjhdsfsdfsdfsdfsfas hbfhjlsdhfad flkjh', 0),
+(40, 1, 2, 'fdfdfd', 0),
+(41, 1, 2, 'dhkgkjagf kafhasf hlkhf shjdf lsdhf f;shjdfkjsdlkfj asjfaskjf;lask dlask;ld kas;lkd;l skd;sa; da', 0),
+(42, 2, 1, 'asdasda sd asd', 0),
+(43, 2, 8, 'asdasdasdas', 0),
+(44, 8, 2, 'asdsadsada', 0),
+(45, 2, 4, 'asdasdsadasasda s', 0),
+(46, 4, 2, 'asdasdasd', 0),
+(47, 4, 1, 'asdasdasd', 0),
+(48, 4, 1, 'asdasdasdas', 0),
+(49, 1, 4, 'asdasdasda', 0),
+(50, 2, 1, 'asdasd s asd as', 0),
+(51, 1, 2, 'asdasd as', 0),
+(52, 2, 1, 'asdasda sdas d', 0),
+(53, 1, 2, 'sdfsdf dfsdfsd fsd', 0),
+(54, 2, 1, 'asdasd asd a', 0),
+(55, 1, 2, 'asdasdas', 0),
+(56, 1, 2, 'asdasdsad', 0),
+(57, 2, 1, 'sadasda ', 0);
 
 -- --------------------------------------------------------
 
@@ -174,23 +232,47 @@ INSERT INTO `messages` (`id_message`, id_sender, id_receiver, `text_message`) VA
 
 CREATE TABLE `posts` (
   `id_post` int(11) NOT NULL,
-  `comment` varchar(255) NOT NULL,
-  `date_post` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_user` int(11) NOT NULL
+  `text_post` varchar(255) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `date_post` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id_post`, text_post, `date_post`, `id_user`) VALUES
-(1, 'asssss', '2017-02-08 16:43:00', 1),
-(2, '2222222222', '2017-02-08 16:43:07', 2),
-(3, 'asssss', '2017-02-08 16:43:30', 1),
-(4, 'st', '2017-02-08 17:04:41', 1),
-(5, 'sta', '2017-02-08 17:04:54', 1),
-(6, 'ast', '2017-02-08 17:05:07', 1),
-(7, 'astfdd', '2017-02-08 17:05:18', 1);
+INSERT INTO `posts` (`id_post`, `text_post`, `id_user`, `date_post`) VALUES
+(1, 'asssss', 1, '2017-05-10 09:25:52'),
+(2, '2222222222', 2, '2017-05-10 09:25:52'),
+(3, 'asssss', 1, '2017-05-10 09:25:52'),
+(4, 'st', 1, '2017-05-10 09:25:52'),
+(5, 'sta', 1, '2017-05-10 09:25:52'),
+(6, 'ast', 1, '2017-05-10 09:25:52'),
+(7, 'astfdd', 1, '2017-05-10 09:25:52'),
+(8, 'sad asda\n s\nda\nsd\n sa\nd\n as\nd\na ', 1, '2017-05-10 10:04:17'),
+(9, '111111111111111111111111111111111\n11111111111111111111111111111', 1, '2017-05-10 10:04:39'),
+(10, '11111111111', 1, '2017-05-10 10:04:47'),
+(11, '222222222222222222222222222', 1, '2017-05-10 10:07:28'),
+(12, 'sdfsdf', 1, '2017-05-10 10:09:33'),
+(13, 's', 1, '2017-05-10 10:10:24'),
+(14, 'dkljshf lsdjhf sd\nf\nsd\n fsdfjsdlkfj lksdjfk sdlfj;sdkd''a;LDP[A SDSAD \nASDAS DKSAJFDA', 1, '2017-05-10 10:11:09'),
+(15, 'D', 1, '2017-05-10 10:11:18'),
+(16, 'SDFSDFSD', 1, '2017-05-10 10:11:20'),
+(17, 'DSAD ASKJDHA SDJASI; DASDQWEQW', 1, '2017-05-10 10:11:24'),
+(18, 'DF ASLUFSLAFK;SDKFL;''SDK FSLKFD\nFSD\nF\nSD\nF\nSD\nF\nSDFS', 1, '2017-05-10 10:11:30'),
+(19, 'SADAS', 1, '2017-05-10 10:11:42'),
+(20, 'ewrwervweb we rw', 1, '2017-05-10 10:33:59'),
+(21, 'wrwer', 1, '2017-05-10 10:34:06'),
+(22, 'wer werwe', 1, '2017-05-10 10:34:09'),
+(23, 'werw er', 1, '2017-05-10 10:34:16'),
+(24, 'wer werw', 1, '2017-05-10 10:34:23'),
+(25, 'sdfsdf sdfsd fs', 1, '2017-05-10 10:58:58'),
+(26, 'sdfsdfsd', 1, '2017-05-10 10:59:06'),
+(27, 'sdfsdfsdfsdf', 1, '2017-05-10 10:59:26'),
+(28, 'fsdfsdfsdfsd', 1, '2017-05-10 10:59:39'),
+(29, 'asdasdasasdas as\nd\n as\nd\n as\nd a', 1, '2017-05-10 11:03:29'),
+(30, 'fsdfsdf11111111111111111111111111', 1, '2017-05-11 15:26:02'),
+(31, '222', 1, '2017-05-11 15:26:10');
 
 -- --------------------------------------------------------
 
@@ -278,6 +360,13 @@ ALTER TABLE `friends`
   ADD KEY `FK_9pwml5q21cfq50vrhnqitl3qw` (`id_friend`);
 
 --
+-- Индексы таблицы `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id_image`),
+  ADD UNIQUE KEY `images_name_image_uindex` (`name_image`);
+
+--
 -- Индексы таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -316,15 +405,20 @@ ALTER TABLE `users`
 ALTER TABLE `authority`
   MODIFY `id_authority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
+-- AUTO_INCREMENT для таблицы `images`
+--
+ALTER TABLE `images`
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
