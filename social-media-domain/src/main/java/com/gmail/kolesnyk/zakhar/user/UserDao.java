@@ -43,7 +43,7 @@ public interface UserDao extends BaseDao<User, Integer> {
      * @param amount - amount of result list
      * @return List of Users
      */
-    List<User> friendListByRange(Integer idUser, int offset, int amount);
+    List<User> friendSublist(Integer idUser, int offset, int amount);
 
     void saveHashForEmail(String hashForEmail, Integer idUser);
 

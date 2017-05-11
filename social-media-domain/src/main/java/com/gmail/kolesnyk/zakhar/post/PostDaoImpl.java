@@ -6,6 +6,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -16,16 +17,9 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Post> fullListByIdUser(Integer idUser) {
-        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE id_user = :idUser ORDER BY date_post DESC")
-                .addEntity(Post.class).setParameter("idUser", idUser).list();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Post> shortListByIdUser(Integer idUser, int size) {
-        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE id_user = :idUser ORDER BY date_post DESC LIMIT 0, :amount ")
-                .addEntity(Post.class).setParameter("idUser", idUser).setParameter("amount", size).list();
+    public List<Post> postsSublistByIdUser(Integer idUser, int offset, int amount) {
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE id_user = :idUser ORDER BY date_post DESC LIMIT :offset, :amount ")
+                .addEntity(Post.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();
     }
 
     @Override
@@ -39,5 +33,11 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     public List<Post> listSearchString(String search) {
         return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts WHERE text_post LIKE :search")
                 .addEntity(Post.class).setParameter("search", "%" + search + "%").list();
+    }
+
+    @Override
+    public Integer amountPostsByIdUser(int idUser) {
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM posts WHERE id_user = :idUser")
+                .setParameter("idUser", idUser).uniqueResult()).intValue();
     }
 }

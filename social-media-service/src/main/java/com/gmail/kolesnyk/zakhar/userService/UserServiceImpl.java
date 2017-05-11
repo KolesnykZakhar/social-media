@@ -92,7 +92,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-        List<User> resultList = userDao.friendListByRange(idUser, pageNumber * AMOUNT_USERS_ON_ONE_PAGE - AMOUNT_USERS_ON_ONE_PAGE, AMOUNT_USERS_ON_ONE_PAGE);
+        List<User> resultList = userDao.friendSublist(idUser, pageNumber * AMOUNT_USERS_ON_ONE_PAGE - AMOUNT_USERS_ON_ONE_PAGE, AMOUNT_USERS_ON_ONE_PAGE);
         resultList.forEach(user -> {
             if (userActivityMap.isOnline(user.getIdUser())) {
                 user.setOnline(true);

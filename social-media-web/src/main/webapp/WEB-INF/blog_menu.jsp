@@ -37,22 +37,26 @@
         <!-- Blog Post Content Column -->
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="well">
-                <h4>New Post</h4>
-                <i role="button" title="Switch To Normal Blog Menu" onclick="postMainDiv('/user/blog_menu_short', this)"
-                   class="glyphicon glyphicon-th-large"></i>
+                <h4 >New Post</h4>
                 <form role="form">
                     <div class="form-group">
                         <textarea id="newPostText" class="form-control" rows="3"></textarea>
                     </div>
-                    <button onclick="addNewPost('/user/add_new_post_full')" class="btn btn-primary">Add</button>
+                    <button onclick="addNewPost('/user/add_new_post')" class="btn btn-primary">Add</button>
                 </form>
             </div>
-            <c:forEach items="${requestScope.posts}" var="post">
+            <ul style="list-style: none; display: inline;">
+                <c:forEach var="i" begin="1" end="${requestScope.blogPage.amountPages}">
+                    <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/blog_menu/${i}', this)">${i}&nbsp;</a>
+                    </li>
+                </c:forEach>
+            </ul>
+            <c:forEach items="${requestScope.blogPage.posts}" var="post">
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
                 <!-- Author -->
                 <p class="lead">
-                    by <a onclick="postMainDiv('/user/user/${requestScope.user.idUser}')" href="#"><c:out
-                        value="${requestScope.user.firstName}"/> <c:out value="${requestScope.user.lastName}"/></a>
+                    by <a onclick="postMainDiv('/user/user/${requestScope.blogPage.user.idUser}')" href="#"><c:out
+                        value="${requestScope.blogPage.user.firstName}"/> <c:out value="${requestScope.blogPage.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->

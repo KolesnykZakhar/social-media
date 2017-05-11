@@ -45,7 +45,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> friendListByRange(Integer idUser, int offset, int amount) {
+    public List<User> friendSublist(Integer idUser, int offset, int amount) {
         return sessionFactory.getCurrentSession().createSQLQuery
                 ("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser) ORDER BY id_user ASC LIMIT :offset, :amount ")
                 .addEntity(User.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();

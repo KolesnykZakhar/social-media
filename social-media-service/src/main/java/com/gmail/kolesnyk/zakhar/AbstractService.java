@@ -17,14 +17,14 @@ public abstract class AbstractService {
     final protected String PHOTO_EXTENDS;
     final protected String SERVICE_EMAIL;
     final protected String PASSWORD_EMAIL;
-    final protected int AMOUNT_PHOTOS_ON_ONE_USER;
+    final protected int AMOUNT_POSTS_ON_ONE_PAGE;
     final protected int SIZE_OF_SHORT_CHAT;
     final protected int SIZE_OF_SHORT_BLOG_MENU;
 
     public AbstractService(@Autowired Environment environment) {
         this.environment = environment;
         AMOUNT_USERS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountUsersOnOnePage"));
-        AMOUNT_PHOTOS_ON_ONE_USER = Integer.parseInt(environment.getProperty("amountPhotosOnOneUser"));
+        AMOUNT_POSTS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountPostsOnOnePage"));
         PATH_STORING_IMAGES = environment.getProperty("pathStoringImages");
         DEFAULT_AVATAR_URL = environment.getProperty("defaultAvatarUrl");
         ROOT_AVATAR_URL = environment.getProperty("rootAvatarUrl");

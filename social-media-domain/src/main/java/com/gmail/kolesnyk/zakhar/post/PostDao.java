@@ -10,13 +10,8 @@ import java.util.List;
  */
 public interface PostDao extends BaseDao<Post, Integer> {
 
-    /**
-     * return list of posts by ID user
-     */
-    List<Post> fullListByIdUser(Integer idUser);
-
     @SuppressWarnings("unchecked")
-    List<Post> shortListByIdUser(Integer idUser, int size);
+    List<Post> postsSublistByIdUser(Integer idUser, int offset, int amount);
 
     /**
      * return list of posts by user
@@ -27,4 +22,6 @@ public interface PostDao extends BaseDao<Post, Integer> {
      * return list of posts by full text search
      */
     List<Post> listSearchString(String search);
+
+    Integer amountPostsByIdUser(int idUser);
 }

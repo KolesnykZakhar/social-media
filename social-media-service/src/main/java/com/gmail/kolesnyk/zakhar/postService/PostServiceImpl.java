@@ -4,6 +4,8 @@ package com.gmail.kolesnyk.zakhar.postService;
 import com.gmail.kolesnyk.zakhar.AbstractService;
 import com.gmail.kolesnyk.zakhar.post.Post;
 import com.gmail.kolesnyk.zakhar.post.PostDao;
+import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
+import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -22,14 +24,21 @@ public class PostServiceImpl extends AbstractService implements PostService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Post> fullListPostsByUser(int idUser) {
-        return postDao.fullListByIdUser(idUser);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Post> shortListPostsByUser(int idUser) {
-        return postDao.shortListByIdUser(idUser, SIZE_OF_SHORT_BLOG_MENU);
+    public BlogPage sublistPostsByUser(User user, int pageNumber) {
+        int amountPosts = postDao.amountPostsByIdUser(user.getIdUser());
+        if (amountPosts == 0) {
+            throw new ArrayStoreException("post list empty");
+        }
+        int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
+        int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
+        if (remainder != 0) {
+            amountPages++;
+        }
+        if (pageNumber > amountPages || pageNumber < 0) {
+            throw new IllegalArgumentException("wrong number of friends page");
+        }
+        List<Post> resultList = postDao.postsSublistByIdUser(user.getIdUser(), pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        return new BlogPage(resultList, amountPages, user);
     }
 
     @Override

@@ -1,15 +1,14 @@
 package com.gmail.kolesnyk.zakhar.postService;
 
 import com.gmail.kolesnyk.zakhar.post.Post;
+import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
+import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface PostService {
-    List<Post> fullListPostsByUser(int idUser);
-
-    @Transactional(readOnly = true)
-    List<Post> shortListPostsByUser(int idUser);
+    BlogPage sublistPostsByUser(User user, int pageNumber);
 
     void savePost(Post post);
 }
