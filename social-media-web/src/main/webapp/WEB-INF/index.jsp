@@ -25,7 +25,7 @@
                         <input <%--name="searchsubmit"--%> type="image" src="../static/images/search.gif"
                         <%--value="Go"--%> <%--id="searchsubmit"--%>
                                                            class="btn"
-                                                           onclick="searchUser('/user/search_user/'+$('#s').val())"/>
+                                                           onclick="searchUser('/user/search_user/'+$('#s').val()+'/1')"/>
                     </span>
                 <%--</form>--%>
                 <!--/searchform -->
@@ -58,7 +58,7 @@
                             <li><a id='news' href="#">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
-                            <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)" >Messages
+                            <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)">Messages
                                 <span id="amountUnreadMessages" style="color: red"><c:out
                                         value="${requestScope.amountUnreadMessages}"/></span></a></li>
                             <li><a id='blog' href="#" onclick="postMainDiv('/user/blog_menu_short', this)">Blog</a></li>

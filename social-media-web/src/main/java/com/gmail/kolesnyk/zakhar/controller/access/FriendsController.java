@@ -2,7 +2,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
-import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -53,9 +53,8 @@ public class FriendsController {
         int idUser = currentUser().getIdUser();
         try {
             modelAndView = new ModelAndView("friends_ajax");
-            FriendsPage friendsPage = userService.friendsSublist(idUser, pageNumber);
-            modelAndView.addObject("friends", friendsPage.getPage());
-            modelAndView.addObject("maxPage", friendsPage.getAmountPages());
+            UsersPage usersPage = userService.friendsSublist(idUser, pageNumber);
+            modelAndView.addObject("usersPage", usersPage);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             modelAndView = new ModelAndView("errorPages/400");
@@ -65,13 +64,13 @@ public class FriendsController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/search_user/{searchUser}", method = RequestMethod.POST)
-    private ModelAndView searchUsers(@PathVariable(value = "searchUser") String search) {
+    @RequestMapping(value = "/user/search_user/{searchUser}/{pageNumber}", method = RequestMethod.POST)
+    private ModelAndView searchUsers(@PathVariable(value = "searchUser") String search, @PathVariable("pageNumber") Integer pageNumber) {
         ModelAndView modelAndView;
         try {
             modelAndView = new ModelAndView("found_users");
-            List<User> foundUsers = userService.searchByName(search);
-            modelAndView.addObject("foundUsers", foundUsers);
+            UsersPage usersPage = userService.foundUsersSublist(search, pageNumber);
+            modelAndView.addObject("usersPage", usersPage);
         } catch (Exception e) {
             modelAndView = new ModelAndView("not_found_users");
         }

@@ -5,7 +5,7 @@ import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
-import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,32 +79,26 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public int getAmountFriends(Integer idUser) {
-        return userDao.amountFriends(idUser);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public FriendsPage friendsSublist(int idUser, int pageNumber) {
-        int amountFriends = getAmountFriends(idUser);
+    public UsersPage friendsSublist(int idUser, int pageNumber) {
+        int amountFriends = userDao.amountFriends(idUser);
         if (amountFriends == 0) {
             throw new ArrayStoreException("friends list empty");
         }
-        int amountPages = amountFriends / AMOUNT_FRIENDS_ON_ONE_PAGE;
-        int remainder = amountFriends % AMOUNT_FRIENDS_ON_ONE_PAGE;
+        int amountPages = amountFriends / AMOUNT_USERS_ON_ONE_PAGE;
+        int remainder = amountFriends % AMOUNT_USERS_ON_ONE_PAGE;
         if (remainder != 0) {
             amountPages++;
         }
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-        List<User> resultList = userDao.friendListByRange(idUser, pageNumber * AMOUNT_FRIENDS_ON_ONE_PAGE - AMOUNT_FRIENDS_ON_ONE_PAGE, AMOUNT_FRIENDS_ON_ONE_PAGE);
+        List<User> resultList = userDao.friendListByRange(idUser, pageNumber * AMOUNT_USERS_ON_ONE_PAGE - AMOUNT_USERS_ON_ONE_PAGE, AMOUNT_USERS_ON_ONE_PAGE);
         resultList.forEach(user -> {
             if (userActivityMap.isOnline(user.getIdUser())) {
                 user.setOnline(true);
             }
         });
-        return new FriendsPage(resultList, amountPages);
+        return new UsersPage(resultList, amountPages);
     }
 
     @Override
@@ -267,5 +261,29 @@ public class UserServiceImpl extends AbstractService implements UserService {
     @Transactional
     public void declineInvitationForFriendship(int idCurrentUser, int idUser) {
         userDao.removeInvitationForFriendship(idCurrentUser, idUser);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UsersPage foundUsersSublist(String search, int pageNumber) {
+        int amountUsers = userDao.amountFoundUsers(search);
+        if (amountUsers == 0) {
+            throw new ArrayStoreException("users not found");
+        }
+        int amountPages = amountUsers / AMOUNT_USERS_ON_ONE_PAGE;
+        int remainder = amountUsers % AMOUNT_USERS_ON_ONE_PAGE;
+        if (remainder != 0) {
+            amountPages++;
+        }
+        if (pageNumber > amountPages || pageNumber < 0) {
+            throw new IllegalArgumentException("wrong number of users page");
+        }
+        List<User> resultList = userDao.searchByNameSublist(search, pageNumber * AMOUNT_USERS_ON_ONE_PAGE - AMOUNT_USERS_ON_ONE_PAGE, AMOUNT_USERS_ON_ONE_PAGE);
+        resultList.forEach(user -> {
+            if (userActivityMap.isOnline(user.getIdUser())) {
+                user.setOnline(true);
+            }
+        });
+        return new UsersPage(resultList, amountPages, search);
     }
 }

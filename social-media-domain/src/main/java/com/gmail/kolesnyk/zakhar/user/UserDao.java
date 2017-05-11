@@ -73,4 +73,8 @@ public interface UserDao extends BaseDao<User, Integer> {
     List<User> listInvitationsForFriendship(int idUser);
 
     void removeInvitationForFriendship(int idCurrentUser, int idUser);
+
+    Integer amountFoundUsers(String search);
+
+    List<User> searchByNameSublist(String search, int offset, int amount);
 }

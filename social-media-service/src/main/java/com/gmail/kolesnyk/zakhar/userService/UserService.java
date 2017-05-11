@@ -2,7 +2,7 @@ package com.gmail.kolesnyk.zakhar.userService;
 
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
-import com.gmail.kolesnyk.zakhar.userService.friendsPage.FriendsPage;
+import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,9 +13,7 @@ public interface UserService {
 
     void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, GENDER gender) throws IllegalAccessException;
 
-    int getAmountFriends(Integer idUser);
-
-    FriendsPage friendsSublist(int idUser, int pageNumber);
+    UsersPage friendsSublist(int idUser, int pageNumber);
 
     User getUserById(int idUser);
 
@@ -37,7 +35,6 @@ public interface UserService {
 
     void inviteForFriendship(int idCurrentUser, int idUser);
 
-    @Transactional
     void applyFriendship(int idCurrentUser, int idUser);
 
     void removeFromFriends(int idCurrentUser, int idUser);
@@ -51,4 +48,7 @@ public interface UserService {
     void addFriendship(int idCurrentUser, int idUser);
 
     void declineInvitationForFriendship(int idCurrentUser, int idUser);
+
+    UsersPage foundUsersSublist(String search, int pageNumber);
+
 }

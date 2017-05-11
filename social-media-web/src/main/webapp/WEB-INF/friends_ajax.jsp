@@ -23,7 +23,7 @@
             <th>Email</th>
             <th>Status</th>
         </tr>
-        <c:forEach items="${requestScope.friends}" var="user" varStatus="index">
+        <c:forEach items="${requestScope.usersPage.page}" var="user" varStatus="index">
             <tr>
                 <td class="col-md-2 col-lg-2">
                     <a title="View" onclick="postMainDiv('/user/friend/${user.idUser}', this)">
@@ -45,7 +45,7 @@
         </c:forEach>
     </table>
     <ul style="list-style: none; display: inline;">
-        <c:forEach var="i" begin="1" end="${requestScope.maxPage}">
+        <c:forEach var="i" begin="1" end="${requestScope.usersPage.amountPages}">
             <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/friends/${i}', this)">${i}&nbsp;</a>
             </li>
         </c:forEach>

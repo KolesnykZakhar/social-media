@@ -47,7 +47,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> friendListByRange(Integer idUser, int offset, int amount) {
         return sessionFactory.getCurrentSession().createSQLQuery
-                ("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser) ORDER BY id_user ASC LIMIT :offset, :amount ;")
+                ("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser) ORDER BY id_user ASC LIMIT :offset, :amount ")
                 .addEntity(User.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();
     }
 
@@ -160,5 +160,31 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     public void removeInvitationForFriendship(int idCurrentUser, int idUser) {
         sessionFactory.getCurrentSession().createSQLQuery("DELETE FROM inviting_for_friendship WHERE (id_user = :idCurrentUser AND id_friend = :idUser) OR (id_user = :idUser AND id_friend = :idCurrentUser)")
                 .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).executeUpdate();
+    }
+
+    @Override
+    public Integer amountFoundUsers(String search) {
+        String[] split = search.split(" ");
+        String firstName = split[0].trim().toLowerCase();
+        String lastName = "";
+        if (split.length > 1) {
+            lastName = split[1].trim().toLowerCase();
+        }
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName))")
+                .setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%").uniqueResult()).intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> searchByNameSublist(String search, int offset, int amount) {
+        String[] split = search.split(" ");
+        String firstName = split[0].trim().toLowerCase();
+        String lastName = "";
+        if (split.length > 1) {
+            lastName = split[1].trim().toLowerCase();
+        }
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName)) LIMIT :offset, :amount")
+                .addEntity(User.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%")
+                .setParameter("offset", offset).setParameter("amount", amount).list();
     }
 }

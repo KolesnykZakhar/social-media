@@ -21,7 +21,7 @@
             <th>Name</th>
             <th>Status</th>
         </tr>
-        <c:forEach items="${requestScope.foundUsers}" var="user" varStatus="index">
+        <c:forEach items="${requestScope.usersPage.page}" var="user" varStatus="index">
             <tr>
                 <td class="col-md-2 col-lg-2">
                     <a title="View" onclick="postMainDiv('/user/user/${user.idUser}', this)">
@@ -42,6 +42,12 @@
             </tr>
         </c:forEach>
     </table>
+    <ul style="list-style: none; display: inline;">
+        <c:forEach var="i" begin="1" end="${requestScope.usersPage.amountPages}">
+            <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/search_user/${requestScope.usersPage.searchText}/${i}', this)">${i}&nbsp;</a>
+            </li>
+        </c:forEach>
+    </ul>
 </div>
 </body>
 </html>

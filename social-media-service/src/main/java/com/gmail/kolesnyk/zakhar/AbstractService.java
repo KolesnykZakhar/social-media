@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public abstract class AbstractService {
 
     private Environment environment;
-    final protected int AMOUNT_FRIENDS_ON_ONE_PAGE;
+    final protected int AMOUNT_USERS_ON_ONE_PAGE;
     final protected String PATH_STORING_IMAGES;
     final protected String DEFAULT_AVATAR_URL;
     final protected String ROOT_AVATAR_URL;
@@ -23,7 +23,7 @@ public abstract class AbstractService {
 
     public AbstractService(@Autowired Environment environment) {
         this.environment = environment;
-        AMOUNT_FRIENDS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountFriendsOnOnePage"));
+        AMOUNT_USERS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountUsersOnOnePage"));
         AMOUNT_PHOTOS_ON_ONE_USER = Integer.parseInt(environment.getProperty("amountPhotosOnOneUser"));
         PATH_STORING_IMAGES = environment.getProperty("pathStoringImages");
         DEFAULT_AVATAR_URL = environment.getProperty("defaultAvatarUrl");
