@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -30,7 +31,20 @@ public class Post implements Serializable {
     @Column(name = "date_post")
     private Timestamp datePost;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "media_posts", joinColumns = @JoinColumn(name = "id_post"))
+    @Column(name = "media_file")
+    private List<String> imageNames;
+
     public Post() {
+    }
+
+    public List<String> getImageNames() {
+        return imageNames;
+    }
+
+    public void setImagesName(List<String> imageName) {
+        this.imageNames = imageName;
     }
 
     public Timestamp getDatePost() {

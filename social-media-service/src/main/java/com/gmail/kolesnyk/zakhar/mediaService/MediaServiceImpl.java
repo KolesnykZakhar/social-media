@@ -5,7 +5,6 @@ import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.image.ImageDao;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +71,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
 
     @Override
     public byte[] getImageByName(String nameImage) throws IOException {
-        File serverFile = new File(PATH_STORING_IMAGES + nameImage);
+        File serverFile = new File(PATH_STORING_MEDIA + nameImage);
         InputStream is;
         if (serverFile.exists()) {
             is = new FileInputStream(serverFile);
@@ -87,12 +86,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     @Override
     @Transactional
     public void storeImage(MultipartFile file, User user) throws IOException {
-        byte[] bytes = file.getBytes();
-        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-        String fileName = System.currentTimeMillis() + "." + ext;
-        String fileFullName = PATH_STORING_IMAGES + fileName;
-        File serverFile = new File(fileFullName);
-        FileUtils.writeByteArrayToFile(serverFile, bytes);
+        String fileName = storeMedia(file);
         Image image = new Image();
         image.setUser(user);
         image.setNameImage(fileName);
@@ -102,7 +96,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     @Override
     @Transactional
     public void removeImage(String nameImage, int idImage) throws IOException {
-        FileUtils.forceDelete(new File(PATH_STORING_IMAGES + nameImage));
+        FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameImage));
         Image imageToRemove = new Image();
         imageToRemove.setIdImage(idImage);
         imageDao.remove(imageToRemove);

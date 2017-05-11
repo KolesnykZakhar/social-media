@@ -217,7 +217,7 @@
         <c:forEach items="${requestScope.images}" var="image">
             <div onclick="openModal('${image.nameImage}', ${image.idImage})" role="button" data-toggle="modal"
                  data-target="#myModal">
-                <img data-u="image" src="/user/image/<c:out value='${image.nameImage}'/>/"/>
+                <img data-u="image" src="/user/media/<c:out value='${image.nameImage}'/>/"/>
             </div>
         </c:forEach>
     </div>
@@ -240,7 +240,7 @@
             "function (responseText) {" +
             "$('html').html(responseText);" +
             "});");
-        $('#modalPhoto').attr('src', "/user/image/" + nameImage + "/");
+        $('#modalPhoto').attr('src', "/user/media/" + nameImage + "/");
     }
 </script>
 </html>

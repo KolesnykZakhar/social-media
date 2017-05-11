@@ -36,7 +36,7 @@ public class MediaController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user/image/{nameImage}")
+    @RequestMapping(value = "/user/media/{nameImage}")
     public byte[] getPhoto(@PathVariable("nameImage") String nameImage) {
         try {
             return mediaService.getImageByName(nameImage);

@@ -37,12 +37,62 @@
         <!-- Blog Post Content Column -->
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="well">
-                <h4 >New Post</h4>
-                <form role="form">
+                <h4>New Post</h4>
+                <form id="postAddForm" method="post"
+                      enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea id="newPostText" class="form-control" rows="3"></textarea>
+                        <textarea id="newPostText" name="newPostText" class="form-control" rows="3"></textarea>
                     </div>
-                    <button onclick="addNewPost('/user/add_new_post')" class="btn btn-primary">Add</button>
+                    <button id="add" type="submit" class="btn btn-primary">Add
+                    </button>
+                    <div class="modal-footer">
+                        <label id="mediaInputs" class="btn btn-primary">
+                            <input name="files" required type="file" hidden>
+                            <input name="files" required type="file" hidden>
+                        </label>
+                        <button onclick="addFileUploader()" type="button" class="btn btn-default" data-dismiss="modal">
+                            More
+                        </button>
+                        <script>
+                            function addFileUploader() {
+
+                            }
+                            $("#add").click(function (event) {
+                                //stop submit the form, we will post it manually.
+                                event.preventDefault();
+                                // Get form
+                                var form = $('#postAddForm')[0];
+                                // Create an FormData object
+                                var data = new FormData(form);
+                                // If you want to add an extra field for the FormData
+                                data.append("CustomField", "This is some extra data, testing");
+                                // disabled the submit button
+                                $("#add").prop("disabled", true);
+                                $.ajax({
+                                    type: "POST",
+                                    enctype: 'multipart/form-data',
+                                    url: "/user/add_new_post",
+                                    data: data,
+                                    processData: false,
+                                    contentType: false,
+                                    cache: false,
+                                    timeout: 600000,
+                                    success: function (data) {
+                                        $("#mainDiv").html(data);
+                                        console.log("SUCCESS : ", data);
+                                        $("#add").prop("disabled", false);
+                                    },
+                                    error: function (e) {
+                                        $("#mainDiv").html(e.responseText);
+                                        console.log("ERROR : ", e);
+                                        $("#add").prop("disabled", false);
+
+                                    }
+                                });
+                            });
+                        </script>
+                        <%--</form>--%>
+                    </div>
                 </form>
             </div>
             <ul style="list-style: none; display: inline;">
@@ -56,7 +106,8 @@
                 <!-- Author -->
                 <p class="lead">
                     by <a onclick="postMainDiv('/user/user/${requestScope.blogPage.user.idUser}')" href="#"><c:out
-                        value="${requestScope.blogPage.user.firstName}"/> <c:out value="${requestScope.blogPage.user.lastName}"/></a>
+                        value="${requestScope.blogPage.user.firstName}"/> <c:out
+                        value="${requestScope.blogPage.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->
@@ -64,10 +115,10 @@
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
                     at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
                 </p>
-
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
+                <c:forEach items="${post.imageNames}" var="images">
+                    <!-- Preview Image -->
+                    <img class="img-responsive" src="/user/media/${images}/" alt="">
+                </c:forEach>
                 <!-- Post Content -->
                 <span class="lead"><c:out value="${post.textPost}"/></span>
 

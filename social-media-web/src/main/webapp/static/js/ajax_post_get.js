@@ -94,8 +94,14 @@ function sendMessage(url) {
 }
 
 function addNewPost(url) {
-    $.post(url,{
-        newPostText: $('#newPostText').val()
+    $.post(url, {
+            type: "POST",
+            enctype: 'multipart/form-data',
+            newPostText: $('#newPostText').val(),
+            data: {
+                uploadedMedia1: $('#uploadedMedia1').files,
+                uploadedMedia2: $('#uploadedMedia2').files
+            }
         }, function (responseText) {
             $('#mainDiv').html(responseText);
         }
