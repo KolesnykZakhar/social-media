@@ -82,9 +82,10 @@ public class MediaController {
         }
     }
 
-    @RequestMapping(value = "/user/delete_image/{nameImage}")
-    public void deleteImage(@PathVariable("nameImage") String nameImage) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n" + nameImage);
+    @RequestMapping(value = "/user/delete_image/{nameImage}/{idImage}")
+    public String deleteImage(@PathVariable("nameImage") String nameImage, @PathVariable("idImage") Integer idImage) throws IOException {
+        mediaService.removeImage(nameImage, idImage);
+        return "ok";
     }
 
     @Bean

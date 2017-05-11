@@ -215,7 +215,8 @@
     <div data-u="slides"
          style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
         <c:forEach items="${requestScope.images}" var="image">
-            <div onclick="openModal('${image.nameImage}')" role="button" data-toggle="modal" data-target="#myModal">
+            <div onclick="openModal('${image.nameImage}', ${image.idImage})" role="button" data-toggle="modal"
+                 data-target="#myModal">
                 <img data-u="image" src="/user/image/<c:out value='${image.nameImage}'/>/"/>
             </div>
         </c:forEach>
@@ -234,8 +235,11 @@
 <!-- #endregion Jssor Slider End -->
 </body>
 <script>
-    function openModal(nameImage) {
-        $('#deleteImage').attr('onclick', "$.post('/user/delete_image/" + nameImage + "/');");
+    function openModal(nameImage, idImage) {
+        $('#deleteImage').attr('onclick', "$.post('/user/delete_image/" + nameImage + "/" + idImage + "'," +
+            "function (responseText) {" +
+            "$('html').html(responseText);" +
+            "});");
         $('#modalPhoto').attr('src', "/user/image/" + nameImage + "/");
     }
 </script>

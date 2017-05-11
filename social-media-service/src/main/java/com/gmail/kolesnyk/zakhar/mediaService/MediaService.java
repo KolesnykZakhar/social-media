@@ -17,4 +17,6 @@ public interface MediaService {
     byte[] getImageByName(String nameImage) throws IOException;
 
     void storeImage(MultipartFile file, User user) throws IOException;
+
+    void removeImage(String nameImage, int idImage) throws IOException;
 }

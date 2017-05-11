@@ -47,9 +47,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
             throw new IllegalArgumentException("dir not exist -> " + ROOT_AVATAR_URL);
         }
         File serverFile = new File(dir.getAbsolutePath() + File.separator + idUser + AVATAR_EXTENDS);
-        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-        stream.write(imageInByte);
-        stream.close();
+        FileUtils.writeByteArrayToFile(serverFile, imageInByte);
     }
 
     @Override
@@ -79,7 +77,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
         if (serverFile.exists()) {
             is = new FileInputStream(serverFile);
         } else {
-            throw new IllegalArgumentException("Image not found: " +serverFile.getAbsolutePath());
+            throw new IllegalArgumentException("Image not found: " + serverFile.getAbsolutePath());
         }
         byte[] arr = IOUtils.toByteArray(is);
         is.close();
@@ -99,5 +97,14 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
         image.setUser(user);
         image.setNameImage(fileName);
         imageDao.save(image);
+    }
+
+    @Override
+    @Transactional
+    public void removeImage(String nameImage, int idImage) throws IOException {
+        FileUtils.forceDelete(new File(PATH_STORING_IMAGES + nameImage));
+        Image imageToRemove = new Image();
+        imageToRemove.setIdImage(idImage);
+        imageDao.remove(imageToRemove);
     }
 }
