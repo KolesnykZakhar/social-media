@@ -19,7 +19,7 @@ public interface MediaService {
 
     void storeImage(MultipartFile file, User user) throws IOException;
 
-    void removeImage(String nameImage, int idImage) throws IOException;
+    void deleteFileMedia(String nameImage, int idImage) throws IOException;
 
     File getFileByName(String nameMedia);
 }

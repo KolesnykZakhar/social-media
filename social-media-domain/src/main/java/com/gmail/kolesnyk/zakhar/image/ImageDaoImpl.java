@@ -9,7 +9,7 @@ import java.util.List;
 public class ImageDaoImpl extends AbstractDao<Image, Integer> implements ImageDao {
     @Override
     @SuppressWarnings("unchecked")
-    public List<Image> listByIdUser(int idUser){
+    public List<Image> listByIdUser(int idUser) {
         return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM images WHERE id_user = :idUser")
                 .addEntity(Image.class).setParameter("idUser", idUser).list();
     }

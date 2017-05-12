@@ -88,9 +88,9 @@ public class MediaController {
         }
     }
 
-    @RequestMapping(value = "/user/delete_image/{nameImage}/{idImage}")
-    public String deleteImage(@PathVariable("nameImage") String nameImage, @PathVariable("idImage") Integer idImage) throws IOException {
-        mediaService.removeImage(nameImage, idImage);
+    @RequestMapping(value = "/user/delete_media/{nameMedia}/{idMedia}")
+    public String deleteMedia(@PathVariable("nameMedia") String nameMedia, @PathVariable("idMedia") Integer idMedia) throws IOException {
+        mediaService.deleteFileMedia(nameMedia, idMedia);
         return "ok";
     }
 

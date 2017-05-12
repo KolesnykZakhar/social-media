@@ -166,7 +166,7 @@
 
 <div class="menu_nav">
     <ul>
-        <li><a role="button" data-toggle="modal" data-target="#addPhoto">Add Photo</a></li>
+        <li><a role="button" data-toggle="modal" data-target="#addPhoto">Add Image</a></li>
     </ul>
     <div class="clr"></div>
 </div>
@@ -175,7 +175,7 @@
     <div id="modal-dialog-photo" class="modal-dialog">
         <div id="modal-content-photo" class="modal-content">
             <div class="modal-body">
-                <img id="modalPhoto" src="#" class="img-responsive">
+                <img id="modalImage" src="#" class="img-responsive">
             </div>
             <a href="#" id="deleteImage" onclick="" class="btn btn-primary">Delete</a>
         </div>
@@ -188,7 +188,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Upload New Photo</h4>
+                <h4 class="modal-title">Upload New Image</h4>
             </div>
             <div class="modal-footer">
                 <form action="/user/upload_image_by_file" method="post"
@@ -236,11 +236,11 @@
 </body>
 <script>
     function openModal(nameImage, idImage) {
-        $('#deleteImage').attr('onclick', "$.post('/user/delete_image/" + nameImage + "/" + idImage + "'," +
+        $('#deleteImage').attr('onclick', "$.post('/user/delete_media/" + nameImage + "/" + idImage + "'," +
             "function (responseText) {" +
             "$('html').html(responseText);" +
             "});");
-        $('#modalPhoto').attr('src', "/user/media/" + nameImage + "/");
+        $('#modalImage').attr('src', "/user/media/" + nameImage + "/");
     }
 </script>
 </html>

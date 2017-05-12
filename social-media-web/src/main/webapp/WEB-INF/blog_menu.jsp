@@ -77,8 +77,12 @@
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()} <a
+                            role="button" title="Delete" class="btn btn-danger pull-right"
+                            onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a>
                 </p>
+                <br>
+                <span class="lead"><c:out value="${post.textPost}"/></span>
                 <c:forEach items="${post.mediaFiles}" var="mediaFiles">
                     <!-- Preview Image -->
                     <c:choose>
@@ -100,7 +104,6 @@
                     </c:choose>
                 </c:forEach>
                 <!-- Post Content -->
-                <span class="lead"><c:out value="${post.textPost}"/></span>
             </c:forEach>
         </div>
         <!-- /.container -->

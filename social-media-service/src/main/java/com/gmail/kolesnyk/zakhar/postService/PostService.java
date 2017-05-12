@@ -16,4 +16,6 @@ public interface PostService {
 
     @Transactional
     void createAndSavePost(User user, String textPost, MultipartFile... files) throws IOException;
+
+    void deletePostById(int idPost);
 }

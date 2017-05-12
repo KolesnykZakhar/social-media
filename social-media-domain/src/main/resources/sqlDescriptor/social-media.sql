@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 11 2017 г., 17:28
+-- Время создания: Май 12 2017 г., 11:17
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -134,7 +134,8 @@ INSERT INTO `images` (`id_image`, `id_user`, `name_image`) VALUES
 (7, 1, '1494511209128.jpg'),
 (9, 1, '1494511224712.jpg'),
 (10, 1, '1494511238199.jpg'),
-(11, 1, '1494511244514.jpg');
+(11, 1, '1494511244514.jpg'),
+(13, 1, '1494537124768.png');
 
 -- --------------------------------------------------------
 
@@ -146,6 +147,48 @@ CREATE TABLE `inviting_for_friendship` (
   `id_user` int(11) NOT NULL,
   `id_friend` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `media_posts`
+--
+
+CREATE TABLE `media_posts` (
+  `id_media` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL,
+  `media_files` varchar(256) NOT NULL,
+  `media_type` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `media_posts`
+--
+
+INSERT INTO `media_posts` (`id_media`, `id_post`, `media_files`, `media_type`) VALUES
+(3, 34, '1494536968133.bmp', 0),
+(4, 34, '1494536968148.bmp', 0),
+(5, 35, '1494537300567.png', 0),
+(7, 36, '1494537336335.bmp', 0),
+(8, 36, '1494537336346.png', 0),
+(9, 37, '1494537575358.bmp', 0),
+(10, 37, '1494537575370.png', 0),
+(11, 38, '1494575175326.bmp', 0),
+(12, 38, '1494575175306.png', 0),
+(13, 39, '1494575220242.mp4', 2),
+(14, 39, '1494575225540.png', 0),
+(15, 40, '1494577795138.mp3', 1),
+(16, 40, '1494577795155.bmp', 0),
+(17, 41, '1494580084834.mp3', 1),
+(18, 41, '1494580088708.mp3', 1),
+(19, 41, '1494580082427.mp3', 1),
+(20, 41, '1494580082543.mp3', 1),
+(21, 41, '1494580091047.mp3', 1),
+(22, 41, '1494580082374.mp3', 1),
+(23, 41, '1494580084669.mp3', 1),
+(24, 41, '1494580082402.mp3', 1),
+(25, 41, '1494580094281.mp4', 2),
+(26, 41, '1494580094054.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -272,7 +315,17 @@ INSERT INTO `posts` (`id_post`, `text_post`, `id_user`, `date_post`) VALUES
 (28, 'fsdfsdfsdfsd', 1, '2017-05-10 10:59:39'),
 (29, 'asdasdasasdas as\nd\n as\nd\n as\nd a', 1, '2017-05-10 11:03:29'),
 (30, 'fsdfsdf11111111111111111111111111', 1, '2017-05-11 15:26:02'),
-(31, '222', 1, '2017-05-11 15:26:10');
+(31, '222', 1, '2017-05-11 15:26:10'),
+(32, 'tttt', 1, '2017-05-11 16:15:31'),
+(33, 'sssssss', 1, '2017-05-11 21:03:23'),
+(34, 'image2', 1, '2017-05-11 21:09:28'),
+(35, 'sdsds', 1, '2017-05-11 21:15:00'),
+(36, 'ddd', 1, '2017-05-11 21:15:36'),
+(37, 'ddd', 1, '2017-05-11 21:19:35'),
+(38, 'sadasdasd', 1, '2017-05-12 07:46:15'),
+(39, 'video', 1, '2017-05-12 07:47:05'),
+(40, 'AUDIO', 1, '2017-05-12 08:29:55'),
+(41, 'music', 1, '2017-05-12 09:08:19');
 
 -- --------------------------------------------------------
 
@@ -367,6 +420,12 @@ ALTER TABLE `images`
   ADD UNIQUE KEY `images_name_image_uindex` (`name_image`);
 
 --
+-- Индексы таблицы `media_posts`
+--
+ALTER TABLE `media_posts`
+  ADD PRIMARY KEY (`id_media`);
+
+--
 -- Индексы таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -408,7 +467,12 @@ ALTER TABLE `authority`
 -- AUTO_INCREMENT для таблицы `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT для таблицы `media_posts`
+--
+ALTER TABLE `media_posts`
+  MODIFY `id_media` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
@@ -418,7 +482,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "images")
-public class Image implements Serializable{
+public class Image implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

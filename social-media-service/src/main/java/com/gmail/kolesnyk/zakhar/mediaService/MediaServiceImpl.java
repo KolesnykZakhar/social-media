@@ -1,6 +1,7 @@
 package com.gmail.kolesnyk.zakhar.mediaService;
 
 import com.gmail.kolesnyk.zakhar.AbstractService;
+
 import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.image.ImageDao;
 import com.gmail.kolesnyk.zakhar.user.User;
@@ -99,11 +100,9 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    @Transactional
-    public void removeImage(String nameImage, int idImage) throws IOException {
+    public void deleteFileMedia(String nameImage, int idImage) throws IOException {
         FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameImage));
         Image imageToRemove = new Image();
         imageToRemove.setIdImage(idImage);
-        imageDao.remove(imageToRemove);
     }
 }

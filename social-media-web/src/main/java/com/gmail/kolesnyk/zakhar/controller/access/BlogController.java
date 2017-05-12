@@ -35,6 +35,12 @@ public class BlogController {
         return getBlogMenuModel(1);
     }
 
+    @RequestMapping(value = "/user/delete_post/{idPost}", method = RequestMethod.POST)
+    public ModelAndView deletePost(@PathVariable("idPost") Integer idPost) throws IOException {
+        postService.deletePostById(idPost);
+        return getBlogMenuModel(1);
+    }
+
     private ModelAndView getBlogMenuModel(int pageNumber) {
         ModelAndView modelAndView = new ModelAndView("blog_menu");
         BlogPage blogPage = postService.sublistPostsByUser(currentUser(), pageNumber);

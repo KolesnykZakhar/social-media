@@ -44,4 +44,8 @@ public abstract class AbstractService {
         FileUtils.writeByteArrayToFile(serverFile, bytes);
         return fileName;
     }
+
+    protected void deleteMedia(String nameMedia) throws IOException {
+        FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameMedia));
+    }
 }

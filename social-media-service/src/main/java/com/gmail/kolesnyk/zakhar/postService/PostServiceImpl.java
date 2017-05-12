@@ -66,4 +66,18 @@ public class PostServiceImpl extends AbstractService implements PostService {
         post.setMediaFiles(imageNames);
         savePost(post);
     }
+
+    @Override
+    @Transactional
+    public void deletePostById(int idPost) {
+        Post post = postDao.selectById(idPost);
+        post.getMediaFiles().keySet().forEach(m -> {
+            try {
+                deleteMedia(m);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        postDao.remove(post);
+    }
 }
