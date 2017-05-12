@@ -2,6 +2,7 @@ package com.gmail.kolesnyk.zakhar.post;
 
 import com.gmail.kolesnyk.zakhar.AbstractDao;
 import com.gmail.kolesnyk.zakhar.user.User;
+import javafx.geometry.Pos;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
@@ -39,5 +40,28 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     public Integer amountPostsByIdUser(int idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM posts WHERE id_user = :idUser")
                 .setParameter("idUser", idUser).uniqueResult()).intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Post> sublistBookmarksByUser(int idUser, int offset, int amount) {
+//        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts")
+//                .addEntity(Post.class).setParameter("idUser",idUser).setParameter("offset",offset).setParameter("amount",amount).list();
+        return null;
+    }
+
+    @Override
+    public Integer amountBookmarksByIdUser(int idUser) {
+        return null;
+    }
+
+    @Override
+    public List<Post> sublistNewsByUser(int idUser, int offset, int amount) {
+        return null;
+    }
+
+    @Override
+    public Integer amountNewsByIdUser(int idUser) {
+        return null;
     }
 }

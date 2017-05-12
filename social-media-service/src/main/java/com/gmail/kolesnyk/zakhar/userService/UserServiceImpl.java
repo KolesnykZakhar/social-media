@@ -5,6 +5,7 @@ import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
+import com.gmail.kolesnyk.zakhar.user.VISIBILITY;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
 import org.apache.commons.io.IOUtils;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import static com.gmail.kolesnyk.zakhar.user.STATE.AVAILABLE;
 import static com.gmail.kolesnyk.zakhar.user.STATE.WAITING_CONFIRM;
+import static com.gmail.kolesnyk.zakhar.user.VISIBILITY.PUBLIC;
 
 @Service
 public class UserServiceImpl extends AbstractService implements UserService {
@@ -62,6 +64,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
         user.setPhone(phone);
         user.setGender(gender);
         user.setState(WAITING_CONFIRM);
+        user.setVisibility(PUBLIC);
         user.setAuthority(new HashSet<String>() {{
             add("ROLE_USER");
         }});

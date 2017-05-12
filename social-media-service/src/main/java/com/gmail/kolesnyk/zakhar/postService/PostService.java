@@ -1,21 +1,24 @@
 package com.gmail.kolesnyk.zakhar.postService;
 
 import com.gmail.kolesnyk.zakhar.post.Post;
-import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
+import com.gmail.kolesnyk.zakhar.postService.postPages.PostPage;
 import com.gmail.kolesnyk.zakhar.user.User;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface PostService {
-    BlogPage sublistPostsByUser(int idUser, int pageNumber);
+    PostPage sublistPostsByUser(int idUser, int pageNumber);
 
     void savePost(Post post);
 
-    @Transactional
     void createAndSavePost(User user, String textPost, MultipartFile... files) throws IOException;
 
     void deletePostById(int idPost);
+
+    PostPage sublistBookmarksByUser(int idUser, int pageNumber);
+
+    boolean hasPrivateBlog(int idUser);
+
+    PostPage sublistNewsByUser(int idUser, int pageNumber);
 }

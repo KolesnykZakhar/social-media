@@ -24,4 +24,12 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> listSearchString(String search);
 
     Integer amountPostsByIdUser(int idUser);
+
+    List<Post> sublistBookmarksByUser(int idUser, int offset, int amount);
+
+    Integer amountBookmarksByIdUser(int idUser);
+
+    List<Post> sublistNewsByUser(int idUser, int offset, int amount);
+
+    Integer amountNewsByIdUser(int idUser);
 }

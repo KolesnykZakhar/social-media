@@ -22,6 +22,7 @@ function updateUser(url) {
     $.post(url, {
             birthDate: $('#birthDate').val(),
             gender: $('input[name=gender]:checked').val(),
+            visibility: $('input[name=visibility]:checked').val(),
             firstName: $('#firstName').val(),
             lastName: $('#lastName').val(),
             phone: $('#phone').val()

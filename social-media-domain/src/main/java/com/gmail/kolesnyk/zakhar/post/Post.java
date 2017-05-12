@@ -2,6 +2,7 @@ package com.gmail.kolesnyk.zakhar.post;
 
 
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.user.VISIBILITY;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 

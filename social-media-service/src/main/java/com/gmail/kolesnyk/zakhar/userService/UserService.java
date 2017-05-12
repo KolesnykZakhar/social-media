@@ -50,5 +50,4 @@ public interface UserService {
     void declineInvitationForFriendship(int idCurrentUser, int idUser);
 
     UsersPage foundUsersSublist(String search, int pageNumber);
-
 }

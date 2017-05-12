@@ -103,6 +103,23 @@
                                         <td><label>Login</label></td>
                                         <td><c:out value='${requestScope.user.login}'/></td>
                                     </tr>
+                                    <tr>
+                                        <td><label>Who See My Posts:</label></td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="cols-sm-10">
+                                                    <label class="radio-inline"><input ${requestScope.user.visibility=='PUBLIC'?'checked':''}
+                                                            required type="radio"
+                                                            name="visibility"
+                                                            value="0">All Users</label>
+                                                    <label class="radio-inline"><input ${requestScope.user.visibility=='PRIVATE'?'checked':''}
+                                                            required type="radio"
+                                                            name="visibility"
+                                                            value="1">All Friends</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <a href="#" onclick="updateUser('/user/update_user_info/')"

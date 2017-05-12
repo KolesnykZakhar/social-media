@@ -2,7 +2,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 
 
 import com.gmail.kolesnyk.zakhar.postService.PostService;
-import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
+import com.gmail.kolesnyk.zakhar.postService.postPages.PostPage;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,24 @@ public class BlogController {
         return getBlogMenuModel(pageNumber, idUser);
     }
 
+    @RequestMapping(value = "/user/bookmarks/{pageNumber}")
+    public ModelAndView openBookmarks(@PathVariable("pageNumber") Integer pageNumber) {
+        ModelAndView modelAndView = new ModelAndView("bookmarks_menu");
+        PostPage bookmarksPage = postService.sublistBookmarksByUser(currentUser().getIdUser(), pageNumber);
+        modelAndView.addObject("bookmarksPage", bookmarksPage);
+//        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/news/{pageNumber}")
+    public ModelAndView openNews(@PathVariable("pageNumber") Integer pageNumber) {
+        ModelAndView modelAndView = new ModelAndView("news_menu");
+        PostPage newsPage = postService.sublistNewsByUser(currentUser().getIdUser(), pageNumber);
+        modelAndView.addObject("newsPage", newsPage);
+//        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/user/add_new_post", method = RequestMethod.POST)
     public ModelAndView addNewPost(@RequestParam("newPostText") String newPostText, @RequestParam("files") MultipartFile[] files) throws IOException {
         postService.createAndSavePost(currentUser(), newPostText, files);
@@ -46,10 +64,15 @@ public class BlogController {
     }
 
     private ModelAndView getBlogMenuModel(int pageNumber, int idUser) {
-        ModelAndView modelAndView = new ModelAndView("blog_menu");
-        BlogPage blogPage = postService.sublistPostsByUser(idUser, pageNumber);
-        modelAndView.addObject("blogPage", blogPage);
-        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
+        ModelAndView modelAndView;
+        if (currentUser().getIdUser().equals(idUser) || !postService.hasPrivateBlog(idUser)) {
+            modelAndView = new ModelAndView("blog_menu");
+            PostPage blogPage = postService.sublistPostsByUser(idUser, pageNumber);
+            modelAndView.addObject("blogPage", blogPage);
+            modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
+        }else {
+            modelAndView=new ModelAndView("access_denied_to_blog");
+        }
         return modelAndView;
     }
 

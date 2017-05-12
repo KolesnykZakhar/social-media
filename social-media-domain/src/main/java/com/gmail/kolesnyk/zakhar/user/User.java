@@ -55,21 +55,33 @@ public class User implements Serializable, UserDetails {
     @Column(name = "gender")
     private GENDER gender;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "authority", joinColumns = @JoinColumn(name = "id_user"))
-    @Column(name = "authority")
-    private Set<String> authority;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "visibility")
+    private VISIBILITY visibility;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "state")
     private STATE state;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "authority", joinColumns = @JoinColumn(name = "id_user"))
+    @Column(name = "authority")
+    private Set<String> authority;
+
     private transient String username;
 
     private transient boolean online;
 
     public User() {
+    }
+
+    public VISIBILITY getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(VISIBILITY visibility) {
+        this.visibility = visibility;
     }
 
     public void setUsername(String username) {

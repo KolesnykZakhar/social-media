@@ -5,8 +5,8 @@ import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.user.VISIBILITY;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
-import com.gmail.kolesnyk.zakhar.util.ViewUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,9 +23,6 @@ public class UserController {
 
     @Autowired
     private MediaService mediaService;
-
-    @Autowired
-    private ViewUtil viewUtil;
 
     @Autowired
     private UserService userService;
@@ -57,15 +54,16 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/user/update_user_info"})
-    public String updateUserInfo(@RequestParam("birthDate") String birthDate, @RequestParam("gender") Integer gender,
+    public String updateUserInfo(@RequestParam("birthDate") String birthDate, @RequestParam("gender") Integer gender, @RequestParam("visibility") Integer visibility,
                                  @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phone") String phone) throws ServletException, IOException {
         User user = currentUser();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setBirthDate(birthDate);
         user.setGender(GENDER.values()[gender]);
+        user.setVisibility(VISIBILITY.values()[visibility]);
         user.setPhone(phone);
-        viewUtil.updateUserDomainVersion(user);
+        userService.update(user);
         return "ok_ajax";
     }
 
@@ -75,7 +73,7 @@ public class UserController {
         User user = currentUser();
         modelAndView = new ModelAndView("settings_profile");
         modelAndView.addObject("isAdmin", user.getAuthority().contains("ROLE_ADMIN"));
-        modelAndView.addObject("user", viewUtil.getUserViewVersion());
+        modelAndView.addObject("user", currentUser());
         return modelAndView;
     }
 }

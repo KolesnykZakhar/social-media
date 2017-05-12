@@ -77,4 +77,6 @@ public interface UserDao extends BaseDao<User, Integer> {
     Integer amountFoundUsers(String search);
 
     List<User> searchByNameSublist(String search, int offset, int amount);
+
+    Boolean hasPrivateBlog(int idUser);
 }

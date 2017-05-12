@@ -5,7 +5,7 @@ import com.gmail.kolesnyk.zakhar.AbstractService;
 import com.gmail.kolesnyk.zakhar.post.MEDIA_TYPE;
 import com.gmail.kolesnyk.zakhar.post.Post;
 import com.gmail.kolesnyk.zakhar.post.PostDao;
-import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
+import com.gmail.kolesnyk.zakhar.postService.postPages.PostPage;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
 import org.apache.commons.io.FilenameUtils;
@@ -34,7 +34,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
 
     @Override
     @Transactional(readOnly = true)
-    public BlogPage sublistPostsByUser(int idUser, int pageNumber) {
+    public PostPage sublistPostsByUser(int idUser, int pageNumber) {
         int amountPosts = postDao.amountPostsByIdUser(idUser);
         if (amountPosts == 0) {
             throw new ArrayStoreException("post list empty");
@@ -45,10 +45,10 @@ public class PostServiceImpl extends AbstractService implements PostService {
             amountPages++;
         }
         if (pageNumber > amountPages || pageNumber < 0) {
-            throw new IllegalArgumentException("wrong number of friends page");
+            throw new IllegalArgumentException("wrong number of posts page");
         }
         List<Post> resultList = postDao.postsSublistByIdUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
-        return new BlogPage(resultList, amountPages, userDao.selectById(idUser));
+        return new PostPage(resultList, amountPages, userDao.selectById(idUser));
     }
 
     @Override
@@ -85,5 +85,48 @@ public class PostServiceImpl extends AbstractService implements PostService {
             }
         });
         postDao.remove(post);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public PostPage sublistBookmarksByUser(int idUser, int pageNumber) {
+        int amountPosts = postDao.amountBookmarksByIdUser(idUser);
+        if (amountPosts == 0) {
+            throw new ArrayStoreException("post list empty");
+        }
+        int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
+        int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
+        if (remainder != 0) {
+            amountPages++;
+        }
+        if (pageNumber > amountPages || pageNumber < 0) {
+            throw new IllegalArgumentException("wrong number of bookmarks page");
+        }
+        List<Post> resultList = postDao.sublistBookmarksByUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        return new PostPage(resultList, amountPages);
+    }
+
+    @Override
+    public PostPage sublistNewsByUser(int idUser, int pageNumber) {
+        int amountPosts = postDao.amountNewsByIdUser(idUser);
+        if (amountPosts == 0) {
+            throw new ArrayStoreException("post list empty");
+        }
+        int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
+        int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
+        if (remainder != 0) {
+            amountPages++;
+        }
+        if (pageNumber > amountPages || pageNumber < 0) {
+            throw new IllegalArgumentException("wrong number of bookmarks page");
+        }
+        List<Post> resultList = postDao.sublistNewsByUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        return new PostPage(resultList, amountPages);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean hasPrivateBlog(int idUser) {
+        return userDao.hasPrivateBlog(idUser);
     }
 }

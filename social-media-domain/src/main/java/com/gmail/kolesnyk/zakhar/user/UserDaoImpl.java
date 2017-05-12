@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import java.math.BigInteger;
 import java.util.List;
 
+import static com.gmail.kolesnyk.zakhar.user.VISIBILITY.PRIVATE;
+
 /**
  * class implements and extends methods that need to ORM relations with {@link User} class
  */
@@ -186,5 +188,11 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
         return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName)) LIMIT :offset, :amount")
                 .addEntity(User.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%")
                 .setParameter("offset", offset).setParameter("amount", amount).list();
+    }
+
+    @Override
+    public Boolean hasPrivateBlog(int idUser) {
+        return ((Byte) sessionFactory.getCurrentSession().createSQLQuery("SELECT visibility FROM users WHERE id_user = :idUser")
+                .setParameter("idUser", idUser).uniqueResult()).intValue() == PRIVATE.ordinal();
     }
 }
