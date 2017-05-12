@@ -38,16 +38,14 @@ public class BlogController {
         ModelAndView modelAndView = new ModelAndView("bookmarks_menu");
         PostPage bookmarksPage = postService.sublistBookmarksByUser(currentUser().getIdUser(), pageNumber);
         modelAndView.addObject("bookmarksPage", bookmarksPage);
-//        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
         return modelAndView;
     }
 
     @RequestMapping(value = "/user/news/{pageNumber}")
     public ModelAndView openNews(@PathVariable("pageNumber") Integer pageNumber) {
         ModelAndView modelAndView = new ModelAndView("news_menu");
-        PostPage newsPage = postService.sublistNewsByUser(currentUser().getIdUser(), pageNumber);
+        PostPage newsPage = postService.sublistNews(currentUser().getIdUser(), pageNumber);
         modelAndView.addObject("newsPage", newsPage);
-//        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
         return modelAndView;
     }
 
@@ -67,11 +65,12 @@ public class BlogController {
         ModelAndView modelAndView;
         if (currentUser().getIdUser().equals(idUser) || !postService.hasPrivateBlog(idUser)) {
             modelAndView = new ModelAndView("blog_menu");
-            PostPage blogPage = postService.sublistPostsByUser(idUser, pageNumber);
+            PostPage blogPage;
+            blogPage = postService.sublistPostsByUser(idUser, pageNumber);
             modelAndView.addObject("blogPage", blogPage);
             modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
-        }else {
-            modelAndView=new ModelAndView("access_denied_to_blog");
+        } else {
+            modelAndView = new ModelAndView("access_denied_to_blog");
         }
         return modelAndView;
     }

@@ -76,32 +76,36 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <c:choose>
-                                <c:when test="${requestScope.isFriend}">
-                                    <a href="#"
-                                       onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.user.idUser}')"
-                                       class="btn btn-primary">Remove From Friends</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:choose>
-                                        <c:when test="${requestScope.isInvited}">
-                                            <span>Waiting For Accepting About Inviting For Friendship</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <a href="#"
-                                               onclick="addRemoveAcceptFriendship('/user/add_to_friends/${requestScope.user.idUser}')"
-                                               class="btn btn-primary">Add To Friends</a>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:otherwise>
-                            </c:choose>
+                            <c:if test="${requestScope.isNotMe}">
+                                <c:choose>
+                                    <c:when test="${requestScope.isFriend}">
+                                        <a href="#"
+                                           onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.user.idUser}')"
+                                           class="btn btn-primary">Remove From Friends</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:choose>
+                                            <c:when test="${requestScope.isInvited}">
+                                                <span>Waiting For Accepting About Inviting For Friendship</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="#"
+                                                   onclick="addRemoveAcceptFriendship('/user/add_to_friends/${requestScope.user.idUser}')"
+                                                   class="btn btn-primary">Add To Friends</a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:if>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a onclick="postMainDiv('/user/short_chat/${requestScope.user.idUser}/${true}')"
-                       data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
-                       class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <c:if test="${requestScope.isNotMe}">
+                        <a onclick="postMainDiv('/user/short_chat/${requestScope.user.idUser}/${true}')"
+                           data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
+                           class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    </c:if>
                     <span class="pull-right">
                             <a href="#" type="button" class="btn btn-sm btn-default"
                                onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')">View Blog</a>

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
     public PostPage sublistPostsByUser(int idUser, int pageNumber) {
         int amountPosts = postDao.amountPostsByIdUser(idUser);
         if (amountPosts == 0) {
-            throw new ArrayStoreException("post list empty");
+            return new PostPage(Collections.emptyList(), 0, userDao.selectById(idUser));
         }
         int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
         int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
@@ -92,7 +93,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
     public PostPage sublistBookmarksByUser(int idUser, int pageNumber) {
         int amountPosts = postDao.amountBookmarksByIdUser(idUser);
         if (amountPosts == 0) {
-            throw new ArrayStoreException("post list empty");
+            return new PostPage(Collections.emptyList(), 0);
         }
         int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
         int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
@@ -107,10 +108,11 @@ public class PostServiceImpl extends AbstractService implements PostService {
     }
 
     @Override
-    public PostPage sublistNewsByUser(int idUser, int pageNumber) {
+    @Transactional(readOnly = true)
+    public PostPage sublistNews(int idUser, int pageNumber) {
         int amountPosts = postDao.amountNewsByIdUser(idUser);
         if (amountPosts == 0) {
-            throw new ArrayStoreException("post list empty");
+            return new PostPage(Collections.emptyList(), 0);
         }
         int amountPages = amountPosts / AMOUNT_POSTS_ON_ONE_PAGE;
         int remainder = amountPosts % AMOUNT_POSTS_ON_ONE_PAGE;
@@ -120,7 +122,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of bookmarks page");
         }
-        List<Post> resultList = postDao.sublistNewsByUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        List<Post> resultList = postDao.sublistNews(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
         return new PostPage(resultList, amountPages);
     }
 

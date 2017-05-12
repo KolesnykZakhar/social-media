@@ -20,5 +20,5 @@ public interface PostService {
 
     boolean hasPrivateBlog(int idUser);
 
-    PostPage sublistNewsByUser(int idUser, int pageNumber);
+    PostPage sublistNews(int idUser, int pageNumber);
 }

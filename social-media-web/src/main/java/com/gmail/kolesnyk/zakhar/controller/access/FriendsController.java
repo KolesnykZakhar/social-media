@@ -86,6 +86,9 @@ public class FriendsController {
             User user = userService.getUserById(idUser);
             boolean isFriends = userService.isFriends(idCurrentUser, user.getIdUser());
             modelAndView.addObject("isFriend", isFriends);
+            if (idCurrentUser != user.getIdUser()) {
+                modelAndView.addObject("isNotMe", true);
+            }
             if (!isFriends) {
                 modelAndView.addObject("isInvited", userService.isInvitedForFriendship(idCurrentUser, user.getIdUser()));
             }

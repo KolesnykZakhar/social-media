@@ -29,7 +29,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
 
     Integer amountBookmarksByIdUser(int idUser);
 
-    List<Post> sublistNewsByUser(int idUser, int offset, int amount);
+    List<Post> sublistNews(int idUser, int offset, int amount);
 
     Integer amountNewsByIdUser(int idUser);
 }

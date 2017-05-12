@@ -55,7 +55,7 @@
                         <ul id='sb_menu' class="sb_menu">
                             <li id='home' class="active"><a href="#" onclick="postMainDiv('/user/image_slider', this)">Home</a>
                             </li>
-                            <li><a id='news' href="#">News</a></li>
+                            <li><a id='news' href="#" onclick="postMainDiv('/user/news/1', this)">News</a></li>
                             <li><a id='friendsSb' href="#" onclick="postMainDiv('/user/friends/1', this)">Friends</a>
                             </li>
                             <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)">Messages

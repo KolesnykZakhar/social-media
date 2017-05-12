@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 12 2017 г., 11:17
+-- Время создания: Май 12 2017 г., 21:31
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -64,6 +64,26 @@ INSERT INTO `authority` (`id_authority`, `id_user`, `authority`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `bookmarks`
+--
+
+CREATE TABLE `bookmarks` (
+  `id_bookmark` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `bookmarks`
+--
+
+INSERT INTO `bookmarks` (`id_bookmark`, `id_user`, `id_post`) VALUES
+(1, 1, 43),
+(2, 1, 44);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `confirm_emails`
 --
 
@@ -89,14 +109,14 @@ CREATE TABLE `friends` (
 --
 
 INSERT INTO `friends` (`id_user`, `id_friend`, `date_friendship`) VALUES
-(1, 2, '2017-02-07 09:14:23'),
+(1, 2, '2017-05-12 19:10:27'),
 (1, 6, '2017-03-10 11:15:27'),
 (1, 7, '2017-03-10 11:15:39'),
 (1, 8, '2017-03-10 11:15:52'),
 (1, 9, '2017-03-10 11:16:01'),
 (1, 11, '2017-05-09 18:34:00'),
 (1, 12, '2017-05-09 18:33:56'),
-(2, 1, '2017-02-07 09:14:32'),
+(2, 1, '2017-05-12 19:10:27'),
 (2, 3, '2017-05-08 13:33:28'),
 (2, 4, '2017-05-09 18:39:45'),
 (2, 6, '2017-05-08 13:33:42'),
@@ -175,20 +195,8 @@ INSERT INTO `media_posts` (`id_media`, `id_post`, `media_files`, `media_type`) V
 (10, 37, '1494537575370.png', 0),
 (11, 38, '1494575175326.bmp', 0),
 (12, 38, '1494575175306.png', 0),
-(13, 39, '1494575220242.mp4', 2),
-(14, 39, '1494575225540.png', 0),
-(15, 40, '1494577795138.mp3', 1),
-(16, 40, '1494577795155.bmp', 0),
-(17, 41, '1494580084834.mp3', 1),
-(18, 41, '1494580088708.mp3', 1),
-(19, 41, '1494580082427.mp3', 1),
-(20, 41, '1494580082543.mp3', 1),
-(21, 41, '1494580091047.mp3', 1),
-(22, 41, '1494580082374.mp3', 1),
-(23, 41, '1494580084669.mp3', 1),
-(24, 41, '1494580082402.mp3', 1),
-(25, 41, '1494580094281.mp4', 2),
-(26, 41, '1494580094054.jpg', 0);
+(37, 43, '1494588744478.mp3', 1),
+(38, 43, '1494588744351.bmp', 0);
 
 -- --------------------------------------------------------
 
@@ -315,7 +323,7 @@ INSERT INTO `posts` (`id_post`, `text_post`, `id_user`, `date_post`) VALUES
 (28, 'fsdfsdfsdfsd', 1, '2017-05-10 10:59:39'),
 (29, 'asdasdasasdas as\nd\n as\nd\n as\nd a', 1, '2017-05-10 11:03:29'),
 (30, 'fsdfsdf11111111111111111111111111', 1, '2017-05-11 15:26:02'),
-(31, '222', 1, '2017-05-11 15:26:10'),
+(31, '222', 4, '2017-05-11 15:26:10'),
 (32, 'tttt', 1, '2017-05-11 16:15:31'),
 (33, 'sssssss', 1, '2017-05-11 21:03:23'),
 (34, 'image2', 1, '2017-05-11 21:09:28'),
@@ -323,9 +331,14 @@ INSERT INTO `posts` (`id_post`, `text_post`, `id_user`, `date_post`) VALUES
 (36, 'ddd', 1, '2017-05-11 21:15:36'),
 (37, 'ddd', 1, '2017-05-11 21:19:35'),
 (38, 'sadasdasd', 1, '2017-05-12 07:46:15'),
-(39, 'video', 1, '2017-05-12 07:47:05'),
-(40, 'AUDIO', 1, '2017-05-12 08:29:55'),
-(41, 'music', 1, '2017-05-12 09:08:19');
+(43, 'audio', 2, '2017-05-12 11:32:25'),
+(44, 'ss', 2, '2017-05-12 11:44:46'),
+(45, 'asdasd', 2, '2017-05-12 11:45:05'),
+(46, 'asdasdsad', 2, '2017-05-12 11:45:07'),
+(47, 'asdasdasd', 2, '2017-05-12 11:45:09'),
+(48, 'dasdasdas', 2, '2017-05-12 11:45:11'),
+(50, 'ssssssssssssssssssssssssssssssssss', 2, '2017-05-12 11:49:26'),
+(51, 'ddd', 1, '2017-05-12 11:59:26');
 
 -- --------------------------------------------------------
 
@@ -354,38 +367,39 @@ CREATE TABLE `users` (
   `pass` varchar(128) NOT NULL,
   `phone` varchar(16) NOT NULL,
   `state` tinyint(4) NOT NULL,
-  `gender` tinyint(4) NOT NULL
+  `gender` tinyint(4) NOT NULL,
+  `visibility` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, `state`, `gender`) VALUES
-(1, '1917-12-24', 'wdas@gmail.com', 'John', 'Trump', 'john', '2bce8464403a72966161c2e3cab92694', '123123', 0, 0),
-(2, '2017-03-24', 'tom@tom', 'Tom', 'Fill', 'tom', '2bce8464403a72966161c2e3cab92694', '351535', 0, 0),
-(3, '2017-03-24', 'dasd@', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1, 0),
-(4, '2017-03-24', 'asrw@', 'Frank', 'Odesk', 'frank', '2bce8464403a72966161c2e3cab92694', 'q23123', 0, 0),
-(6, '2017-03-24', 'ad.asd@dadasmail.', 'Petro', 'Fedov', 'petFed', '2bce8464403a72966161c2e3cab92694', '+123124124', 0, 0),
-(7, '2017-03-24', 'adgaef@maiwersef', 'Vid', 'Tor', 'vidTor', '2bce8464403a72966161c2e3cab92694', '+6578519', 0, 0),
-(8, '2017-03-24', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', '2bce8464403a72966161c2e3cab92694', '+375671', 0, 0),
-(9, '2017-03-24', 'sfasf8@msfdfds', 'Cam', 'Sed', 'cam', '2bce8464403a72966161c2e3cab92694', '+82506', 0, 0),
-(11, '2017-03-24', 'fgsfdg@maasf', 'Fsed', 'Fedov', 'focin', '2bce8464403a72966161c2e3cab92694', '+dskfjh', 0, 0),
-(12, '2017-03-24', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', '2bce8464403a72966161c2e3cab92694', '+842364', 0, 0),
-(13, '2017-03-24', 'Ki@m.a', 'Fill', 'Kimber', 'Kim', '2bce8464403a72966161c2e3cab92694', '+563782413', 0, 1),
-(14, '2017-03-24', 'fill@pot.com', 'Fillan', 'Potin', 'potifil', '2bce8464403a72966161c2e3cab92694', '78563147821', 0, 1),
-(15, '2017-03-24', 'chen@gmail.com', 'Chen', 'Billow', 'chen', '2bce8464403a72966161c2e3cab92694', '+52718342', 0, 0),
-(16, '2006-09-29', 'comja@gmail.com', 'Johnathan', 'Com', 'joc', '2bce8464403a72966161c2e3cab92694', '+5169783613', 0, 0),
-(18, '2017-03-24', 'aSDasd88@mail.ru', 'Zak', 'Ken', 'zak', '2bce8464403a72966161c2e3cab92694', '+6511203812', 0, 0),
-(19, '2004-08-28', 'cha@dsjkfa.com', 'kim', 'cha', 'chaki', '2bce8464403a72966161c2e3cab92694', '187593512542', 0, 0),
-(20, '2002-10-28', 'pitak@gamil.com', 'Pit', 'Pack', 'pitac', '2bce8464403a72966161c2e3cab92694', '+1630575234', 0, 0),
-(21, '2017-03-28', 'qweqweq8@mail.ru', 'Kima', 'Miko', 'kimiko', '2bce8464403a72966161c2e3cab92694', '+32198', 0, 1),
-(24, '2011-12-12', 'asdasd@asd', 'Fillina', 'Fillatova', '2222', '7d56e9d8b5d4861d5b0115da1f804b1c', '2222', 0, 1),
-(25, '2010-01-20', 'ssda@dsfs.sdf', 'Mike', 'Mitchel', '3333', 'da8fd23b6178ff144a26254421c54d5e', '+38012121212', 0, 0),
-(26, '2014-10-29', 'gdskjfgfhdskj2@sad', '4444', '4444', '4444', 'c4d5aa6df06a7864f1c98a2541e4baaf', '24124215', 0, 1),
-(27, '2015-10-27', 'ssafsdf@hgflh.d', '5555', '5555', '5555', '64f81d141fe7b609afeeb42f0047607f', '5555', 0, 0),
-(28, '2014-11-29', 'vend.88@eqw.qweru', '6666', '6666', '6666', 'd1ae269fcecfd2c7cc1924cc20abbbeb', '6666', 2, 0),
-(61, '2015-10-29', 'vend.88@inbox.ru', '111', '111', '111', '9c1f8b5839047b495cde1bec9eabf1a9', '111', 0, 1);
+INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, `state`, `gender`, `visibility`) VALUES
+(1, '1917-12-24', 'wdas@gmail.com', 'John', 'Trump', 'john', '2bce8464403a72966161c2e3cab92694', '123123', 0, 0, 0),
+(2, '2017-03-24', 'tom@tom', 'Tom', 'Fill', 'tom', '2bce8464403a72966161c2e3cab92694', '351535', 0, 0, 0),
+(3, '2017-03-24', 'dasd@', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1, 0, 0),
+(4, '2017-03-24', 'asrw@', 'Frank', 'Odesk', 'frank', '2bce8464403a72966161c2e3cab92694', 'q23123', 0, 1, 0),
+(6, '2017-03-24', 'ad.asd@dadasmail.', 'Petro', 'Fedov', 'petFed', '2bce8464403a72966161c2e3cab92694', '+123124124', 0, 0, 0),
+(7, '2017-03-24', 'adgaef@maiwersef', 'Vid', 'Tor', 'vidTor', '2bce8464403a72966161c2e3cab92694', '+6578519', 0, 0, 0),
+(8, '2017-03-24', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', '2bce8464403a72966161c2e3cab92694', '+375671', 0, 0, 0),
+(9, '2017-03-24', 'sfasf8@msfdfds', 'Cam', 'Sed', 'cam', '2bce8464403a72966161c2e3cab92694', '+82506', 0, 0, 0),
+(11, '2017-03-24', 'fgsfdg@maasf', 'Fsed', 'Fedov', 'focin', '2bce8464403a72966161c2e3cab92694', '+dskfjh', 0, 0, 0),
+(12, '2017-03-24', 'asfas8@mfwef', 'Doom', 'Ca', 'doomca', '2bce8464403a72966161c2e3cab92694', '+842364', 0, 0, 0),
+(13, '2017-03-24', 'Ki@m.a', 'Fill', 'Kimber', 'Kim', '2bce8464403a72966161c2e3cab92694', '+563782413', 0, 1, 0),
+(14, '2017-03-24', 'fill@pot.com', 'Fillan', 'Potin', 'potifil', '2bce8464403a72966161c2e3cab92694', '78563147821', 0, 1, 0),
+(15, '2017-03-24', 'chen@gmail.com', 'Chen', 'Billow', 'chen', '2bce8464403a72966161c2e3cab92694', '+52718342', 0, 0, 0),
+(16, '2006-09-29', 'comja@gmail.com', 'Johnathan', 'Com', 'joc', '2bce8464403a72966161c2e3cab92694', '+5169783613', 0, 0, 0),
+(18, '2017-03-24', 'aSDasd88@mail.ru', 'Zak', 'Ken', 'zak', '2bce8464403a72966161c2e3cab92694', '+6511203812', 0, 0, 0),
+(19, '2004-08-28', 'cha@dsjkfa.com', 'kim', 'cha', 'chaki', '2bce8464403a72966161c2e3cab92694', '187593512542', 0, 0, 0),
+(20, '2002-10-28', 'pitak@gamil.com', 'Pit', 'Pack', 'pitac', '2bce8464403a72966161c2e3cab92694', '+1630575234', 0, 0, 0),
+(21, '2017-03-28', 'qweqweq8@mail.ru', 'Kima', 'Miko', 'kimiko', '2bce8464403a72966161c2e3cab92694', '+32198', 0, 1, 0),
+(24, '2011-12-12', 'asdasd@asd', 'Fillina', 'Fillatova', '2222', '7d56e9d8b5d4861d5b0115da1f804b1c', '2222', 0, 1, 0),
+(25, '2010-01-20', 'ssda@dsfs.sdf', 'Mike', 'Mitchel', '3333', 'da8fd23b6178ff144a26254421c54d5e', '+38012121212', 0, 0, 0),
+(26, '2014-10-29', 'gdskjfgfhdskj2@sad', '4444', '4444', '4444', 'c4d5aa6df06a7864f1c98a2541e4baaf', '24124215', 0, 1, 0),
+(27, '2015-10-27', 'ssafsdf@hgflh.d', '5555', '5555', '5555', '64f81d141fe7b609afeeb42f0047607f', '5555', 0, 0, 0),
+(28, '2014-11-29', 'vend.88@eqw.qweru', '6666', '6666', '6666', 'd1ae269fcecfd2c7cc1924cc20abbbeb', '6666', 2, 0, 0),
+(61, '2015-10-29', 'vend.88@inbox.ru', '111', '111', '111', '9c1f8b5839047b495cde1bec9eabf1a9', '111', 0, 1, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -397,6 +411,14 @@ INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`
 ALTER TABLE `authority`
   ADD PRIMARY KEY (`id_authority`),
   ADD KEY `authority_users_id_user_fk` (`id_user`);
+
+--
+-- Индексы таблицы `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  ADD PRIMARY KEY (`id_bookmark`),
+  ADD KEY `bookmarks_users_id_user_fk` (`id_user`),
+  ADD KEY `bookmarks_posts_id_post_fk` (`id_post`);
 
 --
 -- Индексы таблицы `confirm_emails`
@@ -423,7 +445,8 @@ ALTER TABLE `images`
 -- Индексы таблицы `media_posts`
 --
 ALTER TABLE `media_posts`
-  ADD PRIMARY KEY (`id_media`);
+  ADD PRIMARY KEY (`id_media`),
+  ADD KEY `media_posts_posts_id_post_fk` (`id_post`);
 
 --
 -- Индексы таблицы `messages`
@@ -464,6 +487,11 @@ ALTER TABLE `users`
 ALTER TABLE `authority`
   MODIFY `id_authority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
+-- AUTO_INCREMENT для таблицы `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  MODIFY `id_bookmark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT для таблицы `images`
 --
 ALTER TABLE `images`
@@ -472,7 +500,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT для таблицы `media_posts`
 --
 ALTER TABLE `media_posts`
-  MODIFY `id_media` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_media` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
@@ -482,7 +510,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
@@ -499,6 +527,13 @@ ALTER TABLE `authority`
   ADD CONSTRAINT `authority_users_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ограничения внешнего ключа таблицы `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  ADD CONSTRAINT `bookmarks_posts_id_post_fk` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id_post`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bookmarks_users_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ограничения внешнего ключа таблицы `confirm_emails`
 --
 ALTER TABLE `confirm_emails`
@@ -510,6 +545,12 @@ ALTER TABLE `confirm_emails`
 ALTER TABLE `friends`
   ADD CONSTRAINT `FK_9pwml5q21cfq50vrhnqitl3qw` FOREIGN KEY (`id_friend`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_lmwtvmmtgc3gth8shjhmrjfhq` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `media_posts`
+--
+ALTER TABLE `media_posts`
+  ADD CONSTRAINT `media_posts_posts_id_post_fk` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id_post`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `posts`
