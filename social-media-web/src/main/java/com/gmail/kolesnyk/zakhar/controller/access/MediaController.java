@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.mediaService.MediaService;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.util.MultipartFileSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.List;
@@ -36,14 +39,17 @@ public class MediaController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user/media/{nameImage}")
-    public byte[] getPhoto(@PathVariable("nameImage") String nameImage) {
-        try {
-            return mediaService.getImageByName(nameImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    @RequestMapping(value = "/user/media/{nameMedia}")
+    public void getMedia(@PathVariable("nameMedia") String nameMedia, HttpServletRequest req, HttpServletResponse res) throws Exception {
+        MultipartFileSender.fromFile(mediaService.getFileByName(nameMedia))
+                .with(req)
+                .with(res)
+                .serveResource();
+    }
+
+    @Bean
+    public MultipartFileSender multipartFileSender() {
+        return new MultipartFileSender();
     }
 
     @ResponseBody

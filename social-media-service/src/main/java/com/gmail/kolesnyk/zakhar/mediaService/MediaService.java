@@ -4,6 +4,7 @@ import com.gmail.kolesnyk.zakhar.image.Image;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -14,9 +15,11 @@ public interface MediaService {
 
     List<Image> imagesByIdUser(int idUser);
 
-    byte[] getImageByName(String nameImage) throws IOException;
+    byte[] getMediaByName(String nameImage) throws IOException;
 
     void storeImage(MultipartFile file, User user) throws IOException;
 
     void removeImage(String nameImage, int idImage) throws IOException;
+
+    File getFileByName(String nameMedia);
 }

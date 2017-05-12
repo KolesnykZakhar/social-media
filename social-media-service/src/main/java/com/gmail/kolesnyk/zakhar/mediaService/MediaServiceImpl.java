@@ -70,7 +70,7 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    public byte[] getImageByName(String nameImage) throws IOException {
+    public byte[] getMediaByName(String nameImage) throws IOException {
         File serverFile = new File(PATH_STORING_MEDIA + nameImage);
         InputStream is;
         if (serverFile.exists()) {
@@ -81,6 +81,11 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
         byte[] arr = IOUtils.toByteArray(is);
         is.close();
         return arr;
+    }
+
+    @Override
+    public File getFileByName(String nameMedia) {
+        return new File(PATH_STORING_MEDIA + nameMedia);
     }
 
     @Override

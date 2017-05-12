@@ -46,52 +46,16 @@
                     <button id="add" type="submit" class="btn btn-primary">Add
                     </button>
                     <div class="modal-footer">
+                        <span>supported formats: </span>
+                        <c:forEach items="${requestScope.blogPage.supportedFormats}" var="format">
+                            <span><c:out value="${format}"/> </span>
+                        </c:forEach>
                         <label id="mediaInputs" class="btn btn-primary">
-                            <input name="files" required type="file" hidden>
                             <input name="files" required type="file" hidden>
                         </label>
                         <button onclick="addFileUploader()" type="button" class="btn btn-default" data-dismiss="modal">
                             More
                         </button>
-                        <script>
-                            function addFileUploader() {
-
-                            }
-                            $("#add").click(function (event) {
-                                //stop submit the form, we will post it manually.
-                                event.preventDefault();
-                                // Get form
-                                var form = $('#postAddForm')[0];
-                                // Create an FormData object
-                                var data = new FormData(form);
-                                // If you want to add an extra field for the FormData
-                                data.append("CustomField", "This is some extra data, testing");
-                                // disabled the submit button
-                                $("#add").prop("disabled", true);
-                                $.ajax({
-                                    type: "POST",
-                                    enctype: 'multipart/form-data',
-                                    url: "/user/add_new_post",
-                                    data: data,
-                                    processData: false,
-                                    contentType: false,
-                                    cache: false,
-                                    timeout: 600000,
-                                    success: function (data) {
-                                        $("#mainDiv").html(data);
-                                        console.log("SUCCESS : ", data);
-                                        $("#add").prop("disabled", false);
-                                    },
-                                    error: function (e) {
-                                        $("#mainDiv").html(e.responseText);
-                                        console.log("ERROR : ", e);
-                                        $("#add").prop("disabled", false);
-
-                                    }
-                                });
-                            });
-                        </script>
-                        <%--</form>--%>
                     </div>
                 </form>
             </div>
@@ -115,13 +79,28 @@
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
                     at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
                 </p>
-                <c:forEach items="${post.imageNames}" var="images">
+                <c:forEach items="${post.mediaFiles}" var="mediaFiles">
                     <!-- Preview Image -->
-                    <img class="img-responsive" src="/user/media/${images}/" alt="">
+                    <c:choose>
+                        <c:when test="${mediaFiles.value eq 'IMAGE'}">
+                            <img class="img-responsive" src="/user/media/${mediaFiles.key}/" alt="">
+                        </c:when>
+                        <c:when test="${mediaFiles.value eq 'VIDEO'}">
+                            <video class="img-responsive" <%--width="320" height="240"--%> controls>
+                                <source src="/user/media/${mediaFiles.key}/" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </c:when>
+                        <c:when test="${mediaFiles.value eq 'AUDIO'}">
+                            <audio style="width: 100%" controls>
+                                <source src="/user/media/${mediaFiles.key}/" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </c:when>
+                    </c:choose>
                 </c:forEach>
                 <!-- Post Content -->
                 <span class="lead"><c:out value="${post.textPost}"/></span>
-
             </c:forEach>
         </div>
         <!-- /.container -->
@@ -134,5 +113,45 @@
     </div>
 </div>
 </body>
+<script>
+    function addFileUploader() {
+        var mediaInputs = $('#mediaInputs');
+        if (mediaInputs.children().size() < 10) {
+            mediaInputs.append("<input name='files' required type='file' hidden>");
+        }
+    }
+    $("#add").click(function (event) {
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+        // Get form
+        var form = $('#postAddForm')[0];
+        // Create an FormData object
+        var data = new FormData(form);
+        // If you want to add an extra field for the FormData
+        data.append("CustomField", "This is some extra data, testing");
+        // disabled the submit button
+        $("#add").prop("disabled", true);
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/user/add_new_post",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                $("#mainDiv").html(data);
+                console.log("SUCCESS : ", data);
+                $("#add").prop("disabled", false);
+            },
+            error: function (e) {
+                $("#mainDiv").html(e.responseText);
+                console.log("ERROR : ", e);
+                $("#add").prop("disabled", false);
 
+            }
+        });
+    });
+</script>
 </html>
