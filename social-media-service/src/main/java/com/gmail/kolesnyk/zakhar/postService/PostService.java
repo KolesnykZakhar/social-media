@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface PostService {
-    BlogPage sublistPostsByUser(User user, int pageNumber);
+    BlogPage sublistPostsByUser(int idUser, int pageNumber);
 
     void savePost(Post post);
 

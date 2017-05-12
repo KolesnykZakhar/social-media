@@ -4,6 +4,7 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 import com.gmail.kolesnyk.zakhar.postService.PostService;
 import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,27 +25,31 @@ public class BlogController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping(value = "/user/blog_menu/{pageNumber}")
-    public ModelAndView openBlogMenu(@PathVariable("pageNumber") Integer pageNumber) {
-        return getBlogMenuModel(pageNumber);
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/user/blog_menu/{idUser}/{pageNumber}")
+    public ModelAndView openBlogMenu(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("idUser") Integer idUser) {
+        return getBlogMenuModel(pageNumber, idUser);
     }
 
     @RequestMapping(value = "/user/add_new_post", method = RequestMethod.POST)
     public ModelAndView addNewPost(@RequestParam("newPostText") String newPostText, @RequestParam("files") MultipartFile[] files) throws IOException {
         postService.createAndSavePost(currentUser(), newPostText, files);
-        return getBlogMenuModel(1);
+        return getBlogMenuModel(1, currentUser().getIdUser());
     }
 
     @RequestMapping(value = "/user/delete_post/{idPost}", method = RequestMethod.POST)
     public ModelAndView deletePost(@PathVariable("idPost") Integer idPost) throws IOException {
         postService.deletePostById(idPost);
-        return getBlogMenuModel(1);
+        return getBlogMenuModel(1, currentUser().getIdUser());
     }
 
-    private ModelAndView getBlogMenuModel(int pageNumber) {
+    private ModelAndView getBlogMenuModel(int pageNumber, int idUser) {
         ModelAndView modelAndView = new ModelAndView("blog_menu");
-        BlogPage blogPage = postService.sublistPostsByUser(currentUser(), pageNumber);
+        BlogPage blogPage = postService.sublistPostsByUser(idUser, pageNumber);
         modelAndView.addObject("blogPage", blogPage);
+        modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
         return modelAndView;
     }
 

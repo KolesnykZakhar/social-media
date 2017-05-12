@@ -7,6 +7,7 @@ import com.gmail.kolesnyk.zakhar.post.Post;
 import com.gmail.kolesnyk.zakhar.post.PostDao;
 import com.gmail.kolesnyk.zakhar.postService.postsPage.BlogPage;
 import com.gmail.kolesnyk.zakhar.user.User;
+import com.gmail.kolesnyk.zakhar.user.UserDao;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -24,14 +25,17 @@ public class PostServiceImpl extends AbstractService implements PostService {
     @Autowired
     private PostDao postDao;
 
+    @Autowired
+    private UserDao userDao;
+
     public PostServiceImpl(@Autowired Environment environment) {
         super(environment);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public BlogPage sublistPostsByUser(User user, int pageNumber) {
-        int amountPosts = postDao.amountPostsByIdUser(user.getIdUser());
+    public BlogPage sublistPostsByUser(int idUser, int pageNumber) {
+        int amountPosts = postDao.amountPostsByIdUser(idUser);
         if (amountPosts == 0) {
             throw new ArrayStoreException("post list empty");
         }
@@ -43,8 +47,8 @@ public class PostServiceImpl extends AbstractService implements PostService {
         if (pageNumber > amountPages || pageNumber < 0) {
             throw new IllegalArgumentException("wrong number of friends page");
         }
-        List<Post> resultList = postDao.postsSublistByIdUser(user.getIdUser(), pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
-        return new BlogPage(resultList, amountPages, user);
+        List<Post> resultList = postDao.postsSublistByIdUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        return new BlogPage(resultList, amountPages, userDao.selectById(idUser));
     }
 
     @Override
@@ -60,8 +64,10 @@ public class PostServiceImpl extends AbstractService implements PostService {
         post.setTextPost(textPost);
         Map<String, MEDIA_TYPE> imageNames = new HashMap<>();
         for (MultipartFile file : files) {
-            String fileName = storeMedia(file);
-            imageNames.put(fileName, MEDIA_TYPE.getType(FilenameUtils.getExtension(fileName)));
+            if (!file.isEmpty()) {
+                String fileName = storeMedia(file);
+                imageNames.put(fileName, MEDIA_TYPE.getType(FilenameUtils.getExtension(fileName)));
+            }
         }
         post.setMediaFiles(imageNames);
         savePost(post);

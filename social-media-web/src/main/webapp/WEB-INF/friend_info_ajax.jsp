@@ -86,9 +86,8 @@
                     <a onclick="postMainDiv('/user/short_chat/${requestScope.friend.idUser}/${true}')" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
                        class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                            <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button"
-                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user"
+                            <a href="#" type="button" class="btn btn-sm btn-default" onclick="postMainDiv('/user/blog_menu/${requestScope.friend.idUser}/1/')">View Blog</a>
+                            <a onclick="postMainDiv('/user/image_slider')" data-original-title="Remove this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>

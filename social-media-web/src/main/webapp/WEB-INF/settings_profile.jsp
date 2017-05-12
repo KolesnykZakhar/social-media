@@ -107,14 +107,15 @@
                                 </table>
                                 <a href="#" onclick="updateUser('/user/update_user_info/')"
                                    class="btn btn-primary">Save changes</a>
-                                <a href="/user/index" class="btn btn-primary">Cancel</a>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <span class="pull-right">
-                            <a onclick="postMainDiv('/user/photo_slider')" data-original-title="Remove this user"
+                            <a href="#" type="button" class="btn btn-sm btn-default"
+                               onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')">View Blog</a>
+                            <a onclick="postMainDiv('/user/image_slider')" data-original-title="Remove this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>

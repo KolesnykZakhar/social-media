@@ -44,6 +44,7 @@ public class UserController {
         modelAndView = new ModelAndView("index");
         modelAndView.addObject("isAdmin", currentUser().getAuthority().contains("ROLE_ADMIN"));
         modelAndView.addObject("images", images);
+        modelAndView.addObject("idUser", currentUser().getIdUser());
         Integer amountOfInvitations = userService.amountOfInvitations(currentUser().getIdUser());
         if (amountOfInvitations != null && amountOfInvitations > 0) {
             modelAndView.addObject("amountOfInvitations", amountOfInvitations);

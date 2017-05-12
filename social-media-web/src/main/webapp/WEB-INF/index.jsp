@@ -61,7 +61,7 @@
                             <li><a id='messages' href="#" onclick="postMainDiv('/user/chats_menu', this)">Messages
                                 <span id="amountUnreadMessages" style="color: red"><c:out
                                         value="${requestScope.amountUnreadMessages}"/></span></a></li>
-                            <li><a id='blog' href="#" onclick="postMainDiv('/user/blog_menu/1', this)">Blog</a></li>
+                            <li><a id='blog' href="#" onclick="postMainDiv('/user/blog_menu/${requestScope.idUser}/1', this)">Blog</a></li>
                             <li><a id='bookmarks' href="#">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
                                 Profile</a>

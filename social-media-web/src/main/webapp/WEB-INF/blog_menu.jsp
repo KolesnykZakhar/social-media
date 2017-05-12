@@ -36,32 +36,36 @@
     <div class="row">
         <!-- Blog Post Content Column -->
         <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="well">
-                <h4>New Post</h4>
-                <form id="postAddForm" method="post"
-                      enctype="multipart/form-data">
-                    <div class="form-group">
-                        <textarea id="newPostText" name="newPostText" class="form-control" rows="3"></textarea>
-                    </div>
-                    <button id="add" type="submit" class="btn btn-primary">Add
-                    </button>
-                    <div class="modal-footer">
-                        <span>supported formats: </span>
-                        <c:forEach items="${requestScope.blogPage.supportedFormats}" var="format">
-                            <span><c:out value="${format}"/> </span>
-                        </c:forEach>
-                        <label id="mediaInputs" class="btn btn-primary">
-                            <input name="files" required type="file" hidden>
-                        </label>
-                        <button onclick="addFileUploader()" type="button" class="btn btn-default" data-dismiss="modal">
-                            More
+            <c:if test="${requestScope.canModify}">
+                <div class="well">
+                    <h4>New Post</h4>
+                    <form id="postAddForm" method="post"
+                          enctype="multipart/form-data">
+                        <div class="form-group">
+                            <textarea id="newPostText" name="newPostText" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button id="add" type="submit" class="btn btn-primary">Add
                         </button>
-                    </div>
-                </form>
-            </div>
+                        <div class="modal-footer">
+                            <span>supported formats: </span>
+                            <c:forEach items="${requestScope.blogPage.supportedFormats}" var="format">
+                                <span><c:out value="${format}"/> </span>
+                            </c:forEach>
+                            <label id="mediaInputs" class="btn btn-primary">
+                                <input name="files" required type="file" hidden>
+                            </label>
+                            <button onclick="addFileUploader()" type="button" class="btn btn-default"
+                                    data-dismiss="modal">
+                                More
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </c:if>
             <ul style="list-style: none; display: inline;">
                 <c:forEach var="i" begin="1" end="${requestScope.blogPage.amountPages}">
-                    <li style="display: inline;"><a href="#" onclick="postMainDiv('/user/blog_menu/${i}', this)">${i}&nbsp;</a>
+                    <li style="display: inline;"><a href="#"
+                                                    onclick="postMainDiv('/user/blog_menu/${requestScope.blogPage.user.idUser}/${i}', this)">${i}&nbsp;</a>
                     </li>
                 </c:forEach>
             </ul>
@@ -77,9 +81,9 @@
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()} <a
+                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()} <c:if test="${requestScope.canModify}"><a
                             role="button" title="Delete" class="btn btn-danger pull-right"
-                            onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a>
+                            onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a></c:if>
                 </p>
                 <br>
                 <span class="lead"><c:out value="${post.textPost}"/></span>
