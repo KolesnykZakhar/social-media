@@ -64,7 +64,7 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Post> sublistBookmarksByUser(int idUser, int offset, int amount) {
-        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM\n" +
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT posJoinBookm.* FROM\n" +
                 "  (SELECT posts.* FROM posts JOIN bookmarks ON posts.id_post = bookmarks.id_post WHERE bookmarks.id_user = :idUser) AS posJoinBookm\n" +
                 "  JOIN\n" +
                 "  ((SELECT DISTINCT users.* FROM users JOIN friends ON users.id_user = friends.id_friend WHERE friends.id_user = :idUser)\n" +
@@ -89,28 +89,40 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Post> sublistNews(int idUser, int offset, int amount) {
-        return sessionFactory.getCurrentSession().createSQLQuery("(SELECT posts.* FROM posts JOIN\n" +
-                "  (SELECT * FROM\n" +
-                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
-                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
-                "        AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+//        return sessionFactory.getCurrentSession().createSQLQuery("(SELECT posts.* FROM posts JOIN\n" +
+//                "  (SELECT * FROM\n" +
+//                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
+//                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
+//                "        AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+//                "  UNION\n" +
+//                "SELECT posts.* FROM posts JOIN\n" +
+//                "  (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user\n" +
+//                "ORDER BY date_post DESC LIMIT :offset, :amount")
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT posts.* FROM posts\n" +
+                "  JOIN\n" +
+                "  ((SELECT DISTINCT users.* FROM users JOIN friends ON users.id_user = friends.id_friend WHERE friends.id_user = :idUser)\n" +
                 "  UNION\n" +
-                "SELECT posts.* FROM posts JOIN\n" +
-                "  (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user\n" +
-                "ORDER BY date_post DESC LIMIT :offset, :amount")
+                "  (SELECT users.* FROM users WHERE id_user = :idUser OR users.visibility = :visibility))\n" +
+                "AS usr ON posts.id_user = usr.id_user ORDER BY date_post DESC LIMIT :offset, :amount")
                 .addEntity(Post.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).setParameter("visibility", PUBLIC.ordinal()).list();
     }
 
     @Override
     public Integer amountNewsByIdUser(int idUser) {
-        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM ((SELECT posts.* FROM posts JOIN\n" +
-                "  (SELECT * FROM\n" +
-                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
-                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
-                "        AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+//        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM ((SELECT posts.* FROM posts JOIN\n" +
+//                "  (SELECT * FROM\n" +
+//                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
+//                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
+//                "        AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+//                "  UNION\n" +
+//                "SELECT posts.* FROM posts JOIN\n" +
+//                "  (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user) AS result")
+        return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM posts\n" +
+                "  JOIN\n" +
+                "  ((SELECT DISTINCT users.* FROM users JOIN friends ON users.id_user = friends.id_friend WHERE friends.id_user = :idUser)\n" +
                 "  UNION\n" +
-                "SELECT posts.* FROM posts JOIN\n" +
-                "  (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user) AS result")
+                "  (SELECT users.* FROM users WHERE id_user = :idUser OR users.visibility = :visibility))\n" +
+                "AS usr ON posts.id_user = usr.id_user")
                 .setParameter("idUser", idUser).setParameter("visibility", PUBLIC.ordinal()).uniqueResult()).intValue();
     }
 }

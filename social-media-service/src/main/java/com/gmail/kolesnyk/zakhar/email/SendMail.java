@@ -38,12 +38,6 @@ public class SendMail {
         }
 
     }
-
-//    public static void main(String[] args) throws IOException {
-//        String msg = new String(Files.readAllBytes(Paths.get("social-media-service/src/main/resources/restore_password.html")), StandardCharsets.UTF_8)
-//                .replace("?link?", "https://www.google.com.ua/").replace("?name?", "John");
-//        SendMail.send("socialmediantk@gmail.com", "socialNetwork", "vend.88@mail.ru", "test", msg);
-//    }
-}  
+}
   
 
