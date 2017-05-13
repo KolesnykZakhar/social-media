@@ -1,13 +1,14 @@
 package com.gmail.kolesnyk.zakhar.chatService.chat;
 
+import java.util.List;
 import java.util.Set;
 
 public class ChatsMenu {
     private int idUser;
-    private Set<ChatHeader> chatHeaders;
+    private List<ChatHeader> chatHeaders;
     private int amountUnread;
 
-    public ChatsMenu(int idUser, Set<ChatHeader> chatHeaders, int amountUnread) {
+    public ChatsMenu(int idUser, List<ChatHeader> chatHeaders, int amountUnread) {
         this.idUser = idUser;
         this.chatHeaders = chatHeaders;
         this.amountUnread = amountUnread;
@@ -21,11 +22,11 @@ public class ChatsMenu {
         this.idUser = idUser;
     }
 
-    public Set<ChatHeader> getChatHeaders() {
+    public List<ChatHeader> getChatHeaders() {
         return chatHeaders;
     }
 
-    public void setChatHeaders(Set<ChatHeader> chatHeaders) {
+    public void setChatHeaders(List<ChatHeader> chatHeaders) {
         this.chatHeaders = chatHeaders;
     }
 

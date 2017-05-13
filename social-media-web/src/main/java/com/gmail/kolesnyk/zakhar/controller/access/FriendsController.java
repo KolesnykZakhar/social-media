@@ -157,7 +157,7 @@ public class FriendsController {
     }
 
     @RequestMapping(value = "/user/view_invitation/{idUser}", method = RequestMethod.POST)
-    private ModelAndView goToInvitation(@PathVariable(value = "idUser") Integer idUser) throws IOException, ServletException {
+    public ModelAndView goToInvitation(@PathVariable(value = "idUser") Integer idUser) throws IOException, ServletException {
         ModelAndView modelAndView;
         try {
             modelAndView = new ModelAndView("invitations_info_ajax");

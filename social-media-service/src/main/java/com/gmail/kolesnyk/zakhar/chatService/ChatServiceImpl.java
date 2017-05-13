@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -66,8 +67,8 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
     @Transactional(readOnly = true)
     public ChatsMenu getChatsMenu(final int idUser) {
         final int[] mainAmountUnread = {0};
-        Set<User> interlocutors = messageDao.getInterlocutors(idUser);
-        Set<ChatHeader> chatHeaderSet = interlocutors.stream().map(user -> {
+        List<User> interlocutors = messageDao.getInterlocutors(idUser);
+        List<ChatHeader> chatHeaderSet = interlocutors.stream().map(user -> {
             if (userActivityMap.isOnline(user.getIdUser())) {
                 user.setOnline(true);
             }
@@ -75,7 +76,7 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
             int amountUnread = messageDao.amountUnreadMessagesByUsers(idUser, user.getIdUser());
             mainAmountUnread[0] += amountUnread;
             return new ChatHeader(lastMessage, amountUnread, user);
-        }).collect(Collectors.toSet());
+        }).sorted((o1, o2) -> o2.getLastMessage().getIdMessage().compareTo(o1.getLastMessage().getIdMessage())).collect(Collectors.toList());
         return new ChatsMenu(idUser, chatHeaderSet, mainAmountUnread[0]);
     }
 

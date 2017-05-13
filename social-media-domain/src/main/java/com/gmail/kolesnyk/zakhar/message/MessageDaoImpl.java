@@ -34,10 +34,8 @@ public class MessageDaoImpl extends AbstractDao<Message, Integer> implements Mes
 
     @Override
     @SuppressWarnings("unchecked")
-    public Set<User> getInterlocutors(int idUser) {
-        List<User> listInterlocutors = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT id_sender FROM messages WHERE id_receiver = :idUser);").addEntity(User.class).setParameter("idUser", idUser).list();
-        listInterlocutors.addAll(sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT id_receiver FROM messages WHERE id_sender = :idUser);").addEntity(User.class).setParameter("idUser", idUser).list());
-        return listInterlocutors.stream().collect(Collectors.toSet());
+    public List<User> getInterlocutors(int idUser) {
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT id_sender FROM messages WHERE id_receiver = :idUser) UNION SELECT * FROM users WHERE id_user IN (SELECT id_receiver FROM messages WHERE id_sender = :idUser)").addEntity(User.class).setParameter("idUser", idUser).list();
     }
 
     @Override

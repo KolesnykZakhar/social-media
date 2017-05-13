@@ -13,7 +13,7 @@ public interface MessageDao extends BaseDao<Message, Integer> {
 
     List<Message> getShortChat(int idUser, int idFriend, int size);
 
-    Set<User> getInterlocutors(int idUser);
+    List<User> getInterlocutors(int idUser);
 
     Message getLastMessage(int idUser, int idInterlocutor);
 

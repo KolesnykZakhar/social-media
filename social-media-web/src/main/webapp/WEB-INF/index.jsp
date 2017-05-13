@@ -62,7 +62,7 @@
                                 <span id="amountUnreadMessages" style="color: red"><c:out
                                         value="${requestScope.amountUnreadMessages}"/></span></a></li>
                             <li><a id='blog' href="#" onclick="postMainDiv('/user/blog_menu/${requestScope.idUser}/1', this)">Blog</a></li>
-                            <li><a id='bookmarks' href="#" onclick="postMainDiv('/user/bookmarks/${requestScope.idUser}/1', this)">Bookmarks</a></li>
+                            <li><a id='bookmarks' href="#" onclick="postMainDiv('/user/bookmarks/1', this)">Bookmarks</a></li>
                             <li><a id='settingsProfile' href="#" onclick="postMainDiv('/user/settings_profile', this)">Settings
                                 Profile</a>
                             </li>

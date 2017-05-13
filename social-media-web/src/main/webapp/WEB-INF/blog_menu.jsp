@@ -73,9 +73,9 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
                 <!-- Author -->
                 <p class="lead">
-                    by <a onclick="postMainDiv('/user/user/${requestScope.blogPage.user.idUser}')" href="#"><c:out
-                        value="${requestScope.blogPage.user.firstName}"/> <c:out
-                        value="${requestScope.blogPage.user.lastName}"/></a>
+                    by <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
+                        value="${post.user.firstName}"/> <c:out
+                        value="${post.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->

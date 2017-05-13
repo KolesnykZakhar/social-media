@@ -46,14 +46,30 @@ public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Post> sublistBookmarksByUser(int idUser, int offset, int amount) {
-//        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM posts")
-//                .addEntity(Post.class).setParameter("idUser",idUser).setParameter("offset",offset).setParameter("amount",amount).list();
-        return null;
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM ((SELECT posts.* FROM posts JOIN\n" +
+                "  (SELECT * FROM\n" +
+                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
+                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
+                "    AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+                "UNION\n" +
+                "SELECT posts.* FROM posts JOIN\n" +
+                "  (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user) AS news JOIN bookmarks ON news.id_post = bookmarks.id_user\n" +
+                "ORDER BY date_post DESC LIMIT :offset, :amount")
+                .addEntity(Post.class).setParameter("idUser",idUser).setParameter("offset",offset).setParameter("amount",amount).setParameter("visibility", PUBLIC.ordinal()).list();
+//        return null;
     }
 
     @Override
     public Integer amountBookmarksByIdUser(int idUser) {
-        return null;
+        return ((BigInteger)sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM ((SELECT posts.* FROM posts JOIN\n" +
+                "  (SELECT * FROM\n" +
+                "    (SELECT users.id_user, friends.id_friend FROM users JOIN friends ON users.id_user = friends.id_user)\n" +
+                "      AS join_u_f WHERE join_u_f.id_friend = :idUser)\n" +
+                "    AS home WHERE (posts.id_user = home.id_user OR posts.id_user = home.id_friend))\n" +
+                "               UNION\n" +
+                "               SELECT posts.* FROM posts JOIN\n" +
+                "                 (SELECT id_user FROM users WHERE visibility = :visibility) AS visible ON posts.id_user =  visible.id_user) AS news JOIN bookmarks ON news.id_post = bookmarks.id_user")
+                .setParameter("idUser",idUser).setParameter("visibility", PUBLIC.ordinal()).uniqueResult()).intValue();
     }
 
     @Override

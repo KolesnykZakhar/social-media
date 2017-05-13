@@ -53,12 +53,12 @@ public class PostServiceImpl extends AbstractService implements PostService {
     }
 
     @Override
-    @Transactional
     public void savePost(Post post) {
         postDao.save(post);
     }
 
     @Override
+    @Transactional
     public void createAndSavePost(User user, String textPost, MultipartFile... files) throws IOException {
         Post post = new Post();
         post.setUser(user);
