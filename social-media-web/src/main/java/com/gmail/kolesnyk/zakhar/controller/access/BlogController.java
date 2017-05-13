@@ -4,7 +4,6 @@ package com.gmail.kolesnyk.zakhar.controller.access;
 import com.gmail.kolesnyk.zakhar.postService.PostService;
 import com.gmail.kolesnyk.zakhar.postService.postPages.PostPage;
 import com.gmail.kolesnyk.zakhar.user.User;
-import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,9 +23,6 @@ public class BlogController {
 
     @Autowired
     private PostService postService;
-
-    @Autowired
-    private UserService userService;
 
     @RequestMapping(value = "/user/blog_menu/{idUser}/{pageNumber}")
     public ModelAndView openBlogMenu(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("idUser") Integer idUser) {
@@ -61,12 +57,22 @@ public class BlogController {
         return getBlogMenuModel(1, currentUser().getIdUser());
     }
 
+    @RequestMapping(value = "/user/remove_bookmark/{idPost}", method = RequestMethod.POST)
+    public void removeBookmark(@PathVariable("idPost") Integer idPost) throws IOException {
+        postService.removeBookmark(currentUser().getIdUser(), idPost);
+    }
+
+    @RequestMapping(value = "/user/add_bookmark/{idPost}", method = RequestMethod.POST)
+    public void addBookmark(@PathVariable("idPost") Integer idPost) throws IOException {
+        postService.addBookmark(currentUser().getIdUser(), idPost);
+    }
+
     private ModelAndView getBlogMenuModel(int pageNumber, int idUser) {
         ModelAndView modelAndView;
         if (currentUser().getIdUser().equals(idUser) || !postService.hasPrivateBlog(idUser)) {
             modelAndView = new ModelAndView("blog_menu");
             PostPage blogPage;
-            blogPage = postService.sublistPostsByUser(idUser, pageNumber);
+            blogPage = postService.sublistPostsByUser(idUser, pageNumber, currentUser().getIdUser());
             modelAndView.addObject("blogPage", blogPage);
             modelAndView.addObject("canModify", currentUser().getIdUser().intValue() == blogPage.getUser().getIdUser());
         } else {

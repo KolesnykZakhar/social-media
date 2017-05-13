@@ -81,7 +81,14 @@
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()} <c:if test="${requestScope.canModify}"><a
+                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                    <span class="checkboxtext">
+                    <input
+                        ${post.inBookmarks?'checked':''}
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
+                            class="glyphicon glyphicon-star-empty pull-right">
+                    </span>
+                    <c:if test="${requestScope.canModify}"><a
                             role="button" title="Delete" class="btn btn-danger pull-right"
                             onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a></c:if>
                 </p>

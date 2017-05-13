@@ -38,7 +38,17 @@ public class Post implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Map<String, MEDIA_TYPE> mediaFiles;
 
+    private transient boolean inBookmarks;
+
     public Post() {
+    }
+
+    public boolean isInBookmarks() {
+        return inBookmarks;
+    }
+
+    public void setInBookmarks(boolean inBookmarks) {
+        this.inBookmarks = inBookmarks;
     }
 
     public Map<String, MEDIA_TYPE> getMediaFiles() {

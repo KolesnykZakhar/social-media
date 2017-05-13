@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 12 2017 г., 21:31
+-- Время создания: Май 13 2017 г., 16:34
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -78,8 +78,11 @@ CREATE TABLE `bookmarks` (
 --
 
 INSERT INTO `bookmarks` (`id_bookmark`, `id_user`, `id_post`) VALUES
-(1, 1, 43),
-(2, 1, 44);
+(3, 2, 2),
+(25, 1, 56),
+(27, 1, 38),
+(30, 1, 37),
+(32, 1, 47);
 
 -- --------------------------------------------------------
 
@@ -109,21 +112,19 @@ CREATE TABLE `friends` (
 --
 
 INSERT INTO `friends` (`id_user`, `id_friend`, `date_friendship`) VALUES
-(1, 2, '2017-05-12 19:10:27'),
+(1, 2, '2017-05-13 13:49:06'),
 (1, 6, '2017-03-10 11:15:27'),
 (1, 7, '2017-03-10 11:15:39'),
 (1, 8, '2017-03-10 11:15:52'),
 (1, 9, '2017-03-10 11:16:01'),
 (1, 11, '2017-05-09 18:34:00'),
 (1, 12, '2017-05-09 18:33:56'),
-(2, 1, '2017-05-12 19:10:27'),
+(2, 1, '2017-05-13 13:49:06'),
 (2, 3, '2017-05-08 13:33:28'),
-(2, 4, '2017-05-09 18:39:45'),
 (2, 6, '2017-05-08 13:33:42'),
 (2, 7, '2017-05-08 13:38:16'),
 (2, 8, '2017-05-09 18:37:42'),
 (3, 2, '2017-05-08 13:33:28'),
-(4, 2, '2017-05-09 18:39:45'),
 (6, 1, '2017-03-10 11:16:43'),
 (6, 2, '2017-05-08 13:33:42'),
 (7, 1, '2017-03-10 11:16:52'),
@@ -155,7 +156,8 @@ INSERT INTO `images` (`id_image`, `id_user`, `name_image`) VALUES
 (9, 1, '1494511224712.jpg'),
 (10, 1, '1494511238199.jpg'),
 (11, 1, '1494511244514.jpg'),
-(13, 1, '1494537124768.png');
+(13, 1, '1494537124768.png'),
+(14, 1, '1494666661070.png');
 
 -- --------------------------------------------------------
 
@@ -273,7 +275,12 @@ INSERT INTO `messages` (`id_message`, `id_sender`, `id_receiver`, `text_message`
 (54, 2, 1, 'asdasd asd a', 0),
 (55, 1, 2, 'asdasdas', 0),
 (56, 1, 2, 'asdasdsad', 0),
-(57, 2, 1, 'sadasda ', 0);
+(57, 2, 1, 'sadasda ', 0),
+(58, 1, 4, 'dsds', 1),
+(59, 1, 6, 'asdasdasdas', 1),
+(60, 1, 4, 'werwerw', 1),
+(61, 1, 2, 'qweqweqw', 1),
+(62, 1, 7, 'qweqweqw', 1);
 
 -- --------------------------------------------------------
 
@@ -338,7 +345,8 @@ INSERT INTO `posts` (`id_post`, `text_post`, `id_user`, `date_post`) VALUES
 (47, 'asdasdasd', 2, '2017-05-12 11:45:09'),
 (48, 'dasdasdas', 2, '2017-05-12 11:45:11'),
 (50, 'ssssssssssssssssssssssssssssssssss', 2, '2017-05-12 11:49:26'),
-(51, 'ddd', 1, '2017-05-12 11:59:26');
+(55, 'dasdasdasd', 4, '2017-05-13 14:03:07'),
+(56, 'framn', 4, '2017-05-13 14:03:11');
 
 -- --------------------------------------------------------
 
@@ -378,8 +386,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `birth_date`, `email`, `first_name`, `last_name`, `login`, `pass`, `phone`, `state`, `gender`, `visibility`) VALUES
 (1, '1917-12-24', 'wdas@gmail.com', 'John', 'Trump', 'john', '2bce8464403a72966161c2e3cab92694', '123123', 0, 0, 0),
 (2, '2017-03-24', 'tom@tom', 'Tom', 'Fill', 'tom', '2bce8464403a72966161c2e3cab92694', '351535', 0, 0, 0),
-(3, '2017-03-24', 'dasd@', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1, 0, 0),
-(4, '2017-03-24', 'asrw@', 'Frank', 'Odesk', 'frank', '2bce8464403a72966161c2e3cab92694', 'q23123', 0, 1, 0),
+(3, '2017-03-24', 'dasd@sdasd.sd', 'Jim', 'Mann', 'jim', '2bce8464403a72966161c2e3cab92694', '231231', 1, 0, 0),
+(4, '2017-03-24', 'asrw@sda.asd', 'Frank', 'Odesk', 'frank', '2bce8464403a72966161c2e3cab92694', 'q23123', 0, 1, 1),
 (6, '2017-03-24', 'ad.asd@dadasmail.', 'Petro', 'Fedov', 'petFed', '2bce8464403a72966161c2e3cab92694', '+123124124', 0, 0, 0),
 (7, '2017-03-24', 'adgaef@maiwersef', 'Vid', 'Tor', 'vidTor', '2bce8464403a72966161c2e3cab92694', '+6578519', 0, 0, 0),
 (8, '2017-03-24', 'wqevfq8we8@mrqwbrwqr', 'Franco', 'Tor', 'fran', '2bce8464403a72966161c2e3cab92694', '+375671', 0, 0, 0),
@@ -490,12 +498,12 @@ ALTER TABLE `authority`
 -- AUTO_INCREMENT для таблицы `bookmarks`
 --
 ALTER TABLE `bookmarks`
-  MODIFY `id_bookmark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_bookmark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT для таблицы `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT для таблицы `media_posts`
 --
@@ -505,12 +513,12 @@ ALTER TABLE `media_posts`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

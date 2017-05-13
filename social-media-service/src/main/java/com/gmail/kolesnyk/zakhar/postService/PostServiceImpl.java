@@ -35,7 +35,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
 
     @Override
     @Transactional(readOnly = true)
-    public PostPage sublistPostsByUser(int idUser, int pageNumber) {
+    public PostPage sublistPostsByUser(int idUser, int pageNumber, int idCurrentUser) {
         int amountPosts = postDao.amountPostsByIdUser(idUser);
         if (amountPosts == 0) {
             return new PostPage(Collections.emptyList(), 0, userDao.selectById(idUser));
@@ -49,6 +49,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
             throw new IllegalArgumentException("wrong number of posts page");
         }
         List<Post> resultList = postDao.postsSublistByIdUser(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        markByBookmarks(resultList, idCurrentUser);
         return new PostPage(resultList, amountPages, userDao.selectById(idUser));
     }
 
@@ -123,12 +124,30 @@ public class PostServiceImpl extends AbstractService implements PostService {
             throw new IllegalArgumentException("wrong number of bookmarks page");
         }
         List<Post> resultList = postDao.sublistNews(idUser, pageNumber * AMOUNT_POSTS_ON_ONE_PAGE - AMOUNT_POSTS_ON_ONE_PAGE, AMOUNT_POSTS_ON_ONE_PAGE);
+        markByBookmarks(resultList, idUser);
         return new PostPage(resultList, amountPages);
+    }
+
+    @Transactional
+    private void markByBookmarks(List<Post> list, int idUser) {
+        list.forEach(post -> post.setInBookmarks(postDao.isExistBookmark(idUser, post.getIdPost())));
     }
 
     @Override
     @Transactional(readOnly = true)
     public boolean hasPrivateBlog(int idUser) {
         return userDao.hasPrivateBlog(idUser);
+    }
+
+    @Override
+    @Transactional
+    public void addBookmark(int idUser, int idPost) {
+        postDao.addBookmark(idUser, idPost);
+    }
+
+    @Override
+    @Transactional
+    public void removeBookmark(int idUser, int idPost) {
+        postDao.deleteBookmark(idUser, idPost);
     }
 }

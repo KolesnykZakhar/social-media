@@ -36,32 +36,6 @@
     <div class="row">
         <!-- Blog Post Content Column -->
         <div class="col-lg-6 col-md-6 col-sm-6">
-            <%--<c:if test="${requestScope.canModify}">--%>
-                <%--<div class="well">--%>
-                    <%--<h4>New Post</h4>--%>
-                    <%--<form id="postAddForm" method="post"--%>
-                          <%--enctype="multipart/form-data">--%>
-                        <%--<div class="form-group">--%>
-                            <%--<textarea id="newPostText" name="newPostText" class="form-control" rows="3"></textarea>--%>
-                        <%--</div>--%>
-                        <%--<button id="add" type="submit" class="btn btn-primary">Add--%>
-                        <%--</button>--%>
-                        <%--<div class="modal-footer">--%>
-                            <%--<span>supported formats: </span>--%>
-                            <%--<c:forEach items="${requestScope.blogPage.supportedFormats}" var="format">--%>
-                                <%--<span><c:out value="${format}"/> </span>--%>
-                            <%--</c:forEach>--%>
-                            <%--<label id="mediaInputs" class="btn btn-primary">--%>
-                                <%--<input name="files" required type="file" hidden>--%>
-                            <%--</label>--%>
-                            <%--<button onclick="addFileUploader()" type="button" class="btn btn-default"--%>
-                                    <%--data-dismiss="modal">--%>
-                                <%--More--%>
-                            <%--</button>--%>
-                        <%--</div>--%>
-                    <%--</form>--%>
-                <%--</div>--%>
-            <%--</c:if>--%>
             <ul style="list-style: none; display: inline;">
                 <c:forEach var="i" begin="1" end="${requestScope.newsPage.amountPages}">
                     <li style="display: inline;"><a href="#"
@@ -82,9 +56,19 @@
                 <p><span class="glyphicon glyphicon-time"></span> Posted
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
                     at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
-                    <%--<c:if test="${requestScope.canModify}"><a--%>
-                            <%--role="button" title="Delete" class="btn btn-danger pull-right"--%>
-                            <%--onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a></c:if>--%>
+                    <span class="checkboxtext">
+                    <input
+                        ${post.inBookmarks?'checked':''}
+                           name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
+                           class="glyphicon glyphicon-star-empty pull-right">
+                    </span>
+                    <script>
+                        $(document).ready(function() {
+                            $('input:checkbox').change(function(){
+                                $(this).parent('form').submit();
+                            });
+                        });
+                    </script>
                 </p>
                 <br>
                 <span class="lead"><c:out value="${post.textPost}"/></span>

@@ -56,6 +56,12 @@
                 <p><span class="glyphicon glyphicon-time"></span> Posted
                     on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
                     at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                    <span class="checkboxtext">
+                    <input
+                        checked
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
+                            class="glyphicon glyphicon-star-empty pull-right">
+                    </span>
                 </p>
                 <br>
                 <span class="lead"><c:out value="${post.textPost}"/></span>

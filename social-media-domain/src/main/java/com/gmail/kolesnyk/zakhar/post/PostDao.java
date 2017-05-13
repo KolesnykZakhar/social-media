@@ -32,4 +32,10 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> sublistNews(int idUser, int offset, int amount);
 
     Integer amountNewsByIdUser(int idUser);
+
+    void addBookmark(int idUser, int idPost);
+
+    void deleteBookmark(int idUser, int idPost);
+
+    Boolean isExistBookmark(int idUser, int idPost);
 }

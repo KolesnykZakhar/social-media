@@ -94,23 +94,14 @@ function sendMessage(url) {
     }, 1000);
 }
 
-function addNewPost(url) {
-    $.post(url, {
-            type: "POST",
-            enctype: 'multipart/form-data',
-            newPostText: $('#newPostText').val(),
-            data: {
-                uploadedMedia1: $('#uploadedMedia1').files,
-                uploadedMedia2: $('#uploadedMedia2').files
-            }
-        }, function (responseText) {
-            $('#mainDiv').html(responseText);
-        }
-    );
-
-    $('html, body').animate({
-        scrollTop: $("#mainDiv").offset().top
-    }, 1000);
+function bookmarksAction(idPost, checker) {
+    var url;
+    if (checker.checked) {
+        url = '/user/add_bookmark/' + idPost;
+    } else {
+        url = '/user/remove_bookmark/' + idPost;
+    }
+    $.post(url);
 }
 
 /* private */
