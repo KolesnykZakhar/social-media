@@ -9,8 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 
 
 @Configuration
-//@PropertySource("classpath:/application.properties")
-public class ApplicationConfig {
+@PropertySource("classpath:/application.properties")
+public class ServiceConfig {
     @Bean
     public Logger logger() {
         return LoggerFactory.getLogger(AbstractService.class);

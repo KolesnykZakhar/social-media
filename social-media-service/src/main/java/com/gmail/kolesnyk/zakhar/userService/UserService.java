@@ -1,9 +1,7 @@
 package com.gmail.kolesnyk.zakhar.userService;
 
-import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,7 +9,7 @@ public interface UserService {
 
     User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
 
-    void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, GENDER gender) throws IllegalAccessException;
+    void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender) throws IllegalAccessException;
 
     UsersPage friendsSublist(int idUser, int pageNumber);
 

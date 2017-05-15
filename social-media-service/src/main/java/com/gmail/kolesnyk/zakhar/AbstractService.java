@@ -22,6 +22,8 @@ public abstract class AbstractService {
     final protected String PASSWORD_EMAIL;
     final protected int AMOUNT_POSTS_ON_ONE_PAGE;
     final protected int SIZE_OF_SHORT_CHAT;
+    final protected int MAX_OLD_USER;
+    final protected int MIN_YOUNG_USER;
 
     public AbstractService(@Autowired Environment environment) {
         AMOUNT_USERS_ON_ONE_PAGE = Integer.parseInt(environment.getProperty("amountUsersOnOnePage"));
@@ -33,6 +35,8 @@ public abstract class AbstractService {
         SERVICE_EMAIL = environment.getProperty("serviceEmail");
         PASSWORD_EMAIL = environment.getProperty("passwordEmail");
         SIZE_OF_SHORT_CHAT = Integer.parseInt(environment.getProperty("sizeOfShortChat"));
+        MAX_OLD_USER = Integer.parseInt(environment.getProperty("maxOlderUser"));
+        MIN_YOUNG_USER = Integer.parseInt(environment.getProperty("minYoungUser"));
     }
 
     protected String storeMedia(MultipartFile file) throws IOException {

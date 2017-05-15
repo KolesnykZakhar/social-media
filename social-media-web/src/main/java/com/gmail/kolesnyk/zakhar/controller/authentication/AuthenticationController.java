@@ -1,12 +1,10 @@
 package com.gmail.kolesnyk.zakhar.controller.authentication;
 
-import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,7 +49,7 @@ public class AuthenticationController {
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
                                   @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
         try {
-            userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, GENDER.values()[gender]);
+            userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, gender);
             return "go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();

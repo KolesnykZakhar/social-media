@@ -5,9 +5,9 @@ import com.gmail.kolesnyk.zakhar.email.SendMail;
 import com.gmail.kolesnyk.zakhar.user.GENDER;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
-import com.gmail.kolesnyk.zakhar.user.VISIBILITY;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
+import com.gmail.kolesnyk.zakhar.validation.Validator;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -50,7 +50,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional
-    public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, GENDER gender) throws IllegalAccessException {
+    public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender) throws IllegalAccessException {
         if (!pass.trim().equals(confirmPass.trim())) {
             throw new IllegalArgumentException("passwords not match");
         }
@@ -62,7 +62,8 @@ public class UserServiceImpl extends AbstractService implements UserService {
         user.setPass(passwordEncoder().encode(pass.trim()));
         user.setEmail(email);
         user.setPhone(phone);
-        user.setGender(gender);
+        user.setGender(GENDER.values()[gender]);
+        Validator.validateUser(user, pass);
         user.setState(WAITING_CONFIRM);
         user.setVisibility(PUBLIC);
         user.setAuthority(new HashSet<String>() {{
