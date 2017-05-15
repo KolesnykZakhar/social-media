@@ -7,6 +7,7 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.user.UserDao;
 import com.gmail.kolesnyk.zakhar.userService.friendsPage.UsersPage;
 import com.gmail.kolesnyk.zakhar.userService.userActivityMap.UserActivityMap;
+import com.gmail.kolesnyk.zakhar.validation.RegistrationValidateException;
 import com.gmail.kolesnyk.zakhar.validation.Validator;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,9 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional
-    public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender) throws IllegalAccessException {
+    public void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender) {
         if (!pass.trim().equals(confirmPass.trim())) {
-            throw new IllegalArgumentException("passwords not match");
+            throw new RegistrationValidateException("passwords not match");
         }
         User user = new User();
         user.setFirstName(firstName);

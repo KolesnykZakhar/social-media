@@ -48,13 +48,8 @@ public class AuthenticationController {
     protected String registration(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("birthDate") String birthDate,
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
                                   @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
-        try {
-            userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, gender);
-            return "go_to_email_message";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "errorPages/500";
-        }
+        userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, gender);
+        return "go_to_email_message";
     }
 
     @RequestMapping(value = "/confirm_email/{hash}", method = RequestMethod.GET)

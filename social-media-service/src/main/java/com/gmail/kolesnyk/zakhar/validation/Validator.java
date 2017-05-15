@@ -12,9 +12,9 @@ public class Validator {
 
     private static final Pattern FIRST_NAME_USER_PATTERN = Pattern.compile("[a-zA-Z]{2,32}");
     private static final Pattern LAST_NAME_USER_PATTERN = Pattern.compile("[a-zA-Z]{2,32}");
-    private static final Pattern PHONE_USER_PATTERN = Pattern.compile("[0-9+]{2,14}");
-    private static final Pattern LOGIN_USER_PATTERN = Pattern.compile("[a-zA-Z0-9]{6,12}");
-    private static final Pattern PASSWORD_USER_PATTERN = Pattern.compile("[a-zA-Z0-9]{2,32}");
+    private static final Pattern PHONE_USER_PATTERN = Pattern.compile("(\\+|^)[0-9]{13}");
+    private static final Pattern LOGIN_USER_PATTERN = Pattern.compile("[a-zA-Z0-9]{6,32}");
+    private static final Pattern PASSWORD_USER_PATTERN = Pattern.compile("[a-zA-Z0-9]{6,16}");
     private static final Pattern EMAIL_USER_PATTERN = Pattern.compile("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+");
     private final static int MAX_OLD_USER = 150;
     private final static int MIN_YOUNG_USER = 5;
@@ -31,13 +31,13 @@ public class Validator {
             throw new RegistrationValidateException("Last name should be contains: only literals and be in range 2-32");
         }
         if (user.getPhone() == null || !PHONE_USER_PATTERN.matcher(user.getPhone()).matches()) {
-            throw new RegistrationValidateException("Phone should be contains '+' and 13 digits");
+            throw new RegistrationValidateException("Phone can start from '+' and should contains 13 digits");
         }
         if (user.getLogin() == null || !LOGIN_USER_PATTERN.matcher(user.getLogin()).matches()) {
             throw new RegistrationValidateException("Login should be contains literals or digits and be in range 6-32");
         }
         if (pass == null || !PASSWORD_USER_PATTERN.matcher(pass).matches()) {
-            throw new RegistrationValidateException("Password should be contains literals or digits and be in range 6-12");
+            throw new RegistrationValidateException("Password should be contains literals or digits and be in range 6-16");
         }
         if (user.getEmail() == null || !EMAIL_USER_PATTERN.matcher(user.getEmail()).matches()) {
             throw new RegistrationValidateException("Email should be correct");
@@ -54,7 +54,12 @@ public class Validator {
     }
 
     private static boolean isCorrectBirthDate(String birthDate) {
-        LocalDate date = LocalDate.parse(birthDate);
+        LocalDate date;
+        try {
+            date = LocalDate.parse(birthDate);
+        } catch (Exception e) {
+            return false;
+        }
         return !(LocalDate.now().minusYears(MAX_OLD_USER).compareTo(date) > 0 || LocalDate.now().minusYears(MIN_YOUNG_USER).compareTo(date) < 0);
     }
 }

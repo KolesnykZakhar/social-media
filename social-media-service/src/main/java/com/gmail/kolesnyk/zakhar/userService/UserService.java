@@ -9,7 +9,7 @@ public interface UserService {
 
     User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
 
-    void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender) throws IllegalAccessException;
+    void registrationUser(String firstName, String lastName, String birthDate, String login, String pass, String confirmPass, String email, String phone, Integer gender);
 
     UsersPage friendsSublist(int idUser, int pageNumber);
 
