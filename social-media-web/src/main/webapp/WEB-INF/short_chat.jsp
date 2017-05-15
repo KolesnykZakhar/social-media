@@ -29,6 +29,11 @@
         <i role="button" title="Switch To Full Chat"
            onclick="postMainDiv('/user/full_chat/${requestScope.chat.interlocutor.idUser}')"
            class="glyphicon glyphicon-th"></i></div> <!-- end message-header -->
+    <div class="chat-message clearfix">
+        <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
+        <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
+        <button onclick="sendMessage('/user/short_chat/send_message')">Send</button>
+    </div>
     <div class="chat-history">
         <ul>
             <c:forEach items="${requestScope.chat.messages}" var="message" varStatus="index">
@@ -49,14 +54,15 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
+            <%--<li>--%>
+                <%--<div class="chat-message clearfix">--%>
+                    <%--<button class="center-block">More</button>--%>
+                <%--</div>--%>
+            <%--</li>--%>
         </ul>
     </div>
     <!-- end message-history -->
-    <div class="chat-message clearfix">
-        <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
-        <input id="idInterlocutor" hidden value="${requestScope.chat.interlocutor.idUser}"/>
-        <button onclick="sendMessage('/user/short_chat/send_message')">Send</button>
-    </div> <!-- end message-message -->
+     <!-- end message-message -->
 </div> <!-- end message -->
 <!-- end container -->--%>
 <script id="message-template" type="text/x-handlebars-template">

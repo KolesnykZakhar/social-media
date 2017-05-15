@@ -100,7 +100,11 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
+    @Transactional
     public void deleteFileMedia(String nameImage, int idImage) throws IOException {
+        Image image = new Image();
+        image.setIdImage(idImage);
+        imageDao.remove(image);
         FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameImage));
         Image imageToRemove = new Image();
         imageToRemove.setIdImage(idImage);
