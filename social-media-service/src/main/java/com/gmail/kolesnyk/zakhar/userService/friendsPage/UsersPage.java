@@ -4,6 +4,12 @@ import com.gmail.kolesnyk.zakhar.user.User;
 
 import java.util.List;
 
+/**
+ * The {@code UsersPage} class used representing page of Users
+ *
+ * @author Kolesnyk Zakhar
+ * @since JDK1.8
+ */
 public class UsersPage {
     private List<User> page;
     private int amountPages;

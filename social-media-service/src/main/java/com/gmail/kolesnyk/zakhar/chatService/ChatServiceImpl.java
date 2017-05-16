@@ -37,18 +37,18 @@ public class ChatServiceImpl extends AbstractService implements ChatService {
 
     @Override
     @Transactional(readOnly = true)
-    public Chat getFullChatByUsers(int idUser, int idFriend) {
-        List<Message> messages = messageDao.getFullChat(idUser, idFriend);
-        User interlocutor = userDao.selectById(idFriend);
+    public Chat getFullChatByUsers(int idUser, int idInterlocutor) {
+        List<Message> messages = messageDao.getFullChat(idUser, idInterlocutor);
+        User interlocutor = userDao.selectById(idInterlocutor);
         return new Chat(messages, idUser, interlocutor);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Chat getShortChatByUsers(int idUser, int idFriend) {
-        List<Message> messages = messageDao.getShortChat(idUser, idFriend, SIZE_OF_SHORT_CHAT);
-        User interlocutor = userDao.selectById(idFriend);
-        int amountMessages = messageDao.amountMessagesByUsers(idUser, idFriend);
+    public Chat getShortChatByUsers(int idUser, int idInterlocutor) {
+        List<Message> messages = messageDao.getShortChat(idUser, idInterlocutor, SIZE_OF_SHORT_CHAT);
+        User interlocutor = userDao.selectById(idInterlocutor);
+        int amountMessages = messageDao.amountMessagesByUsers(idUser, idInterlocutor);
         return new Chat(messages, idUser, interlocutor, amountMessages);
     }
 

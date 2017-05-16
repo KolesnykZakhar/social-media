@@ -1,8 +1,16 @@
 package com.gmail.kolesnyk.zakhar.chatService.chat;
 
 import java.util.List;
-import java.util.Set;
 
+/**
+ * The {@code Chat} class used representing chats menu between User and all it interlocutors
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.ChatHeader
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.Chat
+ * @see com.gmail.kolesnyk.zakhar.chatService.ChatService
+ * @since JDK1.8
+ */
 public class ChatsMenu {
     private int idUser;
     private List<ChatHeader> chatHeaders;

@@ -8,6 +8,12 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The {@code PostPage} class used representing page of posts
+ *
+ * @author Kolesnyk Zakhar
+ * @since JDK1.8
+ */
 public class PostPage {
     private List<Post> posts;
     private int amountPages;

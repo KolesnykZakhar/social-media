@@ -71,8 +71,8 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
     }
 
     @Override
-    public byte[] getMediaByName(String nameImage) throws IOException {
-        File serverFile = new File(PATH_STORING_MEDIA + nameImage);
+    public byte[] getMediaByName(String nameMedia) throws IOException {
+        File serverFile = new File(PATH_STORING_MEDIA + nameMedia);
         InputStream is;
         if (serverFile.exists()) {
             is = new FileInputStream(serverFile);
@@ -101,12 +101,12 @@ public class MediaServiceImpl extends AbstractService implements MediaService {
 
     @Override
     @Transactional
-    public void deleteFileMedia(String nameImage, int idImage) throws IOException {
+    public void deleteFileMedia(String nameMedia, int idMedia) throws IOException {
         Image image = new Image();
-        image.setIdImage(idImage);
+        image.setIdImage(idMedia);
         imageDao.remove(image);
-        FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameImage));
+        FileUtils.forceDelete(new File(PATH_STORING_MEDIA + nameMedia));
         Image imageToRemove = new Image();
-        imageToRemove.setIdImage(idImage);
+        imageToRemove.setIdImage(idMedia);
     }
 }

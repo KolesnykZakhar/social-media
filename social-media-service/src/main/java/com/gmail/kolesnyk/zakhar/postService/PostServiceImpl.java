@@ -53,8 +53,7 @@ public class PostServiceImpl extends AbstractService implements PostService {
         return new PostPage(resultList, amountPages, userDao.selectById(idUser));
     }
 
-    @Override
-    public void savePost(Post post) {
+    private void savePost(Post post) {
         postDao.save(post);
     }
 

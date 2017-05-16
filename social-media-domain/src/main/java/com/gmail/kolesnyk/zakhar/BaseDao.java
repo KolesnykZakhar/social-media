@@ -4,7 +4,7 @@ package com.gmail.kolesnyk.zakhar;
 import java.util.List;
 
 /**
- * The {@code UserDao} implements main methods that required for ORM relations
+ * The {@code BaseDao} implements main methods that required for ORM relations
  *
  * @author Kolesnyk Zakhar
  * @since JDK1.8

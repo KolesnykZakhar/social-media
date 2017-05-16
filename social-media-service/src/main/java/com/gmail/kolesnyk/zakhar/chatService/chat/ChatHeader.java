@@ -3,6 +3,15 @@ package com.gmail.kolesnyk.zakhar.chatService.chat;
 import com.gmail.kolesnyk.zakhar.message.Message;
 import com.gmail.kolesnyk.zakhar.user.User;
 
+/**
+ * The {@code Chat} class used representing chat header of chat between two Users
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.Chat
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.ChatsMenu
+ * @see com.gmail.kolesnyk.zakhar.chatService.ChatService
+ * @since JDK1.8
+ */
 public class ChatHeader {
     private Message lastMessage;
     private int amountUnread;

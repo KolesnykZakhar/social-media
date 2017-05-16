@@ -6,6 +6,15 @@ import com.gmail.kolesnyk.zakhar.user.User;
 
 import java.util.List;
 
+/**
+ * The {@code Chat} class used representing chat between two Users
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.ChatHeader
+ * @see com.gmail.kolesnyk.zakhar.chatService.chat.ChatsMenu
+ * @see com.gmail.kolesnyk.zakhar.chatService.ChatService
+ * @since JDK1.8
+ */
 public class Chat {
 
     private List<Message> messages;

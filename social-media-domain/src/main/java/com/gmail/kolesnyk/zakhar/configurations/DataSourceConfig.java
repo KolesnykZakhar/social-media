@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * The {@code DataSourceConfig} class using for building hibernate session factory
+ * The {@code DataSourceConfig} configuration class using for building hibernate session factory
  *
  * @author Kolesnyk Zakhar
  * @since JDK1.8

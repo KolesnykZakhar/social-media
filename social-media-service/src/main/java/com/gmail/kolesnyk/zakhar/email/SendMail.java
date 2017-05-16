@@ -5,7 +5,23 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
+/**
+ * The {@code SendMail} utility class for sending emails
+ *
+ * @author Kolesnyk Zakhar
+ * @since JDK1.8
+ */
 public class SendMail {
+
+    /**
+     * method allowed to send email letter
+     *
+     * @param from     back email address of sender
+     * @param password password for email box of sender
+     * @param to       email address for receiving
+     * @param sub      title of email letter
+     * @param msg      text of email message
+     */
     public static void send(String from, String password, String to, String sub, String msg) {
         //Get properties object
         Properties props = new Properties();
