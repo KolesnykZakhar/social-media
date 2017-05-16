@@ -3,10 +3,18 @@ package com.gmail.kolesnyk.zakhar.message;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
+/**
+ * The {@code Message} JPA entity that mapped on table "messages"
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.message.MessageDao
+ * @see com.gmail.kolesnyk.zakhar.BaseDao
+ * @see com.gmail.kolesnyk.zakhar.AbstractDao
+ * @since JDK1.8
+ */
 @Entity
 @Table(name = "messages")
-public class Message implements Serializable{
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

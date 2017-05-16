@@ -10,6 +10,15 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Map;
 
+/**
+ * The {@code Post} JPA entity that mapped on table "posts"
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.post.PostDao
+ * @see com.gmail.kolesnyk.zakhar.BaseDao
+ * @see com.gmail.kolesnyk.zakhar.AbstractDao
+ * @since JDK1.8
+ */
 @Entity
 @Table(name = "posts")
 public class Post implements Serializable {

@@ -16,16 +16,26 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * The {@code DataSourceConfig} class using for building hibernate session factory
+ *
+ * @author Kolesnyk Zakhar
+ * @since JDK1.8
+ */
 @Configuration
 @ComponentScan("com.gmail.kolesnyk.zakhar")
 @EnableTransactionManagement
 @PropertySource(name = "db", value = "classpath:/db.properties")
 public class DataSourceConfig {
 
-    /* default component of Spring container */
     @Autowired
     private Environment environment;
 
+    /**
+     * method allowed to get Hibernate session factory
+     *
+     * @return initialized Hibernate session factory
+     */
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -57,7 +67,7 @@ public class DataSourceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         return new Properties() {
             {
                 setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));

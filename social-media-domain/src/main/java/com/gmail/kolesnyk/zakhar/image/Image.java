@@ -5,6 +5,15 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * The {@code Image} JPA entity that mapped on table "images"
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.image.ImageDao
+ * @see com.gmail.kolesnyk.zakhar.BaseDao
+ * @see com.gmail.kolesnyk.zakhar.AbstractDao
+ * @since JDK1.8
+ */
 @Entity
 @Table(name = "images")
 public class Image implements Serializable {
