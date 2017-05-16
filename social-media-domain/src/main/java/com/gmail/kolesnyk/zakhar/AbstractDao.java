@@ -4,24 +4,17 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-/**
- * class implements main methods that required for ORM relations
- */
 @Component
 public abstract class AbstractDao<T, I extends Serializable> implements BaseDao<T, I> {
 
     @Autowired
     protected SessionFactory sessionFactory;
 
-    /**
-     * class type of entity
-     */
     private Class<T> entityClass;
 
     @SuppressWarnings("unchecked")
@@ -50,6 +43,7 @@ public abstract class AbstractDao<T, I extends Serializable> implements BaseDao<
     public void remove(T object) {
         sessionFactory.getCurrentSession().delete(object);
     }
+
 
     @Override
     @SuppressWarnings("unchecked")

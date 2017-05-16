@@ -6,7 +6,7 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import java.util.List;
 
 /**
- * The {@code MessageDao} class DAO for entity {@link Post}
+ * The {@code PostDao} class DAO for entity {@link Post}
  *
  * @author Kolesnyk Zakhar
  * @see com.gmail.kolesnyk.zakhar.AbstractDao

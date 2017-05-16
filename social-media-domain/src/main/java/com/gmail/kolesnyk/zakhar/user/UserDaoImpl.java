@@ -40,7 +40,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public int amountFriends(Integer idUser) {
+    public Integer amountFriends(Integer idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession().createSQLQuery("SELECT count(*) FROM friends WHERE id_user = :idUser")
                 .setParameter("idUser", idUser).uniqueResult()).intValue();
     }
@@ -109,7 +109,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     }
 
     @Override
-    public boolean isFriends(int idCurrentUser, int idUser) {
+    public Boolean isFriends(int idCurrentUser, int idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession()
                 .createSQLQuery("SELECT count(*) FROM friends WHERE (id_user = :idUser AND id_friend = :idFriend) OR (id_user = :idFriend AND id_friend = :idUser)")
                 .setParameter("idUser", idCurrentUser).setParameter("idFriend", idUser).uniqueResult()).intValue() == 2;
@@ -131,7 +131,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
     }
 
     @Override
-    public boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
+    public Boolean isInvitedForFriendship(int idCurrentUser, int idUser) {
         return ((BigInteger) sessionFactory.getCurrentSession()
                 .createSQLQuery("SELECT count(*) FROM inviting_for_friendship WHERE id_user = :idCurrentUser AND id_friend = :idUser")
                 .setParameter("idCurrentUser", idCurrentUser).setParameter("idUser", idUser).uniqueResult()).intValue() == 1;

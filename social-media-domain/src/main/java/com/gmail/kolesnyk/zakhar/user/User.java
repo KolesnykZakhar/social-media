@@ -14,6 +14,15 @@ import java.util.stream.Collectors;
 
 import static com.gmail.kolesnyk.zakhar.user.STATE.AVAILABLE;
 
+/**
+ * The {@code User} JPA entity that mapped on table "users"
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.user.UserDao
+ * @see com.gmail.kolesnyk.zakhar.BaseDao
+ * @see com.gmail.kolesnyk.zakhar.AbstractDao
+ * @since JDK1.8
+ */
 @Entity
 @Table(name = "users")
 public class User implements Serializable, UserDetails {
