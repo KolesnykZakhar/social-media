@@ -16,7 +16,7 @@
     <div class="main_resize">
         <div class="header">
             <div class="logo">
-                <h1><span>Social-Media</span>Network</h1>
+                <h1><span>Social</span>Media</h1>
             </div>
             <div class="search">
                 <%--<form id="search">--%>

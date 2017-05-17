@@ -8,17 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>social-media-web</artifactId>
     <packaging>war</packaging>
-    <!--<name>social-media-web Maven Webapp</name>-->
-    <!--<url>http://maven.apache.org</url>-->
     <dependencies>
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-taglibs</artifactId>-->
-            <!--<version>4.2.1.RELEASE</version>-->
-        <!--</dependency>-->
-
-
         <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -75,33 +65,5 @@
     </dependencies>
     <build>
         <finalName>social-media-web</finalName>
-        <!--<plugins>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-resources-plugin</artifactId>-->
-                <!--<version>2.7</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>copy-resource-one</id>-->
-                        <!--<phase>install</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy-resources</goal>-->
-                        <!--</goals>-->
-
-                        <!--<configuration>-->
-                            <!--<outputDirectory>${basedir}/media</outputDirectory>-->
-                            <!--<resources>-->
-                                <!--<resource>-->
-                                    <!--<directory>/</directory>-->
-                                    <!--&lt;!&ndash;<includes>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<include>file.jar</include>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</includes>&ndash;&gt;-->
-                                <!--</resource>-->
-                            <!--</resources>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
     </build>
 </project>
