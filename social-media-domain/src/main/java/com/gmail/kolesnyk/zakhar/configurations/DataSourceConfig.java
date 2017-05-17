@@ -32,7 +32,7 @@ public class DataSourceConfig {
     private Environment environment;
 
     /**
-     * method allowed to get Hibernate session factory
+     * method allow to get Hibernate session factory
      *
      * @return initialized Hibernate session factory
      */

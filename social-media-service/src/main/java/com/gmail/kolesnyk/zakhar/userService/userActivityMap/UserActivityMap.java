@@ -9,14 +9,14 @@ package com.gmail.kolesnyk.zakhar.userService.userActivityMap;
 public interface UserActivityMap {
 
     /**
-     * method allowed to put last ID User that make any actions
+     * method allow to put last ID User that make any actions
      *
      * @param idUser ID User
      */
     void put(Integer idUser);
 
     /**
-     * method allowed to know that user did make any actions less than 15 minutes ago
+     * method allow to know that user did make any actions less than 15 minutes ago
      *
      * @param idUser ID User
      * @return true if user did make any actions less than 15 min ago,

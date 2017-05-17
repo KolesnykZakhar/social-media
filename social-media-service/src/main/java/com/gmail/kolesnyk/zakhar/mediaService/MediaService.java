@@ -20,7 +20,7 @@ import java.util.List;
 public interface MediaService {
 
     /**
-     * method allowed to store image of avatar in system by file and ID User
+     * method allow to store image of avatar in system by file and ID User
      *
      * @param file   file to storing
      * @param idUser ID User
@@ -28,7 +28,7 @@ public interface MediaService {
     void storeAvatar(MultipartFile file, int idUser) throws IOException;
 
     /**
-     * method allowed to get avatar from system by ID User in byte array form
+     * method allow to get avatar from system by ID User in byte array form
      *
      * @param idUser ID User
      * @return array that contains bytes of avatar image
@@ -36,7 +36,7 @@ public interface MediaService {
     byte[] getAvatarByUser(Integer idUser) throws IOException;
 
     /**
-     * method allowed to get list of images {@link List<Image>} by ID User
+     * method allow to get list of images {@link List<Image>} by ID User
      *
      * @param idUser ID User
      * @return {@link List<Image>} list of images
@@ -44,7 +44,7 @@ public interface MediaService {
     List<Image> imagesByIdUser(int idUser);
 
     /**
-     * method allowed to get media file from system by it name in byte array form
+     * method allow to get media file from system by it name in byte array form
      *
      * @param nameMedia name of media
      * @return array that contains bytes of media file
@@ -52,7 +52,7 @@ public interface MediaService {
     byte[] getMediaByName(String nameMedia) throws IOException;
 
     /**
-     * method allowed to save media file to system by file and example of User
+     * method allow to save media file to system by file and example of User
      *
      * @param file media file
      * @param user example of User
@@ -60,7 +60,7 @@ public interface MediaService {
     void storeImage(MultipartFile file, User user) throws IOException;
 
     /**
-     * method allowed to delete media file from system by it name and ID
+     * method allow to delete media file from system by it name and ID
      *
      * @param nameMedia media file name
      * @param idMedia   ID media
@@ -68,7 +68,7 @@ public interface MediaService {
     void deleteFileMedia(String nameMedia, int idMedia) throws IOException;
 
     /**
-     * method allowed to get media file from system by it name
+     * method allow to get media file from system by it name
      *
      * @param nameMedia media file name
      * @return {@link File} example of media file

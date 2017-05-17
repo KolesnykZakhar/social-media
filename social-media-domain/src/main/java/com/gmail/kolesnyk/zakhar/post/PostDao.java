@@ -16,7 +16,7 @@ import java.util.List;
 public interface PostDao extends BaseDao<Post, Integer> {
 
     /**
-     * method allowed to get sublist of posts by user {@link List<Post>}
+     * method allow to get sublist of posts by user {@link List<Post>}
      * by ID of User, offset and amount of returned posts
      *
      * @param idUser ID of User
@@ -27,7 +27,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> postsSublistByIdUser(Integer idUser, int offset, int amount);
 
     /**
-     * method allowed to get all posts by user {@link List<Post>}
+     * method allow to get all posts by user {@link List<Post>}
      * by example of User
      *
      * @param user User
@@ -36,7 +36,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> listByUser(User user);
 
     /**
-     * method allowed to search post from all posts {@link List<Post>}
+     * method allow to search post from all posts {@link List<Post>}
      * by text that contained in Post
      *
      * @param search text for searching
@@ -45,7 +45,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> listSearchString(String search);
 
     /**
-     * method allowed to get amount posts {@link List<Post>} of User
+     * method allow to get amount posts {@link List<Post>} of User
      * by ID User
      *
      * @param idUser ID User
@@ -54,7 +54,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     Integer amountPostsByIdUser(int idUser);
 
     /**
-     * method allowed to get sublist posts {@link List<Post>} of User
+     * method allow to get sublist posts {@link List<Post>} of User
      * that User added to it bookmarks
      * by ID User, offset and amount
      *
@@ -66,7 +66,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> sublistBookmarksByUser(int idUser, int offset, int amount);
 
     /**
-     * method allowed to get amount posts {@link List<Post>} of User
+     * method allow to get amount posts {@link List<Post>} of User
      * that User added to it bookmarks
      * by ID User
      *
@@ -76,7 +76,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     Integer amountBookmarksByIdUser(int idUser);
 
     /**
-     * method allowed to sublist of all posts {@link List<Post>} that User can to see by ID User,
+     * method allow to sublist of all posts {@link List<Post>} that User can to see by ID User,
      * ordered by publication date started from younger date
      * Means: posts of current User, post Friends of current User and posts of other Users what have public blog
      *
@@ -88,7 +88,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     List<Post> sublistNews(int idUser, int offset, int amount);
 
     /**
-     * method allowed to get amount of all posts {@link List<Post>} that User can to see by ID User,
+     * method allow to get amount of all posts {@link List<Post>} that User can to see by ID User,
      * ordered by publication date started from younger date
      * Means: posts of current User, post Friends of current User and posts of other Users what have public blog
      *
@@ -98,7 +98,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     Integer amountNewsByIdUser(int idUser);
 
     /**
-     * method allowed to add bookmark by ID User and ID Post
+     * method allow to add bookmark by ID User and ID Post
      *
      * @param idUser ID User
      * @param idPost ID Post
@@ -106,7 +106,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     void addBookmark(int idUser, int idPost);
 
     /**
-     * method allowed to remove bookmark by ID User and ID Post
+     * method allow to remove bookmark by ID User and ID Post
      *
      * @param idUser ID User
      * @param idPost ID Post
@@ -114,7 +114,7 @@ public interface PostDao extends BaseDao<Post, Integer> {
     void deleteBookmark(int idUser, int idPost);
 
     /**
-     * method allowed to get knows about existing of concrete bookmark by ID User and ID Post
+     * method allow to get knows about existing of concrete bookmark by ID User and ID Post
      *
      * @param idUser ID User
      * @param idPost ID Post

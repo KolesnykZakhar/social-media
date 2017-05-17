@@ -19,7 +19,7 @@ import java.io.IOException;
 public interface PostService {
 
     /**
-     * method allowed to get sublist of Posts by ID User
+     * method allow to get sublist of Posts by ID User
      *
      * @param idUser         ID User-author of Posts
      * @param pageNumber number of page
@@ -29,7 +29,7 @@ public interface PostService {
     PostPage sublistPostsByUser(int idUser, int pageNumber, int idCurrentUser);
 
     /**
-     * method allowed to create and save Post to system with it media files
+     * method allow to create and save Post to system with it media files
      *
      * @param user example of User-author of Post
      * @param textPost text that contains in Post
@@ -38,14 +38,14 @@ public interface PostService {
     void createAndSavePost(User user, String textPost, MultipartFile... files) throws IOException;
 
     /**
-     * method allowed to delete Post from system with it media files
+     * method allow to delete Post from system with it media files
      *
      * @param idPost ID Post
      */
     void deletePostById(int idPost);
 
     /**
-     * method allowed to get Page of Bookmarks by ID User and number of Page
+     * method allow to get Page of Bookmarks by ID User and number of Page
      *
      * @param idUser ID User
      * @param pageNumber number of page that need to get
@@ -54,7 +54,7 @@ public interface PostService {
     PostPage sublistBookmarksByUser(int idUser, int pageNumber);
 
     /**
-     * method allowed to get know that User has private blog
+     * method allow to get know that User has private blog
      *
      * @param idUser ID User
      * @return true if User has private blog, and false if it has public blog
@@ -62,7 +62,7 @@ public interface PostService {
     boolean hasPrivateBlog(int idUser);
 
     /**
-     * method allowed to get Page of News by ID User and number of Page
+     * method allow to get Page of News by ID User and number of Page
      *
      * @param idUser ID User
      * @param pageNumber number of page that need to get
@@ -71,7 +71,7 @@ public interface PostService {
     PostPage sublistNews(int idUser, int pageNumber);
 
     /**
-     * method allowed to create Bookmark in system by ID User and ID Post
+     * method allow to create Bookmark in system by ID User and ID Post
      *
      * @param idUser ID User
      * @param idPost ID Post
@@ -79,7 +79,7 @@ public interface PostService {
     void addBookmark(int idUser, int idPost);
 
     /**
-     * method allowed to delete Bookmark from system by ID User and ID Post
+     * method allow to delete Bookmark from system by ID User and ID Post
      *
      * @param idUser ID User
      * @param idPost ID Post

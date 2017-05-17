@@ -12,7 +12,7 @@ import java.util.List;
 public interface BaseDao<T, I> {
 
     /**
-     * method allowed to get example of Entity by it ID
+     * method allow to get example of Entity by it ID
      *
      * @param id ID of Entity
      * @return example of Entity
@@ -20,28 +20,28 @@ public interface BaseDao<T, I> {
     T selectById(I id);
 
     /**
-     * method allowed to save example of Entity
+     * method allow to save example of Entity
      *
      * @param object object of Entity
      */
     void save(T object);
 
     /**
-     * method allowed to update example of Entity
+     * method allow to update example of Entity
      *
      * @param object object of Entity
      */
     void update(T object);
 
     /**
-     * method allowed to remove example of Entity
+     * method allow to remove example of Entity
      *
      * @param object object of Entity
      */
     void remove(T object);
 
     /**
-     * method allowed get list of Entities
+     * method allow get list of Entities
      *
      * @return List of Entities
      */

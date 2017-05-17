@@ -8,6 +8,14 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+/**
+ * The {@code Validator} class used for validating data of new User when happens his registration
+ * that not happens successful registration of new User
+ *
+ * @author Kolesnyk Zakhar
+ * @see com.gmail.kolesnyk.zakhar.validation.RegistrationValidateException
+ * @since JDK1.8
+ */
 public class Validator {
 
     private static final Pattern FIRST_NAME_USER_PATTERN = Pattern.compile("[a-zA-Z]{2,32}");
@@ -19,7 +27,13 @@ public class Validator {
     private final static int MAX_OLD_USER = 150;
     private final static int MIN_YOUNG_USER = 5;
 
-
+    /**
+     * method allow to validate data of User
+     *
+     * @param user example of User
+     * @param pass password of User
+     * @throws RegistrationValidateException when validation no passed
+     */
     public static void validateUser(User user, String pass) {
         if (user == null) {
             throw new IllegalArgumentException("User equals null");

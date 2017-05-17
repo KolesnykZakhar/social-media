@@ -15,7 +15,7 @@ import java.util.List;
 public interface ImageDao extends BaseDao<Image, Integer> {
 
     /**
-     * method allowed to get {@link List<Image>} by ID of User
+     * method allow to get {@link List<Image>} by ID of User
      *
      * @param idUser ID of User
      * @return {@link List<Image>} list images

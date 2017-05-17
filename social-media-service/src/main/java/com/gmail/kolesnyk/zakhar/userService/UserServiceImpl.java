@@ -198,18 +198,6 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<User> searchByName(String search) {
-        List<User> resultList = userDao.searchByName(search);
-        resultList.forEach(user -> {
-            if (userActivityMap.isOnline(user.getIdUser())) {
-                user.setOnline(true);
-            }
-        });
-        return resultList;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public boolean isFriends(int idCurrentUser, int idUser) {
         return userDao.isFriends(idCurrentUser, idUser);
     }
@@ -218,12 +206,6 @@ public class UserServiceImpl extends AbstractService implements UserService {
     @Transactional
     public void inviteForFriendship(int idCurrentUser, int idUser) {
         userDao.inviteForFriendship(idCurrentUser, idUser);
-    }
-
-    @Override
-    @Transactional
-    public void applyFriendship(int idCurrentUser, int idUser) {
-        userDao.addFriend(idCurrentUser, idUser);
     }
 
     @Override
