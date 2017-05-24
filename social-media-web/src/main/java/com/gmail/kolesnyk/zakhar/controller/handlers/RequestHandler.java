@@ -18,9 +18,7 @@ public class RequestHandler extends HandlerInterceptorAdapter {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user != null && userActivityMap != null && user instanceof User) {
-            userActivityMap.put(((User) user).getIdUser());
-        }
+        Integer idUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getIdUser();
+        userActivityMap.put(idUser);
     }
 }
