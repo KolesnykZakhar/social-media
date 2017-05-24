@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.controller.authentication;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,7 @@ public class AuthenticationController {
     private UserService userService;
 
     @RequestMapping(value = "/login")
-    public String toLoginPage() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String toLoginPage(@AuthenticationPrincipal Object principal) {
         if (principal != null && principal instanceof User) {
             return "redirect: /index";
         } else {
@@ -35,8 +35,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String toRegistrationPage() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String toRegistrationPage(@AuthenticationPrincipal Object principal) {
         if (principal != null && principal instanceof User) {
             return "redirect: /index";
         } else {
