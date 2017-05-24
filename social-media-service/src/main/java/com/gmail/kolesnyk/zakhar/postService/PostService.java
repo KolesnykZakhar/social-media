@@ -1,6 +1,5 @@
 package com.gmail.kolesnyk.zakhar.postService;
 
-import com.gmail.kolesnyk.zakhar.post.Post;
 import com.gmail.kolesnyk.zakhar.postService.postPages.PostPage;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +20,8 @@ public interface PostService {
     /**
      * method allow to get sublist of Posts by ID User
      *
-     * @param idUser         ID User-author of Posts
-     * @param pageNumber number of page
+     * @param idUser        ID User-author of Posts
+     * @param pageNumber    number of page
      * @param idCurrentUser ID User that will view Posts
      * @return {@link PostPage} example of page with Posts
      */
@@ -31,9 +30,9 @@ public interface PostService {
     /**
      * method allow to create and save Post to system with it media files
      *
-     * @param user example of User-author of Post
+     * @param user     example of User-author of Post
      * @param textPost text that contains in Post
-     * @param files varargs of files that associated with Post
+     * @param files    varargs of files that associated with Post
      */
     void createAndSavePost(User user, String textPost, MultipartFile... files) throws IOException;
 
@@ -47,7 +46,7 @@ public interface PostService {
     /**
      * method allow to get Page of Bookmarks by ID User and number of Page
      *
-     * @param idUser ID User
+     * @param idUser     ID User
      * @param pageNumber number of page that need to get
      * @return {@link PostPage} example page of Bookmarks
      */
@@ -64,7 +63,7 @@ public interface PostService {
     /**
      * method allow to get Page of News by ID User and number of Page
      *
-     * @param idUser ID User
+     * @param idUser     ID User
      * @param pageNumber number of page that need to get
      * @return {@link PostPage} example page of News
      */
