@@ -21,7 +21,7 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(requestHandler());
+        registry.addInterceptor(requestHandler()).addPathPatterns("/user/*");
     }
 
     @Bean
