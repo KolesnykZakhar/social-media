@@ -86,8 +86,9 @@
                     <span class="checkboxtext">
                     <input
                         ${post.inBookmarks?'checked':''}
-                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="<spring:message code="toBookmarksTitle"/>" type="checkbox"
-                            class="glyphicon glyphicon-star-empty pull-right">
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button"
+                            title="<spring:message code="${post.inBookmarks?'removeFromBookmarksTitle':'toBookmarksTitle'}"/>"
+                            type="checkbox" class="glyphicon glyphicon-star-empty pull-right">
                     </span>
                     <c:if test="${requestScope.canModify}"><a
                             role="button" title="Delete" class="btn btn-danger pull-right"

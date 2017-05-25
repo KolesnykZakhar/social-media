@@ -63,8 +63,8 @@
                     <input
                         ${post.inBookmarks?'checked':''}
                             name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button"
-                            title="To Bookmarks" type="checkbox"
-                            class="glyphicon glyphicon-star-empty pull-right">
+                            title="<spring:message code="${post.inBookmarks?'removeFromBookmarksTitle':'toBookmarksTitle'}"/>"
+                            type="checkbox" class="glyphicon glyphicon-star-empty pull-right">
                     </span>
                     <script>
                         $(document).ready(function () {
