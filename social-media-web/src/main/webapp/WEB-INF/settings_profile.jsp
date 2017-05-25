@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
 <body>
 
 <div class="container">
-    <h1>Settings Profile</h1>
+    <h1><spring:message code="settingsProfileHeader"/></h1>
     <div class="row">
         <div style="width: 623px"
              class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad">
@@ -37,7 +38,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Upload New Avatar</h4>
+                                        <h4 class="modal-title"><spring:message code="uploadNewAvatarHeader"/></h4>
                                     </div>
                                     <%--<div class="modal-body">--%>
                                     <div class="modal-footer">
@@ -46,9 +47,9 @@
                                             <label class="btn btn-primary">
                                                 <input name="uploadedAvatar" required type="file" hidden>
                                             </label>
-                                            <button type="submit" class="btn btn-primary">Update Avatar
+                                            <button type="submit" class="btn btn-primary"><spring:message code="updateAvatarButton"/>
                                             </button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="closeButton"/>
                                             </button>
                                         </form>
                                     </div>
@@ -60,62 +61,62 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td><label for="firstName">First Name</label></td>
+                                        <td><label for="firstName"><spring:message code="firstNameColumn"/></label></td>
                                         <td><input id='firstName' value='${requestScope.user.firstName}'></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="lastName">Last Name</label></td>
+                                        <td><label for="lastName"><spring:message code="lastNameColumn"/></label></td>
                                         <td><input id='lastName' value='${requestScope.user.lastName}'></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="phone">Phone Nomber</label></td>
+                                        <td><label for="phone"><spring:message code="phoneNumberColumn"/></label></td>
                                         <td><input id='phone' value='${requestScope.user.phone}'></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="birthDate">Date of Birth</label></td>
+                                        <td><label for="birthDate"><spring:message code="birthDateColumn"/></label></td>
                                         <td><input id="birthDate" required type="date" name="birthDate"
                                                    value="${requestScope.user.birthDate}"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><label>Gender</label></td>
+                                        <td><label><spring:message code="genderColumn"/></label></td>
                                         <td>
                                             <div class="form-group">
                                                 <div class="cols-sm-10">
                                                     <label class="radio-inline"><input ${requestScope.user.gender=='MALE'?'checked':''}
                                                             required type="radio"
                                                             name="gender"
-                                                            value="0">Male</label>
+                                                            value="0"><spring:message code="maleRadio"/></label>
                                                     <label class="radio-inline"><input ${requestScope.user.gender=='FEMALE'?'checked':''}
                                                             required type="radio"
                                                             name="gender"
-                                                            value="1">Female</label>
+                                                            value="1"><spring:message code="femaleRadio"/></label>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><label>Email</label></td>
+                                        <td><label><spring:message code="emailColumn"/></label></td>
                                         <td><a href="mailto:<c:out value='${requestScope.user.email}'/>"><c:out
                                                 value="${requestScope.user.email}"/></a></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Login</label></td>
+                                        <td><label><spring:message code="loginColumn"/></label></td>
                                         <td><c:out value='${requestScope.user.login}'/></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Who See My Posts:</label></td>
+                                        <td><label><spring:message code="whoSeeMyPostsLabel"/></label></td>
                                         <td>
                                             <div class="form-group">
                                                 <div class="cols-sm-10">
                                                     <label class="radio-inline"><input ${requestScope.user.visibility=='PUBLIC'?'checked':''}
                                                             required type="radio"
                                                             name="visibility"
-                                                            value="0">All Users</label>
+                                                            value="0"><spring:message code="allUsersRadio"/></label>
                                                     <label class="radio-inline"><input ${requestScope.user.visibility=='PRIVATE'?'checked':''}
                                                             required type="radio"
                                                             name="visibility"
-                                                            value="1">All Friends</label>
+                                                            value="1"><spring:message code="allFriendsRadio"/></label>
                                                 </div>
                                             </div>
                                         </td>
@@ -123,7 +124,7 @@
                                     </tbody>
                                 </table>
                                 <a href="#" onclick="updateUser('/user/update_user_info/')"
-                                   class="btn btn-primary">Save changes</a>
+                                   class="btn btn-primary"><spring:message code="saveChangesButton"/></a>
                             </form>
                         </div>
                     </div>
@@ -131,7 +132,7 @@
                 <div class="panel-footer">
                     <span class="pull-right">
                             <a href="#" type="button" class="btn btn-sm btn-default"
-                               onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')">View Blog</a>
+                               onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')"><spring:message code="viewBlogButton"/></a>
                             <a onclick="postMainDiv('/user/image_slider')" data-original-title="Remove this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
