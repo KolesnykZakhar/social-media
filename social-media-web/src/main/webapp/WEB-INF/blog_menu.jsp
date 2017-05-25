@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -38,13 +39,13 @@
         <div class="col-lg-6 col-md-6 col-sm-6">
             <c:if test="${requestScope.canModify}">
                 <div class="well">
-                    <h4>New Post</h4>
+                    <h4><spring:message code="newPostHeader"/></h4>
                     <form id="postAddForm" method="post"
                           enctype="multipart/form-data">
                         <div class="form-group">
                             <textarea id="newPostText" name="newPostText" class="form-control" rows="3"></textarea>
                         </div>
-                        <button id="add" type="submit" class="btn btn-primary">Add
+                        <button id="add" type="submit" class="btn btn-primary"><spring:message code="addButton"/>
                         </button>
                         <div class="modal-footer">
                             <span>supported formats: </span>
@@ -56,7 +57,7 @@
                             </label>
                             <button onclick="addFileUploader()" type="button" class="btn btn-default"
                                     data-dismiss="modal">
-                                More
+                                <spring:message code="moreButton"/>
                             </button>
                         </div>
                     </form>
@@ -73,24 +74,24 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
                 <!-- Author -->
                 <p class="lead">
-                    by <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
+                    <spring:message code="byLabel"/> <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
                         value="${post.user.firstName}"/> <c:out
                         value="${post.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted
-                    on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                <p><span class="glyphicon glyphicon-time"></span> <spring:message code="postedLabel"/>
+                    <spring:message code="onLabel"/> ${post.datePost.toLocalDateTime().getMonth().getDisplayName(sessionScope.textStyleFull, sessionScope.locale)} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
+                    <spring:message code="atLabel"/> ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
                     <span class="checkboxtext">
                     <input
                         ${post.inBookmarks?'checked':''}
-                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="<spring:message code="toBookmarksTitle"/>" type="checkbox"
                             class="glyphicon glyphicon-star-empty pull-right">
                     </span>
                     <c:if test="${requestScope.canModify}"><a
                             role="button" title="Delete" class="btn btn-danger pull-right"
-                            onclick="postMainDiv('/user/delete_post/${post.idPost}/')">Delete Post</a></c:if>
+                            onclick="postMainDiv('/user/delete_post/${post.idPost}/')"><spring:message code="deletePostButton"/></a></c:if>
                 </p>
                 <br>
                 <span class="lead"><c:out value="${post.textPost}"/></span>
