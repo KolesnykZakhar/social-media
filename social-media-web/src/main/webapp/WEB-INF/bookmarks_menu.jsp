@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -12,8 +13,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog</title>
 
+    <title>Bookmarks</title>
     <!-- Bootstrap Core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
 
@@ -47,19 +48,19 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
                 <!-- Author -->
                 <p class="lead">
-                    by <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
+                    <spring:message code="byLabel"/> <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
                         value="${post.user.firstName}"/> <c:out
                         value="${post.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted
-                    on ${post.datePost.toLocalDateTime().getMonth().toString()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    at ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                <p><span class="glyphicon glyphicon-time"></span> <spring:message code="postedLabel"/>
+                    <spring:message code="onLabel"/> ${post.datePost.toLocalDateTime().getMonth().getDisplayName(sessionScope.textStyleFull, sessionScope.locale)} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
+                    <spring:message code="atLabel"/> ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
                     <span class="checkboxtext">
                     <input
                         checked
-                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="<spring:message code="removeFromBookmarksTitle"/>" type="checkbox"
                             class="glyphicon glyphicon-star-empty pull-right">
                     </span>
                 </p>
