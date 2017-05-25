@@ -1,11 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 21.04.2017
-  Time: 19:54
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -166,7 +160,7 @@
 
 <div class="menu_nav">
     <ul>
-        <li><a role="button" data-toggle="modal" data-target="#addPhoto">Add Image</a></li>
+        <li><a role="button" data-toggle="modal" data-target="#addPhoto"><spring:message code="addImageButton"/></a></li>
     </ul>
     <div class="clr"></div>
 </div>
@@ -177,7 +171,7 @@
             <div class="modal-body">
                 <img id="modalImage" src="#" class="img-responsive">
             </div>
-            <a href="#" id="deleteImage" onclick="" class="btn btn-primary">Delete</a>
+            <a href="#" id="deleteImage" onclick="" class="btn btn-primary"><spring:message code="deleteImageButton"/></a>
         </div>
     </div>
 </div>
@@ -188,7 +182,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Upload New Image</h4>
+                <h4 class="modal-title"><spring:message code="uploadNewImageButton"/></h4>
             </div>
             <div class="modal-footer">
                 <form action="/user/upload_image_by_file" method="post"
@@ -196,9 +190,9 @@
                     <label class="btn btn-primary">
                         <input name="uploadedPhoto" required type="file" hidden>
                     </label>
-                    <button type="submit" class="btn btn-primary">Add
+                    <button type="submit" class="btn btn-primary"><spring:message code="addButton"/>
                     </button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="closeButton"/>
                     </button>
                 </form>
             </div>
