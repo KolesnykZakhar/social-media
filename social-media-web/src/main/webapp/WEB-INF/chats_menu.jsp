@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,14 +13,14 @@
 </head>
 <body>
 <div class="container">
-    <h2>Chats Menu</h2>
+    <h2><spring:message code="chatsMenuHeader"/></h2>
     <p></p>
     <table class="table" style="width: 623px">
         <tr>
-            <th class="col-md-2 col-lg-2">Avatar</th>
-            <th>Login</th>
-            <th>Last Text</th>
-            <th>Status</th>
+            <th class="col-md-2 col-lg-2"><spring:message code="avatarColumn"/></th>
+            <th><spring:message code="loginColumn"/></th>
+            <th><spring:message code="lastMessageColumn"/></th>
+            <th><spring:message code="statusColumn"/></th>
         </tr>
         <c:forEach items="${requestScope.chatsMenu.chatHeaders}" var="chatHeader" varStatus="index">
             <tr>
@@ -45,10 +46,10 @@
                 </td>
                 <td><c:choose>
                     <c:when test="${chatHeader.interlocutor.online}">
-                        online
+                        <spring:message code="onlineValue"/>
                     </c:when>
                     <c:otherwise>
-                        offline
+                        <spring:message code="offlineValue"/>
                     </c:otherwise>
                 </c:choose>
                 </td>
