@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="login.jsp localization">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebConfig.java" afterPath="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties" />
     </list>
     <ignored path="social-media.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,21 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="access_denied_to_blog.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/access_denied_to_blog.jsp">
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="locale_ru.properties" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+            <state relative-caret-position="-1275">
+              <caret line="0" column="65" lean-forward="false" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -98,8 +96,8 @@
       <file leaf-file-name="locale.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="475">
+              <caret line="19" column="54" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="19" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -108,13 +106,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp">
+      <file leaf-file-name="locale_ru.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="71" />
+            <state relative-caret-position="475">
+              <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle">
+            <state />
           </provider>
         </entry>
       </file>
@@ -177,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/message/Message.java" />
         <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/post/MEDIA_TYPE.java" />
         <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/post/Post.java" />
         <option value="$PROJECT_DIR$/social-media-domain/src/main/java/com/gmail/kolesnyk/zakhar/user/GENDER.java" />
@@ -214,7 +214,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/social-media-service/pom.xml" />
         <option value="$PROJECT_DIR$/social-media-domain/pom.xml" />
-        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
         <option value="$PROJECT_DIR$/social-media-service/src/main/java/com/gmail/kolesnyk/zakhar/postService/PostService.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/StaticResourcesConfigurer.java" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/controller/handlers/RequestHandler.java" />
@@ -227,7 +226,9 @@
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/messages_ru.properties" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/java/com/gmail/kolesnyk/zakhar/configuration/WebConfig.java" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties" />
         <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties" />
+        <option value="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp" />
       </list>
     </option>
   </component>
@@ -2607,14 +2608,7 @@
       <workItem from="1495374112499" duration="42000" />
       <workItem from="1495532898403" duration="822000" />
       <workItem from="1495613893336" duration="10063000" />
-      <workItem from="1495696964599" duration="2580000" />
-    </task>
-    <task id="LOCAL-00034" summary="Implemented changing avatars">
-      <created>1492771313940</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1492771313940</updated>
+      <workItem from="1495696964599" duration="3466000" />
     </task>
     <task id="LOCAL-00035" summary="Implemented environment properties in AbstractService.class">
       <created>1492777373238</created>
@@ -2952,7 +2946,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495627596385</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="login.jsp localization">
+      <created>1495699656147</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1495699656148</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2988,7 +2989,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="612996000" />
+    <option name="totallyTimeSpent" value="613882000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -3025,7 +3026,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42582107" sideWeight="0.48925886" order="2" side_tool="false" content_ui="tabs" x="0" y="29" width="1920" height="1001" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23782559" sideWeight="0.48925886" order="2" side_tool="false" content_ui="tabs" x="0" y="29" width="1920" height="1001" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18796992" sideWeight="0.5516014" order="7" side_tool="true" content_ui="tabs" />
@@ -3433,6 +3434,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1522">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3440,6 +3442,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2775">
           <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3520,26 +3523,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/access_denied_to_blog.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="71" />
           <folding />
         </state>
       </provider>
@@ -3554,8 +3541,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="36" />
+        <state relative-caret-position="475">
+          <caret line="19" column="54" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="19" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -3565,13 +3552,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/locales/locale_ru.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+        <state relative-caret-position="475">
+          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1275">
+          <caret line="0" column="65" lean-forward="false" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
