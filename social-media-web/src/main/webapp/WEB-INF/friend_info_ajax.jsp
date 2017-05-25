@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +24,10 @@
                             value="${requestScope.friend.firstName} ${requestScope.friend.lastName}"/></h3>
                     <c:choose>
                         <c:when test="${requestScope.friend.online}">
-                            online
+                            <spring:message code="onlineValue"/>
                         </c:when>
                         <c:otherwise>
-                            offline
+                            <spring:message code="offlineValue"/>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -40,45 +41,45 @@
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td><label>First Name</label></td>
+                                    <td><label><spring:message code="firstNameColumn"/></label></td>
                                     <td><c:out value="${requestScope.friend.firstName}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Last Name</label></td>
+                                    <td><label><spring:message code="lastNameColumn"/></label></td>
                                     <td><c:out value="${requestScope.friend.lastName}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Phone Number</label></td>
+                                    <td><label><spring:message code="phoneNumberColumn"/></label></td>
                                     <td><c:out value="${requestScope.friend.phone}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Date of Birth</label></td>
+                                    <td><label><spring:message code="birthDateColumn"/></label></td>
                                     <td><c:out value="${requestScope.friend.birthDate}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Gender</label></td>
+                                    <td><label><spring:message code="genderColumn"/></label></td>
                                     <td>
                                         <div class="form-group">
                                             <div class="cols-sm-10">
-                                                <c:out value="${requestScope.friend.gender}"/>
+                                                <spring:message code="${requestScope.friend.gender=='MALE'?'maleLabel':'femaleLabel'}"/>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label>Email</label></td>
+                                    <td><label><spring:message code="emailColumn"/></label></td>
                                     <td><a href="mailto:<c:out value='${requestScope.friend.email}'/>">
                                         <c:out value="${requestScope.friend.email}"/></a></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Login</label></td>
+                                    <td><label><spring:message code="loginColumn"/></label></td>
                                     <td><c:out value='${requestScope.friend.login}'/></td>
                                 </tr>
                                 </tbody>
                             </table>
                             <a href="#"
                                onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.friend.idUser}')"
-                               class="btn btn-primary">Remove From Friends</a>
+                               class="btn btn-primary"><spring:message code="removeFromFriendsButton"/></a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +87,7 @@
                     <a onclick="postMainDiv('/user/short_chat/${requestScope.friend.idUser}/${true}')" data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
                        class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                            <a href="#" type="button" class="btn btn-sm btn-default" onclick="postMainDiv('/user/blog_menu/${requestScope.friend.idUser}/1/')">View Blog</a>
+                            <a href="#" type="button" class="btn btn-sm btn-default" onclick="postMainDiv('/user/blog_menu/${requestScope.friend.idUser}/1/')"><spring:message code="viewBlogButton"/></a>
                             <a onclick="postMainDiv('/user/image_slider')" data-original-title="Remove this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>

@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 06.03.2017
-  Time: 14:46
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>You Have No Rights To See This Blog</h1>
+            <h1><spring:message code="accessDeniedToBlogHeader"/></h1>
         </div>
     </div>
 </div>

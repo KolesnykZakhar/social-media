@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,14 +13,14 @@
 </head>
 <body>
 <div class="container">
-    <h2>Users</h2>
+    <h2><spring:message code="usersHeader"/></h2>
     <p></p>
     <table class="table" style="width: 623px">
         <tr>
-            <th class="col-md-2 col-lg-2">Avatar</th>
-            <th>Login</th>
-            <th>Name</th>
-            <th>Status</th>
+            <th class="col-md-2 col-lg-2"><spring:message code="avatarColumn"/></th>
+            <th><spring:message code="loginColumn"/></th>
+            <th><spring:message code="nameColumn"/></th>
+            <th><spring:message code="statusColumn"/></th>
         </tr>
         <c:forEach items="${requestScope.usersPage.page}" var="user" varStatus="index">
             <tr>
@@ -32,10 +33,10 @@
                 <td>${user.firstName}<br>${user.lastName}</td>
                 <td><c:choose>
                     <c:when test="${user.online}">
-                        online
+                        <spring:message code="onlineValue"/>
                     </c:when>
                     <c:otherwise>
-                        offline
+                        <spring:message code="offlineValue"/>
                     </c:otherwise>
                 </c:choose>
                 </td>
