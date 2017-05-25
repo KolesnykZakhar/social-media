@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,37 +22,37 @@
             <form class="form-horizontal" method="post" action="/login">
 
                 <div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Login or email</label>
+                    <label for="username" class="cols-sm-2 control-label"><spring:message code="loginOrEmailLabel"/> </label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your login or email"/>
+                                   placeholder="<spring:message code="loginOrEmailPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <label for="password" class="cols-sm-2 control-label"><spring:message code="passwordLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input required type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your Password"/>
+                                   placeholder="<spring:message code="passwordPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button"><spring:message code="loginButton"/></button>
                 </div>
 
                 <div class="login-register">
-                    <a href="/registration">Registration</a>
+                    <a href="/registration"><spring:message code="registrationLink"/></a>
                 </div>
 
                 <div class="login-register">
-                    <a href="/restore_password">Restore Password</a>
+                    <a href="/restore_password"><spring:message code="restorePasswordLink"/></a>
                 </div>
 
             </form>
