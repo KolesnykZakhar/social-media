@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Friends</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='../static/css/bootstrap.css'>
@@ -13,15 +14,15 @@
 <body>
 
 <div class="container">
-    <h2>Friends</h2>
+    <h2><spring:message code="friendsHeader"/></h2>
     <p></p>
     <table class="table" style="width: 623px">
         <tr>
-            <th class="col-md-2 col-lg-2">Avatar</th>
-            <th>Login</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
+            <th class="col-md-2 col-lg-2"><spring:message code="avatarColumn"/></th>
+            <th><spring:message code="loginColumn"/></th>
+            <th><spring:message code="nameColumn"/></th>
+            <th><spring:message code="emailColumn"/></th>
+            <th><spring:message code="statusColumn"/></th>
         </tr>
         <c:forEach items="${requestScope.usersPage.page}" var="user" varStatus="index">
             <tr>
@@ -35,10 +36,10 @@
                 <td><a href="mailto:<c:out value='${user.email}'/>"><c:out value="${user.email}"/></a></td>
                 <td><c:choose>
                     <c:when test="${user.online}">
-                        online
+                        <spring:message code="onlineValue"/>
                     </c:when>
                     <c:otherwise>
-                        offline
+                        <spring:message code="offlineValue"/>
                     </c:otherwise>
                 </c:choose></td>
             </tr>

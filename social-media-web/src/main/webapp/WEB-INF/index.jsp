@@ -20,6 +20,10 @@
             <div class="logo">
                 <h1><span>Social</span>Media</h1>
             </div>
+            <span class="pull-right">
+                <a href="?lang=ru">RU</a>
+                <a href="?lang=en">EN</a>
+            </span>
             <div class="search">
                 <span>
                         <input type="text" value="" name="s" id="s"/>

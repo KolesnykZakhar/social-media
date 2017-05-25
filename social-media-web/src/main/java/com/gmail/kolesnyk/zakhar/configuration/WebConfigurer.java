@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.time.format.TextStyle;
 import java.util.Locale;
 
 @Configuration
@@ -36,9 +39,18 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
 
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
-        return new LocaleChangeInterceptor() {{
-            setParamName("lang");
-        }};
+        return new LocaleChangeInterceptor() {
+            @Override
+            public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+                super.afterCompletion(request, response, handler, ex);
+                request.getSession().setAttribute("locale", localeResolver().resolveLocale(request));
+                request.getSession().setAttribute("textStyleFull", TextStyle.FULL);
+            }
+
+            {
+                setParamName("lang");
+            }
+        };
     }
 
     @Bean

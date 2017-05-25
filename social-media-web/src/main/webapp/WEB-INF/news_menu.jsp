@@ -49,23 +49,26 @@
                 <!-- Author -->
                 <p class="lead"><spring:message code="byLabel"/>
                     <a onclick="postMainDiv('/user/user/${post.user.idUser}')" href="#"><c:out
-                        value="${post.user.firstName}"/> <c:out
-                        value="${post.user.lastName}"/></a>
+                            value="${post.user.firstName}"/> <c:out
+                            value="${post.user.lastName}"/></a>
                 </p>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span><spring:message code="postedLabel"/>
-                    <spring:message code="onLabel"/> ${post.datePost.toLocalDateTime().getMonth()} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
-                    <spring:message code="atLabel"/> ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
+                    <spring:message
+                            code="onLabel"/> ${post.datePost.toLocalDateTime().getMonth().getDisplayName(sessionScope.textStyleFull, sessionScope.locale)} ${post.datePost.toLocalDateTime().getDayOfMonth()}, ${post.datePost.toLocalDateTime().getYear()}
+                    <spring:message
+                            code="atLabel"/> ${post.datePost.toLocalDateTime().getHour()}:${post.datePost.toLocalDateTime().getMinute()}
                     <span class="checkboxtext">
                     <input
                         ${post.inBookmarks?'checked':''}
-                           name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button" title="To Bookmarks" type="checkbox"
-                           class="glyphicon glyphicon-star-empty pull-right">
+                            name="toBookmarksCheckBox" onclick="bookmarksAction('${post.idPost}', this)" role="button"
+                            title="To Bookmarks" type="checkbox"
+                            class="glyphicon glyphicon-star-empty pull-right">
                     </span>
                     <script>
-                        $(document).ready(function() {
-                            $('input:checkbox').change(function(){
+                        $(document).ready(function () {
+                            $('input:checkbox').change(function () {
                                 $(this).parent('form').submit();
                             });
                         });
