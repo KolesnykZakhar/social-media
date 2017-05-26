@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 06.03.2017
-  Time: 14:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html>
 <head>
     <title>ok</title>
@@ -20,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Operation successful</h1>
+            <h1><spring:message code="operationSuccessfulHeader"/></h1>
         </div>
     </div>
 </div>

@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 04.03.2017
-  Time: 17:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,51 +23,51 @@
             <form class="form-horizontal" method="post" action="/registration">
 
                 <div class="form-group">
-                    <label for="firstName" class="cols-sm-2 control-label">Your First Name</label>
+                    <label for="firstName" class="cols-sm-2 control-label"><spring:message code="yourFirstNameLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="firstName" id="firstName"
-                                   placeholder="Enter your First Name"/>
+                                   placeholder="<spring:message code="yourFirstNamePlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="lastName" class="cols-sm-2 control-label">Your Last Name</label>
+                    <label for="lastName" class="cols-sm-2 control-label"><spring:message code="yourLastNameLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="lastName" id="lastName"
-                                   placeholder="Enter your Last Name"/>
+                                   placeholder="<spring:message code="yourLastNamePlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <label for="email" class="cols-sm-2 control-label"><spring:message code="yourEmailLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="email" id="email"
-                                   placeholder="Enter your Email"/>
+                                   placeholder="<spring:message code="yourEmailPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="cols-sm-2 control-label">Your Phone</label>
+                    <label for="phone" class="cols-sm-2 control-label"><spring:message code="yourPhoneLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="phone" id="phone"
-                                   placeholder="Enter your Phone"/>
+                                   placeholder="<spring:message code="yourPhonePlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="birthDate" class="cols-sm-2 control-label">Your Birthday</label>
+                    <label for="birthDate" class="cols-sm-2 control-label"><spring:message code="yourBirthDateLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -82,34 +77,34 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="login" class="cols-sm-2 control-label">Login</label>
+                    <label for="login" class="cols-sm-2 control-label"><spring:message code="yourLoginLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                             <input required type="text" class="form-control" name="login" id="login"
-                                   placeholder="Enter your Login"/>
+                                   placeholder="<spring:message code="yourLoginPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <label for="password" class="cols-sm-2 control-label"><spring:message code="yourPasswordLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input required type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your Password"/>
+                                   placeholder="<spring:message code="yourPasswordPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <label for="confirm" class="cols-sm-2 control-label"><spring:message code="confirmPasswordLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input required type="password" class="form-control" name="confirm" id="confirm"
-                                   placeholder="Confirm your Password"/>
+                                   placeholder="<spring:message code="confirmPasswordPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
@@ -117,17 +112,16 @@
                 <div class="form-group">
                     <div class="cols-sm-10">
                         <div align="center">
-                            <label class="radio-inline"><input required type="radio" name="gender" value="0">Male</label>
-                            <label class="radio-inline"><input required type="radio" name="gender" value="1">Female</label>
+                            <label class="radio-inline"><input required type="radio" name="gender" value="0"><spring:message code="maleRadio"/></label>
+                            <label class="radio-inline"><input required type="radio" name="gender" value="1"><spring:message code="femaleRadio"/></label>
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button"><spring:message code="registerButton"/></button>
                 </div>
                 <div class="login-register">
-                    <a href="/login">Login</a>
+                    <a href="/login"><spring:message code="loginLink"/></a>
                 </div>
             </form>
         </div>

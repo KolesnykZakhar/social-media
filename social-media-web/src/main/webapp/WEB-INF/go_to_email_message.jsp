@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 06.03.2017
-  Time: 14:46
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,12 +29,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12" align="center">
-            <h1>Operation successful</h1>
-            <h2>Into your email was sent message with further instructions</h2>
+            <h1><spring:message code="operationSuccessfulHeader"/></h1>
+            <h2><spring:message code="goToEmailMessage"/></h2>
             <br>
             <div class="error-actions">
                 <a href="/login" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                    Take Me Home </a>
+                    <spring:message code="takeMeHomeButton"/></a>
             </div>
         </div>
     </div>

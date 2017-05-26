@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +24,10 @@
                             value="${requestScope.user.firstName} ${requestScope.user.lastName}"/></h3>
                     <c:choose>
                         <c:when test="${requestScope.user.online}">
-                            online
+                            <spring:message code="onlineValue"/>
                         </c:when>
                         <c:otherwise>
-                            offline
+                            <spring:message code="offlineValue"/>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -40,38 +41,38 @@
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td><label>First Name</label></td>
+                                    <td><label><spring:message code="firstNameColumn"/></label></td>
                                     <td><c:out value="${requestScope.user.firstName}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Last Name</label></td>
+                                    <td><label><spring:message code="lastNameColumn"/></label></td>
                                     <td><c:out value="${requestScope.user.lastName}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Phone Number</label></td>
+                                    <td><label><spring:message code="phoneNumberColumn"/></label></td>
                                     <td><c:out value="${requestScope.user.phone}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Date of Birth</label></td>
+                                    <td><label><spring:message code="birthDateColumn"/></label></td>
                                     <td><c:out value="${requestScope.user.birthDate}"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Gender</label></td>
+                                    <td><label><spring:message code="genderColumn"/></label></td>
                                     <td>
                                         <div class="form-group">
                                             <div class="cols-sm-10">
-                                                <c:out value="${requestScope.user.gender}"/>
+                                                <spring:message code="${requestScope.user.gender=='MALE'?'maleLabel':'femaleLabel'}"/>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label>Email</label></td>
+                                    <td><label><spring:message code="emailColumn"/></label></td>
                                     <td><a href="mailto:<c:out value='${requestScope.user.email}'/>">
                                         <c:out value="${requestScope.user.email}"/></a></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Login</label></td>
+                                    <td><label><spring:message code="loginColumn"/></label></td>
                                     <td><c:out value='${requestScope.user.login}'/></td>
                                 </tr>
                                 </tbody>
@@ -81,17 +82,17 @@
                                     <c:when test="${requestScope.isFriend}">
                                         <a href="#"
                                            onclick="addRemoveAcceptFriendship('/user/remove_from_friends/${requestScope.user.idUser}')"
-                                           class="btn btn-primary">Remove From Friends</a>
+                                           class="btn btn-primary"><spring:message code="removeFromFriendsButton"/></a>
                                     </c:when>
                                     <c:otherwise>
                                         <c:choose>
                                             <c:when test="${requestScope.isInvited}">
-                                                <span>Waiting For Accepting About Inviting For Friendship</span>
+                                                <span><spring:message code="waitingForAcceptInviteLabel"/></span>
                                             </c:when>
                                             <c:otherwise>
                                                 <a href="#"
                                                    onclick="addRemoveAcceptFriendship('/user/add_to_friends/${requestScope.user.idUser}')"
-                                                   class="btn btn-primary">Add To Friends</a>
+                                                   class="btn btn-primary"><spring:message code="addToFriendsButton"/></a>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:otherwise>
@@ -108,7 +109,7 @@
                     </c:if>
                     <span class="pull-right">
                             <a href="#" type="button" class="btn btn-sm btn-default"
-                               onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')">View Blog</a>
+                               onclick="postMainDiv('/user/blog_menu/${requestScope.user.idUser}/1/')"><spring:message code="viewBlogButton"/></a>
                             <a onclick="postMainDiv('/user/image_slider')" data-original-title="Remove this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
