@@ -17,9 +17,9 @@ public class IndexController {
     public String goToIndex(@AuthenticationPrincipal Object principal) throws ServletException, IOException {
         User user = (User) principal;
         if (user.getAuthority().contains("ROLE_ADMIN")) {
-            return "redirect: /admin/index";
+            return "forward:/admin/index";
         } else {
-            return "redirect: /user/index";
+            return "forward:/user/index";
         }
     }
 }
