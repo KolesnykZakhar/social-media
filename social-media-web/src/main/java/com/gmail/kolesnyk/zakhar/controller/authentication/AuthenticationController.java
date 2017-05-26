@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 @Controller
 public class AuthenticationController {
@@ -130,21 +132,41 @@ public class AuthenticationController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/checkPass", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
-    protected String checkPassword(@RequestParam("strength") Integer strength, Locale locale) {
-        switch (strength) {
+    @RequestMapping(value = "/checkPass", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
+    protected String checkPassword(@RequestParam("pass") String pass, Locale locale) {
+        final int[] strength = {0};
+        Arrays.asList(".{6,16}", "[a-z]+", "[0-9]+", "[A-Z]+").forEach(s -> {
+            if (Pattern.compile(s).matcher(pass).find()) {
+                strength[0]++;
+            }
+        });
+        String colorText;
+        String codeText;
+        switch (strength[0]) {
             case 2: {
-                return messageSource.getMessage("weakStrengthMessage", null, locale);
+                colorText = "red";
+                codeText = "weakStrengthMessage";
+                break;
             }
             case 3: {
-                return messageSource.getMessage("mediumStrengthMessage", null, locale);
+                colorText = "green";
+                codeText = "mediumStrengthMessage";
+                break;
             }
             case 4: {
-                return messageSource.getMessage("goodStrengthMessage", null, locale);
+                colorText = "blue";
+                codeText = "goodStrengthMessage";
+                break;
             }
             default: {
-                return messageSource.getMessage("invalidStrengthMessage", null, locale);
+                colorText = "grey";
+                codeText = "invalidStrengthMessage";
+                break;
             }
         }
+        return "{" +
+                "\"code\": \"" + messageSource.getMessage(codeText, null, locale) + "\"," +
+                "\"color\": \"" + colorText + "\"" +
+                "}";
     }
 }
