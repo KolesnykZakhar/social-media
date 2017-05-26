@@ -2,6 +2,7 @@ package com.gmail.kolesnyk.zakhar.configuration;
 
 
 import com.gmail.kolesnyk.zakhar.controller.handlers.RequestHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -11,14 +12,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.time.format.TextStyle;
+import javax.servlet.http.HttpSession;
 import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
 public class WebConfigurer extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    private HttpSession httpSession;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -41,10 +43,10 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
     public LocaleChangeInterceptor localeChangeInterceptor() {
         return new LocaleChangeInterceptor() {
             @Override
-            public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-                super.afterCompletion(request, response, handler, ex);
-                request.getSession().setAttribute("locale", localeResolver().resolveLocale(request));
-                request.getSession().setAttribute("textStyleFull", TextStyle.FULL);
+            protected Locale parseLocaleValue(String locale) {
+                Locale loc = super.parseLocaleValue(locale);
+                httpSession.setAttribute("locale", loc);
+                return loc;
             }
 
             {

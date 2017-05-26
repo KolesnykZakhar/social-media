@@ -18,6 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+import java.time.format.TextStyle;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SessionLocaleResolver localeResolver;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +46,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationSuccessHandler successHandler() {
-        return (request, response, authentication) -> request.getRequestDispatcher("/index").forward(request, response);
+        return (request, response, authentication) -> {
+            request.getSession().setAttribute("textStyleFull", TextStyle.FULL);
+            request.getSession().setAttribute("locale", localeResolver.resolveLocale(request));
+            request.getRequestDispatcher("/index").forward(request, response);
+        };
     }
 
     @Autowired

@@ -3,15 +3,14 @@ package com.gmail.kolesnyk.zakhar.controller.authentication;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.Locale;
 
 @Controller
 public class AuthenticationController {
@@ -19,7 +18,10 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login")
+    @Autowired
+    private MessageSource messageSource;
+
+    @RequestMapping(value = {"/login", "/"})
     public String toLoginPage(@AuthenticationPrincipal Object principal) {
         if (principal != null && principal instanceof User) {
             return "forward:/index";
@@ -124,6 +126,25 @@ public class AuthenticationController {
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/checkPass", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
+    protected String checkPassword(@RequestParam("strength") Integer strength, Locale locale) {
+        switch (strength) {
+            case 2: {
+                return messageSource.getMessage("weakStrengthMessage", null, locale);
+            }
+            case 3: {
+                return messageSource.getMessage("mediumStrengthMessage", null, locale);
+            }
+            case 4: {
+                return messageSource.getMessage("goodStrengthMessage", null, locale);
+            }
+            default: {
+                return messageSource.getMessage("invalidStrengthMessage", null, locale);
+            }
         }
     }
 }

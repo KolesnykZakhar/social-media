@@ -104,6 +104,44 @@ function bookmarksAction(idPost, checker) {
     $.post(url);
 }
 
+function passwordChecker(url, obj) {
+    var pass = obj.value;
+    var strength = 0;
+    var arr = [/.{6,16}/, /[a-z]+/, /[0-9]+/, /[A-Z]+/];
+    jQuery.map(arr, function (regexp) {
+        if (pass.match(regexp)) {
+            strength++;
+        }
+    });
+    var color = 'grey';
+    switch (strength) {
+        case 1: {
+            color='grey';
+            break;
+        }
+        case 2: {
+            color='red';
+            break;
+        }
+        case 3: {
+            color='green';
+            break;
+        }
+        case 4: {
+            color='blue';
+            break;
+        }
+    }
+    $('#passChecker').attr('style', 'color: ' + color);
+    $.post(url, {
+            strength: strength
+        }, function (responseText) {
+            $('#passChecker').text(responseText);
+        }
+    );
+
+}
+
 /* private */
 function updateMarks() {
     updateInvitationMark();

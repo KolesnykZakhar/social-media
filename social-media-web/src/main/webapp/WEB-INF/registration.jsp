@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../static/css/registration.css">
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../static/js/ajax_post_get.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.3.2.min.js"></script>
     <title>Registration</title>
 </head>
 <body>
@@ -20,10 +22,15 @@
             </div>
         </div>
         <div class="main-login main-center">
+            <span style="float: right">
+                <a href="?lang=ru">RU</a>
+                <a href="?lang=en">EN</a>
+            </span>
             <form class="form-horizontal" method="post" action="/registration">
 
                 <div class="form-group">
-                    <label for="firstName" class="cols-sm-2 control-label"><spring:message code="yourFirstNameLabel"/></label>
+                    <label for="firstName" class="cols-sm-2 control-label"><spring:message
+                            code="yourFirstNameLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -34,7 +41,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="lastName" class="cols-sm-2 control-label"><spring:message code="yourLastNameLabel"/></label>
+                    <label for="lastName" class="cols-sm-2 control-label"><spring:message
+                            code="yourLastNameLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -67,7 +75,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="birthDate" class="cols-sm-2 control-label"><spring:message code="yourBirthDateLabel"/></label>
+                    <label for="birthDate" class="cols-sm-2 control-label"><spring:message
+                            code="yourBirthDateLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -88,18 +97,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label"><spring:message code="yourPasswordLabel"/></label>
+                    <label for="password" class="cols-sm-2 control-label"><spring:message
+                            code="yourPasswordLabel"/></label><span class="pull-right" id="passChecker"></span>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input required type="password" class="form-control" name="password" id="password"
+                            <input onkeyup="passwordChecker('/checkPass', this)" maxlength="16" minlength="6" required type="password" class="form-control"
+                                   name="password" id="password"
                                    placeholder="<spring:message code="yourPasswordPlaceholder"/>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label"><spring:message code="confirmPasswordLabel"/></label>
+                    <label for="confirm" class="cols-sm-2 control-label"><spring:message
+                            code="confirmPasswordLabel"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -112,13 +124,16 @@
                 <div class="form-group">
                     <div class="cols-sm-10">
                         <div align="center">
-                            <label class="radio-inline"><input required type="radio" name="gender" value="0"><spring:message code="maleRadio"/></label>
-                            <label class="radio-inline"><input required type="radio" name="gender" value="1"><spring:message code="femaleRadio"/></label>
+                            <label class="radio-inline"><input required type="radio" name="gender"
+                                                               value="0"><spring:message code="maleRadio"/></label>
+                            <label class="radio-inline"><input required type="radio" name="gender"
+                                                               value="1"><spring:message code="femaleRadio"/></label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button"><spring:message code="registerButton"/></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button"><spring:message
+                            code="registerButton"/></button>
                 </div>
                 <div class="login-register">
                     <a href="/login"><spring:message code="loginLink"/></a>
@@ -127,6 +142,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
