@@ -22,7 +22,7 @@ public class AuthenticationController {
     @RequestMapping(value = "/login")
     public String toLoginPage(@AuthenticationPrincipal Object principal) {
         if (principal != null && principal instanceof User) {
-            return "redirect: /index";
+            return "forward:/index";
         } else {
             return "login";
         }
@@ -30,13 +30,13 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/logout")
     public String logout() {
-        return "redirect: /login";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String toRegistrationPage(@AuthenticationPrincipal Object principal) {
         if (principal != null && principal instanceof User) {
-            return "redirect: /index";
+            return "forward:/index";
         } else {
             return "registration";
         }
@@ -47,7 +47,7 @@ public class AuthenticationController {
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
                                   @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
         userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, gender);
-        return "redirect: /go_to_email_message";
+        return "redirect:/go_to_email_message";
     }
 
     @RequestMapping(value = "/go_to_email_message", method = RequestMethod.GET)
@@ -59,7 +59,7 @@ public class AuthenticationController {
     protected String confirmEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.confirmEmail(hashedEmail);
-            return "/login";
+            return "redirect:/login";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
@@ -70,7 +70,7 @@ public class AuthenticationController {
     protected String discardEmail(@PathVariable("hash") String hashedEmail) {
         try {
             userService.discardRegistration(hashedEmail);
-            return "ok";
+            return "redirect:/user/ok";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
@@ -81,7 +81,7 @@ public class AuthenticationController {
     protected String createRestorePassword(@RequestParam("email") String email) {
         try {
             userService.createRestorePassword(email);
-            return "redirect: /go_to_email_message";
+            return "redirect:/go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
@@ -108,7 +108,7 @@ public class AuthenticationController {
     protected String discardRestoringPassword(@PathVariable("hash") String hash) {
         try {
             userService.removeRestorePassword(hash);
-            return "ok";
+            return "redirect:/user/ok";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
@@ -120,7 +120,7 @@ public class AuthenticationController {
     protected String newPassword(@RequestParam("loginOrEmail") String loginOrEmail, @RequestParam("password") String password, @RequestParam("confirm") String confirm) {
         try {
             userService.createNewPassword(loginOrEmail, password, confirm);
-            return "redirect: /login";
+            return "redirect:/login";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";

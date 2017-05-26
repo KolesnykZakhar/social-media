@@ -67,7 +67,7 @@ public class MediaController {
     public String uploadAvatar(@RequestParam("uploadedAvatar") MultipartFile file) {
         try {
             mediaService.storeAvatar(file, currentUser().getIdUser());
-            return "ok";
+            return "redirect:/user/ok";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/500";
@@ -78,10 +78,7 @@ public class MediaController {
     public String uploadImage(@RequestParam("uploadedPhoto") MultipartFile file) {
         try {
             mediaService.storeImage(file, currentUser());
-            return "ok";
-        } catch (FileAlreadyExistsException e) {
-            e.printStackTrace();
-            return "errorPages/403_limit_photos";
+            return "redirect:/user/ok";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/500";
@@ -91,13 +88,13 @@ public class MediaController {
     @RequestMapping(value = "/user/delete_media/{nameMedia}/{idMedia}")
     public String deleteMedia(@PathVariable("nameMedia") String nameMedia, @PathVariable("idMedia") Integer idMedia) throws IOException {
         mediaService.deleteFileMedia(nameMedia, idMedia);
-        return "ok";
+        return "redirect:/user/ok";
     }
 
     @Bean
     public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setDefaultEncoding("utf-8");
-        return resolver;
+        return new CommonsMultipartResolver(){{
+            setDefaultEncoding("utf-8");
+        }};
     }
 }
