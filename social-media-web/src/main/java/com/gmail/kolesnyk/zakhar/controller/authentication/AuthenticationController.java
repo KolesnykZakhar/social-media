@@ -4,7 +4,6 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +47,11 @@ public class AuthenticationController {
                                   @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("confirm") String confirm,
                                   @RequestParam("email") String email, @RequestParam("phone") String phone, @RequestParam("gender") Integer gender) throws ServletException, IOException {
         userService.registrationUser(firstName, lastName, birthDate, login, password, confirm, email, phone, gender);
+        return "redirect: /go_to_email_message";
+    }
+
+    @RequestMapping(value = "/go_to_email_message", method = RequestMethod.GET)
+    protected String goToEmail() {
         return "go_to_email_message";
     }
 
@@ -77,7 +81,7 @@ public class AuthenticationController {
     protected String createRestorePassword(@RequestParam("email") String email) {
         try {
             userService.createRestorePassword(email);
-            return "go_to_email_message";
+            return "redirect: /go_to_email_message";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
@@ -116,7 +120,7 @@ public class AuthenticationController {
     protected String newPassword(@RequestParam("loginOrEmail") String loginOrEmail, @RequestParam("password") String password, @RequestParam("confirm") String confirm) {
         try {
             userService.createNewPassword(loginOrEmail, password, confirm);
-            return "login";
+            return "redirect: /login";
         } catch (Exception e) {
             e.printStackTrace();
             return "errorPages/404";
