@@ -6,19 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="implementation of password strength moved to controller">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/social_media_web_war.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/social_media_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/social_media_web_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="b00166c3-5c87-485e-a796-3a589afcbf4c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-service/pom.xml" afterPath="$PROJECT_DIR$/social-media-service/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-service/social-media-service.iml" afterPath="$PROJECT_DIR$/social-media-service/social-media-service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/pom.xml" afterPath="$PROJECT_DIR$/social-media-web/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/social-media-web.iml" afterPath="$PROJECT_DIR$/social-media-web/social-media-web.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" afterPath="$PROJECT_DIR$/social-media-web/src/main/webapp/static/js/ajax_post_get.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/social-media.iml" afterPath="$PROJECT_DIR$/social-media.iml" />
     </list>
     <ignored path="social-media.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2698,14 +2687,7 @@
       <workItem from="1495696964599" duration="21762000" />
       <workItem from="1495778031169" duration="30232000" />
       <workItem from="1495861144394" duration="3226000" />
-      <workItem from="1495961331038" duration="17346000" />
-    </task>
-    <task id="LOCAL-00057" summary="implemented pagination of posts">
-      <created>1494516445797</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1494516445798</updated>
+      <workItem from="1495961331038" duration="17361000" />
     </task>
     <task id="LOCAL-00058" summary="implemented pagination of posts">
       <created>1494516551602</created>
@@ -3043,7 +3025,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495964584170</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="implementation of password strength moved to controller">
+      <created>1495992924133</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1495992924133</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3079,7 +3068,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="682982000" />
+    <option name="totallyTimeSpent" value="682997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
