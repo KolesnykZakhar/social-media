@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="social-media-web:war">
-    <output-path>$PROJECT_DIR$/social-media-web/target</output-path>
-    <root id="archive" name="social-media-web.war">
-      <element id="artifact" artifact-name="social-media-web:war exploded" />
-    </root>
-  </artifact>
-</component>
