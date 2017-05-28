@@ -67,6 +67,16 @@ public class Validator {
 
     }
 
+    public static int strengthLevelPassword(String pass) {
+        int[] strength = {0};
+        Arrays.asList(".{6,16}", "[a-z]+", "[0-9]+", "[A-Z]+").forEach(s -> {
+            if (Pattern.compile(s).matcher(pass).find()) {
+                strength[0]++;
+            }
+        });
+        return strength[0];
+    }
+
     private static boolean isCorrectBirthDate(String birthDate) {
         LocalDate date;
         try {

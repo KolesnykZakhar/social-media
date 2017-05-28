@@ -2,6 +2,7 @@ package com.gmail.kolesnyk.zakhar.controller.authentication;
 
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
+import com.gmail.kolesnyk.zakhar.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.regex.Pattern;
 
 @Controller
 public class AuthenticationController {
@@ -134,15 +133,10 @@ public class AuthenticationController {
     @ResponseBody
     @RequestMapping(value = "/checkPass", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     protected String checkPassword(@RequestParam("pass") String pass, Locale locale) {
-        final int[] strength = {0};
-        Arrays.asList(".{6,16}", "[a-z]+", "[0-9]+", "[A-Z]+").forEach(s -> {
-            if (Pattern.compile(s).matcher(pass).find()) {
-                strength[0]++;
-            }
-        });
+        int strength = Validator.strengthLevelPassword(pass);
         String colorText;
         String codeText;
-        switch (strength[0]) {
+        switch (strength) {
             case 2: {
                 colorText = "red";
                 codeText = "weakStrengthMessage";

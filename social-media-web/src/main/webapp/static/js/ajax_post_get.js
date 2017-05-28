@@ -112,10 +112,9 @@ function passwordChecker(url, obj) {
             var obj = JSON.parse(responseText);
             var node = $('#passChecker');
             node.text(obj.code);
-            node.attr('style', 'color: ' + obj.color + ";")
+            node.attr('style', 'color: ' + obj.color + "; font-weight: bold;")
         }
     );
-
 }
 
 /* private */
