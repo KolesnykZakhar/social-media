@@ -67,6 +67,12 @@ public class Validator {
 
     }
 
+    /**
+     * method allow to get strength level of password
+     *
+     * @param pass password for checking strength level
+     * @return from 0 to 4 where 0 is min strength level, and 4 is max strength level of password
+     */
     public static int strengthLevelPassword(String pass) {
         int[] strength = {0};
         Arrays.asList(".{6,16}", "[a-z]+", "[0-9]+", "[A-Z]+").forEach(s -> {
