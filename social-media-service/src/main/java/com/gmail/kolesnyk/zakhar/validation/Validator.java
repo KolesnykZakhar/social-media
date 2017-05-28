@@ -50,7 +50,7 @@ public class Validator {
         if (user.getLogin() == null || !LOGIN_USER_PATTERN.matcher(user.getLogin()).matches()) {
             throw new RegistrationValidateException("Login should be contains literals or digits and be in range 6-32");
         }
-        if (pass == null || !PASSWORD_USER_PATTERN.matcher(pass).matches()) {
+        if (isInvalidPassword(pass)) {
             throw new RegistrationValidateException("Password should be contains literals or digits and be in range 6-16");
         }
         if (user.getEmail() == null || !EMAIL_USER_PATTERN.matcher(user.getEmail()).matches()) {
@@ -71,9 +71,12 @@ public class Validator {
      * method allow to get strength level of password
      *
      * @param pass password for checking strength level
-     * @return from 0 to 4 where 0 is min strength level, and 4 is max strength level of password
+     * @return from 0 to 4 where 0 is invalid password, 1 is min strength level, and 4 is max strength level of password
      */
     public static int strengthLevelPassword(String pass) {
+        if (isInvalidPassword(pass)) {
+            return 0;
+        }
         int[] strength = {0};
         Arrays.asList(".{6,16}", "[a-z]+", "[0-9]+", "[A-Z]+").forEach(s -> {
             if (Pattern.compile(s).matcher(pass).find()) {
@@ -81,6 +84,10 @@ public class Validator {
             }
         });
         return strength[0];
+    }
+
+    private static boolean isInvalidPassword(String pass) {
+        return pass == null || !PASSWORD_USER_PATTERN.matcher(pass).matches();
     }
 
     private static boolean isCorrectBirthDate(String birthDate) {
