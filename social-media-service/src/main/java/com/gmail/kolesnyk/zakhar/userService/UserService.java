@@ -21,7 +21,7 @@ public interface UserService {
      * @param loginOrEmail login or email address of User
      * @return {@link User} example User
      */
-    User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException;
+    User getUserByLoginOrEmail(String loginOrEmail) throws IllegalAccessException;
 
     /**
      * method allow to get register new User in system

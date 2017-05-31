@@ -41,7 +41,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public User getUserByLoginOrEmailAndPassword(String loginOrEmail) throws IllegalAccessException {
+    public User getUserByLoginOrEmail(String loginOrEmail) throws IllegalAccessException {
         if (loginOrEmail.contains("@")) {
             return userDao.selectByEmail(loginOrEmail);
         } else {

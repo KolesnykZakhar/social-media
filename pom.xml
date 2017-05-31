@@ -107,6 +107,25 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.glassfish</groupId>-->
+                <!--<artifactId>maven-embedded-glassfish-plugin</artifactId>-->
+                <!--<version>3.0</version>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash;<goalPrefix>glassfish</goalPrefix>&ndash;&gt;-->
+                    <!--<app>social-media-web/target/social-media-web.war</app>-->
+                    <!--<port>8080</port>-->
+                    <!--<contextRoot>test</contextRoot>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

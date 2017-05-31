@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +25,9 @@
                 <a href="?lang=en">EN</a>
             </span>
             <form class="form-horizontal" method="post" action="/login">
+
+                <span style="color: white; background-color: red; font-weight: bold;"
+                      class="pull-right">${requestScope.errorAuth}</span>
 
                 <div class="form-group">
                     <label for="username" class="cols-sm-2 control-label"><spring:message

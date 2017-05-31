@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.configuration;
 import com.gmail.kolesnyk.zakhar.user.User;
 import com.gmail.kolesnyk.zakhar.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -32,6 +34,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SessionLocaleResolver localeResolver;
 
+    @Autowired
+    private MessageSource messageSource;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -40,8 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login").permitAll()
                 .successHandler(successHandler())
+                .failureHandler(failureHandler())
                 .and().logout().logoutUrl("/logout");
         http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
+    }
+
+    @Bean
+    public AuthenticationFailureHandler failureHandler(){
+        return (request, response, authentication) -> {
+            request.setAttribute("errorAuth", messageSource.getMessage("errorAuth", null, localeResolver.resolveLocale(request)));
+            request.getRequestDispatcher("/login").forward(request, response);
+        };
     }
 
     @Bean
@@ -93,7 +107,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected UserDetailsService userDetailsService() {
         return loginOrEmail -> {
             try {
-                User user = userService.getUserByLoginOrEmailAndPassword(loginOrEmail);
+                User user = userService.getUserByLoginOrEmail(loginOrEmail);
                 user.setUsername(loginOrEmail);
                 return (UserDetails) user;
             } catch (Exception e) {
