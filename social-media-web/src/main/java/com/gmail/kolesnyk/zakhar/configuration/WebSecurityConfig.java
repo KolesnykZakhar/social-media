@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.RememberMeAuthenticationProvider;
+import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.RememberMeConfigurer;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +23,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import javax.sql.DataSource;
 import java.time.format.TextStyle;
 
 @Configuration
@@ -41,17 +50,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/user/**").access("hasRole('USER')")
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and().formLogin().loginPage("/login").permitAll()
                 .successHandler(successHandler())
                 .failureHandler(failureHandler())
+                .and().rememberMe().rememberMeParameter("_spring_security_remember_me")
+                .rememberMeCookieName("rememberMe")
                 .and().logout().logoutUrl("/logout");
         http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
     }
 
     @Bean
-    public AuthenticationFailureHandler failureHandler(){
+    public AuthenticationFailureHandler failureHandler() {
         return (request, response, authentication) -> {
             request.setAttribute("errorAuth", messageSource.getMessage("errorAuth", null, localeResolver.resolveLocale(request)));
             request.getRequestDispatcher("/login").forward(request, response);

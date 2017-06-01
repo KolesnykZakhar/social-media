@@ -52,6 +52,10 @@
                     </div>
                 </div>
 
+                <div class="checkbox">
+                    <label><input class="checkbox" type="checkbox" name="_spring_security_remember_me"><spring:message code="rememberMe"/> </label>
+                </div>
+
                 <div class="form-group ">
                     <button type="submit" class="btn btn-primary btn-lg btn-block login-button"><spring:message
                             code="loginButton"/></button>
