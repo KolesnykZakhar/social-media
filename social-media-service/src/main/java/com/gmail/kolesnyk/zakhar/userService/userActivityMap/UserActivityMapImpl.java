@@ -14,8 +14,6 @@ public class UserActivityMapImpl implements UserActivityMap {
 
     private Map<Integer, Long> mapActivity;
 
-    private Environment environment;
-
     public UserActivityMapImpl(@Autowired Environment environment) {
         inactiveTime = Integer.parseInt(environment.getProperty("offlineIfInactiveMin"));
         mapActivity = new HashMap<>();
@@ -29,7 +27,6 @@ public class UserActivityMapImpl implements UserActivityMap {
     @Override
     public boolean isOnline(Integer idUser) {
         Long time = mapActivity.get(idUser);
-        boolean a = (time != null && System.currentTimeMillis() - time < inactiveTime * 60000);
-        return a;
+        return (time != null && System.currentTimeMillis() - time < inactiveTime * 60000);
     }
 }

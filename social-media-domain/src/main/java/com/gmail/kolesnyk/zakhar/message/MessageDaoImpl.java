@@ -4,13 +4,14 @@ package com.gmail.kolesnyk.zakhar.message;
 import com.gmail.kolesnyk.zakhar.AbstractDao;
 import com.gmail.kolesnyk.zakhar.user.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class MessageDaoImpl extends AbstractDao<Message, Integer> implements MessageDao {
     @Override
     @SuppressWarnings("unchecked")

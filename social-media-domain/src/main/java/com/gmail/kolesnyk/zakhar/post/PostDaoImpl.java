@@ -5,6 +5,7 @@ import com.gmail.kolesnyk.zakhar.user.User;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -14,7 +15,7 @@ import static com.gmail.kolesnyk.zakhar.user.VISIBILITY.PUBLIC;
 /**
  * class implements and extends methods that need to ORM relations with {@link Post} class
  */
-@Component
+@Repository
 public class PostDaoImpl extends AbstractDao<Post, Integer> implements PostDao {
 
     @Override

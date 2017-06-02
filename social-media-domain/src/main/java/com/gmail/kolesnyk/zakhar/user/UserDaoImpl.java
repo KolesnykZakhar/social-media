@@ -3,6 +3,7 @@ package com.gmail.kolesnyk.zakhar.user;
 import com.gmail.kolesnyk.zakhar.AbstractDao;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,7 +13,7 @@ import static com.gmail.kolesnyk.zakhar.user.VISIBILITY.PRIVATE;
 /**
  * class implements and extends methods that need to ORM relations with {@link User} class
  */
-@Component
+@Repository
 public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 
     @Override
