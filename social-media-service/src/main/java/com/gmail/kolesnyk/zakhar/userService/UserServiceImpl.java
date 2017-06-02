@@ -119,7 +119,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return new PasswordEncoder() {
             private final Md5PasswordEncoder md5 = new Md5PasswordEncoder();
 
